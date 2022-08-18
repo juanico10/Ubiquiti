@@ -334,17 +334,16 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 
 
 ## REVISIÓN
-
-- Listar
-sudo /sbin/ipset list
-- Utilice este comando a través de la CLI para ver las entradas:
-show firewall group SPAMHAUS_DROP
-- Despues vemos las tareas
-show system task-scheduler
-
+<p>Listar</p>
+<ul><code>sudo /sbin/ipset list</code></ul>
+<p>Utilice este comando a través de la CLI para ver las entradas:</p>
+<ul><code>show firewall group SPAMHAUS_DROP</code></ul>
+<p>Despues vemos las tareas</p>
+<ul><code>show system task-scheduler</code></ul>
 
 
-EJEMPLO:
+
+### EJEMPLO:
 ```sh
     name WAN_IN {
         default-action drop
