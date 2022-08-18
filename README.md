@@ -1,32 +1,24 @@
 # Wiki Ubiquiti
 A collection of enhancements for EdgeMax based devices
 
-## EdgeRouter 4 initial setup
-### Setup user
+## Configuración inicial del EdgeRouter 4
+### Configurar usuario
 
-#### Login to router and add a new user
+#### Inicie sesión en el router y añada un nuevo usuario
 
 ```sh
-$ ssh ubnt@<ip-of-edgerouter>
 configure
 set system login user <user> authentication plaintext-password <secret>
 set system login user <user> level admin
-commit
-save
-exit
-logout
+commit; save
 ```
 
 #### Remove default user
 
 ```sh
-$ ssh ubnt@<ip-of-edgerouter>
 configure
 delete system login user ubnt
-commit  
-save  
-exit
-logout
+commit; save
 ```
 
 #### Add a public ssh key to EdgeRouter
@@ -39,11 +31,8 @@ $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 $ ssh <user>@<ip-of-edgerouter>
 configure  
 loadkey <user> /tmp/id_rsa.pub  
-commit  
-save  
-exit
 sudo chown -R <user> /home/<user>
-logout
+commit; save
 ```
 
 #### Sanity check
@@ -62,8 +51,6 @@ $ ssh <user>@<ip-of-edgerouter>
 configure
 set service ssh disable-password-authentication
 commit; save
-exit
-logout
 ```
 
 ### Setup Edgerouter 4
@@ -77,9 +64,7 @@ Option to go the SSL cert route with Let´s Encrypt there is several diffrent to
 $ ssh <user>@<ip-of-edgerouter>
 configure
 set system static-host-mapping host-name <hostname> inet <ip-of-edgerouter>
-commit
-save
-exit
+commit; save
 ```
 
 **Create certificate**
@@ -161,9 +146,7 @@ set firewall name WAN_LOCAL rule 2 action drop
 set firewall name WAN_LOCAL rule 2 log enable
 set firewall name WAN_LOCAL rule 2 description "Drop invalid state"
 set firewall name WAN_LOCAL rule 2 state invalid enable
-commit
-save
-exit
+commit; save
 ```
 
 #### WAN
@@ -178,9 +161,7 @@ set interfaces ethernet eth0 firewall local name WAN_LOCAL
 set service nat rule 5010 description "Masquerade for WAN"
 set service nat rule 5010 outbound-interface eth0
 set service nat rule 5010 type masquerade
-commit
-save
-exit
+commit; save
 ```
 
 #### LAN
@@ -197,7 +178,5 @@ set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 dns-server
 set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 lease 86400
 set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 start 192.168.1.150 stop 192.168.1.254
 set service dns forwarding listen-on eth3
-commit
-save
-exit
+commit; save
 ```
