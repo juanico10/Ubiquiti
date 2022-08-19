@@ -206,10 +206,17 @@ commit ; save
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
 ### Remover default user
-
+Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
+```sh
+set system login user <user>
+set system login user <user> level admin
+set system login user <user> authentication encrypted-password <contraseña>
+commit ; save
+```
+Despues eliminarmos el usuario por defecto
 ```sh
 configure
-delete system login user ubnt
+delete system login <user> ubnt
 commit ; save
 ```
 
