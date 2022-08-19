@@ -225,11 +225,13 @@ commit ; save
 
 ### Añadir una clave ssh pública a EdgeRouter
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
-Si no lo conocen, os dejo el tutorial:
-<a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a>
+<p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
+
 ```sh
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 ```
+<ul><code>Pueden utilizar Filezilla o similar para enviar el archivo.</code></ul>
+
 Accedemos al equipo y configuramos la clave pública generada:
 ```sh
 configure  
