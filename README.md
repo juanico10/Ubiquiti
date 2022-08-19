@@ -10,7 +10,9 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 </p>
 <!-- markdownlint-enable MD033 -->
 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos. Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.
+---
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
+<p>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</p>
 
 ## Acceso a la CLI y comandos básicos
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
@@ -50,6 +52,7 @@ Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRo
 1. Navegue a la parte superior derecha de la interfaz de usuario web.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
 
+---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter 4:
 
 ### Realización de un Hardware o Software Reset
@@ -190,6 +193,7 @@ set system offload ipsec enable
 commit ; save
 ```
 
+---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
 ### Remover default user
@@ -241,7 +245,7 @@ delete service telnet
 commit ; save
 ```
 
-
+---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall e interfaces Edgerouter
 
 ### Firewall
@@ -442,6 +446,7 @@ update-status: good
 </details>
 &nbsp;
 
+---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
 
 #### Cree el grupo y agregue una regla de firewall para eliminar ese grupo:
@@ -628,7 +633,7 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
         }
 ```
 
-
+---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
  
 
