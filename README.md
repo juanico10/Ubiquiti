@@ -684,4 +684,5 @@ Server: Server
 ```
 
 ## Conclusión
-Con toda esta información 
+Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
+<sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup>
