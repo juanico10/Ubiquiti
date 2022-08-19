@@ -12,20 +12,49 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 ## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
+<div class="article-notice-box box--purple">
+<div id="gui-icon" class="note-table__cell-icon"></div>
+<div class="note-table--text">
+<div class="node--head"><span class="node--head-title"> <strong>GUI:</strong> Access the EdgeRouter Web UI</span>.</div>
+
+#### Actualizar EdgeRouter
+Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
+https://www.ui.com/download/edgemax/
+
+
 #### Acceso a la interfaz de configuración EdgeOS
-Opción 1 <code>IP ESTÁTICA
-<ol>Conecte un cable Ethernet desde el puerto Ethernet del ordenador al puerto eth0 del EdgeRouter.</ol>
-<ol>Configure el adaptador de Ethernet en su sistema host con una dirección IP estática en la subred 192.168.1.x.</ol>
-<ol>Inicie el explorador web. Escriba <code>https://192.168.1.1 en la barra de direcciones. Pulse Intro (PC) o Retorno (Mac).</ol>
-<ol>Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).</ol>
+<details>
+    <summary>Opción 1:</summary>
 
+## Instrucciones de uso con IP ESTÁTICA:
 
-Opción 2 <code>DHCP
-<ol>Conecte un cable Ethernet de eth1 en el EdgeRouter a un segmento de LAN que ya tiene un servidor DHCP.</ol>
-<ol>Para comprobar la dirección IP del EdgeRouter, utilice uno de los métodos siguientes:
-Configure el servidor DHCP para que proporcione una dirección IP específica al EdgeRouter en función de su dirección MAC (en la etiqueta). Deje que el EdgeRouter obtenga una dirección IP y luego compruebe el servidor DHCP para ver qué dirección IP se asignó.</ol>
-<ol>Inicie el explorador web. Introduzca la dirección IP correcta en el campo de dirección. Pulse Intro (PC) o Retorno (Mac).</ol>
-<ol>Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).</ol>
+1. Conecte un cable Ethernet desde el puerto Ethernet del ordenador al puerto eth0 del EdgeRouter.
+2. Configure el adaptador de Ethernet en su sistema host con una dirección IP estática en la subred  <code>192.168.1.x</code>.
+3. Inicie el explorador web. Escriba <code>https://192.168.1.1</code> en la barra de direcciones. Pulse Intro (PC) o Retorno (Mac).
+4. Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).
+
+&nbsp;
+</details>
+&nbsp;
+
+<details>
+    <summary>Opción 2:</summary>
+
+## Instrucciones de uso con DHCP:
+
+1. Conecte un cable Ethernet de eth1 en el EdgeRouter a un segmento de LAN que ya tiene un servidor DHCP.
+2. Para comprobar la dirección IP del EdgeRouter, utilice uno de los métodos siguientes:
+<ul>2.1 Configure el servidor DHCP para que proporcione una dirección IP específica al EdgeRouter en función de su dirección MAC (en la etiqueta).</ul>
+<ul>2.2 Deje que el EdgeRouter obtenga una dirección IP y luego compruebe el servidor DHCP para ver qué dirección IP se asignó.</ul>
+3. Inicie el explorador web. Introduzca la dirección IP correcta en el campo de dirección. Pulse Intro (PC) o Retorno (Mac).
+4. Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).
+
+&nbsp;
+</details>
+&nbsp;
+
+#### Gestión de UISP
+Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación. Para empezar, vaya a <a href="uisp.ui.com">
 
 ### Comandos básicos
 <ul><code>commit: para activar los cambios.</code></ul>
@@ -50,8 +79,6 @@ set system login user <user> authentication plaintext-password <secret>
 set system login user <user> level admin
 commit; save
 ```
-Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
-
 
 #### Habilitar funciones de rendimiento
 Para ER-X,ER-X-SPF,EP-R6
