@@ -2,7 +2,7 @@
 Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 <p align="center">
-    <a href="https://pi-hole.net/">
+    <a href="https://www.ui.com/">
         <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
     </a>
     <br>
