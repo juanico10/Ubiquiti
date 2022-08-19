@@ -303,13 +303,65 @@ commit ; save
 ```
 
 #### DNS DINAMICO
-<div class="flex page-col-content xs12 lg9 xl10"><!----><!----><div class="contents"><div><p>Si tienes algún subdominio registrador en <a href="https://www.duckdns.org/" class="is-external-link">www.duckdns.org</a> y quieres asignárselo a tu <em>ER-X</em> puedes realizarlo de dos maneras, mediante el formulario web o la línea de comandos.</p><div></div><h2 id="obtener-nuestro-token-de-duckdns" class="toc-header"><a href="#obtener-nuestro-token-de-duckdns" class="toc-anchor">¶</a> Obtener nuestro <em>Token</em> de DuckDNS</h2><div></div><p>Durante el proceso de configuración es necesario disponer a mano del <em>Token</em> que nos identifica en el servicio <em>DuckDNS</em>. Puede que estés acostumbrado a identificarte mediante un <em>usuario</em> y <em>contraseña</em>, pero en este caso deberás hacerlo mediante un <em>Token</em>.</p><div></div><p>Para obtenerlo simplemente deberemos iniciar sesión vía web en nuestra cuenta y justo en la parte superior podremos ver nuestro <em>token</em>, un conjunto de números y letras.</p><div></div><p><img alt="er-x_dudckdns_3.png" src="/imagenes/er-x_dudckdns_3.png" class="align-center"></p><div></div><p>Hay que tener a mano dicho dato ya que lo vamos a necesitar en el proceso de configuración.</p><div></div><h2 id="mediante-la-web" class="toc-header"><a href="#mediante-la-web" class="toc-anchor">¶</a> Mediante la Web</h2><div></div><p>Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.</p><div></div><p><img alt="er-x_dudckdns_1.png" src="/imagenes/er-x_dudckdns_1.png" class="align-center"></p><div></div><p>Se cargará un formulario vació que deberemos rellenar con los datos adecuados:</p><div></div><ul><li><p><strong>Interface:</strong> Aquí hay que seleccionar la interfaz en la que está configurada nuestra IP pública.</p></li> <li><p><strong>Service:</strong> En el menú desplegable hay varios servicios ya pre-configurados, pero entre ellos al no estar <em>DuckDNS</em> optamos por la opción <em>custom</em>.</p></li> <li><p><strong>Hostname:</strong> Aquí hay que meter el subdominio <em>DuckDNS</em> que queremos asignar a nuestro router. Solamente el subdominio, no hace falta meter <em>.duckdns.org</em>.</p></li> <li><p><strong>Login:</strong> poniendo <em>nouser</em> servirá, ya que nos identificaremos mediante nuestro <em>Token</em>.</p></li> <li><p><strong>Password:</strong> Aquí deberemos introducir el <em>Token</em> de nuestra cuenta.</p></li> <li><p><strong>Protocol:</strong> Seleccionamos el protocolo <em>dyndns2</em>.</p></li> <li><p><strong>Server:</strong> por último metemos la <em>url</em> del servidor de <em>DuckDNS</em>, <em><a href="http://www.duckdns.org" class="is-external-link">www.duckdns.org</a></em>.</p></li></ul><div></div><p><img alt="er-x_dudckdns_2.png" src="/imagenes/er-x_dudckdns_2.png" class="align-center"></p><div></div><p>Para terminar pulsamos en <code>Apply</code> para guardar todo lo que hemos metido.</p><div></div><h2 id="a-través-de-la-línea-de-comandos-cli" class="toc-header"><a href="#a-través-de-la-línea-de-comandos-cli" class="toc-anchor">¶</a> A través de la línea de comandos (CLI)</h2><div></div><p>Esto podemos realizarlo conectando al router mediante el protocolo <em>SSH</em> o usando el intérprete <em>CLI</em> incorporado en la propia web de gestión. En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utilizando las mismas credenciales que usamos para acceder vía web.</p><div></div><p><img alt="er-x_dudckdns_4.png" src="/imagenes/er-x_dudckdns_4.png" class="align-center"></p><div></div><p><img alt="er-x_dudckdns_4.png" src="/imagenes/er-x_dudckdns_5.png" class="align-center"></p><div></div><p>Ahora deberemos entrar en modo configuración. Para ello escribimos el siguiente comando y pulsares <em>Enter</em>.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash">configure<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Se la misma manera que en la web de gestión, deberemos de indicar la <em>Interfaz</em> en la que tenemos nuestra IP pública. Para ello sustituye la palabra <em>INTERFAZ</em> en el siguiente comando y los siguientes también.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Le indicamos el <em>subdominio</em> <em>DuskDNS</em> que le asignaremos al router.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns host-name SUBDMIONIO<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Al identificarnos mediante un <em>Token</em> no es necesario un usuario, de ahí el <em>nouser</em>.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns login nouser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Ahora le pasaremos en <em>Token</em> de nuestra cuenta sustituyendo la palabra <em>TOKEN</em> del siguiente comando.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns password TOKEN<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Definimos el protocolo a utilizar metiendo el siguiente comando tal como está. Solamente cambiando la <em>INTERFAZ</em> como en el resto de comandos.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns protocol dyndns2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Por último, concretamos el servidor al que le deberemos indicar nuestros cambios de IP.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> <span class="token function">service</span> dns dynamic interface INTERFAZ <span class="token function">service</span> custom-duckdns server www.duckdns.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Para guardar los cambios y salir del modo <em>configuración</em> metemos los siguientes comandos.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash">commit
-save
-<span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Ahora ya tenemos todo configurado.</p><div></div><p>Periódicamente el router ira actualizando nuestra IP pública en el <em>DNS</em> de <em>DuckDNS</em>. En caso de querer forzar la actualización, se puede realizar lanzando el siguiente comando.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash">update dns dynamic interface INTERFAZ<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.</p><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash">show dns dynamic status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><div class="code-toolbar"><pre class="prismjs line-numbers language-bash"><code class="language-bash">interface    <span class="token builtin class-name">:</span> INTERFAZ
-<span class="token function">ip</span> address   <span class="token builtin class-name">:</span> xxx.xxx.xxx.xxx
-host-name    <span class="token builtin class-name">:</span> SUBDOMINIO
-last update  <span class="token builtin class-name">:</span> Tue Sep <span class="token number">29</span> <span class="token number">22</span>:28:09 <span class="token number">2020</span>
-update-status: good<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div><div></div><p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p><div></div><hr><div></div><p>Fuente: <a href="https://loganmarchione.com/2017/04/duckdns-on-edgerouter/" class="is-external-link">https://loganmarchione.com/2017/04/duckdns-on-edgerouter/</a></p><div></div></div></div><!----></div>
+
+<details>
+    <summary>Mediante interfaz GUI:</summary>
+
+## Instrucciones de uso con GUI:
+<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns">DuckDNS</a>.</sup>
+
+1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
+2. Se cargará un formulario vació que deberemos rellenar con los datos adecuados:
+<ul><code>Interface: Aquí hay que seleccionar la interfaz en la que está configurada nuestra IP pública.</code></ul>
+<ul><code>Service: En el menú desplegable hay varios servicios ya pre-configurados, pero entre ellos al no estar DuckDNS optamos por la opción custom.</code></ul>
+<ul><code>Hostname: Aquí hay que meter el subdominio DuckDNS que queremos asignar a nuestro router. Solamente el subdominio, no hace falta meter .duckdns.org.</code></ul>
+<ul><code>Login: poniendo nouser servirá, ya que nos identificaremos mediante nuestro Token.</code></ul>
+<ul><code>Password: Aquí deberemos introducir el Token de nuestra cuenta.</code></ul>
+<ul><code>Protocol: Seleccionamos el protocolo dyndns2.</code></ul>
+<ul><code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code></ul>
+3. Para terminar pulsamos en Apply para guardar todo lo que hemos metido.
+
+&nbsp;
+</details>
+&nbsp;
+
+<details>
+    <summary>Mediante interfaz CLI:</summary>
+
+## Instrucciones de uso con CLI:
+
+Esto podemos realizarlo conectando al router mediante el protocolo SSH o usando el intérprete CLI incorporado en la propia web de gestión.
+En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utilizando las mismas credenciales que usamos para acceder vía web.
+
+1. Accedemos por ssh o cli web.
+2. 
+<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
+```sh
+configure
+set service dns dynamic interface INTERFAZ service custom-duckdns
+set service dns dynamic interface INTERFAZ service custom-duckdns host-name SUBDMIONIO
+set service dns dynamic interface INTERFAZ service custom-duckdns login nouser
+set service dns dynamic interface INTERFAZ service custom-duckdns password TOKEN
+set service dns dynamic interface INTERFAZ service custom-duckdns protocol dyndns2
+set service dns dynamic interface INTERFAZ service custom-duckdns server www.duckdns.org
+commit ; save
+```
+3. Periódicamente el router ira actualizando nuestra IP pública en el DNS de DuckDNS. En caso de querer forzar la actualización, se puede realizar lanzando el siguiente comando.
+<ul><code>update dns dynamic interface INTERFAZ</code></ul>
+4. Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.
+<ul><code>show dns dynamic status</code></ul>
+```sh
+interface    : INTERFAZ
+ip address   : xxx.xxx.xxx.xxx
+host-name    : SUBDOMINIO
+last update  : Tue Sep 29 22:28:09 2020
+update-status: good
+```
+<p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
+
+&nbsp;
+</details>
+&nbsp;
 
 ## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/></a> Añadir listas de seguridad al firewall
 
