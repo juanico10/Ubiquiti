@@ -32,18 +32,18 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 
 ### Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web.png" alt="web.png"></p>
 
 La contraseña por defecto:
 <ul>Usuario: ubnt</ul>
 <ul>Contraseña: ubnt</ul>
   
 Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="web1.png"></p>
 
 #### Instrucciones de uso con Putty o similar:
-
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+
 #### Instrucciones de uso con GUI:
 0. Acceda a la interfaz de usuario web de EdgeRouter
 1. Navegue a la parte superior derecha de la interfaz de usuario web.
