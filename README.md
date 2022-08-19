@@ -12,10 +12,20 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 ## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
-#### Acceso al equipo
-Opción 1
-<ol>Conecte un cable Ethernet desde el ordenador a la eth0 en el EdgeRouter.</ol>
-<ol>Configure una dirección IP estática en su ordenador en el 192.168.1.0/24 (por ejemplo, 192.168.1.11).</ol>
+#### Acceso a la interfaz de configuración EdgeOS
+Opción 1 <code>IP ESTÁTICA
+<ol>Conecte un cable Ethernet desde el puerto Ethernet del ordenador al puerto eth0 del EdgeRouter.</ol>
+<ol>Configure el adaptador de Ethernet en su sistema host con una dirección IP estática en la subred 192.168.1.x.</ol>
+<ol>Inicie el explorador web. Escriba <code>https://192.168.1.1 en la barra de direcciones. Pulse Intro (PC) o Retorno (Mac).</ol>
+<ol>Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).</ol>
+
+
+Opción 2 <code>DHCP
+<ol>Conecte un cable Ethernet de eth1 en el EdgeRouter a un segmento de LAN que ya tiene un servidor DHCP.</ol>
+<ol>Para comprobar la dirección IP del EdgeRouter, utilice uno de los métodos siguientes:
+Configure el servidor DHCP para que proporcione una dirección IP específica al EdgeRouter en función de su dirección MAC (en la etiqueta). Deje que el EdgeRouter obtenga una dirección IP y luego compruebe el servidor DHCP para ver qué dirección IP se asignó.</ol>
+<ol>Inicie el explorador web. Introduzca la dirección IP correcta en el campo de dirección. Pulse Intro (PC) o Retorno (Mac).</ol>
+<ol>Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).</ol>
 
 ### Comandos básicos
 <ul><code>commit: para activar los cambios.</code></ul>
