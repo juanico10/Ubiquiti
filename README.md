@@ -321,6 +321,38 @@ set service dns forwarding listen-on eth3
 commit ; save
 ```
 
+#### Modificar DHCP
+Lo primero es acceder a la web de gestión a la web de gestion del router. Una vez dentro en tramos en la pestaña <code>Services</code> y después en la sub-pestaña <code>DHCP Server</code>. Aquí se podrán ver los servicios <code>DHCP</code> que tenemos en marcha, si es la primera este listado estará vacío por lo que pulsamos en el botón <code>+ Add DHCP Server</code>.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_1.png" alt="dhcp_1.png"></p>
+
+Nos aparecerá un formulario que deberemos rellenar con los datos adecuados a nuestras necesidades.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_2.png" alt="dhcp_2.png"></p>
+
+<p>  &nbsp;<code>DHCP Name</code>: Podremos darle un nombre al servicio pero eso si, no se pueden utilizar espacios.
+<p>  &nbsp;<code>Subnet</code>: Definimos la subred que ya tengamos configurada en alguna interfaz de nuestro router.
+<p>  &nbsp;<code>Range Start</code>: metemos la dirección IP por la que empezara el rango que queremos que sirva nuestro DHCP.
+<p>  &nbsp;<code>Range Stop</code>: la dirección IP fin del rango de direcciones a repartir.
+<p>  &nbsp;<code>Router</code>: Este sería el Gateway, es decir, la salida a otras redes de nuestra LAN, ya sea internet o aotras redes.
+<p>  &nbsp;<code>DNS 1</code>: Dirección IP del servidor DNS primario.
+<p>  &nbsp;<code>DNS 2</code>:: Dirección IP del servidor DNS secundario.
+<p>  &nbsp;<code>:Enable</code>:* Marcamos este checkbox para que una vez pulsemos el botón Save, se guarde la configuración y esta empiece a funcionar. Si no lo marcamos, la configuración se guardará pero esta no estará habilitada, así que el servicio no empezara a repartir direcciones IP.
+
+Por ultimo pulsamos en el botón <code>Save</code>. Desde ese mismo momento cualquier dispositivo que se conecte a la red de nuestro router y solicite una dirección IP, el servicio que acabamos de configurar le asignara una del rango predefinido.
+
+#### Ver estado del DHCP
+Ahora que está en marcha podemos interactuar con el servicio pudiendo cambiar su configuración o viendo el estado de asignaciones <code>(leases)</code> de direcciones IP.
+
+Para ello en basta con pulsar en el menú desplegable <code>Actions</code> y después en <code>Viewe Details</code>.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_3.png" alt="dhcp_3.png"></p>
+
+Se nos cargara las características del servicio pudiendo cambiarlas si es que lo deseamos. También aparecerá un resumen del estado del servicio, como la cantidad de IPs tiene de para repartir, cuantas estas asignadas, cuantas dispone para repartir etc.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_4.png" alt="dhcp_4.png"></p>
+
+También hay opción de asignar una dirección del rango de manera estática a un dispositivo de nuestra red. Bastara con pulsar en <code>Create New Mapping</code> y asignar un IP del rango a la dirección MAC del dispositivo.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_5.png" alt="dhcp_5.png"></p>
+
+En la pestaña <code>Leases</code> nos encontraremos con aquellas direcciones que ya están asignadas a algún dispositivo. Pudiendo ver cuánto tiempo les queda de asignación y pudiendo asignar de manera estática la IP que ya tienen asignada.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_6.png" alt="dhcp_6.png"></p>
 
 
 ### Port Forwarding
@@ -652,3 +684,11 @@ Server: Server
 
 ## Conclusión
 Con toda esta información 
+
+## Reconocimiento
+Quiero agradecer a todas las webs y material del que ha sido posible este post.
+https://wiki.fortu.io/
+https://soporte.syscom.mx/es/collections/83010-networking
+https://help.ui.com/hc/en-us/sections/360008075214-EdgeRouter
+https://www.cron.dk/edgerouter-security-part1/
+https://support.intermedia.com/app/articles/detail/a_id/16594/type/KB
