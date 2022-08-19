@@ -124,8 +124,9 @@ Haga clic para copiar
 
 ### Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
-https://www.ui.com/download/edgemax/
+<a title="download" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a>
 
+Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
 
 ### Acceso a la interfaz de configuración EdgeOS
 <details>
