@@ -53,7 +53,7 @@ Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRo
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
 
 ---
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter 4:
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
 
 ### Realización de un Hardware o Software Reset
 El EdgeRouter se puede restablecer a los valores predeterminados de fábrica utilizando un hardware o software método de restablecimiento
@@ -160,7 +160,15 @@ Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/a
 &nbsp;
 
 ### Gestión de UISP
-Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación. Para empezar, vaya a <a href="uisp.ui.com">
+Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación.
+1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide">UISP - Guía de instalación </a>
+2. Despues logarse en la web de UISP <a href="uisp.ui.com">uisp.ui.com</a>
+3. Pueden utilizar la aplicación móvil, enlace de configuración: <a href="https://help.ui.com/hc/en-us/articles/115010608187-UISP-Mobile-App#2">UISP-Mobile-App</a>
+- Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile">Android</a>
+- IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489">IOS</a>
+
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
+<ul><code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
 
 ### Inicie sesión en el router y añada un nuevo usuario
 
