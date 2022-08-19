@@ -210,9 +210,11 @@ Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pest
 ```sh
 set system login user <user>
 set system login user <user> level admin
-set system login user <user> authentication encrypted-password <contraseña>
+set system login user <user> authentication plaintext-password <contraseña>
 commit ; save
 ```
+<sup>La contraseña se encripta una vez introducida en texto plano</sup>
+
 Despues eliminarmos el usuario por defecto
 ```sh
 configure
