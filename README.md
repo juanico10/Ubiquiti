@@ -180,6 +180,9 @@ commit ; save
 ```
 
 ### Habilitar funciones de rendimiento
+Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
+**UTILIZAR CON CUIDADO**.
+
 Para ER-X,ER-X-SPF,EP-R6
 ```
 configure
