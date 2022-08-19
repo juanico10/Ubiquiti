@@ -321,6 +321,8 @@ set service dns forwarding listen-on eth3
 commit ; save
 ```
 
+
+
 ### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
