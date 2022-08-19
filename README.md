@@ -534,12 +534,12 @@ exit 0
 
 #### Hazlo ejecutable:
 ```
-chmod +x /config/scripts/post-config.d/update-spamhaus
+sudo chmod +x /config/scripts/post-config.d/update-spamhaus
 ```
 
 EJECUTAR:
 ```
-/config/scripts/post-config.d/update-spamhaus
+sudo /config/scripts/post-config.d/update-spamhaus
 ```
 Resultado:
 <ul>Added 561 entries to SPAMHAUS_DROP</ul>
