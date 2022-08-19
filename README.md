@@ -36,7 +36,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter 4:
 
 ### Realización de un Hardware o Software Reset
 El EdgeRouter se puede restablecer a los valores predeterminados de fábrica utilizando un hardware o software método de restablecimiento
@@ -175,7 +175,7 @@ set system offload ipsec enable
 commit ; save
 ```
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/></a> Hardening del dispositivo
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
 #### Remover default user
 
@@ -207,7 +207,7 @@ exit
 
 #### Desactivar la autenticación de contraseñas en texto plano
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
-<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
 ```sh
 configure
@@ -227,7 +227,7 @@ commit ; save
 ```
 
 
-### <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/></a> Firewall e interfaces Edgerouter
+### <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall e interfaces Edgerouter
 
 #### Firewall
 
@@ -261,7 +261,7 @@ commit ; save
 ```
 
 #### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
-<sup><a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
+<sup><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
 
 
 <p>1. Lo primero es entrar en la web de gestión del ER-X y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
@@ -285,7 +285,7 @@ pppoe_3.png
 <p>No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
 #### LAN + DHCP
-<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
 set interfaces ethernet eth1 description LAN
@@ -305,7 +305,7 @@ Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puert
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
-<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
 
@@ -357,7 +357,7 @@ En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utiliz
 
 1. Accedemos por ssh o cli web.
 2. 
-<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
 ```sh
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
@@ -385,7 +385,7 @@ update-status: good
 </details>
 &nbsp;
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/></a> Añadir listas de seguridad al firewall
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
 
 #### Cree el grupo y agregue una regla de firewall para eliminar ese grupo:
 ```
@@ -572,7 +572,7 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 ```
 
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/></a> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
 **NOTE!** 
 
 #### Añadir certificado CA para localhost
