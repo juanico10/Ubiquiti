@@ -38,8 +38,8 @@ Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web.png" alt="web.png"></p>
 
 La contraseña por defecto:
-<ul>Usuario: ubnt</ul>
-<ul>Contraseña: ubnt</ul>
+<ul><code>Usuario:</code> ubnt</ul>
+<ul><code>Contraseña:</code> ubnt</ul>
   
 Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="web1.png"></p>
