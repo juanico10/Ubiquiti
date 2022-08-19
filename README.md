@@ -11,6 +11,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 <!-- markdownlint-enable MD033 -->
 
 
+
 ## Acceso a la CLI y comandos básicos
 
 #### Comandos básicos
@@ -27,6 +28,9 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 <ul><code>copy:</code></ul>
 <ul><code>rename:</code></ul>
 <ul><code>load: cargar configuración.</code></ul>
+
+#### Acceso a la GUI
+
 
 #### Acceso a la CLI
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
@@ -256,19 +260,29 @@ set interfaces ethernet eth0 firewall local name WAN_LOCAL
 commit ; save
 ```
 
-#### WAN
+#### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
+<sup>**NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
 
-```sh
-configure
-set interfaces ethernet eth0 description WAN
-set interfaces ethernet eth0 address dhcp
-set interfaces ethernet eth0 firewall in name WAN_IN
-set interfaces ethernet eth0 firewall local name WAN_LOCAL
-set service nat rule 5010 description "Masquerade for WAN"
-set service nat rule 5010 outbound-interface eth0
-set service nat rule 5010 type masquerade
-commit ; save
-```
+
+<p>1. Lo primero es entrar en la web de gestión del ER-X y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
+pppoe_1.png
+
+<p>2. Internet port: En esta sección definiremos como está conectado nuestro ER-X al router HGU de Movistar o O2.</p>
+<p>  &nbsp;<code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
+<p>  &nbsp;<code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
+<p>  &nbsp;&nbsp;<code>Account name</code>: adsl@telefonicapa</p>
+<p>  &nbsp;&nbsp;<code>Password: adslppp</p>
+pppoe_2.png
+
+<p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
+<sup>Tener en cuenta que el rango de IP debe ser distinto al que esta nuestro ER-X con el router HGU de Movistar o O2. La opción de DHCP viene habilitada por defecto, así que no la tocamos y la dejamos como está.</sup>
+pppoe_3.png
+
+<p>4. User setup: Por último, es recomendable cambiar la contraseña del usuario ubnt que viene por defecto por otra más segura.</p>
+pppoe_3.png
+
+<p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
+<p>No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
 #### LAN + DHCP
 **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
@@ -327,8 +341,8 @@ commit ; save
 <ul><code>Protocol: Seleccionamos el protocolo dyndns2.</code></ul>
 <ul><code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code></ul>
 3. Para terminar pulsamos en Apply para guardar todo lo que hemos metido.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui1.png" alt="GUI1"></p>
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui2.png" alt="GUI2"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui1.png" alt="GUI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui2.png" alt="GUI2"></p>
 &nbsp;
 </details>
 &nbsp;
