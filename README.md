@@ -688,8 +688,8 @@ Con toda esta información
 
 ## Reconocimiento
 Quiero agradecer a todas las webs y material del que ha sido posible este post.
-<p><a href="https://wiki.fortu.io/">wiki.fortu</a></p>
-<p><a href="https://soporte.syscom.mx/es/collections/83010-networking">soporte.syscom.mx</a></p>
-<p><a href="https://help.ui.com/hc/en-us/sections/360008075214-EdgeRouter">help.ui.com</a></p>
-<p><a href="https://www.cron.dk/edgerouter-security-part1/">www.cron.dk</a></p>
-<p><a href="https://support.intermedia.com/app/articles/detail/a_id/16594/type/KB">support.intermedia.com</a></p>
+<p><ul><a href="https://wiki.fortu.io/">wiki.fortu</a></ul></p>
+<p><ul><a href="https://soporte.syscom.mx/es/collections/83010-networking">soporte.syscom.mx</a></ul></p>
+<p><ul><a href="https://help.ui.com/hc/en-us/sections/360008075214-EdgeRouter">help.ui.com</a></ul></p>
+<p><ul><a href="https://www.cron.dk/edgerouter-security-part1/">www.cron.dk</a></ul></p>
+<p><ul><a href="https://support.intermedia.com/app/articles/detail/a_id/16594/type/KB">support.intermedia.com</a></ul></p>
