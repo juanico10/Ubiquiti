@@ -10,7 +10,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 </p>
 <!-- markdownlint-enable MD033 -->
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="AdGuard Home" width="40"/></a> Configuración inicial del EdgeRouter 4:
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
 ### Comandos básicos
 commit: para activar los cambios.
@@ -27,7 +27,7 @@ copy:
 rename:
 load: cargar configuración.
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="AdGuard Home" width="40"/></a> Hardening del dispositivo
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/></a> Hardening del dispositivo
 
 #### Inicie sesión en el router y añada un nuevo usuario
 
@@ -88,7 +88,7 @@ commit; save
 ```
 
 
-### <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="AdGuard Home" width="40"/></a> Firewall e interfaces Edgerouter
+### <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/></a> Firewall e interfaces Edgerouter
 
 #### Firewall
 
@@ -157,7 +157,7 @@ set service dns forwarding listen-on eth3
 commit; save
 ```
 
-## Añadir listas de seguridad al firewall
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/></a> Añadir listas de seguridad al firewall
 
 #### Cree el grupo y agregue una regla de firewall para eliminar ese grupo:
 ```
@@ -258,7 +258,7 @@ Resultado:
 <ul>Added 561 entries to SPAMHAUS_DROP</ul>
 
   
-## PROGRAMAR TAREA:
+### PROGRAMAR TAREA:
 
 OPCIÓN 1:
 ####  Este es el programador de tareas, tengo el mío configurado para ejecutar un cron diario cada 12h:
@@ -348,7 +348,7 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 ```
 
 
-## POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/></a> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
 **NOTE!** 
 
 #### Añadir certificado CA para localhost
