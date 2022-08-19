@@ -10,6 +10,28 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 </p>
 <!-- markdownlint-enable MD033 -->
 
+
+## Acceso a la CLI y comandos básicos
+
+#### Comandos básicos
+<ul><code>commit: para activar los cambios.</code></ul>
+<ul><code>save: para almacenar la configuración "activa" en la configuración de inicio.</code></ul>
+<ul><code>compare: Para ver qué cambios se han realizado en la configuración.</code></ul>
+<ul><code>configure: modo configuración.</code></ul>
+<ul><code>show: mostrar</code></ul>
+<ul><code>set: establecer configuración.</code></ul>
+<ul><code>edit: Cambiat el nivel de edición.</code></ul>
+<ul><code>up:</code></ul>
+<ul><code>top:</code></ul>
+<ul><code>discard: para deshacer los cambios no confirmados</code></ul>
+<ul><code>copy:</code></ul>
+<ul><code>rename:</code></ul>
+<ul><code>load: cargar configuración.</code></ul>
+
+#### Acceso a la CLI
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
+
 ## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
 ### Realización de un Hardware o Software Reset
@@ -116,21 +138,6 @@ https://www.ui.com/download/edgemax/
 
 #### Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación. Para empezar, vaya a <a href="uisp.ui.com">
-
-### Comandos básicos
-<ul><code>commit: para activar los cambios.</code></ul>
-<ul><code>save: para almacenar la configuración "activa" en la configuración de inicio.</code></ul>
-<ul><code>compare: Para ver qué cambios se han realizado en la configuración.</code></ul>
-<ul><code>configure: modo configuración.</code></ul>
-<ul><code>show: mostrar</code></ul>
-<ul><code>set: establecer configuración.</code></ul>
-<ul><code>edit: Cambiat el nivel de edición.</code></ul>
-<ul><code>up:</code></ul>
-<ul><code>top:</code></ul>
-<ul><code>discard: para deshacer los cambios no confirmados</code></ul>
-<ul><code>copy:</code></ul>
-<ul><code>rename:</code></ul>
-<ul><code>load: cargar configuración.</code></ul>
 
 #### Inicie sesión en el router y añada un nuevo usuario
 
@@ -263,7 +270,7 @@ set service nat rule 5010 type masquerade
 commit ; save
 ```
 
-#### LAN
+#### LAN + DHCP
 **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
@@ -282,7 +289,7 @@ commit ; save
 #### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
-Mediante CLI: Firewall / NAT > Port Forwarding
+- Mediante CLI: Firewall/NAT > Port Forwarding
 
 **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
@@ -320,7 +327,8 @@ commit ; save
 <ul><code>Protocol: Seleccionamos el protocolo dyndns2.</code></ul>
 <ul><code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code></ul>
 3. Para terminar pulsamos en Apply para guardar todo lo que hemos metido.
-
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui1.png" alt="GUI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui2.png" alt="GUI2"></p>
 &nbsp;
 </details>
 &nbsp;
