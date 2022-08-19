@@ -219,7 +219,7 @@ commit ; save
 Despues eliminarmos el usuario por defecto
 ```sh
 configure
-delete system login <user> ubnt
+delete system login user ubnt
 commit ; save
 ```
 
