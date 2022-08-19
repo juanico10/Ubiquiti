@@ -205,12 +205,13 @@ commit ; save
 ---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
-### Remover default user
+### Remover default user y crear un usuario
 Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
 ```sh
 set system login user <user>
 set system login user <user> level admin
 set system login user <user> authentication plaintext-password <contraseña>
+set system login user <user> full-name <Nombre>
 commit ; save
 ```
 <sup>La contraseña se encripta una vez introducida en texto plano</sup>
@@ -223,11 +224,12 @@ commit ; save
 ```
 
 ### Añadir una clave ssh pública a EdgeRouter
-
+Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty. Si no lo conocen, os dejo el tutorial:
+<a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a>
 ```sh
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 ```
-
+Accedemos al equipo y configuramos la clave pública generada:
 ```sh
 configure  
 loadkey <user> /tmp/id_rsa.pub  
@@ -236,7 +238,8 @@ commit ; save
 ```
 
 ### Comprobación de acceso
-
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de salir de la sesión SSH actual.
+Probamos acceso sin salir de la sesión SSH por si tienes que hacer un rollback:
 ```sh
 $ ssh <user>@<ip-of-edgerouter>
 exit
@@ -251,14 +254,22 @@ configure
 set service ssh disable-password-authentication
 commit ; save
 ```
-### Aseguar acceso a la GUI y ssh
+### Asegurar acceso a la GUI y ssh
+Pueden asegurar el acceso al ssh o gui con vuestro rango de IPs, es opcional, pero seguro.
+(opcional)
 ```sh
 configure
 set service gui listen-address <lan ip address/range>
 set service ssh listen-address <lan ip address/range>
-set service gui older-ciphers disable
+commit ; save
+```
+
+Recomendado, cambiar el puerto de ssh y habilitar V2
+```sh
+configure
 set service ubnt-discover disable
 set service ssh protocol-version v2
+set service ssh port <port>
 delete service telnet
 commit ; save
 ```
