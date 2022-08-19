@@ -530,6 +530,7 @@ clean_up
 logger -i -s -- "added $count entries to $NETGROUP"
 exit 0
 ```
+<p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ</p>
 
 #### Hazlo ejecutable:
 ```
