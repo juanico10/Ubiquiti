@@ -31,10 +31,22 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>load: cargar configuración.</code></ul>
 
 ### Acceso a la GUI
-
-
-### Acceso a la CLI
+Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+
+La contraseña por defecto:
+<ul>Usuario: ubnt</ul>
+<ul>Contraseña: ubnt</ul>
+  
+Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+
+#### Instrucciones de uso con Putty o similar:
+
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
+#### Instrucciones de uso con GUI:
+0. Acceda a la interfaz de usuario web de EdgeRouter
+1. Navegue a la parte superior derecha de la interfaz de usuario web.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
 
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter 4:
@@ -60,6 +72,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 6. El EdgeRouter se reiniciará.
 7. Espere a que se complete el reinicio.
 8. Conéctese al eth0 y administre el dispositivo abriendo un navegador y navegando a la <code>https://192.168.1.1</code> dirección IP predeterminada.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/reset.gif" alt="reset.gif"></p>
 
 ## Instrucciones de uso para realizar un Power On Reset:
 
@@ -82,7 +95,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 
 ## Instrucciones de uso con GUI:
 
-0. Acceder a la interfaz web de EdgeRouter. acceda a la interfaz de usuario web de EdgeRouter
+0. Acceda a la interfaz de usuario web de EdgeRouter.
 1. Navegue a la Sistema en la parte inferior izquierda de la interfaz de usuario web.
 2. Restablezca la configuración a los valores predeterminados presionando el Restablecer a los valores predeterminados en la Restablecer  predeterminados .
 3. El EdgeRouter solicitará que se reinicie el dispositivo para completar el restablecimiento.
@@ -92,7 +105,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 ## Instrucciones de uso con CLI:
 
 0. acceda a la interfaz de línea de comandos de EdgeRouter.
-1. Sobrescriba el archivo de inicio actual ( config.boot ) con el archivo de inicio predeterminado ( config.boot.default ).
+1. Sobrescriba el archivo de inicio actual (config.boot) con el archivo de inicio predeterminado (config.boot.default).
 <ul><code>sudo cp /opt/vyatta/etc/config.boot.default /config/config.boot</code></ul>
 Haga clic para copiar
 2. Reinicie EdgeRouter.
@@ -634,3 +647,6 @@ Location: https://<ip-of-edgerouter>:443/
 Date: Sun, 11 Jan 2015 07:46:13 GMT
 Server: Server
 ```
+
+## Conclusión
+Con toda esta información 
