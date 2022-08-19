@@ -10,11 +10,12 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 </p>
 <!-- markdownlint-enable MD033 -->
 
-
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos. Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.
 
 ## Acceso a la CLI y comandos básicos
+Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
-#### Comandos básicos
+### Comandos básicos
 <ul><code>commit: para activar los cambios.</code></ul>
 <ul><code>save: para almacenar la configuración "activa" en la configuración de inicio.</code></ul>
 <ul><code>compare: Para ver qué cambios se han realizado en la configuración.</code></ul>
@@ -29,10 +30,10 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 <ul><code>rename:</code></ul>
 <ul><code>load: cargar configuración.</code></ul>
 
-#### Acceso a la GUI
+### Acceso a la GUI
 
 
-#### Acceso a la CLI
+### Acceso a la CLI
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
 
@@ -104,12 +105,12 @@ Haga clic para copiar
 </details>
 &nbsp;
 
-#### Actualizar EdgeRouter
+### Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
 https://www.ui.com/download/edgemax/
 
 
-#### Acceso a la interfaz de configuración EdgeOS
+### Acceso a la interfaz de configuración EdgeOS
 <details>
     <summary>Opción 1:</summary>
 
@@ -140,10 +141,10 @@ https://www.ui.com/download/edgemax/
 </details>
 &nbsp;
 
-#### Gestión de UISP
+### Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación. Para empezar, vaya a <a href="uisp.ui.com">
 
-#### Inicie sesión en el router y añada un nuevo usuario
+### Inicie sesión en el router y añada un nuevo usuario
 
 ```sh
 configure
@@ -152,7 +153,7 @@ set system login user <user> level admin
 commit ; save
 ```
 
-#### Habilitar funciones de rendimiento
+### Habilitar funciones de rendimiento
 Para ER-X,ER-X-SPF,EP-R6
 ```
 configure
@@ -177,7 +178,7 @@ commit ; save
 
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
-#### Remover default user
+### Remover default user
 
 ```sh
 configure
@@ -185,7 +186,7 @@ delete system login user ubnt
 commit ; save
 ```
 
-#### Añadir una clave ssh pública a EdgeRouter
+### Añadir una clave ssh pública a EdgeRouter
 
 ```sh
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
@@ -198,23 +199,23 @@ sudo chown -R <user> /home/<user>
 commit ; save
 ```
 
-#### Comprobación de acceso
+### Comprobación de acceso
 
 ```sh
 $ ssh <user>@<ip-of-edgerouter>
 exit
 ```
 
-#### Desactivar la autenticación de contraseñas en texto plano
+### Desactivar la autenticación de contraseñas en texto plano
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
 ```sh
 configure
 set service ssh disable-password-authentication
 commit ; save
 ```
-#### Aseguar acceso a la GUI y ssh
+### Aseguar acceso a la GUI y ssh
 ```sh
 configure
 set service gui listen-address <lan ip address/range>
@@ -227,9 +228,11 @@ commit ; save
 ```
 
 
-### <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall e interfaces Edgerouter
+## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall e interfaces Edgerouter
 
-#### Firewall
+### Firewall
+Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Firewall algunos conceptos te serán extraños, pero intentare explicar cada paso con algún ejemplo, haciéndolo mas fácil de entender.
+Configuración básica del firewall:
 
 ```sh
 configure
@@ -260,8 +263,12 @@ set interfaces ethernet eth0 firewall local name WAN_LOCAL
 commit ; save
 ```
 
-#### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
-<sup><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</sup>
+#### CREAR UNA REGLA
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Sección en construcción.</p>
+
+
+### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</p>
 
 
 <p>1. Lo primero es entrar en la web de gestión del ER-X y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
@@ -284,8 +291,9 @@ commit ; save
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
-#### LAN + DHCP
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+### LAN + DHCP
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+
 ```sh
 configure
 set interfaces ethernet eth1 description LAN
@@ -300,12 +308,12 @@ set service dns forwarding listen-on eth3
 commit ; save
 ```
 
-#### Port Forwarding
+### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
 
@@ -323,7 +331,7 @@ set port-forward rule 1 protocol tcp
 commit ; save
 ```
 
-#### DNS DINAMICO
+### DNS DINAMICO
 
 <details>
     <summary>Mediante interfaz GUI:</summary>
@@ -502,15 +510,15 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 
 
 
-####  He estado usando la lista de bloqueo de spamhaus durante más de un año.
-<p>Hace un par de meses decidí los siguientes dos cambios en mi firewall:</p>
+#### Buenas prácticas.
+<p>Buenas prácticas para un correcto funcionamiento del firewall:</p>
 
 - Coloque la regla spamhaus en primer lugar en WAN_IN y WAN_LOCAL (es decir, antes de la regla de permiso para conexiones establecidas y relacionadas). Esto es para evitar la situación "rara" de que un host interno (por ejemplo, infectado con malware) de alguna manera establezca una conexión con un host listado de spamhaus, dando la oportunidad de usar la conexión establecida para fines de spam.
 - Ponga la regla de spamhaus en WAN_OUT, otra vez antes que cualquier otra cosa.
 - Hoy noté en mis registros que el WAN_OUT coincidió (y rechazó) con el tráfico saliente a la dirección IP 185.3.135.146 (búsqueda de spamhaus aquí, listado desde el 29/2/2016). Este tráfico se originó en el cliente bittorrent que se ejecuta en mi NAS. No sé si los spammers usan bittorrent para infiltrarse en hosts posiblemente vulnerables, pero lo considero como un paso de protección adicional que funcionó.
 
 
-## REVISIÓN
+### REVISIÓN
 <p>Listar</p>
 <ul><code>sudo /sbin/ipset list</code></ul>
 <p>Utilice este comando a través de la CLI para ver las entradas:</p>
@@ -573,9 +581,9 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 
 
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
-**NOTE!** 
+ 
 
-#### Añadir certificado CA para localhost
+### Añadir certificado CA para localhost
 Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
 Opción de ir a la ruta de certificados SSL con Let's Encrypt hay varios diferentes para elegir. Por ejemplo, [ubnt-letsencrypt](https://github.com/j-c-m/ubnt-letsencrypt) por [Jesse Miller](https://github.com/j-c-m)
 
