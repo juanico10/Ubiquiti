@@ -290,8 +290,8 @@ commit ; save
 <p>2. Internet port: En esta sección definiremos como está conectado nuestro ER-X al router HGU de Movistar o O2.</p>
 <p>  &nbsp;<code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
 <p>  &nbsp;<code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
-<p>  &nbsp;&nbsp;<code>Account name</code>: adsl@telefonicapa</p>
-<p>  &nbsp;&nbsp;<code>Password: adslppp</p>
+<p>  &nbsp;<ul><code>Account name</code>: adsl@telefonicapa</ul></p>
+<p>  &nbsp;<ul><code>Password</code>: adslppp</ul></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_2.png" alt="pppoe_2.png"></p>
 
 <p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
@@ -307,6 +307,7 @@ commit ; save
 ### LAN + DHCP
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 
+#### Modificar DHCP mediante CLI
 ```sh
 configure
 set interfaces ethernet eth1 description LAN
@@ -321,7 +322,7 @@ set service dns forwarding listen-on eth3
 commit ; save
 ```
 
-#### Modificar DHCP
+#### Modificar DHCP mediante GUI
 Lo primero es acceder a la web de gestión a la web de gestion del router. Una vez dentro en tramos en la pestaña <code>Services</code> y después en la sub-pestaña <code>DHCP Server</code>. Aquí se podrán ver los servicios <code>DHCP</code> que tenemos en marcha, si es la primera este listado estará vacío por lo que pulsamos en el botón <code>+ Add DHCP Server</code>.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_1.png" alt="dhcp_1.png"></p>
 
