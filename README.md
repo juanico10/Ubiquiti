@@ -12,22 +12,25 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 ## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
-### Comandos básicos
-commit: para activar los cambios.
-save: para almacenar la configuración "activa" en la configuración de inicio. 
-compare: Para ver qué cambios se han realizado en la configuración.
-configure: modo configuración.
-show: mostrar
-set: establecer configuración.
-edit: Cambiat el nivel de edición.
-up:
-top:
-discard: para deshacer los cambios no confirmados
-copy:
-rename:
-load: cargar configuración.
+#### Acceso al equipo
+Opción 1
+<ol>Conecte un cable Ethernet desde el ordenador a la eth0 en el EdgeRouter.</ol>
+<ol>Configure una dirección IP estática en su ordenador en el 192.168.1.0/24 (por ejemplo, 192.168.1.11).</ol>
 
-## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/></a> Hardening del dispositivo
+### Comandos básicos
+<ul><code>commit: para activar los cambios.</code></ul>
+<ul><code>save: para almacenar la configuración "activa" en la configuración de inicio.</code></ul>
+<ul><code>compare: Para ver qué cambios se han realizado en la configuración.</code></ul>
+<ul><code>configure: modo configuración.</code></ul>
+<ul><code>show: mostrar</code></ul>
+<ul><code>set: establecer configuración.</code></ul>
+<ul><code>edit: Cambiat el nivel de edición.</code></ul>
+<ul><code>up:</code></ul>
+<ul><code>top:</code></ul>
+<ul><code>discard: para deshacer los cambios no confirmados</code></ul>
+<ul><code>copy:</code></ul>
+<ul><code>rename:</code></ul>
+<ul><code>load: cargar configuración.</code></ul>
 
 #### Inicie sesión en el router y añada un nuevo usuario
 
@@ -37,6 +40,33 @@ set system login user <user> authentication plaintext-password <secret>
 set system login user <user> level admin
 commit; save
 ```
+Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
+
+
+#### Habilitar funciones de rendimiento
+Para ER-X,ER-X-SPF,EP-R6
+```
+configure
+set system offload hwnat enable
+set system offload ipsec enable
+commit; save
+```
+
+Para todos los demás modelos de ER
+```
+configure
+set system offload ipv4 forwarding enable
+set system offload ipv4 gre enable
+set system offload ipv4 pppoe enable
+set system offload ipv4 vlan enable
+set system offload ipv6 forwarding enable
+set system offload ipv6 pppoe enable
+set system offload ipv6 vlan enable
+set system offload ipsec enable
+commit; save
+```
+
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/></a> Hardening del dispositivo
 
 #### Remover default user
 
