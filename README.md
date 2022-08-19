@@ -1,7 +1,16 @@
 # Wiki Ubiquiti
-A collection of enhancements for EdgeMax based devices
+Una colección de mejoras para los dispositivos basados en EdgeMax.
 
-## Configuración inicial del EdgeRouter 4
+<p align="center">
+    <a href="https://pi-hole.net/">
+        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
+    </a>
+    <br>
+    <strong>Ubiquiti networks x EdgeMax©</strong>
+</p>
+<!-- markdownlint-enable MD033 -->
+
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="AdGuard Home" width="40"/></a> Configuración inicial del EdgeRouter 4:
 
 ### Comandos básicos
 commit: para activar los cambios.
@@ -18,7 +27,7 @@ copy:
 rename:
 load: cargar configuración.
 
-### Configurar usuario
+## <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="AdGuard Home" width="40"/></a> Hardening del dispositivo
 
 #### Inicie sesión en el router y añada un nuevo usuario
 
@@ -79,7 +88,7 @@ commit; save
 ```
 
 
-### Setup Edgerouter 4
+### <a title="Icon config" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="AdGuard Home" width="40"/></a> Firewall e interfaces Edgerouter
 
 #### Firewall
 
@@ -147,62 +156,6 @@ set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 start 192.
 set service dns forwarding listen-on eth3
 commit; save
 ```
-
-## POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
-**NOTE!** 
-
-#### Añadir certificado CA para localhost
-Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
-Opción de ir a la ruta de certificados SSL con Let's Encrypt hay varios diferentes para elegir. Por ejemplo, [ubnt-letsencrypt](https://github.com/j-c-m/ubnt-letsencrypt) por [Jesse Miller](https://github.com/j-c-m)
-
-```sh
-configure
-set system static-host-mapping host-name <hostname> inet <ip-of-edgerouter>
-commit; save
-```
-
-**Crear certificado**
-
-```sh
-$ mkcert <ip-of-edgerouter> <hostname>
-cat <ip-of-edgerouter>+1-key.pem <ip-of-edgerouter>+1.pem > server.pem
-```
-
-**Copia de seguridad del archivo de certificado existente**
-
-```sh
-sudo cp /etc/lighttpd/server.pem /etc/lighttpd/.server-OLD.pem
-exit
-```
-
-**Copie el nuevo archivo de certificado en la dirección del usuario de su router**
-
-```sh
-scp /path/to/server.pem <user>@<ip-of-edgerouter>:/home/<user>/server.pem
-```
-
-**Copiar el nuevo archivo de certificado desde la dirección del usuario y habilitar el certificado**
-
-```sh
-sudo cp /home/<user>/server.pem /etc/lighttpd/server.pem
-# Kill webserver service by PID
-sudo kill -SIGINT $(cat /var/run/lighttpd.pid)
-# Start webserver
-sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
-exit
-```
-
-**Comprueba tu conexión con curl**  
-Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
-
-```sh
-$ curl -I http:/<ip-of-edgerouter>
-HTTP/1.1 301 Moved Permanently
-Location: https://<ip-of-edgerouter>:443/
-Date: Sun, 11 Jan 2015 07:46:13 GMT
-Server: Server
-```
-
 
 ## Añadir listas de seguridad al firewall
 
@@ -392,4 +345,60 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
             }
             log enable
         }
+```
+
+
+## POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
+**NOTE!** 
+
+#### Añadir certificado CA para localhost
+Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
+Opción de ir a la ruta de certificados SSL con Let's Encrypt hay varios diferentes para elegir. Por ejemplo, [ubnt-letsencrypt](https://github.com/j-c-m/ubnt-letsencrypt) por [Jesse Miller](https://github.com/j-c-m)
+
+```sh
+configure
+set system static-host-mapping host-name <hostname> inet <ip-of-edgerouter>
+commit; save
+```
+
+**Crear certificado**
+
+```sh
+$ mkcert <ip-of-edgerouter> <hostname>
+cat <ip-of-edgerouter>+1-key.pem <ip-of-edgerouter>+1.pem > server.pem
+```
+
+**Copia de seguridad del archivo de certificado existente**
+
+```sh
+sudo cp /etc/lighttpd/server.pem /etc/lighttpd/.server-OLD.pem
+exit
+```
+
+**Copie el nuevo archivo de certificado en la dirección del usuario de su router**
+
+```sh
+scp /path/to/server.pem <user>@<ip-of-edgerouter>:/home/<user>/server.pem
+```
+
+**Copiar el nuevo archivo de certificado desde la dirección del usuario y habilitar el certificado**
+
+```sh
+sudo cp /home/<user>/server.pem /etc/lighttpd/server.pem
+# Kill webserver service by PID
+sudo kill -SIGINT $(cat /var/run/lighttpd.pid)
+# Start webserver
+sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
+exit
+```
+
+**Comprueba tu conexión con curl**  
+Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
+
+```sh
+$ curl -I http:/<ip-of-edgerouter>
+HTTP/1.1 301 Moved Permanently
+Location: https://<ip-of-edgerouter>:443/
+Date: Sun, 11 Jan 2015 07:46:13 GMT
+Server: Server
 ```
