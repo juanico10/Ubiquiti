@@ -222,6 +222,11 @@ configure
 delete system login user ubnt
 commit ; save
 ```
+**PD:** Si creas un usuario como operador, no tiene acceso por ssh.
+```sh
+This account is currently not available.
+Connection to 192.168.1.1 closed.
+```
 
 ### Añadir una clave ssh pública a EdgeRouter
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
