@@ -288,10 +288,10 @@ commit ; save
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_1.png" alt="pppoe_1.png"></p>
 
 <p>2. Internet port: En esta sección definiremos como está conectado nuestro ER-X al router HGU de Movistar o O2.</p>
-<p>  &nbsp;<code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
-<p>  &nbsp;<code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
-<p>  &nbsp;<ul><code>Account name</code>: adsl@telefonicapa</ul></p>
-<p>  &nbsp;<ul><code>Password</code>: adslppp</ul></p>
+<p><code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
+<p><code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
+<p><ul><code>Account name</code>: adsl@telefonicapa</ul></p>
+<p><ul><code>Password</code>: adslppp</ul></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_2.png" alt="pppoe_2.png"></p>
 
 <p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
