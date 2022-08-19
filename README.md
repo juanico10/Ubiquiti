@@ -261,28 +261,28 @@ commit ; save
 ```
 
 #### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
-<sup><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
+<sup><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</sup>
 
 
 <p>1. Lo primero es entrar en la web de gestión del ER-X y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
-pppoe_1.png
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_1.png" alt="pppoe_1.png"></p>
 
 <p>2. Internet port: En esta sección definiremos como está conectado nuestro ER-X al router HGU de Movistar o O2.</p>
 <p>  &nbsp;<code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
 <p>  &nbsp;<code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
 <p>  &nbsp;&nbsp;<code>Account name</code>: adsl@telefonicapa</p>
 <p>  &nbsp;&nbsp;<code>Password: adslppp</p>
-pppoe_2.png
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_2.png" alt="pppoe_2.png"></p>
 
 <p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
 <sup>Tener en cuenta que el rango de IP debe ser distinto al que esta nuestro ER-X con el router HGU de Movistar o O2. La opción de DHCP viene habilitada por defecto, así que no la tocamos y la dejamos como está.</sup>
-pppoe_3.png
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_3.png" alt="pppoe_3.png"></p>
 
 <p>4. User setup: Por último, es recomendable cambiar la contraseña del usuario ubnt que viene por defecto por otra más segura.</p>
-pppoe_3.png
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_4.png" alt="pppoe_4.png"></p>
 
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
-<p>No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
 #### LAN + DHCP
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
