@@ -44,7 +44,7 @@ El EdgeRouter se puede restablecer a los valores predeterminados de fábrica uti
 Hardware Reset: Borra todos los archivos de configuración y del sistema, restableciendo el dispositivo al estado predeterminado de fábrica.
 Software Reset: Solo borra la configuración y deja intactos los demás archivos del sistema.
 
-<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> <strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los de hardware métodos de reinicio a continuación borrarán todos los archivos de configuración y del sistema.
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> <strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los métodos de reinicio de hardware a continuación borrarán todos los archivos de configuración y del sistema.
 
 <details>
     <summary>Realización de un restablecimiento de hardware :</summary>
