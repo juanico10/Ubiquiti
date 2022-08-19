@@ -44,7 +44,7 @@ El EdgeRouter se puede restablecer a los valores predeterminados de fábrica uti
 Hardware Reset: Borra todos los archivos de configuración y del sistema, restableciendo el dispositivo al estado predeterminado de fábrica.
 Software Reset: Solo borra la configuración y deja intactos los demás archivos del sistema.
 
-<strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los de hardware métodos de reinicio a continuación borrarán todos los archivos de configuración y del sistema.
+<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> <strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los de hardware métodos de reinicio a continuación borrarán todos los archivos de configuración y del sistema.
 
 <details>
     <summary>Realización de un restablecimiento de hardware :</summary>
@@ -207,7 +207,7 @@ exit
 
 #### Desactivar la autenticación de contraseñas en texto plano
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
-**NOTE!** Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
+<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
 ```sh
 configure
@@ -261,7 +261,7 @@ commit ; save
 ```
 
 #### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter-X de Ubiquiti
-<sup>**NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
+<sup><a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar los parámetros del ISP.</sup>
 
 
 <p>1. Lo primero es entrar en la web de gestión del ER-X y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
@@ -285,7 +285,7 @@ pppoe_3.png
 <p>No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
 #### LAN + DHCP
-**NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
 set interfaces ethernet eth1 description LAN
@@ -305,7 +305,7 @@ Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puert
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
-**NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a> **NOTE!** Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```sh
 configure
 
@@ -357,7 +357,7 @@ En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utiliz
 
 1. Accedemos por ssh o cli web.
 2. 
-<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
+<a title="Icon atencion" <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/></a>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
 ```sh
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
