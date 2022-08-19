@@ -349,14 +349,14 @@ commit ; save
 3. Periódicamente el router ira actualizando nuestra IP pública en el DNS de DuckDNS. En caso de querer forzar la actualización, se puede realizar lanzando el siguiente comando.
 <ul><code>update dns dynamic interface INTERFAZ</code></ul>
 4. Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.
-<ul><code>show dns dynamic status</code></ul>
-```sh
+show dns dynamic status
+<ul><code>
 interface    : INTERFAZ
 ip address   : xxx.xxx.xxx.xxx
 host-name    : SUBDOMINIO
 last update  : Tue Sep 29 22:28:09 2020
 update-status: good
-```
+</code></ul>
 <p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
 
 &nbsp;
