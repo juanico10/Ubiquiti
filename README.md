@@ -20,15 +20,16 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>save: para almacenar la configuración "activa" en la configuración de inicio.</code></ul>
 <ul><code>compare: Para ver qué cambios se han realizado en la configuración.</code></ul>
 <ul><code>configure: modo configuración.</code></ul>
-<ul><code>show: mostrar</code></ul>
-<ul><code>set: establecer configuración.</code></ul>
-<ul><code>edit: Cambiat el nivel de edición.</code></ul>
-<ul><code>up:</code></ul>
-<ul><code>top:</code></ul>
+<ul><code>show: mostrar -> Ejemplo: show firewall</code></ul>
+<ul><code>set: establecer configuración. -> Ejemplo: set firewall name TEST default-action drop</code></ul>
+<ul><code>edit: Para crear la misma acción y reducir la cantidad de repeticiones en la sintaxis completa. -> Ejemplo: edit firewall name TEST</code></ul>
+<ul><code>up: Para subir un nivel de edición -> Ejemplo: volver al set de configuración anterior</code></ul>
+<ul><code>top: Para volver al nivel de edición superior -> Ejemplo: Volver al ser de configuración incial</code></ul>
 <ul><code>discard: para deshacer los cambios no confirmados</code></ul>
-<ul><code>copy:</code></ul>
-<ul><code>rename:</code></ul>
+<ul><code>copy: Para crear una nueva acción existente -> Ejemplo: copy name WAN1_LOCAL to name WAN2_LOCAL</code></ul>
+<ul><code>rename: Para cambiar el nombre de la nueva acción -> Ejemplo: rename name WAN2_LOCAL to name WAN2_IN</code></ul>
 <ul><code>load: cargar configuración.</code></ul>
+<ul><code>? o tecla de tab: para mostrar opciones para el nivel de edición especificado</code></ul>
 
 ### Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
