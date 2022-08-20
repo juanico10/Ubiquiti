@@ -846,6 +846,10 @@ Y con el comando <code>**load tftp://<host>/config.boot**</code> guardamos el ar
 </details>
 &nbsp;
 
+- También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
+Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
+<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
+
 ## Conclusión
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
 <p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
