@@ -808,10 +808,11 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 
 ## Instrucciones de uso para realizar vía CLI
 
-1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY. 
-2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.
+<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
+<p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
 <ul><code>commit ; save</code></ul>
-3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP. 
+<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
+
 ```sh
   scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
@@ -819,13 +820,14 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
   tftp://<host>/<file>                  Save to file on remote machine
 ```
 Y con el comando <code>**save tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
-4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.
+<p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
 <ul><code>cat /config/config.boot</code></ul>
 
 ## Instrucciones de uso para restaurar vía CLI
-1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY. 
-2. Compare las diferencias entre la respaldo/funcionamiento y la activa.
-3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP. 
+<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
+<p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
+<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
+
 ```sh
   scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
@@ -833,11 +835,12 @@ Y con el comando <code>**save tftp://<host>/config.boot**</code> guardamos el ar
   http://<host>/<file>                  Load from file on remote machine
   tftp://<host>/<file>                  Load from file on remote machine
 ```
+
 Y con el comando <code>**load tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
-4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.
-<ul><code>cat /config/config.boot</code></ul> y con el comando <ul><code>compare</code></ul>
-5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
-<ul><code>commit ; save</code></ul>
+<p>4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.</p>
+<ul><code>cat /config/config.boot</code> y con el comando <code>compare</code></ul>
+<p>5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
+<ul><code>commit ; save</code></ul></p>
 
 &nbsp;
 </details>
