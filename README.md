@@ -611,6 +611,7 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 - Coloque la regla spamhaus en primer lugar en WAN_IN y WAN_LOCAL (es decir, antes de la regla de permiso para conexiones establecidas y relacionadas). Esto es para evitar la situación "rara" de que un host interno (por ejemplo, infectado con malware) de alguna manera establezca una conexión con un host listado de spamhaus, dando la oportunidad de usar la conexión establecida para fines de spam.
 - Ponga la regla de spamhaus en WAN_OUT, otra vez antes que cualquier otra cosa.
 - Hoy noté en mis registros que el WAN_OUT coincidió (y rechazó) con el tráfico saliente a la dirección IP 185.3.135.146 (búsqueda de spamhaus aquí, listado desde el 29/2/2016). Este tráfico se originó en el cliente bittorrent que se ejecuta en mi NAS. No sé si los spammers usan bittorrent para infiltrarse en hosts posiblemente vulnerables, pero lo considero como un paso de protección adicional que funcionó.
+- Debería asignar las reglas de firewall solo en el pppoe 
 
 
 ### REVISIÓN
@@ -623,7 +624,7 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 
 
 
-### EJEMPLO:
+### EJEMPLO DE REGLAS:
 ```sh
     name WAN_IN {
         default-action drop
@@ -672,6 +673,30 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
             }
             log enable
         }
+```
+### EJEMPLO DE INTERFAZ WAN:
+```sh
+ethernet eth1 {
+        description "Internet (PPPoE)"
+        duplex auto
+        firewall {
+            in {
+                name WAN_IN
+            }
+            local {
+                name WAN_LOCAL
+            }
+        }
+        pppoe 0 {
+            default-route auto
+            firewall {
+                in {
+                    name WAN_IN
+                }
+                local {
+                    name WAN_LOCAL
+                }
+            }
 ```
 
 ---
