@@ -56,11 +56,11 @@ Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRo
 Cuando intentamos acceder vía web, nos indica que el certificado es inválido al ser autofirmado:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
 
-Para poder solucionar, debemos descargar el certificado del navegador. Nos descarga un archivo .pem:
+Para poder solucionar, debemos descargar el certificado del navegador. Nos descarga un archivo <code>.pem</code>:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert1.PNG" alt="cert1"></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
 
-Una vez descargado tenemos que cambiar el .pem a .crt con OpenSSL:
+Una vez descargado tenemos que cambiar el <code>.pem</code> a <code>.crt</code> con OpenSSL:
 ```sh
 openssl x509 -outform der -in <nombre_certificado>.pem -out <nombre_certificado>.crt
 ```
@@ -590,7 +590,7 @@ clean_up
 logger -i -s -- "added $count entries to $NETGROUP"
 exit 0
 ```
-<p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ</p>
+<p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ o :wq</p>
 
 #### Hazlo ejecutable:
 ```
@@ -774,6 +774,66 @@ Location: https://<ip-of-edgerouter>:443/
 Date: Sun, 11 Jan 2015 07:46:13 GMT
 Server: Server
 ```
+## Configuración de copia de seguridad y restauración 
+Realizar una copia de seguridad y restaurar el archivo de configuración de un EdgeRouter.
+
+<details>
+    <summary>Realización copia de seguridad y restauración vía GUI:</summary>
+
+## Instrucciones de uso para realizar vía GUI
+
+1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
+<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
+2. Descargue el archivo de configuración de la copia de seguridad haciendo clic en el Descargar .
+3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="backup"></p>
+
+## Instrucciones de uso para restaurar vía GUI
+1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
+<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
+2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
+3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="restore"></p>
+
+## Instrucciones de uso para realizar/restaurar vía UNMS
+Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
+<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
+
+<details>
+    <summary>Realización copia de seguridad y restauración vía GUI:</summary>
+
+## Instrucciones de uso para realizar vía CLI
+
+1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY. 
+2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.
+<ul><code>commit ; save</code></ul>
+3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP. 
+```sh
+  scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+  sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
+  ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+  tftp://<host>/<file>                  Save to file on remote machine
+```
+Y con el comando <code>**save tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
+4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.
+<ul><code>cat /config/config.boot</code></ul>
+
+## Instrucciones de uso para restaurar vía CLI
+1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY. 
+2. Compare las diferencias entre la respaldo/funcionamiento y la activa.
+3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP. 
+```sh
+  scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+  sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
+  ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+  http://<host>/<file>                  Load from file on remote machine
+  tftp://<host>/<file>                  Load from file on remote machine
+```
+Y con el comando <code>**load tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
+4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.
+<ul><code>cat /config/config.boot</code></ul> y con el comando <ul><code>compare</code></ul>
+5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
+<ul><code>commit ; save</code></ul>
 
 ## Conclusión
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
