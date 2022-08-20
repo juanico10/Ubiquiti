@@ -50,7 +50,25 @@ Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRo
 #### Instrucciones de uso con GUI:
 0. Acceda a la interfaz de usuario web de EdgeRouter
 1. Navegue a la parte superior derecha de la interfaz de usuario web.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI2"></p>
+
+#### Solucionar problema con certificado inválido
+Cuando intentamos acceder vía web, nos indica que el certificado es inválido al ser autofirmado:
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
+
+Para poder solucionar, debemos descargar el certificado del navegador. Nos descarga un archivo .pem:
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert1.PNG" alt="cert1"></p>
+
+Una vez descargado tenemos que cambiar el .pem a .crt con OpenSSL:
+```sh
+openssl x509 -outform der -in <nombre_certificado>.pem -out <nombre_certificado>.crt
+```
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
+
+Despues de haber cambiado el formato, procedemos a instalar el certificado en la raiz de confianza:
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert3.PNG" alt="cert3"></p>
+
+Una vez importado el certificado y borrado las cookies, ya no nos indicará que el certificado no es de confianza.
 
 ---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
