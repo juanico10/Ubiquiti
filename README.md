@@ -58,17 +58,19 @@ Cuando intentamos acceder vía web, nos indica que el certificado es inválido a
 
 Para poder solucionar, debemos descargar el certificado del navegador. Nos descarga un archivo .pem:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert1.PNG" alt="cert1"></p>
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
 
 Una vez descargado tenemos que cambiar el .pem a .crt con OpenSSL:
 ```sh
 openssl x509 -outform der -in <nombre_certificado>.pem -out <nombre_certificado>.crt
 ```
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
-
-Despues de haber cambiado el formato, procedemos a instalar el certificado en la raiz de confianza:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert3.PNG" alt="cert3"></p>
 
+Despues de haber cambiado el formato, procedemos a instalar el certificado en la raiz de confianza:
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert4.PNG" alt="cert4"></p>
+
 Una vez importado el certificado y borrado las cookies, ya no nos indicará que el certificado no es de confianza.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert5.PNG" alt="cert5"></p>
 
 ---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
