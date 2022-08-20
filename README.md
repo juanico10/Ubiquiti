@@ -799,8 +799,12 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
 
+&nbsp;
+</details>
+&nbsp;
+
 <details>
-    <summary>Realización copia de seguridad y restauración vía GUI:</summary>
+    <summary>Realización copia de seguridad y restauración vía CLI:</summary>
 
 ## Instrucciones de uso para realizar vía CLI
 
@@ -834,6 +838,10 @@ Y con el comando <code>**load tftp://<host>/config.boot**</code> guardamos el ar
 <ul><code>cat /config/config.boot</code></ul> y con el comando <ul><code>compare</code></ul>
 5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
 <ul><code>commit ; save</code></ul>
+
+&nbsp;
+</details>
+&nbsp;
 
 ## Conclusión
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
