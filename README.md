@@ -790,7 +790,7 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 
 ## Instrucciones de uso para restaurar vía GUI
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
-<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
+<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
 2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
 3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/restore.PNG" alt="restore"></p>
