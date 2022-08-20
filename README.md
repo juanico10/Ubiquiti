@@ -819,7 +819,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
   ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
   tftp://<host>/<file>                  Save to file on remote machine
 ```
-Y con el comando <code>**save tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
+Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el archivo de configuración.
 <p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
 <ul><code>cat /config/config.boot</code></ul>
 
@@ -836,7 +836,7 @@ Y con el comando <code>**save tftp://<host>/config.boot**</code> guardamos el ar
   tftp://<host>/<file>                  Load from file on remote machine
 ```
 
-Y con el comando <code>**load tftp://<host>/config.boot**</code> guardamos el archivo de configuración.
+Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el archivo de configuración.
 <p>4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.</p>
 <ul><code>cat /config/config.boot</code> y con el comando <code>compare</code></ul>
 <p>5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
