@@ -524,7 +524,7 @@ commit ; save
 ```
 
 #### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
-<ul><blockquote class="is-info"><p>EDIT: Probablemente sería aún mejor poner el script en <code>/config/scripts/post-config.d</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio, se ejecutará automáticamente después del arranque.</p></blockquote></ul>
+<ul><blockquote class="is-info"><p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p></blockquote></ul>
 
 ```sh
 sudo vi /config/scripts/post-config.d/update-spamhaus
