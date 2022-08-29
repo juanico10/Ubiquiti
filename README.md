@@ -602,6 +602,8 @@ EJECUTAR:
 ```
 sudo /config/scripts/post-config.d/update-spamhaus
 ```
+<p><sup>No pensar que se ha quedado bloqueado al insertar el comando, tarda un poco si la lista es muy grande.</sup></p>
+
 Resultado:
 <ul>Added 561 entries to SPAMHAUS_DROP</ul>
 
