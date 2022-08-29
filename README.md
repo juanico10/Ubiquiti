@@ -18,45 +18,45 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
 ### Comandos básicos
-<ul><code>commit:<code>para activar los cambios.</ul>
-<ul><code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.</ul>
-<ul><code>compare:</code> Para ver qué cambios se han realizado en la configuración.</ul>
-<ul><code>configure:</code> modo configuración.</ul>
-<ul><code>show:</code> mostrar -> Ejemplo: show firewall</ul>
-<ul><code>set:</code> establecer configuración. -> Ejemplo: set firewall name TEST default-action drop</ul>
-<ul><code>edit:</code> Para crear la misma acción y reducir la cantidad de repeticiones en la sintaxis completa. -> Ejemplo: edit firewall name TEST</ul>
-<ul><code>up:</code> Para subir un nivel de edición -> Ejemplo: volver al set de configuración anterior</ul>
-<ul><code>top:</code> Para volver al nivel de edición superior -> Ejemplo: Volver al ser de configuración incial</ul>
-<ul><code>discard:</code> para deshacer los cambios no confirmados</ul>
-<ul><code>copy:</code> Para crear una nueva acción existente -> Ejemplo: copy name WAN1_LOCAL to name WAN2_LOCAL</ul>
-<ul><code>rename:</code> Para cambiar el nombre de la nueva acción -> Ejemplo: rename name WAN2_LOCAL to name WAN2_IN</ul>
-<ul><code>load:</code> cargar configuración.</ul>
-<ul><code>? o tecla de tab:</code> para mostrar opciones para el nivel de edición especificado</ul>
+<code>commit:<code>para activar los cambios.
+<code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.
+<code>compare:</code> Para ver qué cambios se han realizado en la configuración.
+<code>configure:</code> modo configuración.
+<code>show:</code> mostrar -> Ejemplo: show firewall
+<code>set:</code> establecer configuración. -> Ejemplo: set firewall name TEST default-action drop
+<code>edit:</code> Para crear la misma acción y reducir la cantidad de repeticiones en la sintaxis completa. -> Ejemplo: edit firewall name TEST
+<code>up:</code> Para subir un nivel de edición -> Ejemplo: volver al set de configuración anterior
+<code>top:</code> Para volver al nivel de edición superior -> Ejemplo: Volver al ser de configuración incial
+<code>discard:</code> para deshacer los cambios no confirmados
+<code>copy:</code> Para crear una nueva acción existente -> Ejemplo: copy name WAN1_LOCAL to name WAN2_LOCAL
+<code>rename:</code> Para cambiar el nombre de la nueva acción -> Ejemplo: rename name WAN2_LOCAL to name WAN2_IN
+<code>load:</code> cargar configuración.
+<code>? o tecla de tab:</code> para mostrar opciones para el nivel de edición especificado
 
 #### Comandos básicos de VI
-<ul><code>wq<code>Guardar y salir.</ul>
-<ul><code>:q!<code>Salir sin guardar.</ul>
-<ul><code>u<code>Deshace última acción.</ul>
-<ul><code>i<code>modo inserción por la izquierda.</ul>
-<ul><code>a<code>modo inserción por la derecha.</ul>
-<ul><code>dd<code>Elimina la línea actual.</ul>
-<ul><code>p<code>Copia la palabra actual.</ul>
-<ul><code>A<code>Pone le puntero al final de la línea.</ul>
-<ul><code>w<code>Salta de palabra en palabra.</ul>
-<ul><code>D<code>Borra desde el puntero hacia el final de la línea.</ul>
-<ul><code>o<code>Agrera una línea debajo de la actual.</ul>
-<ul><code>O<code>Agrega una línea encima de la actual.</ul>
-<ul><code>P<code>Copia la palabra pegada.</ul>
-<ul><code>gw<code>Copia la palabra actual.</ul>
-<ul><code>help<code>Ayuda.</ul>
+<code>wq<code>Guardar y salir.
+<code>:q!<code>Salir sin guardar.
+<code>u<code>Deshace última acción.
+<code>i<code>modo inserción por la izquierda.
+<code>a<code>modo inserción por la derecha.
+<code>dd<code>Elimina la línea actual.
+<code>p<code>Copia la palabra actual.
+<code>A<code>Pone le puntero al final de la línea.
+<code>w<code>Salta de palabra en palabra.
+<code>D<code>Borra desde el puntero hacia el final de la línea.
+<code>o<code>Agrera una línea debajo de la actual.
+<code>O<code>Agrega una línea encima de la actual.
+<code>P<code>Copia la palabra pegada.
+<code>gw<code>Copia la palabra actual.
+<code>help<code>Ayuda.
 
 ### Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web.png" alt="web.png"></p>
 
 La contraseña por defecto:
-<ul><code>Usuario:</code> ubnt</ul>
-<ul><code>Contraseña:</code> ubnt</ul>
+<code>Usuario:</code> ubnt
+<code>Contraseña:</code> ubnt
   
 Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="web1.png"></p>
@@ -147,11 +147,11 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 
 0. acceda a la interfaz de línea de comandos de EdgeRouter.
 1. Sobrescriba el archivo de inicio actual (config.boot) con el archivo de inicio predeterminado (config.boot.default).
-<ul><code>sudo cp /opt/vyatta/etc/config.boot.default /config/config.boot</code></ul>
+<code>sudo cp /opt/vyatta/etc/config.boot.default /config/config.boot</code>
 Haga clic para copiar
 2. Reinicie EdgeRouter.
-<ul><code>reboot</code></ul>
-<ul><code>Proceed with reboot? [confirm]</code></ul>
+<code>reboot</code>
+<code>Proceed with reboot? [confirm]</code>
 3. Espere a que se complete el reinicio.
 4. Conéctese al eth0 y administre el dispositivo abriendo un navegador y navegando a la <code>https://192.168.1.1</code> dirección IP predeterminada  
 
@@ -187,8 +187,8 @@ Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/a
 
 1. Conecte un cable Ethernet de eth1 en el EdgeRouter a un segmento de LAN que ya tiene un servidor DHCP.
 2. Para comprobar la dirección IP del EdgeRouter, utilice uno de los métodos siguientes:
-<ul>2.1 Configure el servidor DHCP para que proporcione una dirección IP específica al EdgeRouter en función de su dirección MAC (en la etiqueta).</ul>
-<ul>2.2 Deje que el EdgeRouter obtenga una dirección IP y luego compruebe el servidor DHCP para ver qué dirección IP se asignó.</ul>
+2.1 Configure el servidor DHCP para que proporcione una dirección IP específica al EdgeRouter en función de su dirección MAC (en la etiqueta).
+2.2 Deje que el EdgeRouter obtenga una dirección IP y luego compruebe el servidor DHCP para ver qué dirección IP se asignó.
 3. Inicie el explorador web. Introduzca la dirección IP correcta en el campo de dirección. Pulse Intro (PC) o Retorno (Mac).
 4. Introduzca ubnt en los campos de nombre de usuario y contraseña. Lea el acuerdo de licencia de Ubiquiti y marque la casilla junto a I agree to the terms of this License Agreement (Acepto los términos de este acuerdo de licencia) para aceptarlo. Haga clic en Login (Inicio de sesión).
 
@@ -205,7 +205,7 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 - IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489">IOS</a>
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
-<ul><code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
+<code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code>
 
 ### Inicie sesión en el router y añada un nuevo usuario
 
@@ -275,7 +275,7 @@ Para poder generar una clave pública hay muchas opciones, pero os recomiendo co
 ```sh
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 ```
-<ul><code>Pueden utilizar Filezilla o similar para enviar el archivo.</code></ul>
+<code>Pueden utilizar Filezilla o similar para enviar el archivo.</code>
 
 Accedemos al equipo y configuramos la clave pública generada:
 ```sh
@@ -373,8 +373,8 @@ commit ; save
 <p>2. Internet port: En esta sección definiremos como está conectado nuestro Edgerouter al router HGU de Movistar o O2.</p>
 <p><code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
 <p><code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
-<p><ul><code>Account name</code>: adsl@telefonicapa</ul></p>
-<p><ul><code>Password</code>: adslppp</ul></p>
+<p><code>Account name</code>: adsl@telefonicapa</p>
+<p><code>Password</code>: adslppp</p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_2.png" alt="pppoe_2.png"></p>
 
 <p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
@@ -472,13 +472,13 @@ commit ; save
 
 1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
 2. Se cargará un formulario vació que deberemos rellenar con los datos adecuados:
-<ul><code>Interface: Aquí hay que seleccionar la interfaz en la que está configurada nuestra IP pública.</code></ul>
-<ul><code>Service: En el menú desplegable hay varios servicios ya pre-configurados, pero entre ellos al no estar DuckDNS optamos por la opción custom.</code></ul>
-<ul><code>Hostname: Aquí hay que meter el subdominio DuckDNS que queremos asignar a nuestro router. Solamente el subdominio, no hace falta meter .duckdns.org.</code></ul>
-<ul><code>Login: poniendo nouser servirá, ya que nos identificaremos mediante nuestro Token.</code></ul>
-<ul><code>Password: Aquí deberemos introducir el Token de nuestra cuenta.</code></ul>
-<ul><code>Protocol: Seleccionamos el protocolo dyndns2.</code></ul>
-<ul><code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code></ul>
+<code>Interface: Aquí hay que seleccionar la interfaz en la que está configurada nuestra IP pública.</code>
+<code>Service: En el menú desplegable hay varios servicios ya pre-configurados, pero entre ellos al no estar DuckDNS optamos por la opción custom.</code>
+<code>Hostname: Aquí hay que meter el subdominio DuckDNS que queremos asignar a nuestro router. Solamente el subdominio, no hace falta meter .duckdns.org.</code>
+<code>Login: poniendo nouser servirá, ya que nos identificaremos mediante nuestro Token.</code>
+<code>Password: Aquí deberemos introducir el Token de nuestra cuenta.</code>
+<code>Protocol: Seleccionamos el protocolo dyndns2.</code>
+<code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code>
 3. Para terminar pulsamos en Apply para guardar todo lo que hemos metido.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui1.png" alt="GUI1"></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui2.png" alt="GUI2"></p>
@@ -508,16 +508,16 @@ set service dns dynamic interface INTERFAZ service custom-duckdns server www.duc
 commit ; save
 ```
 3. Periódicamente el router ira actualizando nuestra IP pública en el DNS de DuckDNS. En caso de querer forzar la actualización, se puede realizar lanzando el siguiente comando.
-<ul><code>update dns dynamic interface INTERFAZ</code></ul>
+<code>update dns dynamic interface INTERFAZ</code>
 4. Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.
 show dns dynamic status
-<ul><code>
+<code>
 interface    : INTERFAZ
 ip address   : xxx.xxx.xxx.xxx
 host-name    : SUBDOMINIO
 last update  : Tue Sep 29 22:28:09 2020
 update-status: good
-</code></ul>
+</code>
 <p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
 
 &nbsp;
@@ -541,7 +541,7 @@ commit ; save
 ```
 
 #### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
-<ul><blockquote class="is-info"><p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p></blockquote></ul>
+<blockquote class="is-info"><p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p></blockquote>
 
 ```sh
 sudo vi /config/scripts/post-config.d/update-spamhaus
@@ -622,26 +622,26 @@ sudo /config/scripts/post-config.d/update-spamhaus
 <p><sup>No pensar que se ha quedado bloqueado al insertar el comando, tarda un poco si la lista es muy grande.</sup></p>
 
 Resultado:
-<ul>Added 561 entries to SPAMHAUS_DROP</ul>
+Added 561 entries to SPAMHAUS_DROP
 
   
 ### PROGRAMAR TAREA:
 
 OPCIÓN 1:
 ####  Este es el programador de tareas, tengo el mío configurado para ejecutar un cron diario cada 12h:
-<ul><code>user@er4# set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code></ul>
+<code>user@er4# set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code>
 
 OPCIÓN 2:
 ####  Simplemente agregue el script al programador de tareas tal como está:
-<ul><code>user@er4# set system task-scheduler task Update-SpamHaus executable path /config/scripts/post-config.d/update-spamhaus</code>
-<code>user@er# set system task-scheduler task Update-SpamHaus interval 24h</code></ul>
+<code>user@er4# set system task-scheduler task Update-SpamHaus executable path /config/scripts/post-config.d/update-spamhaus</code>
+<code>user@er# set system task-scheduler task Update-SpamHaus interval 24h</code>
 
 OPCIÓN 3:
 O coloque su configuración para que sobreviva a una actualización cada 24h:
-<ul><code>user@er4# set system task-scheduler SPAMHAUS {crontab-spec "00 24 * * *" executable {path /config/scripts/post-config.d/update-spamhaus}}</code></ul>
+<code>user@er4# set system task-scheduler SPAMHAUS {crontab-spec "00 24 * * *" executable {path /config/scripts/post-config.d/update-spamhaus}}</code>
 
 --> Despues vemos las tareas
-<ul><code>user@er4# show system task-scheduler</code></ul>
+<code>user@er4# show system task-scheduler</code>
 
 
 
@@ -656,11 +656,11 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 
 ### REVISIÓN
 <p>Listar</p>
-<ul><code>sudo /sbin/ipset list</code></ul>
+<code>sudo /sbin/ipset list</code>
 <p>Utilice este comando a través de la CLI para ver las entradas:</p>
-<ul><code>show firewall group SPAMHAUS_DROP</code></ul>
+<code>show firewall group SPAMHAUS_DROP</code>
 <p>Despues vemos las tareas</p>
-<ul><code>show system task-scheduler</code></ul>
+<code>show system task-scheduler</code>
 
 
 
@@ -803,21 +803,21 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 ## Instrucciones de uso para realizar vía GUI
 
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
-<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
+<code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code>
 2. Descargue el archivo de configuración de la copia de seguridad haciendo clic en el Descargar .
 3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/backup.PNG" alt="backup"></p>
 
 ## Instrucciones de uso para restaurar vía GUI
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
-<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
+<code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code>
 2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
 3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/restore.PNG" alt="restore"></p>
 
 ## Instrucciones de uso para realizar/restaurar vía UNMS
 Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
-<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
+<a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a>
 
 &nbsp;
 </details>
@@ -830,7 +830,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 
 <p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
 <p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
-<ul><code>commit ; save</code></ul>
+<code>commit ; save</code>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
 
 ```sh
@@ -841,7 +841,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 ```
 Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el archivo de configuración.
 <p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
-<ul><code>cat /config/config.boot</code></ul>
+<code>cat /config/config.boot</code>
 
 ## Instrucciones de uso para restaurar vía CLI
 <p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
@@ -858,9 +858,9 @@ Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el arch
 
 Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el archivo de configuración.
 <p>4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.</p>
-<ul><code>cat /config/config.boot</code> y con el comando <code>compare</code></ul>
+<code>cat /config/config.boot</code> y con el comando <code>compare</code>
 <p>5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
-<ul><code>commit ; save</code></ul></p>
+<code>commit ; save</code></p>
 
 &nbsp;
 </details>
@@ -868,7 +868,7 @@ Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el arch
 
 - También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
 Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
-<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
+<a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a>
 
 ## Conclusión
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
