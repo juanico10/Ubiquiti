@@ -874,4 +874,4 @@ Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
 <p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
 
-<blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
+<blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red</p></blockquote>
