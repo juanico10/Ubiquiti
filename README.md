@@ -34,21 +34,21 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>? o tecla de tab:</code> para mostrar opciones para el nivel de edición especificado</ul>
 
 #### Comandos básicos de VI
-<ul><code>wq<ul><code>Guardar y salir.</ul>
-<ul><code>:q!<ul><code>Salir sin guardar.</ul>
-<ul><code>u<ul><code>Deshace última acción.</ul>
-<ul><code>i<ul><code>modo inserción por la izquierda.</ul>
-<ul><code>a<ul><code>modo inserción por la derecha.</ul>
-<ul><code>dd<ul><code>Elimina la línea actual.</ul>
-<ul><code>p<ul><code>Copia la palabra actual.</ul>
-<ul><code>A<ul><code>Pone le puntero al final de la línea.</ul>
-<ul><code>w<ul><code>Salta de palabra en palabra.</ul>
-<ul><code>D<ul><code>Borra desde el puntero hacia el final de la línea.</ul>
-<ul><code>o<ul><code>Agrera una línea debajo de la actual.</ul>
-<ul><code>O<ul><code>Agrega una línea encima de la actual.</ul>
-<ul><code>P<ul><code>Copia la palabra pegada.</ul>
-<ul><code>gw<ul><code>Copia la palabra actual.</ul>
-<ul><code>help<ul><code>Ayuda.</ul>
+<ul><code>wq<code>Guardar y salir.</ul>
+<ul><code>:q!<code>Salir sin guardar.</ul>
+<ul><code>u<code>Deshace última acción.</ul>
+<ul><code>i<code>modo inserción por la izquierda.</ul>
+<ul><code>a<code>modo inserción por la derecha.</ul>
+<ul><code>dd<code>Elimina la línea actual.</ul>
+<ul><code>p<code>Copia la palabra actual.</ul>
+<ul><code>A<code>Pone le puntero al final de la línea.</ul>
+<ul><code>w<code>Salta de palabra en palabra.</ul>
+<ul><code>D<code>Borra desde el puntero hacia el final de la línea.</ul>
+<ul><code>o<code>Agrera una línea debajo de la actual.</ul>
+<ul><code>O<code>Agrega una línea encima de la actual.</ul>
+<ul><code>P<code>Copia la palabra pegada.</ul>
+<ul><code>gw<code>Copia la palabra actual.</ul>
+<ul><code>help<code>Ayuda.</ul>
 
 ### Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
@@ -874,4 +874,4 @@ Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de
 Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
 <p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
 
-<blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red</p></blockquote>
+<blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
