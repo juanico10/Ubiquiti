@@ -18,7 +18,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
 ### Comandos básicos
-<ul><code>commit:<ul><code>para activar los cambios.</ul>
+<ul><code>commit:<code>para activar los cambios.</ul>
 <ul><code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.</ul>
 <ul><code>compare:</code> Para ver qué cambios se han realizado en la configuración.</ul>
 <ul><code>configure:</code> modo configuración.</ul>
