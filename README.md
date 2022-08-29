@@ -18,7 +18,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
 ### Comandos básicos
-<ul><code>commit:</code> para activar los cambios.</ul>
+<ul><code>commit:<ul><code>para activar los cambios.</ul>
 <ul><code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.</ul>
 <ul><code>compare:</code> Para ver qué cambios se han realizado en la configuración.</ul>
 <ul><code>configure:</code> modo configuración.</ul>
@@ -32,6 +32,23 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>rename:</code> Para cambiar el nombre de la nueva acción -> Ejemplo: rename name WAN2_LOCAL to name WAN2_IN</ul>
 <ul><code>load:</code> cargar configuración.</ul>
 <ul><code>? o tecla de tab:</code> para mostrar opciones para el nivel de edición especificado</ul>
+
+#### Comandos básicos de VI
+<ul><code>wq<ul><code>Guardar y salir.</ul>
+<ul><code>:q!<ul><code>Salir sin guardar.</ul>
+<ul><code>u<ul><code>Deshace última acción.</ul>
+<ul><code>i<ul><code>modo inserción por la izquierda.</ul>
+<ul><code>a<ul><code>modo inserción por la derecha.</ul>
+<ul><code>dd<ul><code>Elimina la línea actual.</ul>
+<ul><code>p<ul><code>Copia la palabra actual.</ul>
+<ul><code>A<ul><code>Pone le puntero al final de la línea.</ul>
+<ul><code>w<ul><code>Salta de palabra en palabra.</ul>
+<ul><code>D<ul><code>Borra desde el puntero hacia el final de la línea.</ul>
+<ul><code>o<ul><code>Agrera una línea debajo de la actual.</ul>
+<ul><code>O<ul><code>Agrega una línea encima de la actual.</ul>
+<ul><code>P<ul><code>Copia la palabra pegada.</ul>
+<ul><code>gw<ul><code>Copia la palabra actual.</ul>
+<ul><code>help<ul><code>Ayuda.</ul>
 
 ### Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
