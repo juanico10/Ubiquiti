@@ -534,9 +534,12 @@ commit
 ```
 
 ```
-set firewall name WAN_IN rule 10 action drop
 set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
+set firewall name WAN_IN rule 10 action drop
+set firewall name WAN_IN rule 10 state established enable
+set firewall name WAN_IN rule 10 state related enable
+set firewall name WAN_IN rule 10 protocol all
 commit ; save
 ```
 
