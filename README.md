@@ -359,8 +359,24 @@ set interfaces ethernet eth0 firewall local name WAN_LOCAL
 commit ; save
 ```
 
-#### CREAR UNA REGLA
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Sección en construcción.</p>
+#### TIPOS DE REGLAS
+Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
+- `WAN_IN` = La entrada de la WAN
+- `WAN_LOCAL` = Para el tráfico hacia el router desde la WAN
+- `WAN_OUT` = La salida de la WAN
+
+Las reglas se añaden en las `WAN`, dependiendo del sentido que queramos hacer.
+Si desea bloquear el entrante y saliente, debemos de añadir en la IN u OUT, y en el LOCAL para bloquear los accesos hacia el sentido del router.
+
+Ejemplo para una `WAN`con pppoe,
+- Indicamos la interfaz a la WAN_IN la pppoe en modo `IN`
+- Indicamos la interfaz a la WAN_LOCAL la pppoe en modo `LOCAL`
+- Indicamos la interfaz a la WAN_IN la pppoe en modo `OUT`.
+    - <sup>No olvidar poner la acción por defecto en ACCEPT, o denegará todo el tráfico desde la red interna.</sup>
+- Añadiríamos la regla en la IN u OUT y en el LOCAL.
+- Despues realizar una prueba para comprobar la acción deseada.
+
+<sup>En EdgeMax no es necesario añadir la misma regla en IN y OUT. Denegará o permitirá la acción deseada en cualquiera de ellas.</sup>
 
 
 ### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter de Ubiquiti
