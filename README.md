@@ -545,15 +545,17 @@ update-status: good
 
 #### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
-<sup>para ver los grupos que tenemos: `show firewall group network-group`.</sup>
-<code>
-<code>set firewall group network-group SPAMHAUS_DROP
-commit
-</code>
+<p><sup>Para ver los grupos que tenemos: <code>show firewall group network-group</code>.</sup></p>
 
-* Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el network-group con el nombre del grupo creado. 
-<sup>para ver las reglas: `show firewall name WAN_IN`.</sup>
-<code>
+```
+set firewall group network-group SPAMHAUS_DROP
+commit
+```
+
+* Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el <code>network-group</code> con el nombre del grupo creado. 
+<p><sup>Para ver la regla y el orden: <code>show firewall name WAN_IN</code>.</sup></p>
+
+```
 set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
 set firewall name WAN_IN rule 10 action drop
@@ -561,11 +563,11 @@ set firewall name WAN_IN rule 10 state established enable
 set firewall name WAN_IN rule 10 state related enable
 set firewall name WAN_IN rule 10 protocol all
 commit ; save
-</code>
+```
 
 #### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
-<p>Modificamos en el script el nombre de los argumentos: `NETGROUP`, `TMPFILE` y `TMPFILE2` con el nombre del grupo creado.</p>
-<p>Las listas a añadir tienen que tener formato `.raw` o `.txt`.</p>
+<p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, <code>TMPFILE</code> y <code>TMPFILE2</code> con el nombre del grupo creado.</p>
+<p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
 <p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p>
 
 ```sh
@@ -647,7 +649,7 @@ sudo /config/scripts/post-config.d/update-spamhaus
 <p><sup>No pensar que se ha quedado bloqueado al insertar el comando, tarda un poco si la lista es muy grande.</sup></p>
 
 Resultado:
-<ul>Added 561 entries to SPAMHAUS_DROP</ul>
+<ul><code>Added 561 entries to SPAMHAUS_DROP</code></ul>
 
   
 ### PROGRAMAR TAREA:
