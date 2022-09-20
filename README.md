@@ -657,7 +657,7 @@ Resultado:
 ### PROGRAMAR TAREA:
 
 OPCIÓN 1:
-#### Este es el programador de tareas, tengo el mío configurado para ejecutar un cron diario cada 12h:
+#### Este es el programador de tareas, configura para ejecutar un cron diario cada 12h:
 <ul><code>set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code></ul>
 
 #### También puede colocar su configuración para que sobreviva a una actualización cada 24h:
@@ -665,14 +665,14 @@ OPCIÓN 1:
 
 
 OPCIÓN 2:
-####  Simplemente agregue el script al programador de tareas tal como está:
+####  Simplemente agregue el script al programador de tareas tal como está, cambiando el nombre del task y el path de su script:
 <ul><code>set system task-scheduler task update-spamhaus executable path /config/scripts/post-config.d/update-spamhaus</code></ul>
 <ul>Las tareas se programan en horas:<code>24h,48h...</code></ul>
 <ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
 
 
 --> Despues vemos las tareas
-<ul><code>user@er4# show system task-scheduler</code></ul>
+<ul><code>show system task-scheduler</code></ul>
 
 
 #### Buenas prácticas.
