@@ -14,7 +14,7 @@ log=$(cat /var/log/messages | grep -i "WAN_IN-10-D" | awk -F "=" '{print $5}' | 
 
 # Envio del mensaje
 /usr/bin/ping -c2 $DNS > /dev/null 2>&1
-if [ $? !=0 ]
+if [ $? !=0 ];
 then
         exit 0
 else
