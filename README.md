@@ -657,21 +657,22 @@ Resultado:
 ### PROGRAMAR TAREA:
 
 OPCIÓN 1:
-####  Este es el programador de tareas, tengo el mío configurado para ejecutar un cron diario cada 12h:
-<ul><code>user@er4# set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code></ul>
+#### Este es el programador de tareas, tengo el mío configurado para ejecutar un cron diario cada 12h:
+<ul><code>set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code></ul>
+
+#### También puede colocar su configuración para que sobreviva a una actualización cada 24h:
+<ul><code>set system task-scheduler SPAMHAUS {crontab-spec "00 24 * * *" executable {path /config/scripts/post-config.d/update-spamhaus}}</code></ul>
+
 
 OPCIÓN 2:
 ####  Simplemente agregue el script al programador de tareas tal como está:
-<ul><code>user@er4# set system task-scheduler task Update-SpamHaus executable path /config/scripts/post-config.d/update-spamhaus</code>
-<code>user@er# set system task-scheduler task Update-SpamHaus interval 24h</code></ul>
+<ul><code>set system task-scheduler task update-spamhaus executable path /config/scripts/post-config.d/update-spamhaus</code></ul>
+<ul>Las tareas se programan en horas:<code>24h,48h...</code></ul>
+<ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
 
-OPCIÓN 3:
-O coloque su configuración para que sobreviva a una actualización cada 24h:
-<ul><code>user@er4# set system task-scheduler SPAMHAUS {crontab-spec "00 24 * * *" executable {path /config/scripts/post-config.d/update-spamhaus}}</code></ul>
 
 --> Despues vemos las tareas
 <ul><code>user@er4# show system task-scheduler</code></ul>
-
 
 
 #### Buenas prácticas.
