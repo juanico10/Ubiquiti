@@ -543,13 +543,17 @@ update-status: good
 ---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
 
-#### Cree el grupo y agregue una regla de firewall para eliminar ese grupo:
-```
-set firewall group network-group SPAMHAUS_DROP
+#### Creamos el grupo y agregamos una regla de firewall a la WAN:
+* Creamos un nuevo grupo y modificamos nombre de grupo.
+<sup>para ver los grupos que tenemos: `show firewall group network-group`.</sup>
+<code>
+<code>set firewall group network-group SPAMHAUS_DROP
 commit
-```
+</code>
 
-```
+* Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el network-group con el nombre del grupo creado. 
+<sup>para ver las reglas: `show firewall name WAN_IN`.</sup>
+<code>
 set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
 set firewall name WAN_IN rule 10 action drop
@@ -557,10 +561,12 @@ set firewall name WAN_IN rule 10 state established enable
 set firewall name WAN_IN rule 10 state related enable
 set firewall name WAN_IN rule 10 protocol all
 commit ; save
-```
+</code>
 
 #### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
-<ul><blockquote class="is-info"><p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p></blockquote></ul>
+<p>Modificamos en el script el nombre de los argumentos: `NETGROUP`, `TMPFILE` y `TMPFILE2` con el nombre del grupo creado.</p>
+<p>Las listas a añadir tienen que tener formato `.raw` o `.txt`.</p>
+<p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p>
 
 ```sh
 sudo vi /config/scripts/post-config.d/update-spamhaus
