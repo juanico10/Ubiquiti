@@ -573,7 +573,7 @@ commit ; save
 ```sh
 sudo vi /config/scripts/post-config.d/update-spamhaus
 ```
-
+<p>El scrip pueden descargarlo o verlo tambien desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP">link</a></p>
 ```bash
 #!/bin/bash
 
@@ -688,7 +688,11 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 <ul><code>show firewall group SPAMHAUS_DROP</code></ul>
 <p>Despues vemos las tareas</p>
 <ul><code>show system task-scheduler</code></ul>
+<p>Ver log</p>
+<ul><code>cat /var/log/messages</code></ul>
 
+* He creado un script para poder informaros al telegram de las IPs bloqueadas por una regla.
+<p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/honeypot">link</a></p>
 
 
 ### EJEMPLO DE REGLAS:
