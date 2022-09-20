@@ -693,8 +693,9 @@ O coloque su configuración para que sobreviva a una actualización cada 24h:
 <p>Ver log</p>
 <ul><code>cat /var/log/messages</code></ul>
 
-* He creado un script para poder informaros al telegram de las IPs bloqueadas por una regla.
-<p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/honeypot">link</a></p>
+* He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
+<ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></p></ul>
+<ul><p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/honeypot">link</a></p></ul>
 
 
 ### EJEMPLO DE REGLAS:
