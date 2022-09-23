@@ -670,10 +670,11 @@ OPCIÓN 2:
 <ul>Las tareas se programan en horas:<code>24h,48h...</code></ul>
 <ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
 
-* Ajustes de <code>system task-scheduler</code>
-<p><ul><code>minutes m    Execution interval in minutes</code></ul></p>
-<p><ul><code>hours h      Execution interval in hours</code></ul></p>
-<p><ul><code>days d       Execution interval in days</code></ul></p>
+* Ajustes de <code>system task-scheduler interval</code>
+<p><ul><code>minutes</code>    Execution interval in minutes</ul></p>
+<p><ul><code>minutes m</code>    Execution interval in minutes</ul></p>
+<p><ul><code>hours h</code>      Execution interval in hours</ul></p>
+<p><ul><code>days d</code>       Execution interval in days</ul></p>
 
 --> Despues vemos las tareas
 <ul><code>show system task-scheduler</code></ul>
