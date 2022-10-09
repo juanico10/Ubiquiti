@@ -50,7 +50,7 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>gw</code>Copia la palabra actual.</ul>
 <ul><code>help</code>Ayuda.</ul>
 
-### Acceso a la GUI
+## Acceso a la GUI
 Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una web donde deberemos introducir unas credenciales. En este caso las que vienen de fábrica.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web.png" alt="web.png"></p>
 
@@ -70,8 +70,14 @@ Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRo
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI2"></p>
 
 #### Solucionar problema con certificado inválido
+<p><sup>En los comandos de OpenSSL a continuación, reemplace los nombres de archivo en TODAS LAS MAYÚSCULAS con las rutas y nombres de archivo reales con los que está trabajando.</sup></p>
 Cuando intentamos acceder vía web, nos indica que el certificado es inválido al ser autofirmado:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
+
+Podemos ver el contenido del archivo de certificado <code>.PEM</code>:
+```sh
+openssl x509 -in CERTIFICATE.pem -text -noout
+```
 
 Para poder solucionar, debemos descargar el certificado del navegador. Nos descarga un archivo <code>.pem</code>:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert1.PNG" alt="cert1"></p>
@@ -79,7 +85,7 @@ Para poder solucionar, debemos descargar el certificado del navegador. Nos desca
 
 Una vez descargado tenemos que cambiar el <code>.pem</code> a <code>.crt</code> con OpenSSL:
 ```sh
-openssl x509 -outform der -in <nombre_certificado>.pem -out <nombre_certificado>.crt
+openssl x509 -outform der -in CERTIFICATE.pem -out CERTIFICATE.crt
 ```
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert3.PNG" alt="cert3"></p>
 
@@ -88,6 +94,12 @@ Despues de haber cambiado el formato, procedemos a instalar el certificado en la
 
 Una vez importado el certificado y borrado las cookies, ya no nos indicará que el certificado no es de confianza.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert5.PNG" alt="cert5"></p>
+
+Tambien podemos migrar el <code>.pem</code> a <code>.pfx</code> con OpenSSL:
+```sh
+openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICATE.pfx
+```
+<p><sup>Para ello necesitas la private key del certificado.</sup></p>
 
 ---
 ## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
