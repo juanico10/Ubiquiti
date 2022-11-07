@@ -10,7 +10,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 </p>
 <!-- markdownlint-enable MD033 -->
 
-![GitHub last commit](https://img.shields.io/github/last-commit/JuanRodenas/Ubiquiti?color=blue&logo=ubiquiti&logoColor=blue&style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/JuanRodenas/Ubiquiti?color=blue&logo=github&style=for-the-badge)
 
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
