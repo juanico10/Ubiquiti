@@ -10,7 +10,8 @@ clean_up ()
      /bin/rm $TMPFILE $TMPFILE2
 }
 
->$TMPFILE>$TMPFILE2
+>$TMPFILE
+>$TMPFILE2
 /usr/bin/curl -s http://www.spamhaus.org/drop/drop.txt >> $TMPFILE2
 /usr/bin/curl -s http://www.spamhaus.org/drop/edrop.txt >> $TMPFILE2
 
