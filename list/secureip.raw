@@ -1,12 +1,13 @@
-!-----------------------------------------------------------------------!
-! 	                P A C K  D E T A I L S				!
-!-----------------------------------------------------------------------!
+!---------------------------------------------!
+! 	     P A C K  D E T A I L S				!
+!---------------------------------------------!
 # Developer & Maintainer: Juan Rodenas
 # Title: secureip
 # Description: Blocking dangerous ips
 # Format: List IPs and groups
 # Created: 20.08.2022 20:17:02
 # https://github.com/JuanRodenas
+!---------------------------------------------!
 #
 # Shodan Scanners Block
 66.240.192.138
