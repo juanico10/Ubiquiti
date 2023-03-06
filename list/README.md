@@ -6,7 +6,8 @@
     <strong>Ubiquiti networks x EdgeMax©</strong>
 </p>
 <!-- markdownlint-enable MD033 -->
-#### GEO Blocklist
+
+#### BlockList Geográfica
 - RU
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
@@ -86,9 +87,9 @@ https://talosintelligence.com/documents/ip-blacklist
 
 
 #### Proofpoint Emerging Threats Rules
-~~~
-https://rules.emergingthreats.net/
-~~~
+
+Página web de Proofpoint [URL](https://rules.emergingthreats.net/)
+
 - Emerging Threats fwip rules.
 ~~~
 https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt
