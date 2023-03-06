@@ -59,11 +59,6 @@ https://blocklist.greensnow.co/greensnow.txt
 https://isc.sans.edu/block.txt
 ~~~
 
-- StevenBlack
-~~~
-https://github.com/StevenBlack/hosts
-~~~
-
 - The Block List Project
 ~~~
 https://github.com/blocklistproject/Lists
