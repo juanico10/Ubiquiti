@@ -52,6 +52,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 - [Añadir listas de seguridad al firewall](#añadir-listas-de-seguridad-al-firewall)
   - [Crear script](#Crear-script)
   - [Programar tarea](#programar-tarea)
+  - [Listas IPs](#readme-con-listas-de-ips-públicas)
   - [Revision](#revision)
 - [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
 - [OpenVPN](#openvpn)
