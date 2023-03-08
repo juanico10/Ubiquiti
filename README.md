@@ -15,13 +15,13 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 ---
 ## Índice de contenido
 
-- [Acceso a la CLI y comandos básicos](#acceso-a-la-cli-y-comandos-basicos)
-  - [Comandos básicos](#comandos-basicos)
-  - [Comandos VI](#comandos-basicos-de-VI)
+- [Acceso a la CLI y comandos básicos](#acceso-a-la-cli-y-comandos-básicos)
+  - [Comandos básicos](#comandos-básicos)
+  - [Comandos VI](#comandos-básicos-de-vi)
   - [Acceso GUI](#acceso-a-la-gui)
-  - [Certificado](#solucionar-problema-con-certificado-invalido)
+  - [Certificado](#solucionar-problema-con-certificado-inválido)
 - [Configuración inicial del EdgeRouter](#configuración-inicial-del-edgerouter)
-  - [Reset fábrica](#realizacion-de-un-hardware-o-software Reset)
+  - [Reset fábrica](#realizacion-de-un-hardware-o-software-reset)
   - [Actualizaciones](#actualizar-edgerouter)
   - [Acceso interfaz](#acceso-a-la-interfaz-de-configuración-edgeos)
   - [Copia seguridad](#configuración-de-copia-de-seguridad-y-restauración)
@@ -35,7 +35,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [PPPoE O2 Movistar](#configurar-una-interfaz-PPPoE-de-Movistar-u-O2-en-un-edgerouter-de-Ubiquiti)
   - [IPv6](#configurar-el-cortafuegos-IPv6)
   - [Dual wan](#dual-wan)
-  - [configuratión nat](#configuration-nat)
+  - [Configuración nat](#configuration-nat)
   - [Port forwarding](#port-forwarding)
 - [Routing](#routing)
 - [LAN](#lan)
@@ -60,7 +60,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
 <p>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</p>
 
-**[`^        back to top        ^`](#awesome-selfhosted)**
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 # Acceso a la CLI y comandos básicos
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
@@ -149,8 +149,9 @@ openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICA
 <p><sup>Para ello necesitas la private key del certificado.</sup></p>
 
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
-# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+# Configuración inicial del EdgeRouter:
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/>
 
 ## Realización de un Hardware o Software Reset
 El EdgeRouter se puede restablecer a los valores predeterminados de fábrica utilizando un hardware o software método de restablecimiento
@@ -345,8 +346,9 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 <ul><code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
 
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
-# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+# Hardening del dispositivo
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/>
 
 ## Habilitar funciones de rendimiento
 Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
@@ -454,8 +456,9 @@ commit ; save
 ```
 
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
-# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall Edgerouter
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+# Firewall Edgerouter
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/>
 
 ### TIPOS DE REGLAS
 Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
@@ -613,12 +616,12 @@ set port-forward rule 1 protocol tcp
 commit ; save
 ```
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
 
 ## PROXIMAMENTE
 
-# LAN + DHCP
+# LAN
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 
 ## DHCP
@@ -754,8 +757,9 @@ update-status: good
 &nbsp;
 
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
-# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+# Añadir listas de seguridad al firewall
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
 
 ## Crear script
 
@@ -996,9 +1000,9 @@ ethernet eth1 {
 ```
 
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
-# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
- 
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+# POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/>
 
 ### Añadir certificado CA para localhost
 Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
@@ -1052,7 +1056,7 @@ Date: Sun, 11 Jan 2015 07:46:13 GMT
 Server: Server
 ```
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 # OpenVPN
 
 ## Configuración EdgeRouter como servidor OpenVPN. (Servidor)
@@ -1217,7 +1221,7 @@ set firewall modify VPN_EXAMPLE_ROUTE rule 10 modify table 1
 set interfaces switch switch0 vif 10 firewall in modify VPN_EXAMPLE_ROUTE
 ```
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 # squidguard proxy
 Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categorías, por ejemplo, anuncios o malware.
 
@@ -1310,7 +1314,7 @@ set service webproxy url-filtering squidguard redirect-url 'https://brainoftimo.
 - warez
 - webmail
 ---
-**[`^        back to top        ^`](#awesome-selfhosted)**
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 # Syslog
 Configure el dispositivo para iniciar sesión en un SYSLOG
 Nuestro Servidor Syslog tiene la ip de: `10.10.99.111`
