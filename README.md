@@ -54,6 +54,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Programar tarea](#programar-tarea)
   - [Listas IPs](#readme-con-listas-de-ips-públicas)
   - [Revision](#revision)
+  - [Monitorización IPs bloqueadas](monitorización-de-ips-bloqueadas)
 - [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
 - [OpenVPN](#openvpn)
   - [EdgeRouter como Servidor](#configuración-edgerouter-como-servidor-openvpn.-(Servidor))
@@ -545,6 +546,7 @@ commit ; save
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
+Puedes asignar la MAC del HGU a la WAN:
 
 ## Configurar el cortafuegos IPv6
 Lamentablemente, no existe ninguna opción para configurar el cortafuegos IPv6 a través de la interfaz gráfica de usuario.
@@ -949,7 +951,8 @@ Dejo el enlace a la carpeta:
 <p>Ver log</p>
 <ul><code>cat /var/log/messages</code></ul>
 
-* He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
+## Monitorización de IPs bloqueadas
+He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></p></ul>
 <ul><p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/honeypot">link</a></p></ul>
 
@@ -1361,13 +1364,14 @@ exit
 # WireGuard
 Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
-[WireGuard/wireguard-vyatta-ubnt](https://github.com/WireGuard/wireguard-vyatta-ubnt)
+- [WireGuard/wireguard-vyatta-ubnt](https://github.com/WireGuard/wireguard-vyatta-ubnt)
 
 
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
 
 <sup>Estos archivos/textos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
+
 <sub>Todas y cada una de las marcas registradas son propiedad de sus respectivos dueños.</sub>
 
 <p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
