@@ -13,13 +13,58 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 ![GitHub last commit](https://img.shields.io/github/last-commit/JuanRodenas/ubiquiti?color=blue&logo=ubiquiti&logoColor=blue&style=for-the-badge)
 
 ---
+## Índice de contenido
+
+- [Acceso a la CLI y comandos básicos](#acceso-a-la-cli-y-comandos-basicos)
+  - [Comandos básicos](#comandos-basicos)
+  - [Comandos VI](#comandos-basicos-de-VI)
+  - [Acceso GUI](#acceso-a-la-gui)
+  - [Certificado](#solucionar-problema-con-certificado-invalido)
+- [Configuración inicial del EdgeRouter](#configuración-inicial-del-edgerouter)
+  - [Reset fábrica](#realizacion-de-un-hardware-o-software Reset)
+  - [Actualizaciones](#actualizar-edgerouter)
+  - [Acceso interfaz](#acceso-a-la-interfaz-de-configuración-edgeos)
+  - [Copia seguridad](#configuración-de-copia-de-seguridad-y-restauración)
+  - [UISP](#gestión-de-uisp)
+- [Hardening del dispositivo](#hardening-del-dispositivo)
+  - [Usuarios](#remover-default-user-y-crear-un-usuario)
+  - [SSH](#ssh)
+- [Firewall EdgeRouter](#firewall-edgerouter)
+  - [Tipos de reglas](#tipos-de-reglas)
+  - [Firewall básico](#firewall-básico)
+  - [PPPoE O2 Movistar](#configurar-una-interfaz-PPPoE-de-Movistar-u-O2-en-un-edgerouter-de-Ubiquiti)
+  - [IPv6](#configurar-el-cortafuegos-IPv6)
+  - [Dual wan](#dual-wan)
+  - [configuratión nat](#configuration-nat)
+  - [Port forwarding](#port-forwarding)
+- [Routing](#routing)
+- [LAN](#lan)
+  - [DHCP](#dhcp)
+  - [Actualizaciones](#configurar-IP-estática-para-dispositivo)
+  - [Acceso interfaz](#router-switch)
+  - [Copia seguridad](#dns-dinamico)
+- [Añadir listas de seguridad al firewall](#añadir-listas-de-seguridad-al-firewall)
+  - [Crear script](#Crear-script)
+  - [Programar tarea](#programar-tarea)
+  - [Revision](#revision)
+- [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
+- [OpenVPN](#openvpn)
+  - [EdgeRouter como Servidor](#configuración-edgerouter-como-servidor-openvpn.-(Servidor))
+  - [EdgeRouter como Cliente](#configuración-edgerouter-como-Cliente-openvpn.-(Cliente))
+- [Squidguard](#squidguard-proxy)
+  - [Requisitos](#requisito-previo)
+  - [Configuración](#ejemplo-de-configuración)
+- [Syslog](#syslog)
+
+---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
 <p>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</p>
 
-## Acceso a la CLI y comandos básicos
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# Acceso a la CLI y comandos básicos
 Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
 
-### Comandos básicos
+## Comandos básicos
 <ul><code>commit:</code>para activar los cambios.</ul>
 <ul><code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.</ul>
 <ul><code>compare:</code> Para ver qué cambios se han realizado en la configuración.</ul>
@@ -35,7 +80,7 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 <ul><code>load:</code> cargar configuración.</ul>
 <ul><code>? o tecla de tab:</code> para mostrar opciones para el nivel de edición especificado</ul>
 
-#### Comandos básicos de VI
+## Comandos básicos de VI
 <ul><code>wq</code>Guardar y salir.</ul>
 <ul><code>:q!</code>Salir sin guardar.</ul>
 <ul><code>u</code>Deshace última acción.</ul>
@@ -63,15 +108,15 @@ La contraseña por defecto:
 Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="web1.png"></p>
 
-#### Instrucciones de uso con Putty o similar:
+### Instrucciones de uso con Putty o similar:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI1.png" alt="CLI1"></p>
 
-#### Instrucciones de uso con GUI:
+### Instrucciones de uso con GUI:
 0. Acceda a la interfaz de usuario web de EdgeRouter
 1. Navegue a la parte superior derecha de la interfaz de usuario web.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/CLI2.png" alt="CLI2"></p>
 
-#### Solucionar problema con certificado inválido
+## Solucionar problema con certificado inválido
 <p><sup>En los comandos de OpenSSL a continuación, reemplace los nombres de archivo en TODAS LAS MAYÚSCULAS con las rutas y nombres de archivo reales con los que está trabajando.</sup></p>
 Cuando intentamos acceder vía web, nos indica que el certificado es inválido al ser autofirmado:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
@@ -104,9 +149,10 @@ openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICA
 <p><sup>Para ello necesitas la private key del certificado.</sup></p>
 
 ---
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/> Configuración inicial del EdgeRouter:
 
-### Realización de un Hardware o Software Reset
+## Realización de un Hardware o Software Reset
 El EdgeRouter se puede restablecer a los valores predeterminados de fábrica utilizando un hardware o software método de restablecimiento
 
 Hardware Reset: Borra todos los archivos de configuración y del sistema, restableciendo el dispositivo al estado predeterminado de fábrica.
@@ -117,7 +163,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 <details>
     <summary>Realización de un restablecimiento de hardware :</summary>
 
-## Instrucciones de uso para realizar reset button:
+### Instrucciones de uso para realizar reset button:
 
 1. Verifique que EdgeRouter esté completamente iniciado. 
 2. Mantenga presionado el reinicio.
@@ -129,7 +175,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 8. Conéctese al eth0 y administre el dispositivo abriendo un navegador y navegando a la <code>https://192.168.1.1</code> dirección IP predeterminada.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/reset.gif" alt="reset.gif"></p>
 
-## Instrucciones de uso para realizar un Power On Reset:
+### Instrucciones de uso para realizar un Power On Reset:
 
 1. Desconecte el cable de alimentación del EdgeRouter.
 2. Mientras vuelve a conectar el cable de alimentación al EdgeRouter, mantenga presionado el reinicio .
@@ -148,7 +194,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 <details>
     <summary>Realización de un reinicio de software:</summary>
 
-## Instrucciones de uso con GUI:
+### Instrucciones de uso con GUI:
 
 0. Acceda a la interfaz de usuario web de EdgeRouter.
 1. Navegue a la Sistema en la parte inferior izquierda de la interfaz de usuario web.
@@ -157,7 +203,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 4. Espere a que se complete el reinicio.
 5. Conéctese al eth0 y administre el dispositivo abriendo un navegador y navegando a la <code>https://192.168.1.1</code> dirección IP predeterminada 
 
-## Instrucciones de uso con CLI:
+### Instrucciones de uso con CLI:
 
 0. acceda a la interfaz de línea de comandos de EdgeRouter.
 1. Sobrescriba el archivo de inicio actual (config.boot) con el archivo de inicio predeterminado (config.boot.default).
@@ -173,17 +219,17 @@ Haga clic para copiar
 </details>
 &nbsp;
 
-### Actualizar EdgeRouter
+## Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
 <a title="download" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a>
 
 Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
 
-### Acceso a la interfaz de configuración EdgeOS
+## Acceso a la interfaz de configuración EdgeOS
 <details>
     <summary>Opción 1:</summary>
 
-## Instrucciones de uso con IP ESTÁTICA:
+### Instrucciones de uso con IP ESTÁTICA:
 
 1. Conecte un cable Ethernet desde el puerto Ethernet del ordenador al puerto eth0 del EdgeRouter.
 2. Configure el adaptador de Ethernet en su sistema host con una dirección IP estática en la subred  <code>192.168.1.x</code>.
@@ -197,7 +243,7 @@ Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/a
 <details>
     <summary>Opción 2:</summary>
 
-## Instrucciones de uso con DHCP:
+### Instrucciones de uso con DHCP:
 
 1. Conecte un cable Ethernet de eth1 en el EdgeRouter a un segmento de LAN que ya tiene un servidor DHCP.
 2. Para comprobar la dirección IP del EdgeRouter, utilice uno de los métodos siguientes:
@@ -210,7 +256,84 @@ Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/a
 </details>
 &nbsp;
 
-### Gestión de UISP
+## Configuración de copia de seguridad y restauración 
+Realizar una copia de seguridad y restaurar el archivo de configuración de un EdgeRouter.
+
+<details>
+    <summary>Realización copia de seguridad y restauración vía GUI:</summary>
+
+## Instrucciones de uso para realizar vía GUI
+
+1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
+<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
+2. Descargue el archivo de configuración de la copia de seguridad haciendo clic en el Descargar .
+3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/backup.PNG" alt="backup"></p>
+
+## Instrucciones de uso para restaurar vía GUI
+1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
+<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
+2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
+3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/restore.PNG" alt="restore"></p>
+
+## Instrucciones de uso para realizar/restaurar vía UNMS
+Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
+<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
+
+&nbsp;
+</details>
+&nbsp;
+
+<details>
+    <summary>Realización copia de seguridad y restauración vía CLI:</summary>
+
+## Instrucciones de uso para realizar vía CLI
+
+<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
+<p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
+<ul><code>commit ; save</code></ul>
+<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
+
+```sh
+  scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+  sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
+  ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+  tftp://<host>/<file>                  Save to file on remote machine
+```
+Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el archivo de configuración.
+<p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
+<ul><code>cat /config/config.boot</code></ul>
+
+## Instrucciones de uso para restaurar vía CLI
+<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
+<p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
+<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
+
+```sh
+  scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+  sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
+  ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+  http://<host>/<file>                  Load from file on remote machine
+  tftp://<host>/<file>                  Load from file on remote machine
+```
+
+Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el archivo de configuración.
+<p>4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.</p>
+<ul><code>cat /config/config.boot</code> y con el comando <code>compare</code></ul>
+<p>5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
+<ul><code>commit ; save</code></ul></p>
+
+&nbsp;
+</details>
+&nbsp;
+
+- También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
+Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
+<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
+
+
+## Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación.
 1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide">UISP - Guía de instalación </a>
 2. Despues logarse en la web de UISP <a href="uisp.ui.com">uisp.ui.com</a>
@@ -221,16 +344,11 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
 <ul><code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
 
-### Inicie sesión en el router y añada un nuevo usuario
+---
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
 
-```sh
-configure
-set system login user <user> authentication plaintext-password <secret>
-set system login user <user> level admin
-commit ; save
-```
-
-### Habilitar funciones de rendimiento
+## Habilitar funciones de rendimiento
 Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
 **UTILIZAR CON CUIDADO**.
 
@@ -256,10 +374,7 @@ set system offload ipsec enable
 commit ; save
 ```
 
----
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/> Hardening del dispositivo
-
-### Remover default user y crear un usuario
+## Remover default user y crear un usuario
 Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
 ```sh
 set system login user <user>
@@ -281,6 +396,8 @@ commit ; save
 This account is currently not available.
 Connection to 192.168.1.1 closed.
 ```
+
+## SSH
 
 ### Añadir una clave ssh pública a EdgeRouter
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
@@ -337,10 +454,29 @@ commit ; save
 ```
 
 ---
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall e interfaces Edgerouter
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/> Firewall Edgerouter
 
-## Firewall
-#### Firewall básico
+### TIPOS DE REGLAS
+Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
+- `WAN_IN` = La entrada de la WAN
+- `WAN_LOCAL` = Para el tráfico hacia el router desde la WAN
+- `WAN_OUT` = La salida de la WAN
+
+Las reglas se añaden en las `WAN`, dependiendo del sentido que queramos hacer.
+Si desea bloquear el entrante y saliente, debemos de añadir en la IN u OUT, y en el LOCAL para bloquear los accesos hacia el sentido del router.
+
+Ejemplo para una `WAN`con pppoe,
+- Indicamos la interfaz a la WAN_IN la pppoe en modo `IN`
+- Indicamos la interfaz a la WAN_LOCAL la pppoe en modo `LOCAL`
+- Indicamos la interfaz a la WAN_IN la pppoe en modo `OUT`.
+    - <sup>No olvidar poner la acción por defecto en ACCEPT, o denegará todo el tráfico desde la red interna.</sup>
+- Añadiríamos la regla en la IN u OUT y en el LOCAL.
+- Despues realizar una prueba para comprobar la acción deseada.
+
+<sup>En EdgeMax no es necesario añadir la misma regla en IN y OUT. Denegará o permitirá la acción deseada en cualquiera de ellas.</sup>
+
+### Firewall básico
 Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Firewall algunos conceptos te serán extraños, pero intentare explicar cada paso con algún ejemplo, haciéndolo mas fácil de entender.
 Configuración básica del firewall:
 
@@ -374,27 +510,7 @@ set interfaces ethernet eth0 firewall local name WAN_LOCAL
 commit ; save
 ```
 
-#### TIPOS DE REGLAS
-Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
-- `WAN_IN` = La entrada de la WAN
-- `WAN_LOCAL` = Para el tráfico hacia el router desde la WAN
-- `WAN_OUT` = La salida de la WAN
-
-Las reglas se añaden en las `WAN`, dependiendo del sentido que queramos hacer.
-Si desea bloquear el entrante y saliente, debemos de añadir en la IN u OUT, y en el LOCAL para bloquear los accesos hacia el sentido del router.
-
-Ejemplo para una `WAN`con pppoe,
-- Indicamos la interfaz a la WAN_IN la pppoe en modo `IN`
-- Indicamos la interfaz a la WAN_LOCAL la pppoe en modo `LOCAL`
-- Indicamos la interfaz a la WAN_IN la pppoe en modo `OUT`.
-    - <sup>No olvidar poner la acción por defecto en ACCEPT, o denegará todo el tráfico desde la red interna.</sup>
-- Añadiríamos la regla en la IN u OUT y en el LOCAL.
-- Despues realizar una prueba para comprobar la acción deseada.
-
-<sup>En EdgeMax no es necesario añadir la misma regla en IN y OUT. Denegará o permitirá la acción deseada en cualquiera de ellas.</sup>
-
-
-### Configurar una interfaz PPPoE de Movistar o O2 en un EdgeRouter de Ubiquiti
+### Configurar una interfaz PPPoE de Movistar u O2 en un EdgeRouter de Ubiquiti
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</p>
 
 
@@ -419,10 +535,10 @@ Ejemplo para una `WAN`con pppoe,
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
 
 
-### Configurar el cortafuegos IPv6
+## Configurar el cortafuegos IPv6
 Lamentablemente, no existe ninguna opción para configurar el cortafuegos IPv6 a través de la interfaz gráfica de usuario.
 
-#### Opciones básicas del cortafuegos
+### Opciones básicas del cortafuegos
 Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
 
 ```
@@ -437,7 +553,7 @@ set firewall ipv6-name ipv6-fw rule 10 state established enable
 set firewall ipv6-name ipv6-fw rule 10 state related enable
 ```
 
-#### Permitir que un host sea de acceso público
+### Permitir que un host sea de acceso público
 ```
 set firewall ipv6-name ipv6-fw rule 4 action accept
 set firewall ipv6-name ipv6-fw rule 4 description 'allow access to host x'
@@ -445,7 +561,7 @@ set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:x
 ```
 ## Dual-wan
 
-#### Establecer nat para ambas interfaces
+### Establecer nat para ambas interfaces
 
 ```
 set load-balance group LB-GROUP interface eth3 failover-only
@@ -461,7 +577,7 @@ set load-balance group LB-GROUP lb-local enable
 set load-balance group LB-GROUP lb-local-metric-change disable
 ```
 
-#### Configuration NAT
+## Configuration NAT
 Ejemplo de como configurar NAT:
 ```
 configure
@@ -473,78 +589,6 @@ set service nat rule 5000 source address 172.22.1.0/24
 set service nat rule 5000 type masquerade
 commit && save && exit
 ```
-
-## LAN + DHCP
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
-
-#### Modificar DHCP mediante CLI
-```sh
-configure
-set interfaces ethernet eth1 description LAN
-set interfaces ethernet eth1 address 192.168.1.1/24
-set service dhcp-server disabled false
-set service dhcp-server shared-network-name LAN authoritative enable
-set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 default-router 192.168.1.1
-set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 dns-server 192.168.1.1
-set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 lease 86400
-set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 start 192.168.1.38 stop 192.168.1.243
-set service dns forwarding listen-on eth3
-commit ; save
-```
-
-#### Modificar DHCP mediante GUI
-Lo primero es acceder a la web de gestión a la web de gestion del router. Una vez dentro en tramos en la pestaña <code>Services</code> y después en la sub-pestaña <code>DHCP Server</code>. Aquí se podrán ver los servicios <code>DHCP</code> que tenemos en marcha, si es la primera este listado estará vacío por lo que pulsamos en el botón <code>+ Add DHCP Server</code>.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_1.png" alt="dhcp_1.png"></p>
-
-Nos aparecerá un formulario que deberemos rellenar con los datos adecuados a nuestras necesidades.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_2.png" alt="dhcp_2.png"></p>
-
-<p>  &nbsp;<code>DHCP Name</code>: Podremos darle un nombre al servicio pero eso si, no se pueden utilizar espacios.
-<p>  &nbsp;<code>Subnet</code>: Definimos la subred que ya tengamos configurada en alguna interfaz de nuestro router.
-<p>  &nbsp;<code>Range Start</code>: metemos la dirección IP por la que empezara el rango que queremos que sirva nuestro DHCP.
-<p>  &nbsp;<code>Range Stop</code>: la dirección IP fin del rango de direcciones a repartir.
-<p>  &nbsp;<code>Router</code>: Este sería el Gateway, es decir, la salida a otras redes de nuestra LAN, ya sea internet o aotras redes.
-<p>  &nbsp;<code>DNS 1</code>: Dirección IP del servidor DNS primario.
-<p>  &nbsp;<code>DNS 2</code>:: Dirección IP del servidor DNS secundario.
-<p>  &nbsp;<code>:Enable</code>:* Marcamos este checkbox para que una vez pulsemos el botón Save, se guarde la configuración y esta empiece a funcionar. Si no lo marcamos, la configuración se guardará pero esta no estará habilitada, así que el servicio no empezara a repartir direcciones IP.
-
-Por ultimo pulsamos en el botón <code>Save</code>. Desde ese mismo momento cualquier dispositivo que se conecte a la red de nuestro router y solicite una dirección IP, el servicio que acabamos de configurar le asignara una del rango predefinido.
-
-#### Ver estado del DHCP
-Ahora que está en marcha podemos interactuar con el servicio pudiendo cambiar su configuración o viendo el estado de asignaciones <code>(leases)</code> de direcciones IP.
-
-Para ello en basta con pulsar en el menú desplegable <code>Actions</code> y después en <code>Viewe Details</code>.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_3.png" alt="dhcp_3.png"></p>
-
-Se nos cargara las características del servicio pudiendo cambiarlas si es que lo deseamos. También aparecerá un resumen del estado del servicio, como la cantidad de IPs tiene de para repartir, cuantas estas asignadas, cuantas dispone para repartir etc.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_4.png" alt="dhcp_4.png"></p>
-
-También hay opción de asignar una dirección del rango de manera estática a un dispositivo de nuestra red. Bastara con pulsar en <code>Create New Mapping</code> y asignar un IP del rango a la dirección MAC del dispositivo.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_5.png" alt="dhcp_5.png"></p>
-
-En la pestaña <code>Leases</code> nos encontraremos con aquellas direcciones que ya están asignadas a algún dispositivo. Pudiendo ver cuánto tiempo les queda de asignación y pudiendo asignar de manera estática la IP que ya tienen asignada.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_6.png" alt="dhcp_6.png"></p>
-
-
-- Vía CLI: `show dhcp leases` muestre la dirección IP, la dirección MAC, el grupo y el nombre del cliente 
-
-
-#### Configurar IP estática para dispositivo 
-~~~
-set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor ip-address 10.10.99.11
-set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor mac-address '52:54:xx:xx:xx:xx'
-~~~
-
-#### Router switch
-El router también puede actuar como un conmutador. Aquí hay un ejemplo:
-~~~
-set interfaces switch switch0 address 172.22.1.1/24
-set interfaces switch switch0 mtu 1500
-set interfaces switch switch0 switch-port interface eth2
-set interfaces switch switch0 switch-port interface eth3
-set interfaces switch switch0 switch-port interface eth4
-set interfaces switch switch0 switch-port vlan-aware disable
-~~~
 
 ### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
@@ -568,13 +612,91 @@ set port-forward rule 1 protocol tcp
 
 commit ; save
 ```
+---
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# ROUTING
 
-### DNS DINAMICO
+## PROXIMAMENTE
+
+# LAN + DHCP
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+
+## DHCP
+
+### Modificar DHCP mediante CLI
+```sh
+configure
+set interfaces ethernet eth1 description LAN
+set interfaces ethernet eth1 address 192.168.1.1/24
+set service dhcp-server disabled false
+set service dhcp-server shared-network-name LAN authoritative enable
+set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 default-router 192.168.1.1
+set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 dns-server 192.168.1.1
+set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 lease 86400
+set service dhcp-server shared-network-name LAN subnet 192.168.1.0/24 start 192.168.1.38 stop 192.168.1.243
+set service dns forwarding listen-on eth3
+commit ; save
+```
+
+### Modificar DHCP mediante GUI
+Lo primero es acceder a la web de gestión a la web de gestion del router. Una vez dentro en tramos en la pestaña <code>Services</code> y después en la sub-pestaña <code>DHCP Server</code>. Aquí se podrán ver los servicios <code>DHCP</code> que tenemos en marcha, si es la primera este listado estará vacío por lo que pulsamos en el botón <code>+ Add DHCP Server</code>.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_1.png" alt="dhcp_1.png"></p>
+
+Nos aparecerá un formulario que deberemos rellenar con los datos adecuados a nuestras necesidades.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_2.png" alt="dhcp_2.png"></p>
+
+<p>  &nbsp;<code>DHCP Name</code>: Podremos darle un nombre al servicio pero eso si, no se pueden utilizar espacios.
+<p>  &nbsp;<code>Subnet</code>: Definimos la subred que ya tengamos configurada en alguna interfaz de nuestro router.
+<p>  &nbsp;<code>Range Start</code>: metemos la dirección IP por la que empezara el rango que queremos que sirva nuestro DHCP.
+<p>  &nbsp;<code>Range Stop</code>: la dirección IP fin del rango de direcciones a repartir.
+<p>  &nbsp;<code>Router</code>: Este sería el Gateway, es decir, la salida a otras redes de nuestra LAN, ya sea internet o aotras redes.
+<p>  &nbsp;<code>DNS 1</code>: Dirección IP del servidor DNS primario.
+<p>  &nbsp;<code>DNS 2</code>:: Dirección IP del servidor DNS secundario.
+<p>  &nbsp;<code>:Enable</code>:* Marcamos este checkbox para que una vez pulsemos el botón Save, se guarde la configuración y esta empiece a funcionar. Si no lo marcamos, la configuración se guardará pero esta no estará habilitada, así que el servicio no empezara a repartir direcciones IP.
+
+Por ultimo pulsamos en el botón <code>Save</code>. Desde ese mismo momento cualquier dispositivo que se conecte a la red de nuestro router y solicite una dirección IP, el servicio que acabamos de configurar le asignara una del rango predefinido.
+
+### Ver estado del DHCP
+Ahora que está en marcha podemos interactuar con el servicio pudiendo cambiar su configuración o viendo el estado de asignaciones <code>(leases)</code> de direcciones IP.
+
+Para ello en basta con pulsar en el menú desplegable <code>Actions</code> y después en <code>Viewe Details</code>.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_3.png" alt="dhcp_3.png"></p>
+
+Se nos cargara las características del servicio pudiendo cambiarlas si es que lo deseamos. También aparecerá un resumen del estado del servicio, como la cantidad de IPs tiene de para repartir, cuantas estas asignadas, cuantas dispone para repartir etc.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_4.png" alt="dhcp_4.png"></p>
+
+También hay opción de asignar una dirección del rango de manera estática a un dispositivo de nuestra red. Bastara con pulsar en <code>Create New Mapping</code> y asignar un IP del rango a la dirección MAC del dispositivo.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_5.png" alt="dhcp_5.png"></p>
+
+En la pestaña <code>Leases</code> nos encontraremos con aquellas direcciones que ya están asignadas a algún dispositivo. Pudiendo ver cuánto tiempo les queda de asignación y pudiendo asignar de manera estática la IP que ya tienen asignada.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/dhcp/dhcp_6.png" alt="dhcp_6.png"></p>
+
+- Vía CLI: `show dhcp leases` muestre la dirección IP, la dirección MAC, el grupo y el nombre del cliente 
+
+
+## Configurar IP estática para dispositivo 
+~~~
+set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor ip-address 10.10.99.11
+set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor mac-address '52:54:xx:xx:xx:xx'
+~~~
+
+## Router switch
+El router también puede actuar como un conmutador. Aquí hay un ejemplo:
+~~~
+set interfaces switch switch0 address 172.22.1.1/24
+set interfaces switch switch0 mtu 1500
+set interfaces switch switch0 switch-port interface eth2
+set interfaces switch switch0 switch-port interface eth3
+set interfaces switch switch0 switch-port interface eth4
+set interfaces switch switch0 switch-port vlan-aware disable
+~~~
+
+## DNS DINAMICO
 
 <details>
     <summary>Mediante interfaz GUI:</summary>
 
-## Instrucciones de uso con GUI:
+### Instrucciones de uso con GUI:
 <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns">DuckDNS</a>.</sup>
 
 1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
@@ -596,7 +718,7 @@ commit ; save
 <details>
     <summary>Mediante interfaz CLI:</summary>
 
-## Instrucciones de uso con CLI:
+### Instrucciones de uso con CLI:
 
 Esto podemos realizarlo conectando al router mediante el protocolo SSH o usando el intérprete CLI incorporado en la propia web de gestión.
 En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utilizando las mismas credenciales que usamos para acceder vía web.
@@ -632,9 +754,12 @@ update-status: good
 &nbsp;
 
 ---
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/> Añadir listas de seguridad al firewall
 
-#### Creamos el grupo y agregamos una regla de firewall a la WAN:
+## Crear script
+
+### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
 <p><sup>Para ver los grupos que tenemos: <code>show firewall group network-group</code>.</sup></p>
 
@@ -656,7 +781,7 @@ set firewall name WAN_IN rule 10 protocol all
 commit ; save
 ```
 
-#### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
+### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
 <p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, <code>TMPFILE</code> y <code>TMPFILE2</code> con el nombre del grupo creado.</p>
 <p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
 <p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p>
@@ -730,7 +855,7 @@ exit 0
 ```
 <p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ o :wq</p>
 
-#### Hazlo ejecutable:
+### Hazlo ejecutable:
 ```
 sudo chmod +x /config/scripts/post-config.d/update-spamhaus
 ```
@@ -745,18 +870,18 @@ Resultado:
 <ul><code>Added 561 entries to SPAMHAUS_DROP</code></ul>
 
   
-### PROGRAMAR TAREA:
+## PROGRAMAR TAREA:
 
 OPCIÓN 1:
-#### Este es el programador de tareas, configura para ejecutar un cron diario cada 12h:
+### Este es el programador de tareas, configura para ejecutar un cron diario cada 12h:
 <ul><code>set system task-scheduler {task update_spamhaus {crontab-spec "00 12 * * *"ejecutable {path /config/scripts/post-config.d/update-spamhaus}</code></ul>
 
-#### También puede colocar su configuración para que sobreviva a una actualización cada 24h:
+### También puede colocar su configuración para que sobreviva a una actualización cada 24h:
 <ul><code>set system task-scheduler SPAMHAUS {crontab-spec "00 24 * * *" executable {path /config/scripts/post-config.d/update-spamhaus}}</code></ul>
 
 
 OPCIÓN 2:
-####  Simplemente agregue el script al programador de tareas tal como está, cambiando el nombre del task y el path de su script:
+###  Simplemente agregue el script al programador de tareas tal como está, cambiando el nombre del task y el path de su script:
 <ul><code>set system task-scheduler task update-spamhaus executable path /config/scripts/post-config.d/update-spamhaus</code></ul>
 <ul>Las tareas se programan en horas:<code>24h,48h...</code></ul>
 <ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
@@ -771,7 +896,7 @@ OPCIÓN 2:
 <ul><code>show system task-scheduler</code></ul>
 
 
-#### Buenas prácticas.
+### Buenas prácticas.
 <p>Buenas prácticas para un correcto funcionamiento del firewall:</p>
 
 - Coloque la regla spamhaus en primer lugar en WAN_IN y WAN_LOCAL (es decir, antes de la regla de permiso para conexiones establecidas y relacionadas). Esto es para evitar la situación "rara" de que un host interno (por ejemplo, infectado con malware) de alguna manera establezca una conexión con un host listado de spamhaus, dando la oportunidad de usar la conexión establecida para fines de spam.
@@ -780,7 +905,7 @@ OPCIÓN 2:
 - Debería asignar las reglas de firewall solo en el pppoe 
 
 
-### REVISIÓN
+## REVISIÓN
 <p>Listar</p>
 <ul><code>sudo /sbin/ipset list</code></ul>
 <p>Utilice este comando a través de la CLI para ver las entradas:</p>
@@ -871,7 +996,8 @@ ethernet eth1 {
 ```
 
 ---
-## <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/icon-certificate.png" alt="Ubiquiti edgemax" width="40"/> POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST
  
 
 ### Añadir certificado CA para localhost
@@ -925,88 +1051,14 @@ Location: https://<ip-of-edgerouter>:443/
 Date: Sun, 11 Jan 2015 07:46:13 GMT
 Server: Server
 ```
-## Configuración de copia de seguridad y restauración 
-Realizar una copia de seguridad y restaurar el archivo de configuración de un EdgeRouter.
+---
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# OpenVPN
 
-<details>
-    <summary>Realización copia de seguridad y restauración vía GUI:</summary>
-
-## Instrucciones de uso para realizar vía GUI
-
-1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
-<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
-2. Descargue el archivo de configuración de la copia de seguridad haciendo clic en el Descargar .
-3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/backup.PNG" alt="backup"></p>
-
-## Instrucciones de uso para restaurar vía GUI
-1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
-<ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
-2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
-3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/restore.PNG" alt="restore"></p>
-
-## Instrucciones de uso para realizar/restaurar vía UNMS
-Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
-<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
-
-&nbsp;
-</details>
-&nbsp;
-
-<details>
-    <summary>Realización copia de seguridad y restauración vía CLI:</summary>
-
-## Instrucciones de uso para realizar vía CLI
-
-<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
-<p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
-<ul><code>commit ; save</code></ul>
-<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
-
-```sh
-  scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
-  sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
-  ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
-  tftp://<host>/<file>                  Save to file on remote machine
-```
-Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el archivo de configuración.
-<p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
-<ul><code>cat /config/config.boot</code></ul>
-
-## Instrucciones de uso para restaurar vía CLI
-<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
-<p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
-<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
-
-```sh
-  scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
-  sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
-  ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
-  http://<host>/<file>                  Load from file on remote machine
-  tftp://<host>/<file>                  Load from file on remote machine
-```
-
-Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el archivo de configuración.
-<p>4. Verifique que la restauración ha sido correcta y con el contenido de la configuración del <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya importado correctamente.</p>
-<ul><code>cat /config/config.boot</code> y con el comando <code>compare</code></ul>
-<p>5. Una vez asegurado de que todos los cambios en las configuraciones actualmente activas/en funcionamiento son correctas se procede a guardar en el arranque/inicio.
-<ul><code>commit ; save</code></ul></p>
-
-&nbsp;
-</details>
-&nbsp;
-
-- También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
-Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
-<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
-
-## OpenVPN
-
-### Configuración EdgeRouter como servidor OpenVPN. (Servidor)
+## Configuración EdgeRouter como servidor OpenVPN. (Servidor)
 Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 
-#### Crear certificados
+### Crear certificados
 Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA para eso
 - ca.crt (CA Raíz)
 - server.crt (Certificado del Servidor)
@@ -1021,7 +1073,7 @@ Una vez creados los archivos, cópielos todos en `/config/auth/`.
 
 Para la configuración del cliente: Asegúrese de que `remote-cert-tls server` está activado.
 
-#### Configuración básica de OpenVPN
+### Configuración básica de OpenVPN
 ```
 configure
 set interfaces openvpn vtun0
@@ -1034,7 +1086,7 @@ set interfaces openvpn vtun0 server push-route 192.168.178.0/24
 set interfaces openvpn vtun0 server subnet 192.168.177.0/24
 ```
 
-#### Configuración del certificado
+### Configuración del certificado
 Como se ha descrito anteriormente. Asegúrese de que su clave privada tiene `chmod 600`.
 
 ```
@@ -1046,14 +1098,14 @@ set interfaces openvpn vtun0 tls key-file /config/auth/server.key
 set interfaces openvpn vtun0 tls crl-file /config/auth/revocation-list.crl
 ```
 
-#### Configurar el registro
+### Configurar el registro
 ```
 set interfaces openvpn vtun0 openvpn-option "--log /var/log/openvpn.log"
 set interfaces openvpn vtun0 openvpn-option "--status /var/log/openvpn-status.log"
 set interfaces openvpn vtun0 openvpn-option "--verb 7"
 ```
 
-#### Configuración del cortafuegos
+### Configuración del cortafuegos
 No olvides configurar NAT para los clientes openvpn
 
 ```
@@ -1065,14 +1117,14 @@ set firewall name XXX rule XX protocol udp
 ```
 
 
-### Configuración EdgeRouter como Cliente OpenVPN. (Cliente)
+## Configuración EdgeRouter como Cliente OpenVPN. (Cliente)
 Este tutorial describe cómo configurar el EdgeRouter como Cliente OpenVPN.
 
 Usefull links:
 - [Youtube: EdgeRouter OpenVPN to Private Internet Access!](https://www.youtube.com/watch?v=B9dXiKhDVl0) 
 - [Youtube: Dedicated Private Internet VLAN and Wireless Network](https://www.youtube.com/watch?v=_TBj5MYmgQc)
 
-#### Configuración básica
+### Configuración básica
 Primero necesita hacer ssh en su EdgeRouter. A continuación, cree un directorio donde almacenar sus archivos OpenVPN.
 
 ```
@@ -1089,7 +1141,7 @@ En este ejemplo tengo los siguientes archivos:
 
 Asegúrese de que `key.pem` tiene `chmod 600`
 
-#### Ejemplo del archivo de configuración OpenVPN
+### Ejemplo del archivo de configuración OpenVPN
 Este archivo puede variar dependiendo de la configuración de su servidor openvpn.
 ```
 client
@@ -1114,7 +1166,7 @@ tls-auth /config/auth/example/openvpn-static-key-v1.key 1
 
 ```
 
-#### Configurar la interfaz
+### Configurar la interfaz
 Si ya ha configurado su EdgeRouter como un servidor OpenVPN, entonces usted necesita cambiar la interfaz de red de `vtun0` a otra cosa (por ejemplo, `vtun1`)
 
 ```
@@ -1127,7 +1179,7 @@ save
 
 
 
-#### Setup an extra VLAN for clients
+### Setup an extra VLAN for clients
 ```
 # create a new vlan (VLAN 10)
 set interfaces switch switch0 vif 10 address 192.168.40.1/24
@@ -1135,7 +1187,7 @@ set interfaces switch switch0 vif 10 description 'example VLAN'
 set interfaces switch switch0 vif 10 mtu 1500
 ```
 
-#### Setup a DHCP server
+### Setup a DHCP server
 ```
 set service dhcp-server shared-network-name EXAMPLE-LAN authoritative disable
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 default-router 192.168.40.1
@@ -1145,7 +1197,7 @@ set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 l
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 start 192.168.40.10 stop 192.168.40.100
 ```
 
-#### Setup NAT & routing
+### Setup NAT & routing
 ```
 # setup NAT
 set service nat rule 5020 description NAT-EXAMPLE-VPN
@@ -1164,11 +1216,12 @@ set firewall modify VPN_EXAMPLE_ROUTE rule 10 modify table 1
 # apply the firewall route to VLAN 10
 set interfaces switch switch0 vif 10 firewall in modify VPN_EXAMPLE_ROUTE
 ```
-
-## squidguard proxy
+---
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# squidguard proxy
 Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categorías, por ejemplo, anuncios o malware.
 
-#### requisito previo
+## requisito previo
 - SSH en su enrutador Edge.
 - Descargue las categorías disponibles. Dependiendo de su dispositivo, esto puede tardar unos minutos (en mi dispositivo tardó unos 100 minutos).
 - Actualizar y configurar [webproxy](https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy)
@@ -1177,7 +1230,7 @@ Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categ
 update webproxy blacklists
 ```
 
-#### ejemplo de configuración 
+## ejemplo de configuración 
 ```
 set service webproxy cache-size 0
 set service webproxy default-port 3128
@@ -1188,7 +1241,7 @@ set service webproxy url-filtering squidguard block-category porn
 set service webproxy url-filtering squidguard default-action allow
 set service webproxy url-filtering squidguard redirect-url 'https://brainoftimo.com/not-for-you'
 ```
-#### possible categories to block
+### possible categories to block
 - ads                       
 - adult                     
 - aggressive                
@@ -1256,8 +1309,10 @@ set service webproxy url-filtering squidguard redirect-url 'https://brainoftimo.
 - violence
 - warez
 - webmail
-
-## Configure el dispositivo para iniciar sesión en un servidor de registro 
+---
+**[`^        back to top        ^`](#awesome-selfhosted)**
+# Syslog
+Configure el dispositivo para iniciar sesión en un SYSLOG
 Nuestro Servidor Syslog tiene la ip de: `10.10.99.111`
 
 Estamos registrando todo: (`level debug`) pero puede establecer otro nivel de registro, por ejemplo `level err`.
@@ -1278,3 +1333,6 @@ Con esta información puedes configurar un router neutro que realice solamente l
 <p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
 
 <blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.</p></blockquote>
+---
+<sup>Estos archivos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
+<sub>Todas y cada una de las marcas registradas son propiedad de sus respectivos dueños.</sub>
