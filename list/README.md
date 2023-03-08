@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://www.ui.com/">
-        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/shield.png" alt="UbiquitiXEdgeMax">
+        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/shield.png" alt="UbiquitiXEdgeMax" width="320"/>
     </a>
     <br>
     <strong>Ubiquiti networks x EdgeMax©</strong>
@@ -60,9 +60,7 @@ https://isc.sans.edu/block.txt
 ~~~
 
 #### The Block List Project
-~~~
-https://github.com/blocklistproject/Lists
-~~~
+Página web de The `Block List Project` [URL](https://github.com/blocklistproject/Lists)
 ~~~
 https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.ip
 ~~~
@@ -89,7 +87,7 @@ https://talosintelligence.com/documents/ip-blacklist
 
 #### Proofpoint Emerging Threats Rules
 
-Página web de Proofpoint [URL](https://rules.emergingthreats.net/)
+Página web de `Proofpoint` [URL](https://rules.emergingthreats.net/)
 
 - Emerging Threats fwip rules.
 ~~~
@@ -99,5 +97,4 @@ https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt
 &nbsp;
 
 <sup>Estos archivos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
-
 <sub>Todas y cada una de las marcas registradas son propiedad de sus respectivos dueños.</sub>
