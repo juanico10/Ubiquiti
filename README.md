@@ -61,6 +61,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Requisitos](#requisito-previo)
   - [Configuración](#ejemplo-de-configuración)
 - [Syslog](#syslog)
+- [WireGuard](#wireguard)
 - [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
@@ -783,6 +784,7 @@ update-status: good
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Añadir listas de seguridad al firewall
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
+<p><sup>Próximamente realizaré el script para que puedas cargar IPv6.</sup></p>
 
 ## Crear script
 
@@ -931,6 +933,10 @@ OPCIÓN 2:
 - Hoy noté en mis registros que el WAN_OUT coincidió (y rechazó) con el tráfico saliente a la dirección IP 185.3.135.146 (búsqueda de spamhaus aquí, listado desde el 29/2/2016). Este tráfico se originó en el cliente bittorrent que se ejecuta en mi NAS. No sé si los spammers usan bittorrent para infiltrarse en hosts posiblemente vulnerables, pero lo considero como un paso de protección adicional que funcionó.
 - Debería asignar las reglas de firewall solo en el pppoe 
 
+## README con listas de IPs públicas
+He realizado un README con listas de IPs públicas.
+Dejo el enlace a la carpeta: 
+* [README con listas de IPs públicas](list/)
 
 ## REVISIÓN
 <p>Listar</p>
@@ -1081,9 +1087,9 @@ Server: Server
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # OpenVPN
+Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 
 ## Configuración EdgeRouter como servidor OpenVPN. (Servidor)
-Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 
 ### Crear certificados
 Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA para eso
@@ -1351,6 +1357,10 @@ commit
 save
 exit
 ```
+# WireGuard
+Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
+Adjunto el enlace al repositorio de GitHub:
+[WireGuard/wireguard-vyatta-ubnt](https://github.com/WireGuard/wireguard-vyatta-ubnt)
 
 
 ## Conclusión
