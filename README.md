@@ -21,7 +21,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Acceso GUI](#acceso-a-la-gui)
   - [Certificado](#solucionar-problema-con-certificado-inválido)
 - [Configuración inicial del EdgeRouter](#configuración-inicial-del-edgerouter)
-  - [Reset fábrica](#realizacion-de-un-hardware-o-software-reset)
+  - [Reset fábrica](#realización-de-un-hardware-o-software-reset)
   - [Actualizaciones](#actualizar-edgerouter)
   - [Acceso interfaz](#acceso-a-la-interfaz-de-configuración-edgeos)
   - [Copia seguridad](#configuración-de-copia-de-seguridad-y-restauración)
@@ -38,6 +38,12 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Configuración nat](#configuration-nat)
   - [Port forwarding](#port-forwarding)
 - [Routing](#routing)
+  - [Load Balancing](#load-balancing)
+  - [OSPF](#ospf)
+  - [BGP](#bgp)
+  - [VRRP](#vrrp)
+  - [Public Static IP Addresses](#public-static-ip-addresses)
+  - [Static Route](#static-route)
 - [LAN](#lan)
   - [DHCP](#dhcp)
   - [Actualizaciones](#configurar-IP-estática-para-dispositivo)
@@ -55,7 +61,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Requisitos](#requisito-previo)
   - [Configuración](#ejemplo-de-configuración)
 - [Syslog](#syslog)
-
+- [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
 <p>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</p>
@@ -618,8 +624,25 @@ commit ; save
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
+Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.
 
-## PROXIMAMENTE
+## Load Balancing
+[Load Balancing](https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing)
+
+## OSPF
+[OSPF](https://help.ui.com/hc/en-us/articles/205204050-EdgeRouter-OSPF-Routing)
+
+## BGP
+[BGP](https://help.ui.com/hc/en-us/articles/205222990-EdgeRouter-Border-Gateway-Protocol-BGP-)
+
+## VRRP
+[VRRP](https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-)
+
+## Public Static IP Addresses
+[Public Static IP Addresses](https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses
+
+## Static Route
+[Static Route](https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route)
 
 # LAN
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
@@ -1181,8 +1204,6 @@ commit
 save
 ```
 
-
-
 ### Setup an extra VLAN for clients
 ```
 # create a new vlan (VLAN 10)
@@ -1333,10 +1354,9 @@ exit
 
 
 ## Conclusión
-Con esta información puedes configurar un router neutro que realice solamente las funciones de un router, este dispositivo puede ser una buena opción. Aquí podrás encontrar todo lo que he conseguido hacer con este router.
-<p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
+Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
 
-<blockquote class="is-info"><p>Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.</p></blockquote>
----
-<sup>Estos archivos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
+<sup>Estos archivos/textos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
 <sub>Todas y cada una de las marcas registradas son propiedad de sus respectivos dueños.</sub>
+
+<p><sup>Iré actualizando información y añadiendo procedimientos cuando tenga tiempo libre.</sup></p>
