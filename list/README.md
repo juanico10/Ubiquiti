@@ -59,9 +59,15 @@ https://blocklist.greensnow.co/greensnow.txt
 https://isc.sans.edu/block.txt
 ~~~
 
-- The Block List Project
+#### The Block List Project
 ~~~
 https://github.com/blocklistproject/Lists
+~~~
+~~~
+https://raw.githubusercontent.com/blocklistproject/Lists/master/malware.ip
+~~~
+~~~
+https://raw.githubusercontent.com/blocklistproject/Lists/master/abuse.ip
 ~~~
 
 #### Spamhaus
