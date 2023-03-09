@@ -866,9 +866,10 @@ update-status: good
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
 
 ## Crear script
-Antes de crear el script, asegurar que lista van a escoger, si IPv4 o IPv6. Una vez sepan que lista, escoger el script correspondiente:
-- IPv4: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4)
-- IPv6: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6)
+### Escoger script a utilizar
+Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
+- `IPv4`: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4)
+- `IPv6`: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6)
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -893,7 +894,7 @@ commit ; save
 ```
 
 ### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
-<p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, <code>TMPFILE</code> y <code>TMPFILE2</code> con el nombre del grupo creado.</p>
+<p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, con el nombre del grupo creado.</p>
 <p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
 
 > EDIT: Crear el script en `/config/scripts/post-config.d` mejor que en `/config/scripts/` porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio `/config/scripts/post-config.d`, se ejecutará automáticamente después del arranque.
@@ -902,7 +903,8 @@ commit ; save
 sudo vi /config/scripts/post-config.d/update-spamhaus
 ```
 
-<p>El scrip pueden descargarlo o verlo tambien desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP">link</a></p>
+- Ahora pegan el scrip escogido en el punto: [Escoger script a utilizar](#escoger-script-a-utilizar)
+<p><sup>Importante sustituir las listas si son <code>IPv4</code> o si son <code>IPv6</code>, en el siguiente ejemplo es <code>IPv4</code>.</sup></p>
 
 ```bash
 #!/bin/bash
@@ -917,7 +919,8 @@ clean_up ()
      /bin/rm $TMPFILE $TMPFILE2
 }
 
->$TMPFILE>$TMPFILE2
+>$TMPFILE
+>$TMPFILE2
 /usr/bin/curl -s http://www.spamhaus.org/drop/drop.txt >> $TMPFILE2
 /usr/bin/curl -s http://www.spamhaus.org/drop/edrop.txt >> $TMPFILE2
 
@@ -933,7 +936,7 @@ if [ "$?" != 0 ]; then
 fi
 
 NEWGROUP=$NETGROUP-$$
-/sbin/ipset --create $NEWGROUP nethash
+/sbin/ipset --create $NEWGROUP hash:net
 if [ "$?" != 0 ]; then
   clean_up
   logger -i -s -- "There was an error trying to create temporary set"
