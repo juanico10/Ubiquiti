@@ -64,7 +64,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Configuración](#ejemplo-de-configuración)
 - [Syslog](#syslog)
 - [WireGuard](#wireguard)
-- [Diagnósticos red](Herramientas de diagnostico de red)
+- [Diagnóstico de red](herramientas-de-diagnostico-de-red)
 - [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
