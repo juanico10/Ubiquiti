@@ -132,7 +132,7 @@ Cuando intentamos acceder vía web, nos indica que el certificado es inválido a
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
 
 Podemos ver el contenido del archivo de certificado <code>.PEM</code>:
-```sh
+```bash
 openssl x509 -in CERTIFICATE.pem -text -noout
 ```
 
@@ -141,7 +141,7 @@ Para poder solucionar, debemos descargar el certificado del navegador. Nos desca
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
 
 Una vez descargado tenemos que cambiar el <code>.pem</code> a <code>.crt</code> con OpenSSL:
-```sh
+```bash
 openssl x509 -outform der -in CERTIFICATE.pem -out CERTIFICATE.crt
 ```
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert3.PNG" alt="cert3"></p>
@@ -153,7 +153,7 @@ Una vez importado el certificado y borrado las cookies, ya no nos indicará que 
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert5.PNG" alt="cert5"></p>
 
 Tambien podemos migrar el <code>.pem</code> a <code>.pfx</code> con OpenSSL:
-```sh
+```bash
 openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICATE.pfx
 ```
 <p><sup>Para ello necesitas la private key del certificado.</sup></p>
@@ -306,7 +306,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <ul><code>commit ; save</code></ul>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
 
-```sh
+```bash
   scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
   ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
@@ -321,7 +321,7 @@ Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el arch
 <p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
 
-```sh
+```bash
   scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
   ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
@@ -365,7 +365,7 @@ Offloading se utiliza para ejecutar funciones del enrutador usando el hardware d
 **UTILIZAR CON CUIDADO**.
 
 Para ER-X,ER-X-SPF,EP-R6
-```
+```bash
 configure
 set system offload hwnat enable
 set system offload ipsec enable
@@ -373,7 +373,7 @@ commit ; save
 ```
 
 Para todos los demás modelos de Edgerouter
-```
+```bash
 configure
 set system offload ipv4 forwarding enable
 set system offload ipv4 gre enable
@@ -388,7 +388,7 @@ commit ; save
 
 ## Remover default user y crear un usuario
 Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
-```sh
+```bash
 set system login user <user>
 set system login user <user> level admin
 set system login user <user> authentication plaintext-password <contraseña>
@@ -398,13 +398,13 @@ commit ; save
 <sup>La contraseña se encripta una vez introducida en texto plano</sup>
 
 Despues eliminarmos el usuario por defecto
-```sh
+```bash
 configure
 delete system login user ubnt
 commit ; save
 ```
 **PD:** Si creas un usuario como operador, no tiene acceso por ssh.
-```sh
+```bash
 This account is currently not available.
 Connection to 192.168.1.1 closed.
 ```
@@ -415,13 +415,13 @@ Connection to 192.168.1.1 closed.
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
 <p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
 
-```sh
+```bash
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 ```
 <ul><code>Pueden utilizar Filezilla o similar para enviar el archivo.</code></ul>
 
 Accedemos al equipo y configuramos la clave pública generada:
-```sh
+```bash
 configure  
 loadkey <user> /tmp/id_rsa.pub  
 sudo chown -R <user> /home/<user>
@@ -431,7 +431,7 @@ commit ; save
 ### Comprobación de acceso
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de salir de la sesión SSH actual.
 Probamos acceso sin salir de la sesión SSH por si tienes que hacer un rollback:
-```sh
+```bash
 $ ssh <user>@<ip-of-edgerouter>
 exit
 ```
@@ -440,7 +440,7 @@ exit
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
-```sh
+```bash
 configure
 set service ssh disable-password-authentication
 commit ; save
@@ -448,7 +448,7 @@ commit ; save
 ### Asegurar acceso a la GUI y ssh
 Pueden asegurar el acceso al ssh o gui con vuestro rango de IPs, es opcional, pero seguro.
 (opcional)
-```sh
+```bash
 configure
 set service gui listen-address <lan ip address/range>
 set service ssh listen-address <lan ip address/range>
@@ -456,7 +456,7 @@ commit ; save
 ```
 
 Recomendado, cambiar el puerto de ssh y habilitar V2
-```sh
+```bash
 configure
 set service ubnt-discover disable
 set service ssh protocol-version v2
@@ -471,10 +471,14 @@ commit ; save
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/>
 
 ### TIPOS DE REGLAS
-Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
-- `WAN_IN` = La entrada de la WAN
-- `WAN_LOCAL` = Para el tráfico hacia el router desde la WAN
-- `WAN_OUT` = La salida de la WAN
+* Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
+  - `WAN_IN` = es para paquetes externos que llegan a su enrutador y se dirigen a su LAN. Deje el destino en blanco. Solo debe preocuparse por el grupo de direcciones de origen BlockedIP. Coloque la regla DESPUÉS de que los dos primeros normales acepten establecidos/relacionados y eliminen los no válidos.
+  - `WAN_LOCAL` = es para paquetes externos que llegan a su enrutador y se dirigen a su propio enrutador. El origen debe volver a ser el grupo de direcciones BlockedIP y dejar el destino vacío. También ponga después de las mismas dos reglas que arriba.
+  - `WAN_OUT` = Para bloquear el saliente, debe crear un nuevo conjunto de reglas y adjuntarlo como OUT a ethX con la aceptación predeterminada. Luego agregue una sola regla para colocar con el grupo de direcciones de destino BlockedIP y nada en el origen. 
+
+* Tipos de LAN
+  - `LAN_IN` = Todo lo que ingresa al enrutador desde su LAN que está destinado a otro lugar WAN u otra LAN. En una configuración SMB o SOHO, esto probablemente sea explícitamente permisivo. En un entorno empresarial, esto puede ser permisivo o no (por ejemplo, bloquear todo el tráfico saliente excepto SFTP en un puerto no estándar)
+  - `LAN_LOCAL` = Todo lo que ingresa al enrutador desde su LAN destinado al enrutador.
 
 Las reglas se añaden en las `WAN`, dependiendo del sentido que queramos hacer.
 Si desea bloquear el entrante y saliente, debemos de añadir en la IN u OUT, y en el LOCAL para bloquear los accesos hacia el sentido del router.
@@ -494,7 +498,7 @@ Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Fi
 Configuración básica del firewall:
 
 Asignar la interfaz de la WAN que vayan a utilizar:
-```sh
+```bash
 configure
 
 set firewall name WAN_IN default-action drop
@@ -550,6 +554,7 @@ commit ; save
 Puedes asignar la MAC del HGU a la WAN:
 
 ## IPv6 on the EdgeRouter
+El cortafuegos para IPv6 es independiente del cortafuegos de IPv4 y actualmente debe configurarse mediante la CLI ("establecer el nombre de ipv6 del cortafuegos...", etc.). O el árbol de configuración en la interfaz de usuario web, por lo que deberá crear reglas de IPv6 por separado y aplicarlas a la interfaz/dirección adecuada.
 
 ### Firewall
 Primero, es importante que configuremos el firewall ya que la política predeterminada es "aceptar" y sus clientes de LAN tendrán IP enrutables.
@@ -557,7 +562,7 @@ Primero, es importante que configuremos el firewall ya que la política predeter
 En comparación con nuestras reglas de firewall IPv4, hay una diferencia importante: debemos permitir ICMPv6 y DHCP para que DHCPv6-PD funcione.
 
 - Cree una política para clientes WAN->LAN:
-~~~
+~~~bash
 edit firewall ipv6-name WAN6_IN
 set default-action dropset rule 10 action accept
 set rule 10 description "allow established"
@@ -573,7 +578,7 @@ top
 ~~~
 
 - Ahora cree una política para WAN->Router (también conocido como local):
-~~~
+~~~bash
 edit firewall ipv6-name WAN6_LOCAL
 set default-action dropset rule 10 action accept
 set rule 10 description "allow established"
@@ -593,7 +598,7 @@ top
 ~~~
 
 - Ahora adjunte las políticas a su interfaz WAN: 
-~~~
+~~~bash
 set interfaces ethernet eth1 firewall in ipv6-name WAN6_IN
 set interfaces ethernet eth1 firewall local ipv6-name WAN6_LOCAL
 ~~~
@@ -601,7 +606,7 @@ set interfaces ethernet eth1 firewall local ipv6-name WAN6_LOCAL
 - Ahora solicitaremos direcciones IPv6 a nuestro ISP. Es posible que deba descubrir manualmente la longitud del prefijo que proporciona su ISP. Las dos longitudes más comunes son /56 y /64.
 > Nota: Usaremos SLAAC (Configuración automática de direcciones sin estado) en lugar de DHCP con estado (que es como funciona DHCP IPv4).
 
-~~~
+~~~bash
 edit interfaces ethernet eth1
 set dhcpv6-pd pd 0 prefix-length /64
 set dhcpv6-pd pd 0 interface eth0 host-address ::1
@@ -627,7 +632,7 @@ set interfaces ethernet eth2 vif 17 ipv6 router-advert prefix ::/64
 ### Opciones básicas del cortafuegos
 Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
 
-```
+```bash
 set firewall ipv6-name ipv6-fw default-action drop
 set firewall ipv6-name ipv6-fw description 'IPv6 firewall'
 set firewall ipv6-name ipv6-fw rule 1 action accept
@@ -640,7 +645,7 @@ set firewall ipv6-name ipv6-fw rule 10 state related enable
 ```
 
 ### Permitir que un host sea de acceso público
-```
+```bash
 set firewall ipv6-name ipv6-fw rule 4 action accept
 set firewall ipv6-name ipv6-fw rule 4 description 'allow access to host x'
 set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxx
@@ -649,7 +654,7 @@ set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:x
 
 ### Establecer nat para ambas interfaces
 
-```
+```bash
 set load-balance group LB-GROUP interface eth3 failover-only
 set load-balance group LB-GROUP interface eth3 route-test initial-delay 60
 set load-balance group LB-GROUP interface eth3 route-test interval 10
@@ -665,7 +670,7 @@ set load-balance group LB-GROUP lb-local-metric-change disable
 
 ## Configuration NAT
 Ejemplo de como configurar NAT:
-```
+```bash
 configure
 set service nat rule 5000 description NAT-TO-WAN
 set service nat rule 5000 log disable
@@ -682,7 +687,7 @@ Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puert
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
-```sh
+```bash
 configure
 
 set port-forward auto-firewall enable
@@ -778,14 +783,14 @@ En la pestaña <code>Leases</code> nos encontraremos con aquellas direcciones qu
 
 
 ## Configurar IP estática para dispositivo 
-~~~
+~~~bash
 set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor ip-address 10.10.99.11
 set service dhcp-server shared-network-name MGMT-VLAN subnet 10.10.99.0/24 static-mapping cgn-monitor mac-address '52:54:xx:xx:xx:xx'
 ~~~
 
 ## Router switch
 El router también puede actuar como un conmutador. Aquí hay un ejemplo:
-~~~
+~~~bash
 set interfaces switch switch0 address 172.22.1.1/24
 set interfaces switch switch0 mtu 1500
 set interfaces switch switch0 switch-port interface eth2
@@ -829,7 +834,7 @@ En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utiliz
 1. Accedemos por ssh o cli web.
 2. 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
-```sh
+```bash
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
 set service dns dynamic interface INTERFAZ service custom-duckdns host-name SUBDMIONIO
@@ -868,7 +873,7 @@ update-status: good
 * Creamos un nuevo grupo y modificamos nombre de grupo.
 <p><sup>Para ver los grupos que tenemos: <code>show firewall group network-group</code>.</sup></p>
 
-```
+```bash
 set firewall group network-group SPAMHAUS_DROP
 commit
 ```
@@ -891,7 +896,7 @@ commit ; save
 <p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
 <p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p>
 
-```sh
+```bash
 sudo vi /config/scripts/post-config.d/update-spamhaus
 ```
 
@@ -961,12 +966,12 @@ exit 0
 <p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ o :wq</p>
 
 ### Hazlo ejecutable:
-```
+```bash
 sudo chmod +x /config/scripts/post-config.d/update-spamhaus
 ```
 
 EJECUTAR:
-```
+```bash
 sudo /config/scripts/post-config.d/update-spamhaus
 ```
 <p><sup>No pensar que se ha quedado bloqueado al insertar el comando, tarda un poco si la lista es muy grande.</sup></p>
@@ -1031,7 +1036,7 @@ He creado un script para poder informar al telegram de las IPs bloqueadas por un
 
 
 ### EJEMPLO DE REGLAS:
-```sh
+```bash
     name WAN_IN {
         default-action drop
         description "WAN to internal"
@@ -1081,7 +1086,7 @@ He creado un script para poder informar al telegram de las IPs bloqueadas por un
         }
 ```
 ### EJEMPLO DE INTERFAZ WAN:
-```sh
+```bash
 ethernet eth1 {
         description "Internet (PPPoE)"
         duplex auto
@@ -1114,7 +1119,7 @@ ethernet eth1 {
 Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
 Opción de ir a la ruta de certificados SSL con Let's Encrypt hay varios diferentes para elegir. Por ejemplo, [ubnt-letsencrypt](https://github.com/j-c-m/ubnt-letsencrypt) por [Jesse Miller](https://github.com/j-c-m)
 
-```sh
+```bash
 configure
 set system static-host-mapping host-name <hostname> inet <ip-of-edgerouter>
 commit ; save
@@ -1122,27 +1127,27 @@ commit ; save
 
 **Crear certificado**
 
-```sh
+```bash
 $ mkcert <ip-of-edgerouter> <hostname>
 cat <ip-of-edgerouter>+1-key.pem <ip-of-edgerouter>+1.pem > server.pem
 ```
 
 **Copia de seguridad del archivo de certificado existente**
 
-```sh
+```bash
 sudo cp /etc/lighttpd/server.pem /etc/lighttpd/.server-OLD.pem
 exit
 ```
 
 **Copie el nuevo archivo de certificado en la dirección del usuario de su router**
 
-```sh
+```bash
 scp /path/to/server.pem <user>@<ip-of-edgerouter>:/home/<user>/server.pem
 ```
 
 **Copiar el nuevo archivo de certificado desde la dirección del usuario y habilitar el certificado**
 
-```sh
+```bash
 sudo cp /home/<user>/server.pem /etc/lighttpd/server.pem
 # Kill webserver service by PID
 sudo kill -SIGINT $(cat /var/run/lighttpd.pid)
@@ -1154,7 +1159,7 @@ exit
 **Comprueba tu conexión con curl**  
 Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
 
-```sh
+```bash
 $ curl -I http:/<ip-of-edgerouter>
 HTTP/1.1 301 Moved Permanently
 Location: https://<ip-of-edgerouter>:443/
@@ -1184,7 +1189,7 @@ Una vez creados los archivos, cópielos todos en `/config/auth/`.
 Para la configuración del cliente: Asegúrese de que `remote-cert-tls server` está activado.
 
 ### Configuración básica de OpenVPN
-```
+```bash
 configure
 set interfaces openvpn vtun0
 set interfaces openvpn vtun0 mode server
@@ -1199,7 +1204,7 @@ set interfaces openvpn vtun0 server subnet 192.168.177.0/24
 ### Configuración del certificado
 Como se ha descrito anteriormente. Asegúrese de que su clave privada tiene `chmod 600`.
 
-```
+```bash
 set interfaces openvpn vtun0 tls ca-cert-file /config/auth/ca.crt
 set interfaces openvpn vtun0 tls cert-file /config/auth/server.crt
 set interfaces openvpn vtun0 tls dh-file /config/auth/dh2048.pem
@@ -1209,7 +1214,7 @@ set interfaces openvpn vtun0 tls crl-file /config/auth/revocation-list.crl
 ```
 
 ### Configurar el registro
-```
+```bash
 set interfaces openvpn vtun0 openvpn-option "--log /var/log/openvpn.log"
 set interfaces openvpn vtun0 openvpn-option "--status /var/log/openvpn-status.log"
 set interfaces openvpn vtun0 openvpn-option "--verb 7"
@@ -1218,7 +1223,7 @@ set interfaces openvpn vtun0 openvpn-option "--verb 7"
 ### Configuración del cortafuegos
 No olvides configurar NAT para los clientes openvpn
 
-```
+```bash
 set firewall name XXX rule XX action accept
 set firewall name XXX rule XX description 'Allow OpenVPN'
 set firewall name XXX rule XX destination port 1194
@@ -1237,7 +1242,7 @@ Usefull links:
 ### Configuración básica
 Primero necesita hacer ssh en su EdgeRouter. A continuación, cree un directorio donde almacenar sus archivos OpenVPN.
 
-```
+```bash
 sudo su
 mkdir -p /config/auth/example
 ```
@@ -1253,7 +1258,7 @@ Asegúrese de que `key.pem` tiene `chmod 600`
 
 ### Ejemplo del archivo de configuración OpenVPN
 Este archivo puede variar dependiendo de la configuración de su servidor openvpn.
-```
+```bash
 client
 dev tun 
 proto udp
@@ -1279,7 +1284,7 @@ tls-auth /config/auth/example/openvpn-static-key-v1.key 1
 ### Configurar la interfaz
 Si ya ha configurado su EdgeRouter como un servidor OpenVPN, entonces usted necesita cambiar la interfaz de red de `vtun0` a otra cosa (por ejemplo, `vtun1`)
 
-```
+```bash
 configure
 set interfaces openvpn vtun0 description 'example vpn'
 set interfaces openvpn vtun0 config-file /config/auth/example/example.ovpn
@@ -1288,7 +1293,7 @@ save
 ```
 
 ### Setup an extra VLAN for clients
-```
+```bash
 # create a new vlan (VLAN 10)
 set interfaces switch switch0 vif 10 address 192.168.40.1/24
 set interfaces switch switch0 vif 10 description 'example VLAN'
@@ -1296,7 +1301,7 @@ set interfaces switch switch0 vif 10 mtu 1500
 ```
 
 ### Setup a DHCP server
-```
+```bash
 set service dhcp-server shared-network-name EXAMPLE-LAN authoritative disable
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 default-router 192.168.40.1
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 dns-server 1.1.1.1
@@ -1306,7 +1311,7 @@ set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 s
 ```
 
 ### Setup NAT & routing
-```
+```bash
 # setup NAT
 set service nat rule 5020 description NAT-EXAMPLE-VPN
 set service nat rule 5020 log disable
@@ -1334,12 +1339,12 @@ Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categ
 - Descargue las categorías disponibles. Dependiendo de su dispositivo, esto puede tardar unos minutos (en mi dispositivo tardó unos 100 minutos).
 - Actualizar y configurar [webproxy](https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy)
 
-```
+```bash
 update webproxy blacklists
 ```
 
 ## ejemplo de configuración 
-```
+```bash
 set service webproxy cache-size 0
 set service webproxy default-port 3128
 set service webproxy listen-address 172.22.3.1
@@ -1424,7 +1429,7 @@ Configure el dispositivo para iniciar sesión en un SYSLOG
 Nuestro Servidor Syslog tiene la ip de: `10.10.99.111`
 
 Estamos registrando todo: (`level debug`) pero puede establecer otro nivel de registro, por ejemplo `level err`.
-```
+```bash
 configure
 set system syslog global facility all level notice
 set system syslog global facility protocols level debug
@@ -1439,7 +1444,7 @@ Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
 - [WireGuard/wireguard-vyatta-ubnt](https://github.com/WireGuard/wireguard-vyatta-ubnt)
 
-## Herramientas de diagnostico de red:
+## Herramientas de diagnostico de red
 
 <details>
 <summary>BGP:</summary>
