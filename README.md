@@ -64,7 +64,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Configuración](#ejemplo-de-configuración)
 - [Syslog](#syslog)
 - [WireGuard](#wireguard)
-- [Diagnóstico de red](herramientas-de-diagnostico-de-red)
+- [Diagnóstico de red](#herramientas-de-diagnostico-de-red)
 - [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
@@ -353,7 +353,7 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 - IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489">IOS</a>
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
-<ul><code>Entiendo que una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
+<ul><code>Una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
 
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
@@ -495,9 +495,8 @@ Ejemplo para una `WAN`con pppoe,
 
 ### Firewall básico
 Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Firewall algunos conceptos te serán extraños, pero intentare explicar cada paso con algún ejemplo, haciéndolo mas fácil de entender.
-Configuración básica del firewall:
 
-Asignar la interfaz de la WAN que vayan a utilizar:
+- Configuración básica del firewall. Asignar la interfaz de la WAN que vayan a utilizar:
 ```bash
 configure
 
@@ -721,7 +720,7 @@ Estos procediminetos son muy extensos y para que el README no sea muy extenso, a
 [VRRP](https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-)
 
 ## Public Static IP Addresses
-[Public Static IP Addresses](https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses
+[Public Static IP Addresses](https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses)
 
 ## Static Route
 [Static Route](https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route)
@@ -1160,7 +1159,7 @@ exit
 Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
 
 ```bash
-$ curl -I http:/<ip-of-edgerouter>
+$ curl -I http://<ip-of-edgerouter>/
 HTTP/1.1 301 Moved Permanently
 Location: https://<ip-of-edgerouter>:443/
 Date: Sun, 11 Jan 2015 07:46:13 GMT
@@ -1278,7 +1277,6 @@ ca /config/auth/example/ca.crt
 cert /config/auth/example/client.crt
 key /config/auth/example/key.pem
 tls-auth /config/auth/example/openvpn-static-key-v1.key 1
-
 ```
 
 ### Configurar la interfaz
