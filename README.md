@@ -33,7 +33,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Tipos de reglas](#tipos-de-reglas)
   - [Firewall básico](#firewall-básico)
   - [PPPoE O2 Movistar](#configurar-una-interfaz-PPPoE-de-Movistar-u-O2-en-un-edgerouter-de-Ubiquiti)
-  - [IPv6](#configurar-el-cortafuegos-IPv6)
+  - [IPv6](#ipv6-on-the-edgerouter)
   - [Dual wan](#dual-wan)
   - [Configuración nat](#configuration-nat)
   - [Port forwarding](#port-forwarding)
@@ -548,8 +548,80 @@ commit ; save
 
 Puedes asignar la MAC del HGU a la WAN:
 
-## Configurar el cortafuegos IPv6
-Lamentablemente, no existe ninguna opción para configurar el cortafuegos IPv6 a través de la interfaz gráfica de usuario.
+## IPv6 on the EdgeRouter
+
+### Firewall
+Primero, es importante que configuremos el firewall ya que la política predeterminada es "aceptar" y sus clientes de LAN tendrán IP enrutables.
+
+En comparación con nuestras reglas de firewall IPv4, hay una diferencia importante: debemos permitir ICMPv6 y DHCP para que DHCPv6-PD funcione.
+
+- Cree una política para clientes WAN->LAN:
+~~~
+edit firewall ipv6-name WAN6_IN
+set default-action dropset rule 10 action accept
+set rule 10 description "allow established"
+set rule 10 protocol all
+set rule 10 state established enable
+set rule 10 state related enableset rule 20 action drop
+set rule 20 description "drop invalid packets"
+set rule 20 protocol all
+set rule 20 state invalid enableset rule 30 action accept
+set rule 30 description "allow ICMPv6"
+set rule 30 protocol icmpv6
+top
+~~~
+
+- Ahora cree una política para WAN->Router (también conocido como local):
+~~~
+edit firewall ipv6-name WAN6_LOCAL
+set default-action dropset rule 10 action accept
+set rule 10 description "allow established"
+set rule 10 protocol all
+set rule 10 state established enable
+set rule 10 state related enableset rule 20 action drop
+set rule 20 description "drop invalid packets"
+set rule 20 protocol all
+set rule 20 state invalid enableset rule 30 action accept
+set rule 30 description "allow ICMPv6"
+set rule 30 protocol icmpv6set rule 40 action accept
+set rule 40 description "allow DHCPv6 client/server"
+set rule 40 destination port 546
+set rule 40 source port 547
+set rule 40 protocol udp
+top
+~~~
+
+- Ahora adjunte las políticas a su interfaz WAN: 
+~~~
+set interfaces ethernet eth1 firewall in ipv6-name WAN6_IN
+set interfaces ethernet eth1 firewall local ipv6-name WAN6_LOCAL
+~~~
+
+- Ahora solicitaremos direcciones IPv6 a nuestro ISP. Es posible que deba descubrir manualmente la longitud del prefijo que proporciona su ISP. Las dos longitudes más comunes son /56 y /64.
+> Nota: Usaremos SLAAC (Configuración automática de direcciones sin estado) en lugar de DHCP con estado (que es como funciona DHCP IPv4).
+
+~~~
+edit interfaces ethernet eth1
+set dhcpv6-pd pd 0 prefix-length /64
+set dhcpv6-pd pd 0 interface eth0 host-address ::1
+set dhcpv6-pd pd 0 interface eth0 prefix-id :0
+set dhcpv6-pd pd 0 interface eth0 service slaac
+top
+~~~
+
+En resumen, le estamos diciendo a eth1 (WAN) que proporcione delegación de prefijo a eth0 (LAN). Si también está usando eth2 para un segundo puerto LAN, necesitará usar el prefijo-id:1 para esa interfaz.
+
+> Para cualquiera que use vlans, lo siguiente también funciona:
+~~~
+set interfaces ethernet eth2 vif 17 ipv6 router-advert prefix ::/64
+~~~
+
+- Para hacerlo vía [GUI](https://davidwesterfield.net/2021/03/enabling-ipv6-prefix-delegation-on-att-internet-for-a-second-firewall/). No lo recomiendo.
+
+- Información
+   - [LINK](https://davidwesterfield.net/2020/06/edgerouter-4-ipv6-setup)
+   - [LINK](https://noobient.com/2018/08/02/ipv6-on-ubnt-edgerouter-x-with-digi-pppoe/#Firewall)
+   - [LINK](https://help.pentanet.com.au/hc/en-us/articles/4403292092307-IPv6-configuration-on-Ubiquiti-Edgerouters)
 
 ### Opciones básicas del cortafuegos
 Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
