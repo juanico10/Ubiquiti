@@ -18,7 +18,7 @@ https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.raw
 ~~~
 
-- Secureip
+- Secureip --> Contiene bloqueos de las sondas de Shodan
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
 ~~~
@@ -106,5 +106,6 @@ https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt
 
 &nbsp;
 
-<sup>Estos archivos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
+<sup>Estos archivos/textos se proporcionan "TAL CUAL", sin garantías de ningún tipo, expresas o implícitas, incluidas, entre otras, las garantías de comerciabilidad, idoneidad para un fin determinado y no infracción. En ningún caso los autores o los titulares de los derechos de autor serán responsables de ninguna reclamación, daño u otra responsabilidad derivada de, o relacionada con los archivos o el uso de los mismos.</sup>
+
 <sub>Todas y cada una de las marcas registradas son propiedad de sus respectivos dueños.</sub>
