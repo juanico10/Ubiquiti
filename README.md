@@ -866,9 +866,9 @@ update-status: good
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
 
 ## Crear script
-Antes de crear el script, asegurar que lista van a escoger, si IPv4 o IPv6. Una vez sepan que lista, escoger la lista_
-- IPv4: [SPAMHAUS_DROP_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP)
-- IPv6: [SPAMHAUS_DROP_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP_IPv6)
+Antes de crear el script, asegurar que lista van a escoger, si IPv4 o IPv6. Una vez sepan que lista, escoger el script correspondiente:
+- IPv4: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SPAMHAUS_DROP)
+- IPv6: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SPAMHAUS_DROP_IPv6)
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -895,7 +895,7 @@ commit ; save
 ### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
 <p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, <code>TMPFILE</code> y <code>TMPFILE2</code> con el nombre del grupo creado.</p>
 <p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
-<p>EDIT: Crear el script en <code>/config/scripts/post-config.d</code> mejor que en <code>/config/scripts/</code> porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio <code>/config/scripts/post-config.d</code>, se ejecutará automáticamente después del arranque.</p>
+> EDIT: Crear el script en `/config/scripts/post-config.d` mejor que en `/config/scripts/` porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio `/config/scripts/post-config.d`, se ejecutará automáticamente después del arranque.
 
 ```bash
 sudo vi /config/scripts/post-config.d/update-spamhaus
@@ -1033,7 +1033,7 @@ Dejo el enlace a la carpeta:
 ## Monitorización de IPs bloqueadas
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></p></ul>
-<ul><p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/honeypot">link</a></p></ul>
+<ul><p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/honeypot">link</a></p></ul>
 
 
 ### EJEMPLO DE REGLAS:
