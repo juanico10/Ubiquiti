@@ -731,7 +731,7 @@ Estos procediminetos son muy extensos y para que el README no sea muy extenso, a
 ## DHCP
 
 ### Modificar DHCP mediante CLI
-```sh
+```bash
 configure
 set interfaces ethernet eth1 description LAN
 set interfaces ethernet eth1 address 192.168.1.1/24
@@ -864,9 +864,11 @@ update-status: good
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Añadir listas de seguridad al firewall
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
-<p><sup>Próximamente realizaré el script para que puedas cargar IPv6.</sup></p>
 
 ## Crear script
+Antes de crear el script, asegurar que lista van a escoger, si IPv4 o IPv6. Una vez sepan que lista, escoger la lista_
+- IPv4: [SPAMHAUS_DROP_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP)
+- IPv6: [SPAMHAUS_DROP_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/SPAMHAUS_DROP_IPv6)
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -880,7 +882,7 @@ commit
 * Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el <code>network-group</code> con el nombre del grupo creado. 
 <p><sup>Para ver la regla y el orden: <code>show firewall name WAN_IN</code>.</sup></p>
 
-```
+```bash
 set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
 set firewall name WAN_IN rule 10 action drop

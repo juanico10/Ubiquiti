@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NETGROUP="SPAMHAUS_DROP"
+NETGROUP="SPAMHAUS_DROP_IPv6"
 TMPFILE=/tmp/spamhaus-block-$$.tmp
 TMPFILE2=/tmp/temp-spamhaus-block-$$.tmp
 
@@ -27,7 +27,7 @@ if [ "$?" != 0 ]; then
 fi
 
 NEWGROUP=$NETGROUP-$$
-/sbin/ipset --create $NEWGROUP hash:net
+/sbin/ipset --create $NEWGROUP hash:net family inet6
 if [ "$?" != 0 ]; then
   clean_up
   logger -i -s -- "There was an error trying to create temporary set"
