@@ -1465,7 +1465,7 @@ Adjunto el enlace al repositorio de GitHub:
 <Original>&nbsp;Pagina para comprobar IPv6/IPv4</Original>
 
 <p>  &nbsp;&nbsp;http://www.test-ipv6.com/</p>
-<p>  &nbsp;&nbsp;https://ipv6-test.com/</p>
+<p>  &nbsp;&nbsp;https://www.whatismyip.com/</p>
 </details>
 &nbsp;
 
