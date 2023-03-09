@@ -64,6 +64,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Configuración](#ejemplo-de-configuración)
 - [Syslog](#syslog)
 - [WireGuard](#wireguard)
+- [Diagnósticos red](Herramientas de diagnostico de red)
 - [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
@@ -1438,6 +1439,43 @@ Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
 - [WireGuard/wireguard-vyatta-ubnt](https://github.com/WireGuard/wireguard-vyatta-ubnt)
 
+## Herramientas de diagnostico de red:
+
+<details>
+<summary>BGP:</summary>
+
+<Original>&nbsp;Pagina para comprobar tu BGP</Original>
+
+<p>  &nbsp;&nbsp;https://isbgpsafeyet.com/</p>
+</details>
+&nbsp;
+
+<details>
+<summary>test IPv6/IPv4:</summary>
+
+<Original>&nbsp;Pagina para comprobar IPv6/IPv4</Original>
+
+<p>  &nbsp;&nbsp;http://www.test-ipv6.com/</p>
+<p>  &nbsp;&nbsp;https://ipv6-test.com/</p>
+</details>
+&nbsp;
+
+<details>
+<summary>Test velocidad:</summary>
+
+<Original>&nbsp;Pagina para comprobar la velocidad de conexión</Original>
+
+<p>  &nbsp;&nbsp;https://speedsmart.net/</p>
+</details>
+&nbsp;
+
+<details>
+<summary>Test DNS:</summary>
+
+<Original>&nbsp;Pagina para comprobar las DNS de cloudfare</Original>
+
+<p>  &nbsp;&nbsp;https://1.1.1.1/help</p>
+</details>
 
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
