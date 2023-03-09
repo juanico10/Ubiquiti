@@ -867,8 +867,8 @@ update-status: good
 
 ## Crear script
 Antes de crear el script, asegurar que lista van a escoger, si IPv4 o IPv6. Una vez sepan que lista, escoger el script correspondiente:
-- IPv4: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SPAMHAUS_DROP)
-- IPv6: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SPAMHAUS_DROP_IPv6)
+- IPv4: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4)
+- IPv6: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6)
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -895,6 +895,7 @@ commit ; save
 ### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
 <p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, <code>TMPFILE</code> y <code>TMPFILE2</code> con el nombre del grupo creado.</p>
 <p>Las listas a añadir tienen que tener formato <code>.raw</code> o <code>.txt</code>.</p>
+
 > EDIT: Crear el script en `/config/scripts/post-config.d` mejor que en `/config/scripts/` porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio `/config/scripts/post-config.d`, se ejecutará automáticamente después del arranque.
 
 ```bash
