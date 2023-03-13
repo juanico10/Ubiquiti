@@ -963,7 +963,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 ## REVISIÓN
 <p>Listar</p>
 <ul><code>sudo /sbin/ipset list update-spamhaus o sudo /sbin/ipset list -L update-spamhaus</code></ul>
-<ul><li>Sin que muestre las ips: <code>ipset list -t</code></li></ul>
+<ul><li>Sin que muestre las ips: <code>sudo /sbin/ipset list -t</code></li></ul>
 <p>Comprobar una ip</p>
 <ul><code>sudo /sbin/ipset test update-spamhaus 192.168.1.100</code></ul>
 <p>Limpiar grupo de IPs</p>
@@ -978,7 +978,8 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 ## Monitorización de IPs bloqueadas
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></p></ul>
-<ul><p>El scrip pueden descargarlo o verlo desde el repositorio en este: <a href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/honeypot">link</a></p></ul>
+<ul><p>El scrip pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</p></ul>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/honeypot"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></p></ul>
 
 
 ### EJEMPLO DE REGLAS:
