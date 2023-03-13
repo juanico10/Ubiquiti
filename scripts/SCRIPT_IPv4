@@ -16,7 +16,7 @@ clean_up ()
 /usr/bin/curl -s http://www.spamhaus.org/drop/edrop.txt >> $TMPFILE2
 
 # Filter out comments and remove empty lines and duplicates
-/bin/grep '^[0-9]' $TMPFILE2 | /bin/sed -e 's/;.*//' -e 's/[ \t]*$//' | /usr/bin/uniq > $TMPFILE
+/bin/grep '^[0-9]' $TMPFILE2 | /bin/sed -e 's/;.*//' -e 's/[ \t]*$//' | /usr/bin/sort -u | /usr/bin/uniq > $TMPFILE
 
 
 /sbin/ipset -L $NETGROUP > /dev/null 2>&1
@@ -37,7 +37,7 @@ fi
 count=0;
 for i in `cat $TMPFILE`;
 do
-  /sbin/ipset -q -A $NEWGROUP $i
+  /sbin/ipset -exist -quiet -A $NEWGROUP $i
   if [ "$?" != 0 ]; then
      logger -i -s -- "There was an error trying to add $i"
      clean_up

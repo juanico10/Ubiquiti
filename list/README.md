@@ -92,6 +92,28 @@ http://danger.rulez.sk/projects/bruteforceblocker/blist.php
 https://api.blocklist.de/getlast.php?time=3600
 ~~~
 
+- PGL.YOYO
+~~~
+http://pgl.yoyo.org/as/iplist.php
+~~~
+
+- OKEAN antispam
+~~~
+https://www.okean.com/sitemap.html
+~~~
+
+- Team-cymru
+~~~
+https://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt
+~~~
+~~~
+https://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt
+~~~
+
+- ktsaou - blacklist
+~~~
+https://raw.githubusercontent.com/ktsaou/blocklist-ipsets/master/firehol_level1.netset
+~~~
 
 #### The Block List Project
 Página web de The `Block List Project` [URL](https://github.com/blocklistproject/Lists)
