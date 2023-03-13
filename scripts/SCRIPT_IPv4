@@ -27,7 +27,7 @@ if [ "$?" != 0 ]; then
 fi
 
 NEWGROUP=$NETGROUP-$$
-/sbin/ipset --create $NEWGROUP hash:net
+/sbin/ipset --create $NEWGROUP hash:net maxelem 500000
 if [ "$?" != 0 ]; then
   clean_up
   logger -i -s -- "There was an error trying to create temporary set"
