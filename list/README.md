@@ -63,11 +63,35 @@ https://isc.sans.edu/block.txt
 ~~~
 http://feeds.dshield.org/top10-2.txt
 ~~~
+~~~
+http://www.dshield.org/block.txt
+~~~
+
+- Red Tor
+~~~
+https://check.torproject.org/torbulkexitlist
+~~~
 
 - iblocklist.com
 ~~~
 http://www.iblocklist.com/lists.php
 ~~~
+
+- C.I. Army
+~~~
+http://www.ciarmy.com/list/ci-badguys.txt
+~~~
+
+- BruteForceBlocker
+~~~
+http://danger.rulez.sk/projects/bruteforceblocker/blist.php
+~~~
+
+- BlockList
+~~~
+https://api.blocklist.de/getlast.php?time=3600
+~~~
+
 
 #### The Block List Project
 Página web de The `Block List Project` [URL](https://github.com/blocklistproject/Lists)
