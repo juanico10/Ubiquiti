@@ -921,7 +921,6 @@ sudo /config/scripts/post-config.d/update-spamhaus
 Resultado:
 <ul><code>Added 561 entries to SPAMHAUS_DROP</code></ul>
 
-  
 ## PROGRAMAR TAREA:
 
 OPCIÓN 1:
@@ -957,13 +956,18 @@ OPCIÓN 2:
 - Debería asignar las reglas de firewall solo en el pppoe 
 
 ## README con listas de IPs públicas
-He realizado un README con listas de IPs públicas.
-Dejo el enlace a la carpeta: 
-* [README con listas de IPs públicas](list/)
+He realizado un README en la carpeta `list` con listas de IPs públicas y mis listas creadas.
+<p>Dejo enlace a la carpeta del README:</p>
+<p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
 
 ## REVISIÓN
 <p>Listar</p>
-<ul><code>sudo /sbin/ipset list</code></ul>
+<ul><code>sudo /sbin/ipset list update-spamhaus o sudo /sbin/ipset list -L update-spamhaus</code></ul>
+<ul><li>Sin que muestre las ips: <code>ipset list -t</code></li></ul>
+<p>Comprobar una ip</p>
+<ul><code>sudo /sbin/ipset test update-spamhaus 192.168.1.100</code></ul>
+<p>Limpiar grupo de IPs</p>
+<ul><code>sudo /sbin/ipset flush update-spamhaus</code></ul>
 <p>Utilice este comando a través de la CLI para ver las entradas:</p>
 <ul><code>show firewall group SPAMHAUS_DROP</code></ul>
 <p>Despues vemos las tareas</p>
