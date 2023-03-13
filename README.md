@@ -536,8 +536,8 @@ commit ; save
 <p>2. Internet port: En esta sección definiremos como está conectado nuestro Edgerouter al router HGU de Movistar o O2.</p>
 <p><code>Port</code>: En el menú despegable seleccionamos el puerto de ethernet con el que está conectado al router HGU de Movistar o O2, etho o eth4.</p>
 <p><code>Internet connection type</code>: Aquí seleccionamos PPPoE y rellenamos los campos de ls siguiente manera:</p>
-<p><ul><code>Account name</code>: adsl@telefonicapa</ul></p>
-<p><ul><code>Password</code>: adslppp</ul></p>
+<ul><p><code>Account name</code>: adsl@telefonicapa</ul></p>
+<ul><p><code>Password</code>: adslppp</ul></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_2.png" alt="pppoe_2.png"></p>
 
 <p>3. LAN ports: Desplegando está sección podremos configurar la IP que tendrá nuestro router y habilitaremos el DHCP por defecto para que asigne IPs a aquellos equipos que se conecten al router.</p>
@@ -868,8 +868,10 @@ update-status: good
 ## Crear script
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
-- `IPv4`: [SCRIPT_IPv4](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4)
-- `IPv6`: [SCRIPT_IPv6](https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6)
+<p><ul><li><code>SCRIPT_IPv4:</code></li></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><li><code>SCRIPT_IPv6:</code></li></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -904,8 +906,8 @@ sudo vi /config/scripts/post-config.d/update-spamhaus
 ```
 
 - Ahora pegan el scrip escogido en el punto: **[`^ Escoger script a utilizar ^`](#escoger-script-a-utilizar)**
-<p><sup>Importante sustituir las listas si son <code>IPv4</code> o si son <code>IPv6</code>, en el siguiente ejemplo es <code>IPv4</code>.</sup></p>
-<p>El comando VI del equipo no está completo, por lo que para guardar, utilizar ZZ o :wq</p>
+<p><sup>Importante sustituir las listas si son <code>IPv4</code> o si son <code>IPv6</code>, en los siguientes ejemplos son <code>IPv4</code>.</sup></p>
+<p>El comando VI del equipo no está completo, por lo que para guardar, utilizar <code>ZZ</code> o <code>:wq</code></p>
 
 ### Hazlo ejecutable:
 ```bash
@@ -938,10 +940,10 @@ OPCIÓN 2:
 <ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
 
 * Ajustes de <code>system task-scheduler interval</code>
-<p><ul><code>minutes</code>    Execution interval in minutes</ul></p>
-<p><ul><code>minutes m</code>    Execution interval in minutes</ul></p>
-<p><ul><code>hours h</code>      Execution interval in hours</ul></p>
-<p><ul><code>days d</code>       Execution interval in days</ul></p>
+<ul><p><code>minutes</code>    Execution interval in minutes</ul></p>
+<ul><p><code>minutes m</code>    Execution interval in minutes</ul></p>
+<ul><p><code>hours h</code>      Execution interval in hours</ul></p>
+<ul><p><code>days d</code>       Execution interval in days</ul></p>
 
 --> Despues vemos las tareas
 <ul><code>show system task-scheduler</code></ul>
@@ -977,9 +979,9 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 
 ## Monitorización de IPs bloqueadas
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
-<ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></p></ul>
-<ul><p>El scrip pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</p></ul>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/honeypot"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></p></ul>
+<ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
+<ul><p>El scrip pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/honeypot"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 
 ### EJEMPLO DE REGLAS:
