@@ -18,7 +18,12 @@ https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.raw
 ~~~
 
-- Secureip --> Contiene bloqueos de las sondas de Shodan
+- Secureip --> honeypot
+~~~
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
+~~~
+
+- host --> Contiene bloqueos de las sondas de Shodan
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
 ~~~
