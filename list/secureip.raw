@@ -1,15 +1,7 @@
-!---------------------------------------------!
-! 	     P A C K  D E T A I L S	      !
-!---------------------------------------------!
 # Developer & Maintainer: Juan Rodenas
-# Title: secureip
 # Description: Blocking dangerous ips
-# Format: List IPs and groups
 # Created: 20.08.2022 20:17:02
-# https://github.com/JuanRodenas
 #
-#
-!---------------------------------------------!
 103.111.234.162
 103.149.192.101
 103.149.192.173
@@ -479,3 +471,4 @@
 143.110.178.98
 124.223.197.100
 34.159.89.206
+193.32.162.159
