@@ -53,8 +53,8 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Crear script](#Crear-script)
   - [Programar tarea](#programar-tarea)
   - [Listas IPs](#readme-con-listas-de-ips-públicas)
-  - [Revision](#revision)
-  - [Monitorización IPs bloqueadas](monitorización-de-ips-bloqueadas)
+  - [Revision](#revisión)
+  - [Monitorización IPs bloqueadas](#monitorización-de-ips-bloqueadas)
 - [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
 - [OpenVPN](#openvpn)
   - [EdgeRouter como Servidor](#configuración-edgerouter-como-servidor-openvpn.-(Servidor))
@@ -980,7 +980,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 ## Monitorización de IPs bloqueadas
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
-<ul><p>El scrip pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
+<ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
 <ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 <ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
 <ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
