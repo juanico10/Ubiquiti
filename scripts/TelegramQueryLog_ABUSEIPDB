@@ -1,0 +1,31 @@
+#! /bin/bash
+# Developer & Maintainer: Juan Rodenas
+# Title: LOG_ABUSEIPDB
+# Description: Envío consulta Abuseipdb a Telegram
+# Created: 04.04.2023
+
+# requeriments:
+TOKEN="YOUR_TOKEN_BOT"
+ID="YOUR_TOKEN_CHAT"
+URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+DNS="1.1.1.1"
+ABUSEIPDB_KEY="ABUSEIPDB_KEY"
+MSG="\xF0\x9F\x93\x8A LOG ROUTER WAN"
+IPS=$(cat /var/log/messages /var/log/messages.1 | grep -i "WAN_IN-20-D" | awk -F "=" '{print $5}' | awk '{print $1}' | sort -u)
+
+# Crear una cadena con la información de cada dirección IP
+for IP in $IPS; do
+  log="$log $(curl -s "https://api.abuseipdb.com/api/v2/check?ipAddress=$IP" -H "Key: $ABUSEIPDB_KEY" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"isPublic":\([^,]*\).*"abuseConfidenceScore":\([^,]*\).*"countryCode":"\([^"]*\)".*/\n\1\n\t\t- isPublic: \2\n\t\t- abuseConfidenceScore: \3\n\t\t- countryCode: \4/p')"
+done
+
+# Envio del mensaje
+/usr/bin/ping -c2 $DNS > /dev/null 2>&1
+if [ "$?" != 0 ]; then
+        exit 0
+else
+  curl -s -X POST $URL \
+    -d chat_id=$ID \
+    -d parse_mode=HTML \
+    -d text="$(printf "$MSG\n\xF0\x9F\x93\x8C LOG:<code>\n$log</code>")"
+  exit 0
+fi
