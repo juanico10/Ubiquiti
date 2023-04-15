@@ -704,7 +704,7 @@ set port-forward rule 1 protocol tcp
 commit ; save
 ```
 
-### ICMP
+## ICMP
 Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de sus interfaces WAN de EdgeRouter.
 
 <ol>
@@ -722,23 +722,23 @@ Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de su
 <p>Ahora su EdgeRouter responderá/denegará a las solicitudes de ping en la interfaz WAN que seleccionó.</p>
 <sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ">icmp</a></sup>
 
-<u>***Avanzado***</u>
+#### Avanzado
 <p>Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña <code>Árbol de configuración</code>.</p>
 
 <ol>
-<li>Haga clic en la pestaña "Árbol de configuración"</li>
-<li>Debajo del panel "Configuración" a la izquierda, expanda el nodo "firewall", expanda el nodo "nombre", expanda el nodo de "WAN_LOCAL"(donde hayan creado la regla icmp) y expanda el nodo de "regla".</li>
-<li>Una vez expanda el nodo "regla", expanda la regla que hayan creado la regla ICMP. (cualquiera que sea el último, que debería ser la regla que acaba de establecer)</li>
-<li>Una vez sepan la regla buscar el apartado "icmp".</li>
-<li>Ingrese el número de tipo de icmp como el valor de "tipo".</li>
-<li>Haga clic en "Vista previa" y haga clic en "Aplicar" en el cuadro de diálogo de configuración emergente.</li>
+<li>Haga clic en la pestaña <code>Árbol de configuración</code></li>
+<li>Debajo del panel <code>Configuración</code> a la izquierda, expanda el nodo <code>firewall</code>, expanda el nodo <code>nombre</code>, expanda el nodo de <code>WAN_LOCAL</code>(donde hayan creado la regla icmp) y expanda el nodo de <code>regla</code>.</li>
+<li>Una vez expanda el nodo <code>regla</code>, expanda la regla que hayan creado la regla ICMP. (cualquiera que sea el último, que debería ser la regla que acaba de establecer)</li>
+<li>Una vez sepan la regla buscar el apartado <code>icmp</code>.</li>
+<li>Ingrese el número de tipo de icmp como el valor de <code>tipo</code>.</li>
+<li>Haga clic en Vista previa y haga clic en Aplicar en el cuadro de diálogo de configuración emergente.</li>
 </ol>
 
-Vía ***CLI*** sería:
+#### Vía ***CLI*** sería:
 ```bash
 set firewall name WAN_LOCAL rule 21 icmp type 8
 ```
-:point_right: Tabla de tipos de ICMP
+#### :point_right: Tabla de tipos de ICMP
 <table>
 <thead>
 <tr>
@@ -752,9 +752,8 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 <tr>
 <td style="text-align:center"></td>
 <td style="text-align:center">129</td>
-<td style="text-align:center">Echo</td>
-<td style="text-align:center">Reply</td>
-<td>Respuesta a un ping de red para comprobar la accesibilidad</td>
+<td style="text-align:center">Echo Reply</td>
+<td style="text-align:center">Respuesta a un ping de red para comprobar la accesibilidad</td>
 </tr>
 <tr>
 <td style="text-align:center">3</td>
@@ -806,6 +805,7 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 </tr>
 </tbody>
 </table>
+
 
 
 
