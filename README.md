@@ -705,7 +705,7 @@ commit ; save
 ```
 
 ## ICMP
-Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de sus interfaces WAN de EdgeRouter.
+Para aquellos de ustedes que desean usar la GUI para habilitar/deshabilitar ICMP en una de sus interfaces WAN de EdgeRouter.
 
 <ol>
 <li>inicie sesión en su EdgeRouter.</li>
@@ -739,6 +739,8 @@ Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de su
 set firewall name WAN_LOCAL rule 21 icmp type 8
 ```
 #### :point_right: Tabla de tipos de ICMP
+En la siguiente tabla aparece una recopilación de los tipos de paquetes más importantes basados en el Internet Control Message Protocol:
+
 <table>
 <thead>
 <tr>
@@ -750,7 +752,7 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">0</td>
 <td style="text-align:center">129</td>
 <td style="text-align:center">Echo Reply</td>
 <td style="text-align:center">Respuesta a un ping de red para comprobar la accesibilidad</td>
@@ -807,8 +809,6 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 </table>
 
 
-
-
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
@@ -833,7 +833,7 @@ Estos procediminetos son muy extensos y para que el README no sea muy extenso, a
 [Static Route](https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route)
 
 # LAN
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de adaptar el rango de la red a la de tu red y la interfaz a modificar, porque puede no ajustarse a la del ejemplo.
 
 ## DHCP
 
