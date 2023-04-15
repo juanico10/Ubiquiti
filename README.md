@@ -734,18 +734,17 @@ Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de su
 <li>Haga clic en "Vista previa" y haga clic en "Aplicar" en el cuadro de diálogo de configuración emergente.</li>
 </ol>
 
-<u>Vía ***CLI*** sería:</u>
+Vía ***CLI*** sería:
 ```bash
 set firewall name WAN_LOCAL rule 21 icmp type 8
 ```
-<u>Tabla de tipos de ICMP</u>
+:point_right: Tabla de tipos de ICMP
 <table>
 <thead>
 <tr>
 <th style="text-align:center">Tipo ICMP</th>
 <th style="text-align:center">Tipo ICMPv6</th>
 <th style="text-align:center">Nombre del tipo</th>
-<th style="text-align:center">Código</th>
 <th style="text-align:center">Descripción</th>
 </tr>
 </thead>
@@ -755,18 +754,18 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 <td style="text-align:center">129</td>
 <td style="text-align:center">Echo</td>
 <td style="text-align:center">Reply</td>
-<td style="text-align:center">Respuesta a un ping de red para comprobar la accesibilidad</td>
+<td>Respuesta a un ping de red para comprobar la accesibilidad</td>
 </tr>
 <tr>
 <td style="text-align:center">3</td>
 <td style="text-align:center">1</td>
-<td style="text-align:center">Destination Unreachable 0–15</td>
+<td style="text-align:center">Destination Unreachable</td>
 <td style="text-align:center">Mensaje ICMP que informa acerca de, por ejemplo, la accesibilidad de red de los componentes del campo “Código” (red, protocolo, puerto, host), sobre problemas de enrutamiento o sobre el bloqueo por parte de los cortafuegos</td>
 </tr>
 <tr>
 <td style="text-align:center">5</td>
 <td style="text-align:center">137</td>
-<td style="text-align:center">Redirect Message  0–3</td>
+<td style="text-align:center">Redirect Message</td>
 <td style="text-align:center">Mensaje sobre el redireccionamiento de un paquete para la red indicada (0), para el host escogido (1), para el servicio especificado y para la red (2) o para el servicio y host especificados (3)</td>
 </tr>
 <tr>
@@ -784,7 +783,7 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 <tr>
 <td style="text-align:center">11</td>
 <td style="text-align:center">3</td>
-<td style="text-align:center">Time Exceeded 0 o 1</td>
+<td style="text-align:center">Time Exceeded</td>
 <td style="text-align:center">Informe de estado que o bien indica que el tiempo de vida (Time to Live, TTL) de un paquete (0) o el tiempo de espera para el ensamblaje de paquetes IP (1) ha expirado</td>
 </tr>
 <tr>
@@ -807,6 +806,7 @@ set firewall name WAN_LOCAL rule 21 icmp type 8
 </tr>
 </tbody>
 </table>
+
 
 
 ---
