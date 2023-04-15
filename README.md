@@ -722,34 +722,92 @@ Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de su
 <p>Ahora su EdgeRouter responderá/denegará a las solicitudes de ping en la interfaz WAN que seleccionó.</p>
 <sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ">icmp</a></sup>
 
-- ***Avanzado***
-Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP (8) dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña "Árbol de configuración".
+<u>***Avanzado***</u>
+<p>Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña <code>Árbol de configuración</code>.</p>
 
 <ol>
 <li>Haga clic en la pestaña "Árbol de configuración"</li>
-<li>Debajo del panel "Configuración" a la izquierda, expanda el nodo "firewall", expanda el nodo "nombre", expanda el nodo de "WAN_LOCAL" y expanda el nodo de "regla".</li>
+<li>Debajo del panel "Configuración" a la izquierda, expanda el nodo "firewall", expanda el nodo "nombre", expanda el nodo de "WAN_LOCAL"(donde hayan creado la regla icmp) y expanda el nodo de "regla".</li>
 <li>Una vez expanda el nodo "regla", expanda la regla que hayan creado la regla ICMP. (cualquiera que sea el último, que debería ser la regla que acaba de establecer)</li>
 <li>Una vez sepan la regla buscar el apartado "icmp".</li>
 <li>Ingrese el número de tipo de icmp como el valor de "tipo".</li>
 <li>Haga clic en "Vista previa" y haga clic en "Aplicar" en el cuadro de diálogo de configuración emergente.</li>
 </ol>
 
-- Vía ***CLI*** sería:
+<u>Vía ***CLI*** sería:</u>
 ```bash
 set firewall name WAN_LOCAL rule 21 icmp type 8
 ```
-- Tabla de tipos de ICMP
-| Tipo ICMP | Tipo ICMPv6 | Nombre del tipo | Código | Descripción |
-| :--: | :--: | :--: | :--: | :--: |
-|  | 129 | Echo | Reply | Respuesta a un ping de red para comprobar la accesibilidad |
-| 3  | 1 | Destination Unreachable 0–15 | Mensaje ICMP que informa acerca de, por ejemplo, la accesibilidad de red de los componentes del campo “Código” (red, protocolo, puerto, host), sobre problemas de enrutamiento o sobre el bloqueo por parte de los cortafuegos |
-| 5 | 137 | Redirect Message  0–3 |	Mensaje sobre el redireccionamiento de un paquete para la red indicada (0), para el host escogido (1), para el servicio especificado y para la red (2) o para el servicio y host especificados (3) |
-| 8 | 128 | Echo Request | Ping de red |
-| 9 | 134 | Router Advertisement |	  	Lo utilizan los routers para informarse acerca de los diferentes clientes de red |
-| 11 | 3 |	Time Exceeded 0 o 1 | Informe de estado que o bien indica que el tiempo de vida (Time to Live, TTL) de un paquete (0) o el tiempo de espera para el ensamblaje de paquetes IP (1) ha expirado |
-| 13 | 13 | Timestamp | Dota al paquete IP de una marca de tiempo que se corresponde con el momento del envío y que es de utilidad para la sincronización de dos ordenadores |
-| 14 | - |	Timestamp Reply |  	Mensaje de respuesta a una petición de marca de tiempo enviado por el destinatario tras la recepción de la misma |
-| 30 | - |	Traceroute | Tipo de mensaje ICMP obsoleto que se utilizaba para el seguimiento de la ruta de un paquete de datos en la red. Hoy en día se utilizan “Echo Request” y “Echo Reply” para estos fines |
+<u>Tabla de tipos de ICMP</u>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tipo ICMP</th>
+<th style="text-align:center">Tipo ICMPv6</th>
+<th style="text-align:center">Nombre del tipo</th>
+<th style="text-align:center">Código</th>
+<th style="text-align:center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">129</td>
+<td style="text-align:center">Echo</td>
+<td style="text-align:center">Reply</td>
+<td style="text-align:center">Respuesta a un ping de red para comprobar la accesibilidad</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Destination Unreachable 0–15</td>
+<td style="text-align:center">Mensaje ICMP que informa acerca de, por ejemplo, la accesibilidad de red de los componentes del campo “Código” (red, protocolo, puerto, host), sobre problemas de enrutamiento o sobre el bloqueo por parte de los cortafuegos</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">137</td>
+<td style="text-align:center">Redirect Message  0–3</td>
+<td style="text-align:center">Mensaje sobre el redireccionamiento de un paquete para la red indicada (0), para el host escogido (1), para el servicio especificado y para la red (2) o para el servicio y host especificados (3)</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">Echo Request</td>
+<td style="text-align:center">Ping de red</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">134</td>
+<td style="text-align:center">Router Advertisement</td>
+<td style="text-align:center">Lo utilizan los routers para informarse acerca de los diferentes clientes de red</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Time Exceeded 0 o 1</td>
+<td style="text-align:center">Informe de estado que o bien indica que el tiempo de vida (Time to Live, TTL) de un paquete (0) o el tiempo de espera para el ensamblaje de paquetes IP (1) ha expirado</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">Timestamp</td>
+<td style="text-align:center">Dota al paquete IP de una marca de tiempo que se corresponde con el momento del envío y que es de utilidad para la sincronización de dos ordenadores</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">Timestamp Reply</td>
+<td style="text-align:center">Mensaje de respuesta a una petición de marca de tiempo enviado por el destinatario tras la recepción de la misma</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">Traceroute</td>
+<td style="text-align:center">Tipo de mensaje ICMP obsoleto que se utilizaba para el seguimiento de la ruta de un paquete de datos en la red. Hoy en día se utilizan “Echo Request” y “Echo Reply” para estos fines</td>
+</tr>
+</tbody>
+</table>
+
 
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
