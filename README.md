@@ -37,6 +37,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Dual wan](#dual-wan)
   - [Configuración nat](#configuration-nat)
   - [Port forwarding](#port-forwarding)
+  - [ICMP](#ICMP)
 - [Routing](#routing)
   - [Load Balancing](#load-balancing)
   - [OSPF](#ospf)
@@ -702,6 +703,54 @@ set port-forward rule 1 protocol tcp
 
 commit ; save
 ```
+
+### ICMP
+Para aquellos de ustedes que desean usar la GUI para habilitar ICMP en una de sus interfaces WAN de EdgeRouter.
+
+<ol>
+<li>inicie sesión en su EdgeRouter.</li>
+<li>haga clic en la pestaña <code>Firewall/NAT</code>.</li>
+<li>haga clic en la pestaña <code>Firewall Policies</code>.</li>
+<li>localice el conjunto de reglas llamado <code>WAN_LOCAL</code>, aquí es donde permitiremos hacer ping. edite el conjunto de reglas.</li>
+<li>haga clic en el botón <code>Agregar nueva regla</code>. Aquí es donde agrega una nueva regla.</li>
+<li>En la descripción, coloque algo como Permitir ping o denegar ping.</li>
+<li>En <code>Acción</code>, haga clic en Aceptar o Denegar.</li>
+<li>En Protocolo, seleccione Elija un protocolo por nombre y luego seleccione <code>icmp</code> en el menú desplegable.</li>
+<li>Haga clic en la pestaña Destino y luego seleccione su Interfaz WAN del menú desplegable Dirección de interfaz.</li>
+<li>Haga clic en Guardar</li>
+</ol>
+<p>Ahora su EdgeRouter responderá/denegará a las solicitudes de ping en la interfaz WAN que seleccionó.</p>
+<sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ">icmp</a></sup>
+
+- ***Avanzado***
+Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP (8) dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña "Árbol de configuración".
+
+<ol>
+<li>Haga clic en la pestaña "Árbol de configuración"</li>
+<li>Debajo del panel "Configuración" a la izquierda, expanda el nodo "firewall", expanda el nodo "nombre", expanda el nodo de "WAN_LOCAL" y expanda el nodo de "regla".</li>
+<li>Una vez expanda el nodo "regla", expanda la regla que hayan creado la regla ICMP. (cualquiera que sea el último, que debería ser la regla que acaba de establecer)</li>
+<li>Una vez sepan la regla buscar el apartado "icmp".</li>
+<li>Ingrese el número de tipo de icmp como el valor de "tipo".</li>
+<li>Haga clic en "Vista previa" y haga clic en "Aplicar" en el cuadro de diálogo de configuración emergente.</li>
+</ol>
+
+- Vía ***CLI*** sería:
+```bash
+set firewall name WAN_LOCAL rule 21 icmp type 8
+```
+- Tabla de tipos de ICMP
+| Tipo ICMP | Tipo ICMPv6 | Nombre del tipo | Código | Descripción |
+| :--: | :--: | :--: | :--: | :--: |
+|  | 129 | Echo | Reply | Respuesta a un ping de red para comprobar la accesibilidad |
+| 3  | 1 | Destination Unreachable 0–15 | Mensaje ICMP que informa acerca de, por ejemplo, la accesibilidad de red de los componentes del campo “Código” (red, protocolo, puerto, host), sobre problemas de enrutamiento o sobre el bloqueo por parte de los cortafuegos |
+| 5 | 137 | Redirect Message  0–3 |	Mensaje sobre el redireccionamiento de un paquete para la red indicada (0), para el host escogido (1), para el servicio especificado y para la red (2) o para el servicio y host especificados (3) |
+| 8 | 128 | Echo Request | Ping de red |
+| 9 | 134 | Router Advertisement |	  	Lo utilizan los routers para informarse acerca de los diferentes clientes de red |
+| 11 | 3 |	Time Exceeded 0 o 1 | Informe de estado que o bien indica que el tiempo de vida (Time to Live, TTL) de un paquete (0) o el tiempo de espera para el ensamblaje de paquetes IP (1) ha expirado |
+| 13 | 13 | Timestamp | Dota al paquete IP de una marca de tiempo que se corresponde con el momento del envío y que es de utilidad para la sincronización de dos ordenadores |
+| 14 | - |	Timestamp Reply |  	Mensaje de respuesta a una petición de marca de tiempo enviado por el destinatario tras la recepción de la misma |
+| 30 | - |	Traceroute | Tipo de mensaje ICMP obsoleto que se utilizaba para el seguimiento de la ruta de un paquete de datos en la red. Hoy en día se utilizan “Echo Request” y “Echo Reply” para estos fines |
+
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
