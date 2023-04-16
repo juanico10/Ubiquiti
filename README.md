@@ -1,18 +1,17 @@
 # Wiki Ubiquiti
 Una colección de mejoras para los dispositivos basados en EdgeMax.
 
-<p align="center">
+<div align="center">
     <a href="https://www.ui.com/">
         <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
     </a>
     <br>
-    <strong>Ubiquiti networks x EdgeMax©</strong>
-</p>
-<!-- markdownlint-enable MD033 -->
-
-![GitHub last commit](https://img.shields.io/github/last-commit/JuanRodenas/ubiquiti?color=blue&logo=ubiquiti&logoColor=blue&style=for-the-badge)
+    <h3>Ubiquiti networks x EdgeMax©</h3>
+</div>
 
 ---
+![GitHub last commit](https://img.shields.io/github/last-commit/JuanRodenas/ubiquiti?color=blue&logo=ubiquiti&logoColor=blue&style=for-the-badge)
+
 ## Índice de contenido
 
 - [Acceso a la CLI y comandos básicos](#acceso-a-la-cli-y-comandos-básicos)
