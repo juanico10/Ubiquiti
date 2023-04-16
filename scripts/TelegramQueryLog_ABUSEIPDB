@@ -13,7 +13,7 @@ ABUSEIPDB_KEY="ABUSEIPDB_KEY"
 MSG="\xF0\x9F\x93\x8A LOG ROUTER WAN"
 IPS=$(cat /var/log/messages /var/log/messages.1 | grep -i "WAN_IN-20-D" | awk -F "=" '{print $5}' | awk '{print $1}' | sort -u)
 
-# Crear una cadena con la información de cada dirección IP
+# Consulta con abuseipdb
 for IP in $IPS; do
   log="$log $(curl -s "https://api.abuseipdb.com/api/v2/check?ipAddress=$IP" -H "Key: $ABUSEIPDB_KEY" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"isPublic":\([^,]*\).*"abuseConfidenceScore":\([^,]*\).*"countryCode":"\([^"]*\)".*/\n\1\n\t\t- isPublic: \2\n\t\t- abuseConfidenceScore: \3\n\t\t- countryCode: \4/p')"
 done
