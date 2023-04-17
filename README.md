@@ -233,7 +233,7 @@ Haga clic para copiar
 
 ## Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
-<a title="download" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a>
+<a title="download" href="https://www.ui.com/download/edgemax/"><img src="./files/down.png" alt="download" width="100" align="center" /></a>
 
 Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
 
@@ -1096,9 +1096,9 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
 <ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 <ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 
 ### EJEMPLO DE REGLAS:
