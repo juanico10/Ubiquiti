@@ -162,6 +162,7 @@ openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICA
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Configuración inicial del EdgeRouter:
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiConf.png" alt="Ubiquiti edgemax" width="40"/>
+La configuración inicial del EdgeRouter implica la configuración básica del dispositivo para que pueda conectarse a Internet y administrar el tráfico de red.
 
 ## Realización de un Hardware o Software Reset
 El EdgeRouter se puede restablecer a los valores predeterminados de fábrica utilizando un hardware o software método de restablecimiento
@@ -358,7 +359,9 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Hardening del dispositivo
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/hardening.png" alt="Ubiquiti edgemax" width="40"/>
+El hardening del dispositivo Edgerouter se refiere a la aplicación de medidas de seguridad para proteger y fortalecer la configuración del enrutador Edgerouter.
+
+Esto incluye medidas de seguridad como cambiar las contraseñas predeterminadas de inicio de sesión, asegurarse de que la última versión del firmware esté instalada, deshabilitar los servicios no utilizados, como SSH o Telnet, y configurar el firewall para bloquear tráfico no deseado que configuraremos en el siguiente punto.
 
 ## Habilitar funciones de rendimiento
 Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
@@ -468,7 +471,9 @@ commit ; save
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Firewall Edgerouter
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Icon-Firewall.png" alt="Ubiquiti edgemax" width="40"/>
+El Firewall EdgeRouter es conocido por su potencia y flexibilidad. Se basa en una plataforma de hardware de alto rendimiento que puede manejar grandes cantidades de tráfico de red con un bajo impacto en el rendimiento del sistema. Además, el Firewall EdgeRouter es altamente configurable y se puede ajustar para satisfacer las necesidades específicas de una organización o aplicación.
+
+El Firewall EdgeRouter admite varias funciones avanzadas de firewall, como reglas de filtrado de paquetes, filtrado de contenido, prevención de intrusiones y detección de tráfico anómalo, entre otras. También tiene la capacidad de crear VLANs y segmentar la red en zonas separadas para una mayor seguridad.
 
 ### TIPOS DE REGLAS
 * Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
@@ -937,8 +942,8 @@ Esto podemos realizarlo conectando al router mediante el protocolo SSH o usando 
 En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utilizando las mismas credenciales que usamos para acceder vía web.
 
 1. Accedemos por ssh o cli web.
-2. 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO" y "TOKEN".</sup>
+2. Configuramos lo siguiente y con atención:
+<img src="./files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO", "TOKEN" y la "INTERFAZ".</sup>
 ```bash
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
@@ -952,14 +957,16 @@ commit ; save
 3. Periódicamente el router ira actualizando nuestra IP pública en el DNS de DuckDNS. En caso de querer forzar la actualización, se puede realizar lanzando el siguiente comando.
 <ul><code>update dns dynamic interface INTERFAZ</code></ul>
 4. Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.
-show dns dynamic status
-<ul><code>
+<p><code>show dns dynamic status</code></p>
+
+```bash
 interface    : INTERFAZ
 ip address   : xxx.xxx.xxx.xxx
 host-name    : SUBDOMINIO
 last update  : Tue Sep 29 22:28:09 2020
 update-status: good
-</code></ul>
+```
+    
 <p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
 
 &nbsp;
@@ -969,8 +976,10 @@ update-status: good
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Añadir listas de seguridad al firewall
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/block.png" alt="Ubiquiti edgemax" width="40"/>
+Agregar listas de seguridad al firewall es una práctica común para mejorar la seguridad de un sistema informático. Una lista de seguridad es un conjunto de reglas que se configuran en el firewall para controlar el acceso a recursos del sistema o a la red. Estas reglas permiten o bloquean el tráfico entrante o saliente en función de ciertas condiciones, como la dirección IP de origen, el protocolo utilizado, el puerto de origen o destino, entre otros.
 
+La configuración de una lista de seguridad puede ayudar a prevenir ataques maliciosos, como el acceso no autorizado a recursos del sistema, la propagación de malware o la denegación de servicio.
+    
 ## Crear script
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
