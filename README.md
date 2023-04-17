@@ -233,9 +233,9 @@ Haga clic para copiar
 
 ## Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
-<a title="download" href="https://www.ui.com/download/edgemax/" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a>
+<a title="download" href="https://www.ui.com/download/edgemax/"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a>
 
-Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware" target="_blank" rel="nofollow">Cómo actualizar el firmware de EdgeOS</a>
+Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
 
 ## Acceso a la interfaz de configuración EdgeOS
 <details>
@@ -291,7 +291,7 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 
 ## Instrucciones de uso para realizar/restaurar vía UNMS
 Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
-<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514" target="_blank" rel="nofollow">realizar o restaurar vía UNMS</a></ul>
+<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
 
 &nbsp;
 </details>
@@ -342,16 +342,16 @@ Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el arch
 
 - También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
 Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
-<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414" target="_blank" rel="nofollow">Desinfectar las configuraciones de EdgeRouter</a></ul>
+<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
 
 
 ## Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación.
-1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide" target="_blank" rel="nofollow">UISP - Guía de instalación </a>
-2. Despues logarse en la web de UISP <a href="uisp.ui.com" target="_blank" rel="nofollow">uisp.ui.com</a>
-3. Pueden utilizar la aplicación móvil, enlace de configuración: <a href="https://help.ui.com/hc/en-us/articles/115010608187-UISP-Mobile-App#2" target="_blank" rel="nofollow">UISP-Mobile-App</a>
-- Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile" target="_blank" rel="nofollow">Android</a>
-- IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489" target="_blank" rel="nofollow">IOS</a>
+1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide">UISP - Guía de instalación </a>
+2. Despues logarse en la web de UISP <a href="uisp.ui.com">uisp.ui.com</a>
+3. Pueden utilizar la aplicación móvil, enlace de configuración: <a href="https://help.ui.com/hc/en-us/articles/115010608187-UISP-Mobile-App#2">UISP-Mobile-App</a>
+- Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile">Android</a>
+- IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489">IOS</a>
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
 <ul><code>Una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
@@ -364,7 +364,7 @@ El hardening del dispositivo Edgerouter se refiere a la aplicación de medidas d
 Esto incluye medidas de seguridad como cambiar las contraseñas predeterminadas de inicio de sesión, asegurarse de que la última versión del firmware esté instalada, deshabilitar los servicios no utilizados, como SSH o Telnet, y configurar el firewall para bloquear tráfico no deseado que configuraremos en el siguiente punto.
 
 ## Habilitar funciones de rendimiento
-Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading" target="_blank" rel="nofollow">EdgeRouter-Hardware-Offloading</a></p>
+Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
 **UTILIZAR CON CUIDADO**.
 
 Para ER-X,ER-X-SPF,EP-R6
@@ -416,7 +416,7 @@ Connection to 192.168.1.1 closed.
 
 ### Añadir una clave ssh pública a EdgeRouter
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
-<p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key" target="_blank" rel="nofollow">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
+<p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
 
 ```bash
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
@@ -724,7 +724,7 @@ Para aquellos de ustedes que desean usar la GUI para habilitar/deshabilitar ICMP
 <li>Haga clic en Guardar</li>
 </ol>
 <p>Ahora su EdgeRouter responderá/denegará a las solicitudes de ping en la interfaz WAN que seleccionó.</p>
-<sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ" target="_blank" rel="nofollow">icmp</a></sup>
+<sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ">icmp</a></sup>
 
 #### Avanzado
 <p>Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña <code>Árbol de configuración</code>.</p>
@@ -819,22 +819,22 @@ En la siguiente tabla aparece una recopilación de los tipos de paquetes más im
 Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.
 
 ## Load Balancing
-<a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing" target="_blank" rel="nofollow">Load Balancing</a>
+<a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing">Load Balancing</a>
 
 ## OSPF
-<a href="https://help.ui.com/hc/en-us/articles/205204050-EdgeRouter-OSPF-Routing" target="_blank" rel="nofollow">OSPF</a>
+<a href="https://help.ui.com/hc/en-us/articles/205204050-EdgeRouter-OSPF-Routing">OSPF</a>
 
 ## BGP
-<a href="https://help.ui.com/hc/en-us/articles/205222990-EdgeRouter-Border-Gateway-Protocol-BGP-" target="_blank" rel="nofollow">BGP</a>
+<a href="https://help.ui.com/hc/en-us/articles/205222990-EdgeRouter-Border-Gateway-Protocol-BGP-">BGP</a>
 
 ## VRRP
-<a href="https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-" target="_blank" rel="nofollow">VRRP</a>
+<a href="https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-">VRRP</a>
 
 ## Public Static IP Addresses
-<a href="https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses" target="_blank" rel="nofollow">Public Static IP Addresses]</a>
+<a href="https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses">Public Static IP Addresses]</a>
 
 ## Static Route
-<a href="https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route" target="_blank" rel="nofollow">Static Route</a>
+<a href="https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route">Static Route</a>
 
 # LAN
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de adaptar el rango de la red a la de tu red y la interfaz a modificar, porque puede no ajustarse a la del ejemplo.
@@ -915,7 +915,7 @@ set interfaces switch switch0 switch-port vlan-aware disable
     <summary>Mediante interfaz GUI:</summary>
 
 ### Instrucciones de uso con GUI:
-<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns" target="_blank" rel="nofollow">DuckDNS</a>.</sup>
+<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns">DuckDNS</a>.</sup>
 
 1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
 2. Se cargará un formulario vació que deberemos rellenar con los datos adecuados:
@@ -984,9 +984,9 @@ La configuración de una lista de seguridad puede ayudar a prevenir ataques mali
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
 <p><ul><li><code>SCRIPT_IPv4:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
 <p><ul><li><code>SCRIPT_IPv6:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
@@ -1075,7 +1075,7 @@ OPCIÓN 2:
 ## README con listas de IPs públicas
 He realizado un README en la carpeta `list` con listas de IPs públicas y mis listas creadas.
 <p>Dejo enlace a la carpeta del README:</p>
-<p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
+<p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
 
 ## REVISIÓN
 <p>Listar</p>
@@ -1096,9 +1096,9 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
 <ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 <ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB" target="_blank" rel="nofollow"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="https://github.com/JuanRodenas/Duckdns/blob/main/files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 
 ### EJEMPLO DE REGLAS:
@@ -1402,7 +1402,7 @@ Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categ
 ## requisito previo
 - SSH en su enrutador Edge.
 - Descargue las categorías disponibles. Dependiendo de su dispositivo, esto puede tardar unos minutos (en mi dispositivo tardó unos 100 minutos).
-- Actualizar y configurar <a href="https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy" target="_blank" rel="nofollow">webproxy</a>
+- Actualizar y configurar <a href="https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy">webproxy</a>
 
 ```bash
 update webproxy blacklists
@@ -1507,7 +1507,7 @@ exit
 # WireGuard
 Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
-- <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt" target="_blank" rel="nofollow">WireGuard/wireguard-vyatta-ubnt</a>
+- <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt">WireGuard/wireguard-vyatta-ubnt</a>
 
 ## Herramientas de diagnostico de red
 
