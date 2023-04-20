@@ -38,7 +38,9 @@ Enlace a la guía de la consola: <a href="https://www.ui.com/downloads/guides/Un
 [![unifi](https://badgen.net/badge/UniFi/6.5.55?list=|&icon=https://docs.golift.io/svg/ubiquiti_color.svg&color=0099ee "UniFi Products Supported")](https://www.ui.com/download/unifi/)
 
 ### Instalación
-<p>Enlace de descarga del docker compose de instalación: <a title="download" href="./UnifiDocker/docker-compose.yaml"><img src="./files/down.png" alt="download" width="100" align="center"/></a></p>
+<p>Enlace de descarga del docker compose de instalación:</p>
+<p><a title="download" href="./UnifiDocker/docker-compose.yaml"><img src="../files/down.png" alt="download" width="100" align="center"/></a></p>
+<p>Accedemos a la carpeta donde creamos el docker compose y levantamos el contenedor:</p>
 
 ```bash
 cd UnifiDocker && \
