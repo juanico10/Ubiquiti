@@ -65,6 +65,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 - [Syslog](#syslog)
 - [WireGuard](#wireguard)
 - [Diagnóstico de red](#herramientas-de-diagnostico-de-red)
+- [Unifi](#unifi)		 
 - [Conclusión](#conclusión)
 ---
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
@@ -1547,6 +1548,15 @@ Adjunto el enlace al repositorio de GitHub:
 <p>  &nbsp;&nbsp;https://1.1.1.1/help</p>
 </details>
 
+# Unifi
+Unifi es una plataforma de red desarrollada por Ubiquiti Networks que proporciona soluciones de administración de redes escalables y de alta calidad para pequeñas y medianas empresas, así como para usuarios domésticos avanzados. La plataforma Unifi permite a los usuarios controlar y supervisar de manera centralizada sus redes de acceso, puntos de acceso inalámbricos, cámaras de seguridad, interruptores y otros dispositivos de red mediante una interfaz de usuario intuitiva y fácil de usar. Unifi también ofrece una variedad de características avanzadas, como la capacidad de crear redes de invitados personalizadas, implementar políticas de seguridad, monitorear el rendimiento de la red y administrar dispositivos a través de la nube. En general, Unifi es una solución de red completa y confiable para aquellos que buscan una forma fácil y eficiente de administrar sus redes.
+
+## README con configuración de Unifi
+<p>He realizado un README en la carpeta `Unifi` con la configuración de la consola Unifi y configuración de un UAP Pro básica.</p>
+<p>Dejo enlace a la carpeta del README:</p>
+<p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/UnifiUnifi"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
+
+**[`^        back to top        ^`](#wiki-ubiquiti)**
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
 
