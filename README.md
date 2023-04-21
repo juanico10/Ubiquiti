@@ -1526,8 +1526,12 @@ Adjunto el enlace al repositorio de GitHub:
 
 <Original>&nbsp;Pagina para comprobar IPv6/IPv4</Original>
 
-<p>  &nbsp;&nbsp;http://www.test-ipv6.com/</p>
 <p>  &nbsp;&nbsp;https://www.whatismyip.com/</p>
+<p>  &nbsp;&nbsp;https://www.wireshark.org/tools/v46status.html</p>
+<p>  &nbsp;&nbsp;http://www.test-ipv6.com/</p>
+<p>  &nbsp;&nbsp;https://ipv6-test.com/</p>
+<p>  &nbsp;&nbsp;http://testmyipv6.com/</p>
+<p>  &nbsp;&nbsp;https://ipv6test.google.com/</p>
 </details>
 &nbsp;
 
@@ -1537,6 +1541,8 @@ Adjunto el enlace al repositorio de GitHub:
 <Original>&nbsp;Pagina para comprobar la velocidad de conexión</Original>
 
 <p>  &nbsp;&nbsp;https://speedsmart.net/</p>
+<p>  &nbsp;&nbsp;https://www.speedtest.net/</p>
+<p>  &nbsp;&nbsp;https://openspeedtest.com/</p>
 </details>
 &nbsp;
 
@@ -1546,7 +1552,9 @@ Adjunto el enlace al repositorio de GitHub:
 <Original>&nbsp;Pagina para comprobar las DNS de cloudfare</Original>
 
 <p>  &nbsp;&nbsp;https://1.1.1.1/help</p>
+<p>  &nbsp;&nbsp;https://www.dnsleaktest.com/</p>
 </details>
+&nbsp;
 
 # Unifi
 Unifi es una plataforma de red desarrollada por Ubiquiti Networks que proporciona soluciones de administración de redes escalables y de alta calidad para pequeñas y medianas empresas, así como para usuarios domésticos avanzados. La plataforma Unifi permite a los usuarios controlar y supervisar de manera centralizada sus redes de acceso, puntos de acceso inalámbricos, cámaras de seguridad, interruptores y otros dispositivos de red mediante una interfaz de usuario intuitiva y fácil de usar. Unifi también ofrece una variedad de características avanzadas, como la capacidad de crear redes de invitados personalizadas, implementar políticas de seguridad, monitorear el rendimiento de la red y administrar dispositivos a través de la nube. En general, Unifi es una solución de red completa y confiable para aquellos que buscan una forma fácil y eficiente de administrar sus redes.
