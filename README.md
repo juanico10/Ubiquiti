@@ -1562,7 +1562,7 @@ Unifi es una plataforma de red desarrollada por Ubiquiti Networks que proporcion
 ## README con configuración de Unifi
 <p>He realizado un README en la carpeta `Unifi` con la configuración de la consola Unifi y configuración de un UAP Pro básica.</p>
 <p>Dejo enlace a la carpeta del README:</p>
-<p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/UnifiUnifi"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
+<p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/Unifi"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
 
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 ## Conclusión
