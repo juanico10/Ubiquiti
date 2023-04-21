@@ -1509,8 +1509,11 @@ exit
 Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
 - <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt">WireGuard/wireguard-vyatta-ubnt</a>
-
-## Herramientas de diagnostico de red
+    
+**[`^        back to top        ^`](#wiki-ubiquiti)**
+    
+# Herramientas de diagnostico de red
+Una herramienta de diagnóstico de red es un software que permite a los administradores de redes y a los usuarios comunes analizar y solucionar problemas de conectividad en una red informática. Estas herramientas pueden proporcionar información sobre la velocidad y el rendimiento de la red, la disponibilidad de los recursos de red, y la identificación de problemas de configuración o de seguridad.
 
 <details>
 <summary>BGP:</summary>
@@ -1564,7 +1567,6 @@ Unifi es una plataforma de red desarrollada por Ubiquiti Networks que proporcion
 <p>Dejo enlace a la carpeta del README:</p>
 <p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/Unifi"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
 
-**[`^        back to top        ^`](#wiki-ubiquiti)**
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
 
