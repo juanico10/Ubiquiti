@@ -61,6 +61,9 @@ Unifi UAC Pro es un punto de acceso inalámbrico de alta calidad desarrollado po
 ### firmware
 Enlace al firmware: <a href="https://www.ui.com/download/unifi/unifi-ap-ac-pro/uap-ac-pro">Link</a>
 
+### Error Adopción Pendiente en Unifi
+En el siguiente enlace podemos solucionar el error de adopción de un equipo Unifi: <a href="https://azagramac.gitbook.io/myblog/unifi/error-adopcion-pendiente-en-usg-security-gateway">Link</a>
+
 ### Crear VLAN en UniFi Controller
 
 Entramos en nuestro UniFi Controller, y nos vamos a ajustes
@@ -103,6 +106,9 @@ En perfil del puerto del conmutador, elegimos la VLAN creada, en este ejemplo la
 ![](<../files/Unifi/VLAN.png>)
 
 Ya solo nos queda pinchar en el puerto el dispositivo.
+
+### Más tutoriales de Unifi
+En el siguiente enlace podemos ver más tutoriales de Unifi: <a href="En https://azagramac.gitbook.io/myblog/unifi">Link</a>
 
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
