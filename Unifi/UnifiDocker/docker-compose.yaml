@@ -4,6 +4,7 @@ services:
   unifi-controller:
     image: lscr.io/linuxserver/unifi-controller:latest
     container_name: unifi-controller
+    network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
@@ -23,3 +24,7 @@ services:
       - 6789:6789
       - 5514:5514/udp
     restart: unless-stopped
+
+networks:
+  unifi_net:
+    driver: bridge
