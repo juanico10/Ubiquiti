@@ -15,7 +15,7 @@ IPS=$(cat /var/log/messages /var/log/messages.1 | grep -i "WAN_IN-20-D" | awk -F
 
 # Consulta con abuseipdb
 for IP in $IPS; do
-  log="$log $(curl -s "https://api.abuseipdb.com/api/v2/check?ipAddress=$IP" -H "Key: $ABUSEIPDB_KEY" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"isPublic":\([^,]*\).*"abuseConfidenceScore":\([^,]*\).*"countryCode":"\([^"]*\)".*/\n\1\n\t\t- isPublic: \2\n\t\t- abuseConfidenceScore: \3\n\t\t- countryCode: \4/p')"
+  log="$log $(curl -s "https://api.abuseipdb.com/api/v2/check?ipAddress=$IP" -H "Key: $ABUSEIPDB_KEY" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"abuseConfidenceScore":\([^,]*\).*"countryCode":\([^,]*\).*"usageType":"\([^"]*\)".*/\n\1\n\t\t- abuseConfidenceScore: \2\n\t\t- countryCode: \3\n\t\t- usageType: \4/p')"
 done
 
 # Envio del mensaje
