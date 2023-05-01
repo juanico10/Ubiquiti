@@ -77,6 +77,7 @@ Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera
 
 ## Comandos básicos
 <ul><code>commit:</code>para activar los cambios.</ul>
+<ul><code>commit-confirm:</code>Este comando reinicia el dispositivo en 10 minutos (puedes personalizar este valor) a menos que el commit sea confirmado con el comando <code>confirm</code>. Esto es útil cuando estás haciendo cambios en un dispositivo remoto y no quieres arriesgarte a perder el acceso a él.</ul>
 <ul><code>save:</code> para almacenar la configuración "activa" en la configuración de inicio.</ul>
 <ul><code>compare:</code> Para ver qué cambios se han realizado en la configuración.</ul>
 <ul><code>configure:</code> modo configuración.</ul>

@@ -11,11 +11,11 @@ URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 DNS="1.1.1.1"
 ABUSEIPDB_KEY="ABUSEIPDB_KEY"
 MSG="\xF0\x9F\x93\x8A LOG ROUTER WAN"
-IPS=$(cat /var/log/messages /var/log/messages.1 | grep -i "WAN_IN-20-D" | awk -F "=" '{print $5}' | awk '{print $1}' | sort -u)
+IPS=$(cat /var/log/messages | grep -i "WAN_IN-20-D" | awk -F "=" '{print $5}' | awk '{print $1}' | sort -u)
 
 # Consulta con abuseipdb
 for IP in $IPS; do
-  log="$log $(curl -s "https://api.abuseipdb.com/api/v2/check?ipAddress=$IP" -H "Key: $ABUSEIPDB_KEY" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"abuseConfidenceScore":\([^,]*\).*"countryCode":\([^,]*\).*"usageType":"\([^"]*\)".*/\n\1\n\t\t- abuseConfidenceScore: \2\n\t\t- countryCode: \3\n\t\t- usageType: \4/p')"
+  log="$log $(curl -s -G "https://api.abuseipdb.com/api/v2/check" --data-urlencode "ipAddress=$IP" -d "maxAgeInDays=90" -d "verbose" -H "Key: $ABUSEIPDB_KEY" -H "Accept: application/json" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"abuseConfidenceScore":\([^,]*\).*"countryCode":\([^,]*\).*"usageType":"\([^"]*\)".*"isp":\([^,]*\).*/\n\1\n\t\t- abuseConfidenceScore: \2\n\t\t- countryCode: \3\n\t\t- usageType: \4\n\t\t- isp: \5/p')"
 done
 
 # Envio del mensaje
