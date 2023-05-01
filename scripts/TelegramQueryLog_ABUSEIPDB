@@ -15,7 +15,7 @@ IPS=$(cat /var/log/messages | grep -i "WAN_IN-20-D" | awk -F "=" '{print $5}' | 
 
 # Consulta con abuseipdb
 for IP in $IPS; do
-  log="$log $(curl -s -G "https://api.abuseipdb.com/api/v2/check" --data-urlencode "ipAddress=$IP" -d "maxAgeInDays=90" -d "verbose" -H "Key: $ABUSEIPDB_KEY" -H "Accept: application/json" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"abuseConfidenceScore":\([^,]*\).*"countryCode":\([^,]*\).*"usageType":"\([^"]*\)".*"isp":\([^,]*\).*/\n\1\n\t\t- abuseConfidenceScore: \2\n\t\t- countryCode: \3\n\t\t- usageType: \4\n\t\t- isp: \5/p')"
+  log="$log $(curl -s -G "https://api.abuseipdb.com/api/v2/check" --data-urlencode "ipAddress=$IP" -d "maxAgeInDays=90" -d "verbose" -H "Key: $ABUSEIPDB_KEY" -H "Accept: application/json" | sed -n 's/.*"ipAddress":"\([^"]*\)".*"abuseConfidenceScore":\([^,]*\).*"countryCode":\([^,]*\).*"usageType":"\([^"]*\)".*"isp":\([^,]*\).*"domain":"\([^"]*\)".*"countryName":"\([^"]*\)".*/\n\1\n\t\t- abuseConfidenceScore: \2\n\t\t- countryCode: \3\n\t\t- usageType: \4\n\t\t- isp: \5\n\t\t- domain: \6\n\t\t- countryName: \7/p')"
 done
 
 # Envio del mensaje
