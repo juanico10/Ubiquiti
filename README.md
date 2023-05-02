@@ -27,8 +27,11 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Copias de seguridad programadas de Edgerouter](#Copias-de-seguridad-programadas-de-Edgerouter)
   - [UISP](#gestión-de-uisp)
 - [Hardening del dispositivo](#hardening-del-dispositivo)
+  - [Configuración incial](#configuración-incial)
   - [Usuarios](#remover-default-user-y-crear-un-usuario)
   - [SSH](#ssh)
+  - [Autenticador de Google para SSH](#autenticador-de-google-para-ssh)
+  - [Restringir la gestión de SSH y GUI](#restringir-la-gestión-de-ssh-y-gui)
 - [Firewall EdgeRouter](#firewall-edgerouter)
   - [Tipos de reglas](#tipos-de-reglas)
   - [Firewall básico](#firewall-básico)
@@ -426,7 +429,8 @@ El hardening del dispositivo Edgerouter se refiere a la aplicación de medidas d
 
 Esto incluye medidas de seguridad como cambiar las contraseñas predeterminadas de inicio de sesión, asegurarse de que la última versión del firmware esté instalada, deshabilitar los servicios no utilizados, como SSH o Telnet, y configurar el firewall para bloquear tráfico no deseado que configuraremos en el siguiente punto.
 
-## Primero una pequeña configuración general importante del sistema
+## Configuración incial
+Primero una pequeña configuración general importante del sistema
 
 ```bash
 set system host-name mynameedge
@@ -539,7 +543,8 @@ set service ssh port <port>
 delete service telnet
 commit ; save
 ```
-### Un factor adicional: agregar el autenticador de Google para SSH
+### Autenticador de Google para SSH
+Un factor adicional: agregar el autenticador de Google para SSH
 
 El uso de certificados para la autenticación es un buen paso adelante. Pero, ¿qué pasa si mi máquina con mi certificado se ve comprometida? Luego está el acceso al Edgerouter 24/7. Una contramedida podría ser usar Google Authenticator en mi teléfono. Luego, el atacante necesita mi certificado en mi PC y mi teléfono.
 
@@ -992,11 +997,15 @@ set service dhcp-server shared-network-name vlan40 subnet 192.168.40.1/24 dns-se
 set service dhcp-server shared-network-name vlan40 subnet 192.168.40.1/24 start 192.168.40.10 stop 192.168.40.100
 set service dns forwarding listen-on eth3.40
 ```
-Solo mira esto como un ejemplo. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.
+
+<div class="warning">
+  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  <p>Solo mira esto como un ejemplo. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</p>
+</div>
 
 #### Cortafuegos: Protección de las redes internas
 
-Ahora que tenemos un par de redes, el objetivo es aislar algunas de ellas. Como ejemplo, nos aseguraremos de que la red invitada `(vlan 40)` pueda conectarse a Internet, pero bajo ninguna circunstancia conectarse a nuestras otras redes internas, por ejemplo. vlan 30. Hacemos esto haciendo algunas reglas de propósito general que pueden ser reutilizadas si decidimos hacer otras redes protegidas.
+Ahora que tenemos un par de redes, el objetivo es aislar algunas de ellas. Como ejemplo, nos aseguraremos de que la red invitada `(vlan 40)` pueda conectarse a Internet, pero bajo ninguna circunstancia conectarse a nuestras otras redes internas, por ejemplo, `vlan 30`. Hacemos esto haciendo algunas reglas de propósito general que pueden ser reutilizadas si decidimos hacer otras redes protegidas.
 
 El primer conjunto de reglas permite que todo el tráfico ingrese a través de la interfaz, excepto las nuevas conexiones a nuestras redes internas (192.168.0.0/16).
 ```bash
