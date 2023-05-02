@@ -74,8 +74,13 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 - [Unifi](#unifi)		 
 - [Conclusión](#conclusión)
 ---
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Recordar que los pasos aquí expuestos son orientativos.<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>
-<p>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</p>
+
+<div class="warning">
+  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  <p><em>Recordar que los pasos aquí expuestos son orientativos.</em></p>
+  <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
+</div>
+
 
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Acceso a la CLI y comandos básicos
@@ -681,7 +686,12 @@ commit ; save
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/WAN/pppoe_4.png" alt="pppoe_4.png"></p>
 
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> No toméis estos pasos al pie de la letra. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</p>
+
+<div class="warning">
+  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
+  <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
+</div>
 
 Puedes asignar la MAC del HGU a la WAN:
 
@@ -1000,7 +1010,8 @@ set service dns forwarding listen-on eth3.40
 
 <div class="warning">
   <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
-  <p>Solo mira esto como un ejemplo. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</p>
+  <p><em>Recordar que los pasos aquí expuestos son orientativos. Solo mira esto como un <strong>ejemplo</strong> y utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</em></p>
+  <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
 
 #### Cortafuegos: Protección de las redes internas
