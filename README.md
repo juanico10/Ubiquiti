@@ -24,6 +24,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Actualizaciones](#actualizar-edgerouter)
   - [Acceso interfaz](#acceso-a-la-interfaz-de-configuración-edgeos)
   - [Copia seguridad](#configuración-de-copia-de-seguridad-y-restauración)
+  - [Copias de seguridad programadas de Edgerouter](#Copias-de-seguridad-programadas-de-Edgerouter)
   - [UISP](#gestión-de-uisp)
 - [Hardening del dispositivo](#hardening-del-dispositivo)
   - [Usuarios](#remover-default-user-y-crear-un-usuario)
@@ -44,6 +45,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [VRRP](#vrrp)
   - [Public Static IP Addresses](#public-static-ip-addresses)
   - [Static Route](#static-route)
+  - [VLAN](#VLANS)
 - [LAN](#lan)
   - [DHCP](#dhcp)
   - [IP estáticas LAN](#configurar-IP-estática-para-dispositivo)
@@ -55,6 +57,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [Listas IPs](#readme-con-listas-de-ips-públicas)
   - [Revision](#revisión)
   - [Monitorización IPs bloqueadas](#monitorización-de-ips-bloqueadas)
+  - [Cortafuegos por país en Edgerouter](#Cortafuegos-por-país-en-Edgerouter)
 - [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
 - [OpenVPN](#openvpn)
   - [EdgeRouter como Servidor](#configuración-edgerouter-como-servidor-openvpn.-(Servidor))
@@ -276,7 +279,7 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 <details>
     <summary>Realización copia de seguridad y restauración vía GUI:</summary>
 
-## Instrucciones de uso para realizar vía GUI
+### Instrucciones de uso para realizar copia vía GUI
 
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
 <ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Back Up Config**</code></ul>
@@ -284,14 +287,14 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/backup.PNG" alt="backup"></p>
 
-## Instrucciones de uso para restaurar vía GUI
+### Instrucciones de uso para restaurar copi vía GUI
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
 <ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
 2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
 3. EdgeRouter solicitará que se reinicie el dispositivo para completar la restauración.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/restore.PNG" alt="restore"></p>
 
-## Instrucciones de uso para realizar/restaurar vía UNMS
+### Instrucciones de uso para realizar/restaurar copia vía UNMS
 Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
 <p><ul>Tambien hay un contenedor docker unms en el enlace:<a href="https://github.com/Nico640/docker-unms">Github</a></ul></p>
@@ -303,7 +306,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <details>
     <summary>Realización copia de seguridad y restauración vía CLI:</summary>
 
-## Instrucciones de uso para realizar vía CLI
+### Instrucciones de uso para realizar copia vía CLI
 
 <p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
 <p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
@@ -320,7 +323,7 @@ Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el arch
 <p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
 <ul><code>cat /config/config.boot</code></ul>
 
-## Instrucciones de uso para restaurar vía CLI
+### Instrucciones de uso para restaurar copia vía CLI
 <p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
 <p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
@@ -347,6 +350,63 @@ Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el arch
 Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
 <ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
 
+## Copias de seguridad programadas de Edgerouter
+
+En esta sección, describiré cómo configurar una copia de seguridad diaria programada de la configuración del Edgerouter a través de SFTP a otro Linux.
+
+#### En el Edgerouter
+
+Primero necesitamos generar un par de claves públicas en nuestro Edgerouter. Esto es mucho más seguro que usar una contraseña para la autenticación.
+
+```bash
+sudo bash
+mkdir /config/ssh-keys
+cd /config/ssh-keys
+ssh-keygen -f backup -C "SSH key for backup" -N ""
+cat backup.pub
+```
+
+La última línea imprime nuestra clave pública. Esta clave es necesaria en nuestro servidor de respaldo. Una clave podría verse así:
+```bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjsIf2CJz7cM5axHuNmh1oKPSuNZWrTpzLOe2PQoVCU/YL4nSsm+Zj1HvfAdbgVFvoWcGEw4rfKo+sRY/QQjNZfFCQyBRLzY5MBBnPrk1y75iILddaLVQvSm/3gSj6ZrEGH1ZS5mxznnwIovrROZ9tJeCPiS/1QDMMZDbTRR+Ez+eQVnaWdIhLGBhBEjj13VFAyV33QVzaaBc0SbtpzfbmUAVFHIjBXuUHoRTw0uZlvEg1GD68Mp7GhC6f1YeNU+zt2pA+6KRP9rZvshLfvAH9IP6uzgu17o2cDowF3tZmlhCFnr062ptbfDSnTO6ywEyzCIue85H6hEItmC3VBdnx SSH key for backup
+```
+ 
+#### En el servidor de respaldo
+
+Ahora vamos a nuestro servidor que recibirá las copias de seguridad y creamos un usuario para este fin:
+```bash
+adduser backupuser
+su backupuser
+mkdir /home/backupuser/.ssh
+mkdir /home/backupuser/edge-backups
+vi /home/backupuser/.ssh/authorized_keys
+```
+
+La última línea edita el archivo `"authorized_keys"`, donde debe pegar la clave pública generada en Edgerouter.
+
+ 
+#### De vuelta en el Edgerouter
+
+Ahora crea este script "/config/scripts/backup-remote.sh" y chmod 755:
+```bash
+#!/bin/bash
+sftp_host=192.168.X.X
+sftp_user=backupuser
+sftp_folder=/home/backupuser/edge-backups
+sftp_key=/config/ssh-keys/backup
+
+now=$(date +%d%m%y-%H%M)
+tar -cf - /config | gzip | \
+        curl -k --key $sftp_key --pubkey $sftp_key.pub \
+        -u $sftp_user: -T - sftp://$sftp_host$sftp_folder/backup-$now.tar.gz
+```
+
+Ahora debe probar si los scripts funcionan ejecutándolos. Si es así, debe agregar las siguientes líneas a su configuración de Edgerouter para que el script se ejecute diariamente:
+```bash
+set system task-scheduler task backup-conf executable path /config/scripts/backup-remote.sh
+set system task-scheduler task backup-conf interval 1d
+```
+
 
 ## Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación.
@@ -365,6 +425,15 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 El hardening del dispositivo Edgerouter se refiere a la aplicación de medidas de seguridad para proteger y fortalecer la configuración del enrutador Edgerouter.
 
 Esto incluye medidas de seguridad como cambiar las contraseñas predeterminadas de inicio de sesión, asegurarse de que la última versión del firmware esté instalada, deshabilitar los servicios no utilizados, como SSH o Telnet, y configurar el firewall para bloquear tráfico no deseado que configuraremos en el siguiente punto.
+
+## Primero una pequeña configuración general importante del sistema
+
+```bash
+set system host-name mynameedge
+set system domain-name mydomain.com
+set system name-server 8.8.8.8
+set system time-zone Europe/Madrid
+```
 
 ## Habilitar funciones de rendimiento
 Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
@@ -469,6 +538,57 @@ set service ssh protocol-version v2
 set service ssh port <port>
 delete service telnet
 commit ; save
+```
+### Un factor adicional: agregar el autenticador de Google para SSH
+
+El uso de certificados para la autenticación es un buen paso adelante. Pero, ¿qué pasa si mi máquina con mi certificado se ve comprometida? Luego está el acceso al Edgerouter 24/7. Una contramedida podría ser usar Google Authenticator en mi teléfono. Luego, el atacante necesita mi certificado en mi PC y mi teléfono.
+
+Primero descargamos e instalamos el paquete debian de Google Authenticator
+
+```bash
+sudo -i
+apt-get install libqrencode3
+cd ~ && mkdir ./downloaded-packages && cd downloaded-packages
+curl -O http://ftp.us.debian.org/debian/pool/main/g/google-authenticator/libpam-google-authenticator_20170702-1_mips.deb
+dpkg --force-all -i libpam-google-authenticator_20170702-1_mips.deb
+exit
+```
+Nota: Para versiones pequeñas de Edgerouter lite, use "libpam-google-authenticator_20160607-2_mips.deb" en su lugar... No tienen la arquitectura de 64 bits.
+
+Ahora ejecutamos el autenticador para que nos dé una clave privada para nuestro teléfono.
+
+```bash
+google-authenticator
+Do you want authentication tokens to be time-based (y/n) y
+Do you want me to update your "/home/mynewusername/.google_authenticator" file (y/n): y
+Do you want to disallow multiple uses of the same authentication token? This restricts you to one login about every 30s, but it increases your chances to notice or even prevent man-in-the-middle attacks (y/n): y
+By default, tokens are good for 30 seconds. In order to compensate for possible time-skew between the client and the server, we allow an extra token before and after the current time. If you experience problems with poor time synchronization, you can increase the window from its default size of +-1min (window size of 3) to about + 4min (window size of 17 acceptable tokens). Do you want to do so? (y/n): y
+If the computer that you are logging into isn't hardened against brute-force login attempts, you can enable rate-limiting for the authentication module. By default, this limits attackers to no more than 3 login attempts every 30s. Do you want to enable rate-limiting (y/n): y
+```
+
+Simplemente responda afirmativamente a todas las preguntas. Esto arrojaría una clave privada que puede escribir en la aplicación de autenticación. Si ha instalado el paquete apt "libqrencode3", obtendrá un enorme código QR en la pantalla que puede escanear con el teléfono.
+
+Ahora necesitamos configurar PAM en Linux para usar Google Authenticator. También deshabilitamos la autenticación de contraseña.
+
+```bash
+sudo -i
+echo "auth required pam_google_authenticator.so" >> /etc/pam.d/sshd
+sed -i -e 's/@include common-auth/#@include common-auth/g' /etc/pam.d/sshd
+sed -i -e 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /opt/vyatta/etc/ssh/sshd_config
+sed -i -e 's/PasswordAuthentication yes/PasswordAuthentication no/g' /opt/vyatta/etc/ssh/sshd_config
+echo "AuthenticationMethods publickey,keyboard-interactive" >> /opt/vyatta/etc/ssh/sshd_config
+```
+
+En este punto sería inteligente probarlo. Guarde la configuración con el comando "guardar" y luego reinicie el dispositivo con el comando "reiniciar".
+
+### Restringir la gestión de SSH y GUI
+Edgerouter se puede administrar desde cualquier lugar. Esto solo debe permitirse desde redes internas.
+```bash
+configure
+set service gui listen-address <lan ip address> 
+set service ssh listen-address <lan ip address>
+commit ; save
+exit
 ```
 
 ---
@@ -839,6 +959,73 @@ Estos procediminetos son muy extensos y para que el README no sea muy extenso, a
 ## Static Route
 <a href="https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route">Static Route</a>
 
+## VLANS
+
+#### Creando redes internas en EdgeOS
+
+Acabo de comprar un punto de acceso "Ubiquiti Unifi AC PRO" y lo conecté a ETH3. Nuestro primer trabajo es darle energía y configurar una red con DNS y DHCP. Esta red no está etiquetada y se usa para que el AP se conecte a su controlador si es necesario. Es solo para fines administrativos y no fluirá tráfico real en esta red.
+
+```bash
+set interfaces ethernet eth3 poe output 24v
+
+set interfaces ethernet eth3 address 192.168.20.1/24
+set interfaces ethernet eth3 description "WIFI AP management"
+set service dhcp-server shared-network-name vlan20 subnet 192.168.20.1/24 default-router 192.168.20.1
+set service dhcp-server shared-network-name vlan20 subnet 192.168.20.1/24 dns-server 192.168.20.1
+set service dhcp-server shared-network-name vlan20 subnet 192.168.20.1/24 start 192.168.20.10 stop 192.168.20.100
+set service dhcp-server shared-network-name vlan20 subnet 192.168.20.1/24 unifi-controller 192.168.100.10
+set service dns forwarding listen-on eth3
+```
+Ahora creamos un par de redes que deben transmitirse en el AP. Planeo usar vlan 30 como red confiable y vlan 40 como red de invitados. El tráfico a estas dos redes se envía como tráfico etiquetado al AP. El AP se encargará de colocar cada VLAN en su propio SSID.
+```bash
+set interfaces ethernet eth3 vif 30 address 192.168.30.1/24
+set interfaces ethernet eth3 vif 30 description "WIFI trusted"
+set service dhcp-server shared-network-name vlan30 subnet 192.168.30.1/24 default-router 192.168.30.1
+set service dhcp-server shared-network-name vlan30 subnet 192.168.30.1/24 dns-server 192.168.30.1
+set service dhcp-server shared-network-name vlan30 subnet 192.168.30.1/24 start 192.168.30.10 stop 192.168.30.100
+set service dns forwarding listen-on eth3.30
+
+set interfaces ethernet eth3 vif 40 address 192.168.40.1/24
+set interfaces ethernet eth3 vif 40 description "WIFI guest"
+set service dhcp-server shared-network-name vlan40 subnet 192.168.40.1/24 default-router 192.168.40.1
+set service dhcp-server shared-network-name vlan40 subnet 192.168.40.1/24 dns-server 192.168.40.1
+set service dhcp-server shared-network-name vlan40 subnet 192.168.40.1/24 start 192.168.40.10 stop 192.168.40.100
+set service dns forwarding listen-on eth3.40
+```
+Solo mira esto como un ejemplo. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.
+
+#### Cortafuegos: Protección de las redes internas
+
+Ahora que tenemos un par de redes, el objetivo es aislar algunas de ellas. Como ejemplo, nos aseguraremos de que la red invitada `(vlan 40)` pueda conectarse a Internet, pero bajo ninguna circunstancia conectarse a nuestras otras redes internas, por ejemplo. vlan 30. Hacemos esto haciendo algunas reglas de propósito general que pueden ser reutilizadas si decidimos hacer otras redes protegidas.
+
+El primer conjunto de reglas permite que todo el tráfico ingrese a través de la interfaz, excepto las nuevas conexiones a nuestras redes internas (192.168.0.0/16).
+```bash
+set firewall name PROTECT_IN default-action accept
+set firewall name PROTECT_IN rule 10 action drop 
+set firewall name PROTECT_IN rule 10 description "Drop new connecions to LAN" 
+set firewall name PROTECT_IN rule 10 destination address 192.168.0.0/16
+set firewall name PROTECT_IN rule 10 state new enable
+set firewall name PROTECT_IN rule 10 protocol all
+```
+Nuevamente, necesitamos crear un conjunto de reglas que elimine todo lo destinado a la interfaz, excepto DNS y DHCP.
+```bash
+set firewall name PROTECT_LOCAL default-action drop
+set firewall name PROTECT_LOCAL rule 10 action accept 
+set firewall name PROTECT_LOCAL rule 10 description "Allow DNS" 
+set firewall name PROTECT_LOCAL rule 10 destination port 53
+set firewall name PROTECT_LOCAL rule 10 protocol udp
+set firewall name PROTECT_LOCAL rule 20 action accept 
+set firewall name PROTECT_LOCAL rule 20 description "Accept DHCP" 
+set firewall name PROTECT_LOCAL rule 20 destination port 67 
+set firewall name PROTECT_LOCAL rule 20 protocol udp
+```
+Ahora solo necesitamos vincular estos conjuntos de reglas generales a nuestra interfaz vlan de invitados. – o cualquier otra interfaz que no queramos conectar a nuestra red interna.
+```bash
+set interfaces ethernet eth3 vif 40 firewall in name PROTECT_IN
+set interfaces ethernet eth3 vif 40 firewall local name PROTECT_LOCAL
+```
+
+
 # LAN
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de adaptar el rango de la red a la de tu red y la interfaz a modificar, porque puede no ajustarse a la del ejemplo.
 
@@ -1095,15 +1282,6 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 <p>Ver log</p>
 <ul><code>cat /var/log/messages</code></ul>
 
-## Monitorización de IPs bloqueadas
-He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
-<ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
-<ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
-<ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
-
-
 ### EJEMPLO DE REGLAS:
 ```bash
     name WAN_IN {
@@ -1177,6 +1355,88 @@ ethernet eth1 {
                     name WAN_LOCAL
                 }
             }
+```
+
+## Monitorización de IPs bloqueadas
+He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
+<ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
+<ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+
+## Cortafuegos por país en Edgerouter
+
+Me he inventado un pequeño dialogo para explicar el ejemplo:
+`Tengo un pequeño servidor web ejecutándose dentro de mi red en el puerto 55555. Solo quiero que mis amigos puedan acceder a él. Sé que viven en Dinamarca, Noruega y Suecia. Quiero asegurarme de que China, Rusia y otras partes del mundo no tengan acceso, para minimizar el riesgo de explotar los días cero en mi servidor.`
+
+#### Configuración del Edgerouter
+
+Esta es la configuración que agrego:
+```bash
+set firewall group network-group countries_allowed description 'Allowed countries'
+set firewall group network-group countries_allowed network 10.254.254.254/31
+set service nat rule 10 description 'My funny dmz server'
+set service nat rule 10 destination group address-group ADDRv4_eth0
+set service nat rule 10 destination port 55555
+set service nat rule 10 inbound-interface eth0
+set service nat rule 10 inside-address address 192.168.xxx.xxx
+set service nat rule 10 inside-address port 55555
+set service nat rule 10 protocol tcp
+
+set firewall name WAN_IN rule 20 action accept
+set firewall name WAN_IN rule 20 description 'My funny dmz server'
+set firewall name WAN_IN rule 20 destination port 55555
+set firewall name WAN_IN rule 20 protocol tcp
+set firewall name WAN_IN rule 20 source group network-group countries_allowed
+
+commit
+```
+
+Esto básicamente hace lo siguiente:
+
+  1. Crea un grupo de red que será un marcador de posición para todas las subredes a las que quiero permitir el acceso a mi servidor. Solo agrego una regla, que estará allí cuando se inicie Edgerouter. Eso significa que todo (excepto una IP arbitraria/aleatoria `10.254.254.254`) está bloqueado hasta que las reglas reales del país se carguen más tarde.
+  2. Luego crea una regla de reenvío NAT que reenvía todo el tráfico al puerto `55555` que ingresa en mi interfaz externa (`eth0`) a mi servidor interno
+  3. Permite el tráfico a mi servidor en el cortafuegos si el tráfico se origina en mi grupo de red "countries_allowed"
+
+#### Obtener subredes de países
+
+Ahora creo un archivo de script "`/config/scripts/post-config.d/country-load`" (`chmod 755`):
+```bash
+#!/bin/bash
+countryList="dk no se"
+firewallGroupName=countries_allowed
+
+#mkdir /config/zonefiles
+function loadcountry () {
+        firewallGroupName=$1
+        country=$2
+
+        echo "Downloading country definition for $country..." >> /var/log/alex
+        wget http://www.ipdeny.com/ipblocks/data/countries/${country}.zone -O /config/zonefiles/${country}.zone -q
+        echo "Adding rules to firewall group $firewallGroupName..." >> /var/log/alex
+        for rule in `cat /config/zonefiles/${country}.zone`; do
+                ipset add $firewallGroupName $rule
+        done
+}
+
+ipset -F $firewallGroupName
+for country in $countryList; do
+        loadcountry $firewallGroupName $country
+done
+```
+
+Este script se ejecutará cuando se inicie Edgerouter:
+
+  1. Recorra la lista de países definidos en la parte superior del script
+  2. Descarga una lista de subredes en cada país
+  3. Agréguelo a la tabla ipset (eso es lo que usa Edgerouter para los grupos de red)
+
+#### Pruebas
+
+Después de reiniciar el enrutador de borde o ejecutar manualmente el script, puede verificar que realmente tenemos algunas subredes en nuestro grupo de red:
+```bash
+ipset -L countries_allowed 
 ```
 
 ---
