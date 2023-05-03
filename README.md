@@ -1215,10 +1215,21 @@ set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
 set firewall name WAN_IN rule 10 action drop
 set firewall name WAN_IN rule 10 state established enable
+set firewall name WAN_IN rule 10 state new enable
 set firewall name WAN_IN rule 10 state related enable
 set firewall name WAN_IN rule 10 protocol all
 commit ; save
 ```
+
+<p>Importante, deshabilitamos el `auto-firewall` del port forwarding</p>
+
+```bash
+configure
+set port-forward auto-firewall disable
+commit ; save
+```
+
+<p><sup>El <code>auto-firewall</code> del <code>port forwarding</code> anula el cortafuegos real, por lo que establece reglas de permiso para esos puertos.</sup></p>
 
 ### Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus
 <p>Modificamos en el script el nombre de los argumentos: <code>NETGROUP</code>, con el nombre del grupo creado.</p>
