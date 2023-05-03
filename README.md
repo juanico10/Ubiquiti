@@ -608,6 +608,13 @@ El Firewall EdgeRouter es conocido por su potencia y flexibilidad. Se basa en un
 
 El Firewall EdgeRouter admite varias funciones avanzadas de firewall, como reglas de filtrado de paquetes, filtrado de contenido, prevención de intrusiones y detección de tráfico anómalo, entre otras. También tiene la capacidad de crear VLANs y segmentar la red en zonas separadas para una mayor seguridad.
 
+<div align="center">
+        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Firewallubnt.png" alt="Pi-hole" width="320">
+    </a>
+    <br>
+    <h4>Explicación del Firewall.</h4>
+</div>
+
 ### TIPOS DE REGLAS
 * Para poder añadir una regla, deben saber que hay 3 WAN en Ubiquiti:
   - `WAN_IN` = es para paquetes externos que llegan a su enrutador y se dirigen a su LAN. Deje el destino en blanco. Solo debe preocuparse por el grupo de direcciones de origen BlockedIP. Coloque la regla DESPUÉS de que los dos primeros normales acepten establecidos/relacionados y eliminen los no válidos.
@@ -630,6 +637,15 @@ Ejemplo para una `WAN`con pppoe,
 - Despues realizar una prueba para comprobar la acción deseada.
 
 <sup>En EdgeMax no es necesario añadir la misma regla en IN y OUT. Denegará o permitirá la acción deseada en cualquiera de ellas.</sup>
+
+El EdgeRouter utiliza un cortafuegos de estado, lo que significa que las reglas del cortafuegos del router pueden coincidir en diferentes estados de conexión. Los estados de tráfico son:
+  - `new` Los paquetes entrantes proceden de una nueva conexión.
+  - `established` Los paquetes entrantes están asociados a una conexión ya existente.
+  - `related` Los paquetes entrantes son nuevos, pero están asociados a una conexión ya existente.
+  - `invalid` Los paquetes entrantes no coinciden con ninguno de los otros estados.
+Utilizando estos estados de cortafuegos, el router puede aceptar/rechazar tráfico en diferentes direcciones dependiendo del estado de la conexión.
+Por ejemplo:
+  - En ejemplo, el router puede bloquear todo el tráfico de WAN a LAN, a menos que sea tráfico de retorno asociado a una conexión ya existente. El asistente de configuración básica de EdgeOS añade las siguientes reglas de cortafuegos al router.
 
 ### Firewall básico
 Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Firewall algunos conceptos te serán extraños, pero intentare explicar cada paso con algún ejemplo, haciéndolo mas fácil de entender.
