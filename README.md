@@ -38,8 +38,11 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [PPPoE O2 Movistar](#configurar-una-interfaz-PPPoE-de-Movistar-u-O2-en-un-edgerouter-de-Ubiquiti)
   - [IPv6](#ipv6-on-the-edgerouter)
   - [Dual wan](#dual-wan)
-  - [Configuración nat](#configuration-nat)
-  - [Port forwarding](#port-forwarding)
+  - [NAT](#nat)
+    - [Souce NAT](#source-nat-and-masquerade)
+    - [Destination NAT](#destination-nat)
+    - [Organización de reglas](#reordenación-de-las-reglas-de-firewall-y-nat)
+    - [Port forwarding](#port-forwarding)
   - [ICMP](#ICMP)
 - [Routing](#routing)
   - [Load Balancing](#load-balancing)
@@ -826,18 +829,90 @@ set load-balance group LB-GROUP lb-local enable
 set load-balance group LB-GROUP lb-local-metric-change disable
 ```
 
-## Configuration NAT
-Ejemplo de como configurar NAT:
+## NAT
+NAT (Network Address Translation) es una técnica utilizada en redes informáticas para permitir que varios dispositivos en una red privada se conecten a Internet utilizando una dirección IP pública única. NAT traduce las direcciones IP privadas de los dispositivos en la red privada en una dirección IP pública antes de enviar los paquetes a Internet y viceversa, cuando los paquetes regresan a la red privada.
+
+### Source NAT and Masquerade
+Las reglas NAT de origen se pueden utilizar para muchas aplicaciones diferentes. Un uso popular de NAT Masquerade es traducir un rango de direcciones privadas a una única dirección IP pública. Esto permite que los hosts detrás de EdgeRouter se comuniquen con otros dispositivos en Internet.
+
+En la GUI se configura en: `Firewall/NAT > NAT > Add Source NAT Rule`
+
+**Masquerade Rule**
+Masquerade, también conocido como NAT de muchos a uno, PAT o sobrecarga de NAT. Un uso popular de NAT Masquerade es traducir un rango de direcciones privadas a una única dirección IP pública.
+
+```bash
+set service nat rule 5010 description 'masquerade for WAN'
+set service nat rule 5000 log disable
+set service nat rule 5010 outbound-interface eth0
+set service nat rule 5010 type masquerade
+set service nat rule 5010 protocol all
+```
+
+**Source NAT rule**
+Source NAT se usa para proporcionar una traducción 1:1
+
+```bash
+set service nat rule 5000 description 'source NAT for 192.168.1.10'
+set service nat rule 5000 outbound-interface eth0
+set service nat rule 5000 type source 
+set service nat rule 5000 protocol all
+set service nat rule 5000 outside-address address 203.0.113.2
+set service nat rule 5000 source address 192.168.1.10
+```
+
+
+### Destination NAT
+EL destination NAT y el Port Forwarding tienen el mismo propósito y se pueden usar para reenviar puertos a un host interno detrás de NAT. Destination NAT, también conocido como DNAT, es otra variante de NAT en la que se utiliza una dirección IP pública única para traducir las direcciones IP de destino de los paquetes que se envían desde Internet hacia la red privada.
+
+En la GUI se configura en: `Firewall / NAT > NAT > +Add Destination NAT Rule`
+
+```bash
+set service nat rule 1 description https443
+set service nat rule 1 destination address 203.0.113.1
+set service nat rule 1 destination port 443
+set service nat rule 1 inbound-interface eth0
+set service nat rule 1 inside-address address 192.168.1.10
+set service nat rule 1 inside-address port 443
+set service nat rule 1 log disable
+set service nat rule 1 protocol tcp
+set service nat rule 1 type destination
+```
+
+### Reordenación de las reglas de firewall y NAT
+Las reglas de firewall y NAT coinciden en orden de preferencia. Las reglas con un ID más bajo se comparan antes que las reglas con un ID más alto.
+
+NAT y firewall se pueden reordenar desde la CLI usando el comando de cambio de nombre . Siga los pasos a continuación para reordenar las reglas: 
+**CLI**:  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
+
+Para las reglas de firewall, edite el subárbol de configuración de firewall específico para cambiar el número de regla: 
 ```bash
 configure
-set service nat rule 5000 description NAT-TO-WAN
-set service nat rule 5000 log disable
-set service nat rule 5000 outbound-interface eth0
-set service nat rule 5000 protocol all
-set service nat rule 5000 source address 172.22.1.0/24
-set service nat rule 5000 type masquerade
-commit && save && exit
+edit firewall name <name>
+ rename rule 10 to rule 20
+ exit
+commit ; save
 ```
+
+Para las reglas de NAT, edite el subárbol de configuración de NAT para cambiar el número de regla: 
+```bash
+configure
+edit service nat
+ rename rule 5010 to rule 5020
+ exit
+commit ; save
+```
+NOTE: La CLI también le permite cambiar el nombre de las reglas de firewall modificadas que se usan para el enrutamiento basado en políticas y el equilibrio de carga.
+
+
+**GUI**: acceda a la interfaz de usuario web de EdgeRouter .
+
+1. Navegue a la pestaña Firewall/NAT para modificar la política de firewall existente.
+`Cortafuegos/NAT > Políticas de cortafuegos > Nombre de la política > Acciones > Editar`
+2. Arrastre y reordene las reglas del cortafuegos en el orden deseado.
+3. Guarde el nuevo orden de reglas.
+
+Las reglas NAT se reordenan utilizando un método muy similar. Navegue a la pestaña Firewall/NAT > NAT y arrastre las reglas al orden deseado. Finalmente guarde el nuevo orden de reglas. 
+
 
 ### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
