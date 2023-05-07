@@ -249,7 +249,7 @@ Haga clic para copiar
 
 ## Actualizar EdgeRouter
 Antes de Realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
-<a title="download" href="https://www.ui.com/download/edgemax/"><img src="./files/down.png" alt="download" width="100" align="center" /></a>
+<p><a title="download" href="https://www.ui.com/download/edgemax/"><img src="./files/down.png" alt="download" width="100" align="center" /></a></p>
 
 Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
 
@@ -298,7 +298,7 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 3. EdgeRouter le pedirá que guarde el archivo en su ordenador.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Backup-restore/backup.PNG" alt="backup"></p>
 
-### Instrucciones de uso para restaurar copi vía GUI
+### Instrucciones de uso para restaurar copia vía GUI
 1. Navegue al sistema en la parte inferior izquierda de la GUI para descargar el archivo de configuración de la copia de seguridad.
 <ul><code>**Sistema** > **Gestión de configuración** y **mantenimiento de dispositivos** > **Restore Config**</code></ul>
 2. Cargue el archivo de configuración de la copia de seguridad haciendo clic en el **Upload a file** .
@@ -840,7 +840,7 @@ En la GUI se configura en: `Firewall/NAT > NAT > Add Source NAT Rule`
 **Masquerade Rule**
 Masquerade, también conocido como NAT de muchos a uno, PAT o sobrecarga de NAT. Un uso popular de NAT Masquerade es traducir un rango de direcciones privadas a una única dirección IP pública.
 
-```bash
+```bash 
 set service nat rule 5010 description 'masquerade for WAN'
 set service nat rule 5000 log disable
 set service nat rule 5010 outbound-interface eth0
@@ -1045,7 +1045,7 @@ En la siguiente tabla aparece una recopilación de los tipos de paquetes más im
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
-Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.
+Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.<
 
 ## Load Balancing
 <a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing">Load Balancing</a>
