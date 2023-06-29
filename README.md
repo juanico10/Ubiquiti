@@ -1930,6 +1930,7 @@ Una herramienta de diagnóstico de red es un software que permite a los administ
 <p>  &nbsp;&nbsp;https://speedsmart.net/</p>
 <p>  &nbsp;&nbsp;https://www.speedtest.net/</p>
 <p>  &nbsp;&nbsp;https://openspeedtest.com/</p>
+<p>  &nbsp;&nbsp;https://speed.cloudflare.com/</p>
 </details>
 &nbsp;
 
