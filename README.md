@@ -2,7 +2,7 @@
 Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 <div align="center">
-    <a href="https://www.ui.com/">
+    <a href="https://www.ui.com/ target="_blank"">
         <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
     </a>
     <br>
@@ -148,7 +148,7 @@ Cuando intentamos acceder vía web, nos indica que el certificado es inválido a
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert0.PNG" alt="cert0"></p>
 
 Podemos ver el contenido del archivo de certificado <code>.PEM</code>:
-```bash
+```shell
 openssl x509 -in CERTIFICATE.pem -text -noout
 ```
 
@@ -157,7 +157,7 @@ Para poder solucionar, debemos descargar el certificado del navegador. Nos desca
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert2.PNG" alt="cert2"></p>
 
 Una vez descargado tenemos que cambiar el <code>.pem</code> a <code>.crt</code> con OpenSSL:
-```bash
+```shell
 openssl x509 -outform der -in CERTIFICATE.pem -out CERTIFICATE.crt
 ```
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert3.PNG" alt="cert3"></p>
@@ -169,7 +169,7 @@ Una vez importado el certificado y borrado las cookies, ya no nos indicará que 
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/cert/cert5.PNG" alt="cert5"></p>
 
 Tambien podemos migrar el <code>.pem</code> a <code>.pfx</code> con OpenSSL:
-```bash
+```shell
 openssl pkcs12 -export -in CERTIFICATE.pem -inkey CERTIFICATE.key -out CERTIFICATE.pfx
 ```
 <p><sup>Para ello necesitas la private key del certificado.</sup></p>
@@ -250,12 +250,12 @@ Haga clic para copiar
 ## Actualizar EdgeRouter
 Antes de realizar cualquier cambio o configuración en los equipos Ubiquiti EdgeMax debe contar con la última versión del Firmware.
 - Pueden buscar en la web de descargas de Ubiquiti:
-<p><ul><a title="download" href="https://www.ui.com/download/edgemax/"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<p><ul><a title="download" href="https://www.ui.com/download/edgemax/" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 - Pueden buscar en la web de lanzamientos de Ubiquiti:
-<p><ul><a title="download" href="https://community.ui.com/releases?q=EdgeMAX"><img src="./files/rss.png" alt="download" width="60" align="center" /></a></ul></p>
+<p><ul><a title="download" href="https://community.ui.com/releases?q=EdgeMAX" target="_blank"><img src="./files/rss.png" alt="download" width="60" align="center" /></a></ul></p>
 
-Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware">Cómo actualizar el firmware de EdgeOS</a>
+Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware" target="_blank">Cómo actualizar el firmware de EdgeOS</a>
 
 ## Acceso a la interfaz de configuración EdgeOS
 <details>
@@ -311,8 +311,8 @@ Realizar una copia de seguridad y restaurar el archivo de configuración de un E
 
 ### Instrucciones de uso para realizar/restaurar copia vía UNMS
 Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
-<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514">realizar o restaurar vía UNMS</a></ul>
-<p><ul>Tambien hay un contenedor docker unms en el enlace:<a href="https://github.com/Nico640/docker-unms">Github</a></ul></p>
+<ul><a href="https://help.ui.com/hc/en-us/articles/360002535514" target="_blank">realizar o restaurar vía UNMS</a></ul>
+<p><ul>Tambien hay un contenedor docker unms en el enlace:<a href="https://github.com/Nico640/docker-unms" target="_blank">Github</a></ul></p>
 
 &nbsp;
 </details>
@@ -328,7 +328,7 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <ul><code>commit ; save</code></ul>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
 
-```bash
+```shell
   scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
   ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
@@ -343,7 +343,7 @@ Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el arch
 <p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
 
-```bash
+```shell
   scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
   sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
   ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
@@ -363,7 +363,7 @@ Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el arch
 
 - También hay una opción que nos indican Ubiquiti, ellos la llaman **desinfectar** o **limpiar** las configuraciones de EdgeRouter para eliminar toda la información personal y confidencial.
 Ubiquiti nos dedica un articulo muy detallado para esta opción. Esta opción de **desinfectar** es cuando necesitas ayuda y quieres enviar la plantilla o "cachos" de la plantilla al foro o fabricante.
-<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414">Desinfectar las configuraciones de EdgeRouter</a></ul>
+<ul><a href="https://help.ui.com/hc/en-us/articles/360012074414" target="_blank">Desinfectar las configuraciones de EdgeRouter</a></ul>
 
 ## Copias de seguridad programadas de Edgerouter
 
@@ -373,7 +373,7 @@ En esta sección, describiré cómo configurar una copia de seguridad diaria pro
 
 Primero necesitamos generar un par de claves públicas en nuestro Edgerouter. Esto es mucho más seguro que usar una contraseña para la autenticación.
 
-```bash
+```shell
 sudo bash
 mkdir /config/ssh-keys
 cd /config/ssh-keys
@@ -382,14 +382,14 @@ cat backup.pub
 ```
 
 La última línea imprime nuestra clave pública. Esta clave es necesaria en nuestro servidor de respaldo. Una clave podría verse así:
-```bash
+```shell
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjsIf2CJz7cM5axHuNmh1oKPSuNZWrTpzLOe2PQoVCU/YL4nSsm+Zj1HvfAdbgVFvoWcGEw4rfKo+sRY/QQjNZfFCQyBRLzY5MBBnPrk1y75iILddaLVQvSm/3gSj6ZrEGH1ZS5mxznnwIovrROZ9tJeCPiS/1QDMMZDbTRR+Ez+eQVnaWdIhLGBhBEjj13VFAyV33QVzaaBc0SbtpzfbmUAVFHIjBXuUHoRTw0uZlvEg1GD68Mp7GhC6f1YeNU+zt2pA+6KRP9rZvshLfvAH9IP6uzgu17o2cDowF3tZmlhCFnr062ptbfDSnTO6ywEyzCIue85H6hEItmC3VBdnx SSH key for backup
 ```
  
 #### En el servidor de respaldo
 
 Ahora vamos a nuestro servidor que recibirá las copias de seguridad y creamos un usuario para este fin:
-```bash
+```shell
 adduser backupuser
 su backupuser
 mkdir /home/backupuser/.ssh
@@ -403,7 +403,7 @@ La última línea edita el archivo `"authorized_keys"`, donde debe pegar la clav
 #### De vuelta en el Edgerouter
 
 Ahora crea este script "/config/scripts/backup-remote.sh" y chmod 755:
-```bash
+```shell
 #!/bin/bash
 sftp_host=192.168.X.X
 sftp_user=backupuser
@@ -417,7 +417,7 @@ tar -cf - /config | gzip | \
 ```
 
 Ahora debe probar si los scripts funcionan ejecutándolos. Si es así, debe agregar las siguientes líneas a su configuración de Edgerouter para que el script se ejecute diariamente:
-```bash
+```shell
 set system task-scheduler task backup-conf executable path /config/scripts/backup-remote.sh
 set system task-scheduler task backup-conf interval 1d
 ```
@@ -425,11 +425,11 @@ set system task-scheduler task backup-conf interval 1d
 
 ## Gestión de UISP
 Puede administrar el dispositivo mediante el UISP, que le permite configurar, supervisar, actualizar y realizar copias de seguridad de sus dispositivos a través de una sola aplicación.
-1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide">UISP - Guía de instalación </a>
-2. Despues logarse en la web de UISP <a href="uisp.ui.com">uisp.ui.com</a>
-3. Pueden utilizar la aplicación móvil, enlace de configuración: <a href="https://help.ui.com/hc/en-us/articles/115010608187-UISP-Mobile-App#2">UISP-Mobile-App</a>
-- Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile">Android</a>
-- IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489">IOS</a>
+1. Para empezar, vaya a <a href="https://help.ui.com/hc/en-us/articles/115012196527-UNMS-Installation-Guide" target="_blank">UISP - Guía de instalación </a>
+2. Despues logarse en la web de UISP <a href="uisp.ui.com" target="_blank">uisp.ui.com</a>
+3. Pueden utilizar la aplicación móvil, enlace de configuración: <a href="https://help.ui.com/hc/en-us/articles/115010608187-UISP-Mobile-App#2" target="_blank">UISP-Mobile-App</a>
+- Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile" target="_blank">Android</a>
+- IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489" target="_blank">IOS</a>
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
 <ul><code>Una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
@@ -444,7 +444,7 @@ Esto incluye medidas de seguridad como cambiar las contraseñas predeterminadas 
 ## Configuración incial
 Primero una pequeña configuración general importante del sistema
 
-```bash
+```shell
 set system host-name mynameedge
 set system domain-name mydomain.com
 set system name-server 8.8.8.8
@@ -452,11 +452,11 @@ set system time-zone Europe/Madrid
 ```
 
 ## Habilitar funciones de rendimiento
-Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading">EdgeRouter-Hardware-Offloading</a></p>
+Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading" target="_blank">EdgeRouter-Hardware-Offloading</a></p>
 **UTILIZAR CON CUIDADO**.
 
 Para ER-X,ER-X-SPF,EP-R6
-```bash
+```shell
 configure
 set system offload hwnat enable
 set system offload ipsec enable
@@ -464,7 +464,7 @@ commit ; save
 ```
 
 Para todos los demás modelos de Edgerouter
-```bash
+```shell
 configure
 set system offload ipv4 forwarding enable
 set system offload ipv4 gre enable
@@ -479,7 +479,7 @@ commit ; save
 
 ## Remover default user y crear un usuario
 Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
-```bash
+```shell
 set system login user <user>
 set system login user <user> level admin
 set system login user <user> authentication plaintext-password <contraseña>
@@ -489,13 +489,13 @@ commit ; save
 <sup>La contraseña se encripta una vez introducida en texto plano</sup>
 
 Despues eliminarmos el usuario por defecto
-```bash
+```shell
 configure
 delete system login user ubnt
 commit ; save
 ```
 **PD:** Si creas un usuario como operador, no tiene acceso por ssh.
-```bash
+```shell
 This account is currently not available.
 Connection to 192.168.1.1 closed.
 ```
@@ -504,15 +504,15 @@ Connection to 192.168.1.1 closed.
 
 ### Añadir una clave ssh pública a EdgeRouter
 Para poder generar una clave pública hay muchas opciones, pero os recomiendo con Putty.
-<p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
+<p>Si no lo conocen, os dejo el tutorial: <a href="https://www.hostinger.es/tutoriales/llaves-ssh#Paso_2_-_Genera_un_par_de_SSH_key" target="_blank">Generar SSH Keys (Llaves SSH) en PuTTY</a></p>
 
-```bash
+```shell
 $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 ```
 <ul><code>Pueden utilizar Filezilla o similar para enviar el archivo.</code></ul>
 
 Accedemos al equipo y configuramos la clave pública generada:
-```bash
+```shell
 configure  
 loadkey <user> /tmp/id_rsa.pub  
 sudo chown -R <user> /home/<user>
@@ -522,7 +522,7 @@ commit ; save
 ### Comprobación de acceso
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de salir de la sesión SSH actual.
 Probamos acceso sin salir de la sesión SSH por si tienes que hacer un rollback:
-```bash
+```shell
 $ ssh <user>@<ip-of-edgerouter>
 exit
 ```
@@ -531,7 +531,7 @@ exit
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
-```bash
+```shell
 configure
 set service ssh disable-password-authentication
 commit ; save
@@ -539,7 +539,7 @@ commit ; save
 ### Asegurar acceso a la GUI y ssh
 Pueden asegurar el acceso al ssh o gui con vuestro rango de IPs, es opcional, pero seguro.
 (opcional)
-```bash
+```shell
 configure
 set service gui listen-address <lan ip address/range>
 set service ssh listen-address <lan ip address/range>
@@ -547,7 +547,7 @@ commit ; save
 ```
 
 Recomendado, cambiar el puerto de ssh y habilitar V2
-```bash
+```shell
 configure
 set service ubnt-discover disable
 set service ssh protocol-version v2
@@ -556,13 +556,13 @@ delete service telnet
 commit ; save
 ```
 ### Autenticador de Google para SSH
-Un factor adicional: agregar el autenticador de Google para SSH
+<code>OPCIONAL</code>: Un factor adicional pero recomendado, agregar el autenticador de Google para SSH
 
 El uso de certificados para la autenticación es un buen paso adelante. Pero, ¿qué pasa si mi máquina con mi certificado se ve comprometida? Luego está el acceso al Edgerouter 24/7. Una contramedida podría ser usar Google Authenticator en mi teléfono. Luego, el atacante necesita mi certificado en mi PC y mi teléfono.
 
 Primero descargamos e instalamos el paquete debian de Google Authenticator
 
-```bash
+```shell
 sudo -i
 apt-get install libqrencode3
 cd ~ && mkdir ./downloaded-packages && cd downloaded-packages
@@ -574,7 +574,7 @@ Nota: Para versiones pequeñas de Edgerouter lite, use "libpam-google-authentica
 
 Ahora ejecutamos el autenticador para que nos dé una clave privada para nuestro teléfono.
 
-```bash
+```shell
 google-authenticator
 Do you want authentication tokens to be time-based (y/n) y
 Do you want me to update your "/home/mynewusername/.google_authenticator" file (y/n): y
@@ -587,7 +587,7 @@ Simplemente responda afirmativamente a todas las preguntas. Esto arrojaría una 
 
 Ahora necesitamos configurar PAM en Linux para usar Google Authenticator. También deshabilitamos la autenticación de contraseña.
 
-```bash
+```shell
 sudo -i
 echo "auth required pam_google_authenticator.so" >> /etc/pam.d/sshd
 sed -i -e 's/@include common-auth/#@include common-auth/g' /etc/pam.d/sshd
@@ -600,7 +600,7 @@ En este punto sería inteligente probarlo. Guarde la configuración con el coman
 
 ### Restringir la gestión de SSH y GUI
 Edgerouter se puede administrar desde cualquier lugar. Esto solo debe permitirse desde redes internas.
-```bash
+```shell
 configure
 set service gui listen-address <lan ip address> 
 set service ssh listen-address <lan ip address>
@@ -658,7 +658,7 @@ Por ejemplo:
 Aquí viene la parte más difícil. Si anteriormente no te has peleado con un Firewall algunos conceptos te serán extraños, pero intentare explicar cada paso con algún ejemplo, haciéndolo mas fácil de entender.
 
 - Configuración básica del firewall. Asignar la interfaz de la WAN que vayan a utilizar:
-```bash
+```shell
 configure
 
 set firewall name WAN_IN default-action drop
@@ -797,7 +797,7 @@ set interfaces ethernet eth2 vif 17 ipv6 router-advert prefix ::/64
 ### Opciones básicas del cortafuegos
 Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
 
-```bash
+```shell
 set firewall ipv6-name ipv6-fw default-action drop
 set firewall ipv6-name ipv6-fw description 'IPv6 firewall'
 set firewall ipv6-name ipv6-fw rule 1 action accept
@@ -810,7 +810,7 @@ set firewall ipv6-name ipv6-fw rule 10 state related enable
 ```
 
 ### Permitir que un host sea de acceso público
-```bash
+```shell
 set firewall ipv6-name ipv6-fw rule 4 action accept
 set firewall ipv6-name ipv6-fw rule 4 description 'allow access to host x'
 set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxx
@@ -819,7 +819,7 @@ set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:x
 
 ### Establecer nat para ambas interfaces
 
-```bash
+```shell
 set load-balance group LB-GROUP interface eth3 failover-only
 set load-balance group LB-GROUP interface eth3 route-test initial-delay 60
 set load-balance group LB-GROUP interface eth3 route-test interval 10
@@ -844,7 +844,7 @@ En la GUI se configura en: `Firewall/NAT > NAT > Add Source NAT Rule`
 **Masquerade Rule**
 Masquerade, también conocido como NAT de muchos a uno, PAT o sobrecarga de NAT. Un uso popular de NAT Masquerade es traducir un rango de direcciones privadas a una única dirección IP pública.
 
-```bash 
+```shell 
 set service nat rule 5010 description 'masquerade for WAN'
 set service nat rule 5000 log disable
 set service nat rule 5010 outbound-interface eth0
@@ -855,7 +855,7 @@ set service nat rule 5010 protocol all
 **Source NAT rule**
 Source NAT se usa para proporcionar una traducción 1:1
 
-```bash
+```shell
 set service nat rule 5000 description 'source NAT for 192.168.1.10'
 set service nat rule 5000 outbound-interface eth0
 set service nat rule 5000 type source 
@@ -870,7 +870,7 @@ EL destination NAT y el Port Forwarding tienen el mismo propósito y se pueden u
 
 En la GUI se configura en: `Firewall / NAT > NAT > +Add Destination NAT Rule`
 
-```bash
+```shell
 set service nat rule 1 description https443
 set service nat rule 1 destination address 203.0.113.1
 set service nat rule 1 destination port 443
@@ -889,7 +889,7 @@ NAT y firewall se pueden reordenar desde la CLI usando el comando de cambio de n
 **CLI**:  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
 
 Para las reglas de firewall, edite el subárbol de configuración de firewall específico para cambiar el número de regla: 
-```bash
+```shell
 configure
 edit firewall name <name>
  rename rule 10 to rule 20
@@ -898,7 +898,7 @@ commit ; save
 ```
 
 Para las reglas de NAT, edite el subárbol de configuración de NAT para cambiar el número de regla: 
-```bash
+```shell
 configure
 edit service nat
  rename rule 5010 to rule 5020
@@ -924,7 +924,7 @@ Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puert
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
 <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
-```bash
+```shell
 configure
 
 set port-forward auto-firewall enable
@@ -957,7 +957,7 @@ Para aquellos de ustedes que desean usar la GUI para habilitar/deshabilitar ICMP
 <li>Haga clic en Guardar</li>
 </ol>
 <p>Ahora su EdgeRouter responderá/denegará a las solicitudes de ping en la interfaz WAN que seleccionó.</p>
-<sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ">icmp</a></sup>
+<sup>Enlace a vídeo: <a href="https://youtu.be/hTFqZAZeDqQ" target="_blank">icmp</a></sup>
 
 #### Avanzado
 <p>Para otros que utilizan este método, también ayuda especificar más el tipo de ICMP dentro de la regla. El método GUI no tiene esta opción cuando establece la regla. Sin embargo, es fácil agregarlo en la pestaña <code>Árbol de configuración</code>.</p>
@@ -972,7 +972,7 @@ Para aquellos de ustedes que desean usar la GUI para habilitar/deshabilitar ICMP
 </ol>
 
 #### Vía ***CLI*** sería:
-```bash
+```shell
 set firewall name WAN_LOCAL rule 21 icmp type 8
 ```
 #### :point_right: Tabla de tipos de ICMP
@@ -1052,22 +1052,22 @@ En la siguiente tabla aparece una recopilación de los tipos de paquetes más im
 Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.<
 
 ## Load Balancing
-<a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing">Load Balancing</a>
+<a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing" target="_blank">Load Balancing</a>
 
 ## OSPF
-<a href="https://help.ui.com/hc/en-us/articles/205204050-EdgeRouter-OSPF-Routing">OSPF</a>
+<a href="https://help.ui.com/hc/en-us/articles/205204050-EdgeRouter-OSPF-Routing" target="_blank">OSPF</a>
 
 ## BGP
-<a href="https://help.ui.com/hc/en-us/articles/205222990-EdgeRouter-Border-Gateway-Protocol-BGP-">BGP</a>
+<a href="https://help.ui.com/hc/en-us/articles/205222990-EdgeRouter-Border-Gateway-Protocol-BGP-" target="_blank">BGP</a>
 
 ## VRRP
-<a href="https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-">VRRP</a>
+<a href="https://help.ui.com/hc/en-us/articles/204962174-EdgeRouter-Virtual-Router-Redundancy-Protocol-VRRP-" target="_blank">VRRP</a>
 
 ## Public Static IP Addresses
-<a href="https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses">Public Static IP Addresses]</a>
+<a href="https://help.ui.com/hc/en-us/articles/204975244-EdgeRouter-Configuring-Public-Static-IP-Addresses" target="_blank">Public Static IP Addresses]</a>
 
 ## Static Route
-<a href="https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route">Static Route</a>
+<a href="https://help.ui.com/hc/en-us/articles/360024021873-EdgeRouter-How-to-Add-a-Static-Route" target="_blank">Static Route</a>
 
 ## VLANS
 
@@ -1075,7 +1075,7 @@ Estos procediminetos son muy extensos y para que el README no sea muy extenso, a
 
 Acabo de comprar un punto de acceso "Ubiquiti Unifi AC PRO" y lo conecté a ETH3. Nuestro primer trabajo es darle energía y configurar una red con DNS y DHCP. Esta red no está etiquetada y se usa para que el AP se conecte a su controlador si es necesario. Es solo para fines administrativos y no fluirá tráfico real en esta red.
 
-```bash
+```shell
 set interfaces ethernet eth3 poe output 24v
 
 set interfaces ethernet eth3 address 192.168.20.1/24
@@ -1087,7 +1087,7 @@ set service dhcp-server shared-network-name vlan20 subnet 192.168.20.1/24 unifi-
 set service dns forwarding listen-on eth3
 ```
 Ahora creamos un par de redes que deben transmitirse en el AP. Planeo usar vlan 30 como red confiable y vlan 40 como red de invitados. El tráfico a estas dos redes se envía como tráfico etiquetado al AP. El AP se encargará de colocar cada VLAN en su propio SSID.
-```bash
+```shell
 set interfaces ethernet eth3 vif 30 address 192.168.30.1/24
 set interfaces ethernet eth3 vif 30 description "WIFI trusted"
 set service dhcp-server shared-network-name vlan30 subnet 192.168.30.1/24 default-router 192.168.30.1
@@ -1114,7 +1114,7 @@ set service dns forwarding listen-on eth3.40
 Ahora que tenemos un par de redes, el objetivo es aislar algunas de ellas. Como ejemplo, nos aseguraremos de que la red invitada `(vlan 40)` pueda conectarse a Internet, pero bajo ninguna circunstancia conectarse a nuestras otras redes internas, por ejemplo, `vlan 30`. Hacemos esto haciendo algunas reglas de propósito general que pueden ser reutilizadas si decidimos hacer otras redes protegidas.
 
 El primer conjunto de reglas permite que todo el tráfico ingrese a través de la interfaz, excepto las nuevas conexiones a nuestras redes internas (192.168.0.0/16).
-```bash
+```shell
 set firewall name PROTECT_IN default-action accept
 set firewall name PROTECT_IN rule 10 action drop 
 set firewall name PROTECT_IN rule 10 description "Drop new connecions to LAN" 
@@ -1123,7 +1123,7 @@ set firewall name PROTECT_IN rule 10 state new enable
 set firewall name PROTECT_IN rule 10 protocol all
 ```
 Nuevamente, necesitamos crear un conjunto de reglas que elimine todo lo destinado a la interfaz, excepto DNS y DHCP.
-```bash
+```shell
 set firewall name PROTECT_LOCAL default-action drop
 set firewall name PROTECT_LOCAL rule 10 action accept 
 set firewall name PROTECT_LOCAL rule 10 description "Allow DNS" 
@@ -1135,7 +1135,7 @@ set firewall name PROTECT_LOCAL rule 20 destination port 67
 set firewall name PROTECT_LOCAL rule 20 protocol udp
 ```
 Ahora solo necesitamos vincular estos conjuntos de reglas generales a nuestra interfaz vlan de invitados. – o cualquier otra interfaz que no queramos conectar a nuestra red interna.
-```bash
+```shell
 set interfaces ethernet eth3 vif 40 firewall in name PROTECT_IN
 set interfaces ethernet eth3 vif 40 firewall local name PROTECT_LOCAL
 ```
@@ -1147,7 +1147,7 @@ set interfaces ethernet eth3 vif 40 firewall local name PROTECT_LOCAL
 ## DHCP
 
 ### Modificar DHCP mediante CLI
-```bash
+```shell
 configure
 set interfaces ethernet eth1 description LAN
 set interfaces ethernet eth1 address 192.168.1.1/24
@@ -1220,7 +1220,7 @@ set interfaces switch switch0 switch-port vlan-aware disable
     <summary>Mediante interfaz GUI:</summary>
 
 ### Instrucciones de uso con GUI:
-<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns">DuckDNS</a>.</sup>
+<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns" target="_blank">DuckDNS</a>.</sup>
 
 1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
 2. Se cargará un formulario vació que deberemos rellenar con los datos adecuados:
@@ -1249,7 +1249,7 @@ En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utiliz
 1. Accedemos por ssh o cli web.
 2. Configuramos lo siguiente y con atención:
 <img src="./files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO", "TOKEN" y la "INTERFAZ".</sup>
-```bash
+```shell
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
 set service dns dynamic interface INTERFAZ service custom-duckdns host-name SUBDMIONIO
@@ -1264,7 +1264,7 @@ commit ; save
 4. Si hemos realizado bien todos los pasos anteriores, ejecutando el siguiente comando veremos si todo está funcionando como debería.
 <p><code>show dns dynamic status</code></p>
 
-```bash
+```shell
 interface    : INTERFAZ
 ip address   : xxx.xxx.xxx.xxx
 host-name    : SUBDOMINIO
@@ -1289,15 +1289,15 @@ La configuración de una lista de seguridad puede ayudar a prevenir ataques mali
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
 <p><ul><li><code>SCRIPT_IPv4:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
 <p><ul><li><code>SCRIPT_IPv6:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
 <p><sup>Para ver los grupos que tenemos: <code>show firewall group network-group</code>.</sup></p>
 
-```bash
+```shell
 set firewall group network-group SPAMHAUS_DROP
 commit
 ```
@@ -1305,7 +1305,7 @@ commit
 * Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el <code>network-group</code> con el nombre del grupo creado. 
 <p><sup>Para ver la regla y el orden: <code>show firewall name WAN_IN</code>.</sup></p>
 
-```bash
+```shell
 set firewall name WAN_IN rule 10 source group network-group SPAMHAUS_DROP
 set firewall name WAN_IN rule 10 description "networks to drop from spamhaus.org list"
 set firewall name WAN_IN rule 10 action drop
@@ -1318,7 +1318,7 @@ commit ; save
 
 <p>Importante, deshabilitamos el `auto-firewall` del port forwarding</p>
 
-```bash
+```shell
 configure
 set port-forward auto-firewall disable
 commit ; save
@@ -1332,7 +1332,7 @@ commit ; save
 
 > EDIT: Crear el script en `/config/scripts/post-config.d` mejor que en `/config/scripts/` porque después de un reinicio el grupo de firewall volverá a estar vacío, pero si el script está en ese directorio `/config/scripts/post-config.d`, se ejecutará automáticamente después del arranque.
 
-```bash
+```shell
 sudo vi /config/scripts/post-config.d/update-spamhaus
 ```
 
@@ -1341,12 +1341,12 @@ sudo vi /config/scripts/post-config.d/update-spamhaus
 <p>El comando VI del equipo no está completo, por lo que para guardar, utilizar <code>ZZ</code> o <code>:wq</code></p>
 
 ### Hazlo ejecutable:
-```bash
+```shell
 sudo chmod +x /config/scripts/post-config.d/update-spamhaus
 ```
 
 EJECUTAR:
-```bash
+```shell
 sudo /config/scripts/post-config.d/update-spamhaus
 ```
 <p><sup>No pensar que se ha quedado bloqueado al insertar el comando, tarda un poco si la lista es muy grande.</sup></p>
@@ -1391,7 +1391,7 @@ OPCIÓN 2:
 ## README con listas de IPs públicas
 He realizado un README en la carpeta `list` con listas de IPs públicas y mis listas creadas.
 <p>Dejo enlace a la carpeta del README:</p>
-<p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
+<p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
 
 ## REVISIÓN
 <p>Listar</p>
@@ -1409,7 +1409,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 <ul><code>cat /var/log/messages</code></ul>
 
 ### EJEMPLO DE REGLAS:
-```bash
+```shell
     name WAN_IN {
         default-action drop
         description "WAN to internal"
@@ -1459,7 +1459,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
         }
 ```
 ### EJEMPLO DE INTERFAZ WAN:
-```bash
+```shell
 ethernet eth1 {
         description "Internet (PPPoE)"
         duplex auto
@@ -1487,9 +1487,9 @@ ethernet eth1 {
 He creado un script para poder informar al telegram de las IPs bloqueadas por una regla desde el log.
 <ul><p><sup>Modificar en el script la WAN con la regla a buscar y añadir vuestro ID CHAT y token del bot.</sup></ul></p>
 <ul><p>El script pueden descargarlo o verlo desde la carpeta del repositorio en este enlace:</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 <ul><p>Tambien he dejado la consulta con AbuseIPDB.</ul></p>
-<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
+<ul><p><a title="download" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/TelegramQueryLog_ABUSEIPDB" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 ## Cortafuegos por país en Edgerouter
 
@@ -1499,7 +1499,7 @@ Me he inventado un pequeño dialogo para explicar el ejemplo:
 #### Configuración del Edgerouter
 
 Esta es la configuración que agrego:
-```bash
+```shell
 set firewall group network-group countries_allowed description 'Allowed countries'
 set firewall group network-group countries_allowed network 10.254.254.254/31
 set service nat rule 10 description 'My funny dmz server'
@@ -1528,7 +1528,7 @@ Esto básicamente hace lo siguiente:
 #### Obtener subredes de países
 
 Ahora creo un archivo de script "`/config/scripts/post-config.d/country-load`" (`chmod 755`):
-```bash
+```shell
 #!/bin/bash
 countryList="dk no se"
 firewallGroupName=countries_allowed
@@ -1561,7 +1561,7 @@ Este script se ejecutará cuando se inicie Edgerouter:
 #### Pruebas
 
 Después de reiniciar el enrutador de borde o ejecutar manualmente el script, puede verificar que realmente tenemos algunas subredes en nuestro grupo de red:
-```bash
+```shell
 ipset -L countries_allowed 
 ```
 
@@ -1574,7 +1574,7 @@ ipset -L countries_allowed
 Usando [mkcert](https://words.filippo.io/mkcert-valid-https-certificates-for-localhost/) por [Filippo Valsorda](https://filippo.io/) para crear un certificado CA para localhost.  
 Opción de ir a la ruta de certificados SSL con Let's Encrypt hay varios diferentes para elegir. Por ejemplo, [ubnt-letsencrypt](https://github.com/j-c-m/ubnt-letsencrypt) por [Jesse Miller](https://github.com/j-c-m)
 
-```bash
+```shell
 configure
 set system static-host-mapping host-name <hostname> inet <ip-of-edgerouter>
 commit ; save
@@ -1582,27 +1582,27 @@ commit ; save
 
 **Crear certificado**
 
-```bash
+```shell
 $ mkcert <ip-of-edgerouter> <hostname>
 cat <ip-of-edgerouter>+1-key.pem <ip-of-edgerouter>+1.pem > server.pem
 ```
 
 **Copia de seguridad del archivo de certificado existente**
 
-```bash
+```shell
 sudo cp /etc/lighttpd/server.pem /etc/lighttpd/.server-OLD.pem
 exit
 ```
 
 **Copie el nuevo archivo de certificado en la dirección del usuario de su router**
 
-```bash
+```shell
 scp /path/to/server.pem <user>@<ip-of-edgerouter>:/home/<user>/server.pem
 ```
 
 **Copiar el nuevo archivo de certificado desde la dirección del usuario y habilitar el certificado**
 
-```bash
+```shell
 sudo cp /home/<user>/server.pem /etc/lighttpd/server.pem
 # Kill webserver service by PID
 sudo kill -SIGINT $(cat /var/run/lighttpd.pid)
@@ -1614,7 +1614,7 @@ exit
 **Comprueba tu conexión con curl**  
 Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
 
-```bash
+```shell
 $ curl -I http://<ip-of-edgerouter>/
 HTTP/1.1 301 Moved Permanently
 Location: https://<ip-of-edgerouter>:443/
@@ -1644,7 +1644,7 @@ Una vez creados los archivos, cópielos todos en `/config/auth/`.
 Para la configuración del cliente: Asegúrese de que `remote-cert-tls server` está activado.
 
 ### Configuración básica de OpenVPN
-```bash
+```shell
 configure
 set interfaces openvpn vtun0
 set interfaces openvpn vtun0 mode server
@@ -1659,7 +1659,7 @@ set interfaces openvpn vtun0 server subnet 192.168.177.0/24
 ### Configuración del certificado
 Como se ha descrito anteriormente. Asegúrese de que su clave privada tiene `chmod 600`.
 
-```bash
+```shell
 set interfaces openvpn vtun0 tls ca-cert-file /config/auth/ca.crt
 set interfaces openvpn vtun0 tls cert-file /config/auth/server.crt
 set interfaces openvpn vtun0 tls dh-file /config/auth/dh2048.pem
@@ -1669,7 +1669,7 @@ set interfaces openvpn vtun0 tls crl-file /config/auth/revocation-list.crl
 ```
 
 ### Configurar el registro
-```bash
+```shell
 set interfaces openvpn vtun0 openvpn-option "--log /var/log/openvpn.log"
 set interfaces openvpn vtun0 openvpn-option "--status /var/log/openvpn-status.log"
 set interfaces openvpn vtun0 openvpn-option "--verb 7"
@@ -1678,7 +1678,7 @@ set interfaces openvpn vtun0 openvpn-option "--verb 7"
 ### Configuración del cortafuegos
 No olvides configurar NAT para los clientes openvpn
 
-```bash
+```shell
 set firewall name XXX rule XX action accept
 set firewall name XXX rule XX description 'Allow OpenVPN'
 set firewall name XXX rule XX destination port 1194
@@ -1697,7 +1697,7 @@ Usefull links:
 ### Configuración básica
 Primero necesita hacer ssh en su EdgeRouter. A continuación, cree un directorio donde almacenar sus archivos OpenVPN.
 
-```bash
+```shell
 sudo su
 mkdir -p /config/auth/example
 ```
@@ -1713,7 +1713,7 @@ Asegúrese de que `key.pem` tiene `chmod 600`
 
 ### Ejemplo del archivo de configuración OpenVPN
 Este archivo puede variar dependiendo de la configuración de su servidor openvpn.
-```bash
+```shell
 client
 dev tun 
 proto udp
@@ -1738,7 +1738,7 @@ tls-auth /config/auth/example/openvpn-static-key-v1.key 1
 ### Configurar la interfaz
 Si ya ha configurado su EdgeRouter como un servidor OpenVPN, entonces usted necesita cambiar la interfaz de red de `vtun0` a otra cosa (por ejemplo, `vtun1`)
 
-```bash
+```shell
 configure
 set interfaces openvpn vtun0 description 'example vpn'
 set interfaces openvpn vtun0 config-file /config/auth/example/example.ovpn
@@ -1747,7 +1747,7 @@ save
 ```
 
 ### Setup an extra VLAN for clients
-```bash
+```shell
 # create a new vlan (VLAN 10)
 set interfaces switch switch0 vif 10 address 192.168.40.1/24
 set interfaces switch switch0 vif 10 description 'example VLAN'
@@ -1755,7 +1755,7 @@ set interfaces switch switch0 vif 10 mtu 1500
 ```
 
 ### Setup a DHCP server
-```bash
+```shell
 set service dhcp-server shared-network-name EXAMPLE-LAN authoritative disable
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 default-router 192.168.40.1
 set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 dns-server 1.1.1.1
@@ -1765,7 +1765,7 @@ set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 s
 ```
 
 ### Setup NAT & routing
-```bash
+```shell
 # setup NAT
 set service nat rule 5020 description NAT-EXAMPLE-VPN
 set service nat rule 5020 log disable
@@ -1791,14 +1791,14 @@ Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categ
 ## requisito previo
 - SSH en su enrutador Edge.
 - Descargue las categorías disponibles. Dependiendo de su dispositivo, esto puede tardar unos minutos (en mi dispositivo tardó unos 100 minutos).
-- Actualizar y configurar <a href="https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy">webproxy</a>
+- Actualizar y configurar <a href="https://help.ui.com/hc/en-us/articles/204961694-EdgeRouter-Web-Proxy" target="_blank">webproxy</a>
 
-```bash
+```shell
 update webproxy blacklists
 ```
 
 ## ejemplo de configuración 
-```bash
+```shell
 set service webproxy cache-size 0
 set service webproxy default-port 3128
 set service webproxy listen-address 172.22.3.1
@@ -1883,7 +1883,7 @@ Configure el dispositivo para iniciar sesión en un SYSLOG
 Nuestro Servidor Syslog tiene la ip de: `10.10.99.111`
 
 Estamos registrando todo: (`level debug`) pero puede establecer otro nivel de registro, por ejemplo `level err`.
-```bash
+```shell
 configure
 set system syslog global facility all level notice
 set system syslog global facility protocols level debug
@@ -1896,7 +1896,7 @@ exit
 # WireGuard
 Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
-- <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt">WireGuard/wireguard-vyatta-ubnt</a>
+- <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt" target="_blank">WireGuard/wireguard-vyatta-ubnt</a>
     
 **[`^        back to top        ^`](#wiki-ubiquiti)**
     
@@ -1954,7 +1954,7 @@ Unifi es una plataforma de red desarrollada por Ubiquiti Networks que proporcion
 ## README con configuración de Unifi
 <p>He realizado un README en la carpeta `Unifi` con la configuración de la consola Unifi y configuración de un UAP Pro básica.</p>
 <p>Dejo enlace a la carpeta del README:</p>
-<p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/Unifi"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
+<p><a title="Unifi" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/Unifi" target="_blank"><img src="./files/intercambio.png" alt="Unifi" width="60" align="center"/></a></p>
 
 ## Conclusión
 Con esta información puedes configurar un EdgeMax© para sustituir un router neutro. Aquí podrás encontrar todo lo que he conseguido hacer con este router. Los pasos anteriormente explicados están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu `red` y dejarla inservible. Adapta en todo momento la documentación que se ha expuesto para que cuadre con tu red.
