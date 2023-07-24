@@ -253,7 +253,7 @@ Antes de realizar cualquier cambio o configuración en los equipos Ubiquiti Edge
 <p><ul><a title="download" href="https://www.ui.com/download/edgemax/" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></p>
 
 - Pueden buscar en la web de lanzamientos de Ubiquiti:
-<p><ul><a title="download" href="https://community.ui.com/releases?q=EdgeMAX" target="_blank"><img src="./files/rss.png" alt="download" width="60" align="center" /></a></ul></p>
+<p><ul><a title="download" href="https://community.ui.com/releases?q=EdgeMAX" target="_blank"><img src="./files/rss.png" alt="download" width="50" align="center" /></a></ul></p>
 
 Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/articles/205146110-EdgeRouter-How-to-Upgrade-the-EdgeOS-Firmware" target="_blank">Cómo actualizar el firmware de EdgeOS</a>
 
