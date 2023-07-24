@@ -1289,9 +1289,9 @@ La configuración de una lista de seguridad puede ayudar a prevenir ataques mali
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
 <p><ul><li><code>SCRIPT_IPv4:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv4" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></ul></p>
 <p><ul><li><code>SCRIPT_IPv6:</code></li></ul></p>
-<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/script.png" alt="list" width="50" align="center" /></a></ul></ul></p>
+<p><ul><ul><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/blob/main/scripts/SCRIPT_IPv6" target="_blank"><img src="./files/down.png" alt="download" width="100" align="center" /></a></ul></ul></p>
 
 ### Creamos el grupo y agregamos una regla de firewall a la WAN:
 * Creamos un nuevo grupo y modificamos nombre de grupo.
