@@ -1291,10 +1291,10 @@ En este ejemplo, se utiliza el servicio DNS dinámico de **Cloudflare**.
 
 <p><h3 id="panel-de-control-de-cloudflare">Panel de control de Cloudflare</h3></p>
 Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflare:
-1. Creamos en el panel de `/dns/records` creamos un subdominio que usaremos. En IP usar por ejemplo la localhost, luego Cloudflare la actualizará.
+1. Creamos en el panel de <code>/dns/records</code> creamos un subdominio que usaremos. En IP usar por ejemplo la localhost, luego Cloudflare la actualizará.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/subdomain.png" alt="subdomain"></p>
 
-2. Creamos un Token API, tomen ejemplo de la imagen. Para acceder es en `/profile/api-tokens`
+2. Creamos un Token API, tomen ejemplo de la imagen. Para acceder es en <code>/profile/api-tokens</code>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenAPI.png" alt="TokenAPI"></p>
 
 3. Para la password de configuración se usa la Global KEY.
