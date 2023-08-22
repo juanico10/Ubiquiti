@@ -790,9 +790,11 @@ set interfaces ethernet eth2 vif 17 ipv6 router-advert prefix ::/64
 - Para hacerlo vía [GUI](https://davidwesterfield.net/2021/03/enabling-ipv6-prefix-delegation-on-att-internet-for-a-second-firewall/). No lo recomiendo.
 
 - Información
-   - [LINK](https://davidwesterfield.net/2020/06/edgerouter-4-ipv6-setup)
-   - [LINK](https://noobient.com/2018/08/02/ipv6-on-ubnt-edgerouter-x-with-digi-pppoe/#Firewall)
-   - [LINK](https://help.pentanet.com.au/hc/en-us/articles/4403292092307-IPv6-configuration-on-Ubiquiti-Edgerouters)
+<ul>
+<li><a href="https://davidwesterfield.net/2020/06/edgerouter-4-ipv6-setup"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></li>
+<li><a href="https://noobient.com/2018/08/02/ipv6-on-ubnt-edgerouter-x-with-digi-pppoe/#Firewall"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></li>
+<li><a href="https://help.pentanet.com.au/hc/en-us/articles/4403292092307-IPv6-configuration-on-Ubiquiti-Edgerouters"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></li>
+</ul>
 
 ### Opciones básicas del cortafuegos
 Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
@@ -1220,7 +1222,7 @@ set interfaces switch switch0 switch-port vlan-aware disable
     <summary>Mediante interfaz GUI:</summary>
 
 ### Instrucciones de uso con GUI:
-<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns" target="_blank">DuckDNS</a>.</sup>
+<sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Este ejemplo lo vamos a ralizar con DuckDNS: Para poder obtener el token y el dominio DuckDNS pueden obtenerlo desde este repositorio <a href="https://github.com/JuanRodenas/Duckdns" target="_blank">DuckDNS</a>.</sup>
 
 1. Estando dentro de la web de gestión entramos en la pestaña <code>Service</code> y a continuación en <code>DNS</code>. Por ultimo en la sección <em>Dynamic DNS</em> pulsamos el botón <code>+ Add DDNS Interface</code>.
 2. Se cargará un formulario vació que deberemos rellenar con los datos adecuados:
@@ -1228,12 +1230,13 @@ set interfaces switch switch0 switch-port vlan-aware disable
 <ul><code>Service: En el menú desplegable hay varios servicios ya pre-configurados, pero entre ellos al no estar DuckDNS optamos por la opción custom.</code></ul>
 <ul><code>Hostname: Aquí hay que meter el subdominio DuckDNS que queremos asignar a nuestro router. Solamente el subdominio, no hace falta meter .duckdns.org.</code></ul>
 <ul><code>Login: poniendo nouser servirá, ya que nos identificaremos mediante nuestro Token.</code></ul>
-<ul><code>Password: Aquí deberemos introducir el Token de nuestra cuenta.</code></ul>
-<ul><code>Protocol: Seleccionamos el protocolo dyndns2.</code></ul>
+<ul><code>Password: Aquí deberemos introducir el Token de nuestra cuenta dyndns2.</code></ul>
+<ul><code>Protocol: Seleccionamos el protocolo.</code></ul>
 <ul><code>Server: por último metemos la url del servidor de DuckDNS, www.duckdns.org.</code></ul>
 3. Para terminar pulsamos en Apply para guardar todo lo que hemos metido.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui1.png" alt="GUI1"></p>
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/DuckDNS/gui2.png" alt="GUI2"></p>
+
 &nbsp;
 </details>
 &nbsp;
@@ -1273,6 +1276,119 @@ update-status: good
 ```
     
 <p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
+
+
+&nbsp;
+</details>
+&nbsp;
+
+<details>
+    <summary>Mediante interfaz CLI: Configuración de un servicio de DNS dinámico personalizado</summary>
+
+### Configuración de un servicio de DNS dinámico personalizado
+
+En este ejemplo, se utiliza el servicio DNS dinámico de **Cloudflare**.
+
+Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflare:
+1. Creamos en el panel de `/dns/records` creamos un subdominio que usaremos. En IP usar por ejemplo la localhost, luego Cloudflare la actualizará.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/subdomain.png" alt="subdomain"></p>
+
+2. Creamos un Token API, tomen ejemplo de la imagen. Para acceder es en `/profile/api-tokens`
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenAPI.png" alt="TokenAPI"></p>
+
+3. Para la password de configuración se usa la Global KEY.
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenGlobal.png" alt="TokenGlobal"></p>
+
+
+**CLI:**  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
+
+1. Ingrese al modo de configuración.
+
+```bash
+configure
+```
+
+2. Configure el nombre de host de DNS dinámico.
+
+```bash
+set service dns dynamic interface pppoe0 service custom-cloudflare host-name subdomain.domain.com
+```
+
+3. Defina las credenciales de DNS dinámico.
+
+```bash
+set service dns dynamic interface pppoe0 service custom-cloudflare login user@domain.com
+set service dns dynamic interface pppoe0 service custom-cloudflare password your_cloudflare_global_API_key
+```
+
+**NOTA:**  La clave API de Cloudflare se utiliza como contraseña.   Esta clave se puede encontrar en su perfil de Cloudflare.
+
+4. Defina el protocolo DNS dinámico y el servidor a conectar.
+
+```bash
+set service dns dynamic interface pppoe0 service custom-cloudflare protocol cloudflare
+set service dns dynamic interface pppoe0 service custom-cloudflare server api.cloudflare.com/client/v4/
+```
+
+5. Especifique un nombre de dominio para la zona de Cloudflare.
+
+```bash
+set service dns dynamic interface pppoe0 service custom-cloudflare options zone=domain.com
+```
+Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
+`"zone=yourdomain.com use=web ssl=yes ttl=1"`
+<sup>Si desea establecer opciones y no saben el significado, acceder al siguiente link: <a href="https://ddclient.net/#documentation"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></sup>
+
+**NOTA:**  Si se establece un subdominio,  **también debe**  existir en el portal de Cloudflare.   El comando anterior solo actualizará un dominio existente.
+
+6. Confirme los cambios y guarde la configuración.
+
+```bash
+commit ; save
+```
+
+**ATENCIÓN:** 
+Problemas de **Cloudflare**: la versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el  **token de clave de API global** anterior en su lugar.
+Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:
+
+```bash
+/usr/sbin/ddclient --version
+```
+
+Puede averiguar qué parte del proceso está fallando llamando directamente a ddclient. Para obtener una salida de depuración, use lo siguiente (cambie el nombre del archivo conf para que coincida con la interfaz que está usando, por ejemplo, eth0 o pppoe0, etc.):
+
+```bash
+sudo /usr/sbin/ddclient -daemon=0 -debug -verbose -noquiet -file /etc/ddclient/ddclient_eth0.conf
+```
+
+Puede editar su ddclient.conf con, por ejemplo, (cambiar el nombre del archivo a eth0 a pppoe0 o cualquier interfaz que esté usando):
+
+```bash
+sudo vi /etc/ddclient/ddclient_eth0.conf
+```
+Esto facilitará probar diferentes configuraciones y solucionar su problema.  Si no está usando su nueva configuración, intente eliminar el archivo de caché, por ejemplo `sudo rm /var/cache/ddclient/ddclient_eth0.cache`(recuerde cambiar el nombre del archivo para que coincida con su interfaz nuevamente).
+
+Una vez que lo tengas funcionando, actualiza tu configuración con `update dns dynamic interface eth0` y comprobar de nuevo `show dns dynamic status`
+
+****En versiones de firmware más antiguas (anteriores a la v1.10.5), o para algunos proveedores (p. ej., Google Domains), también es necesario especificar la dirección del servidor remoto mediante el siguiente comando.
+
+7. Especifique el servidor remoto.
+
+```bash
+set service dns dynamic interface pppoe0 service custom-cloudflare server api.cloudflare.com/client/v4/
+```
+
+Puede verificar el estado y forzar una actualización del servicio DNS dinámico usando los siguientes comandos:
+
+```bash
+show dns dynamic status
+update dns dynamic interface <interface-name>
+```
+
+El ejemplo que debe salir es:
+<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/command.png" alt="command"></p>
+
+**NOTA:**  Los servidores pueden tardar algún tiempo en actualizarse y resolver el nombre de host en la dirección correcta.
 
 &nbsp;
 </details>
@@ -1941,7 +2057,7 @@ Una herramienta de diagnóstico de red es un software que permite a los administ
 <details>
 <summary>Test DNS:</summary>
 
-<Original>&nbsp;Pagina para comprobar las DNS de cloudfare</Original>
+<Original>&nbsp;Pagina para comprobar las DNS de Cloudflare</Original>
 
 <p>  &nbsp;&nbsp;https://1.1.1.1/help</p>
 <p>  &nbsp;&nbsp;https://www.dnsleaktest.com/</p>
