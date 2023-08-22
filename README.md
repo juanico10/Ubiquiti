@@ -1285,11 +1285,11 @@ update-status: good
 <details>
     <summary>Mediante interfaz CLI: Configuración de un servicio de DNS dinámico personalizado</summary>
 
-### Configuración de un servicio de DNS dinámico personalizado
+<p><h2 id="configuraci-n-de-un-servicio-de-dns-din-mico-personalizado">Configuración de un servicio de DNS dinámico personalizado</h2></p>
 
 En este ejemplo, se utiliza el servicio DNS dinámico de **Cloudflare**.
 
-#### Panel de control de Cloudflare
+<p><h3 id="panel-de-control-de-cloudflare">Panel de control de Cloudflare</h3></p>
 Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflare:
 1. Creamos en el panel de `/dns/records` creamos un subdominio que usaremos. En IP usar por ejemplo la localhost, luego Cloudflare la actualizará.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/subdomain.png" alt="subdomain"></p>
@@ -1300,7 +1300,7 @@ Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflar
 3. Para la password de configuración se usa la Global KEY.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenGlobal.png" alt="TokenGlobal"></p>
 
-#### Comenzamos configuración del router
+<p><h3 id="comenzamos-configuraci-n-del-router">Comenzamos configuración del router</h3></p>
 <strong>CLI:</strong>  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
 
 1. Ingrese al modo de configuración.
@@ -1349,7 +1349,7 @@ Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
 commit ; save
 ```
 
-<p><h4 id="comenzamos-configuraci-n-del-router">Comenzamos configuración del router</h4></p>
+<p><h3 id="atenci-n-problemas-de-cloudflare">ATENCIÓN: Problemas de Cloudflare</h3></p>
 <p>La versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.</p>
 <p>Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:</p>
 
