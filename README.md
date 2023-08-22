@@ -1349,8 +1349,8 @@ Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
 commit ; save
 ```
 
-<strong>ATENCIÓN: Problemas de Cloudflare</strong>:
-La versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.
+<p><h4 id="comenzamos-configuraci-n-del-router">Comenzamos configuración del router</h4></p>
+<p>La versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.</p>
 <p>Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:</p>
 
 ```bash
