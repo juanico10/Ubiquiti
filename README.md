@@ -1289,6 +1289,7 @@ update-status: good
 
 En este ejemplo, se utiliza el servicio DNS dinámico de **Cloudflare**.
 
+#### Panel de control de Cloudflare
 Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflare:
 1. Creamos en el panel de `/dns/records` creamos un subdominio que usaremos. En IP usar por ejemplo la localhost, luego Cloudflare la actualizará.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/subdomain.png" alt="subdomain"></p>
@@ -1299,7 +1300,7 @@ Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflar
 3. Para la password de configuración se usa la Global KEY.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenGlobal.png" alt="TokenGlobal"></p>
 
-
+#### Comenzamos configuración del router
 <strong>CLI:</strong>  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
 
 1. Ingrese al modo de configuración.
@@ -1348,8 +1349,8 @@ Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
 commit ; save
 ```
 
-**ATENCIÓN:** 
-Problemas de <strong>Cloudflare</strong>: la versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.
+<strong>ATENCIÓN: Problemas de Cloudflare</strong>:
+La versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.
 <p>Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:</p>
 
 ```bash
@@ -1387,7 +1388,7 @@ show dns dynamic status
 update dns dynamic interface <interface-name>
 ```
 
-El ejemplo comando <code>show dns dynamic status</code>:
+Ejemplo de salida del comando <code>show dns dynamic status</code>:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/command.png" alt="command"></p>
 
 <p><strong>NOTA:</strong>  Los servidores pueden tardar algún tiempo en actualizarse y resolver el nombre de host en la dirección correcta.</p>
