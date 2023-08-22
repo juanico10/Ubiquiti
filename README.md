@@ -1300,7 +1300,7 @@ Antes de comenzar a configurar, vamos a configurar primero el panel de Cloudflar
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/TokenGlobal.png" alt="TokenGlobal"></p>
 
 
-**CLI:**  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
+<strong>CLI:</strong>  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
 
 1. Ingrese al modo de configuración.
 
@@ -1321,7 +1321,7 @@ set service dns dynamic interface pppoe0 service custom-cloudflare login user@do
 set service dns dynamic interface pppoe0 service custom-cloudflare password your_cloudflare_global_API_key
 ```
 
-**NOTA:**  La clave API de Cloudflare se utiliza como contraseña.   Esta clave se puede encontrar en su perfil de Cloudflare.
+<strong>NOTA:</strong>  La clave API de Cloudflare se utiliza en Ubiquiti la Global KEY. Esta clave se puede encontrar en su perfil de Cloudflare indicado anteriormente.
 
 4. Defina el protocolo DNS dinámico y el servidor a conectar.
 
@@ -1335,11 +1335,12 @@ set service dns dynamic interface pppoe0 service custom-cloudflare server api.cl
 ```bash
 set service dns dynamic interface pppoe0 service custom-cloudflare options zone=domain.com
 ```
-Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
-`"zone=yourdomain.com use=web ssl=yes ttl=1"`
-<sup>Si desea establecer opciones y no saben el significado, acceder al siguiente link: <a href="https://ddclient.net/#documentation"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></sup>
 
-**NOTA:**  Si se establece un subdominio,  **también debe**  existir en el portal de Cloudflare.   El comando anterior solo actualizará un dominio existente.
+Si desea establecer múltiples opciones, debe usar comillas dobles. Ejemplo:
+<code>"zone=yourdomain.com use=web ssl=yes ttl=1"</code>
+<p><sup>Si desea establecer opciones y no saben el significado, acceder al siguiente link: <a href="https://ddclient.net/#documentation"><img src="https://img.shields.io/badge/Link-green.svg?style=flat" alt="Link"></a></sup></p>
+
+**NOTA:** Si se establece un subdominio, **también debe** existir en el portal de Cloudflare. El comando anterior solo actualizará un dominio existente.
 
 6. Confirme los cambios y guarde la configuración.
 
@@ -1348,8 +1349,8 @@ commit ; save
 ```
 
 **ATENCIÓN:** 
-Problemas de **Cloudflare**: la versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el  **token de clave de API global** anterior en su lugar.
-Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:
+Problemas de <strong>Cloudflare</strong>: la versión actual de ddclient es v3.8.3 (para Edge Router 4 con firmware v2.0.9). Esta versión anterior de ddclient no funciona con los nuevos tokens de API de cloudflare, por lo que debe usar el <strong>token de clave de API global</strong> anterior en su lugar.
+<p>Las versiones v3.9.x de ddclient deberían funcionar con los tokens api más nuevos, así que verifique cuál es la versión de ddclient que usa su firmware:</p>
 
 ```bash
 /usr/sbin/ddclient --version
@@ -1361,16 +1362,17 @@ Puede averiguar qué parte del proceso está fallando llamando directamente a dd
 sudo /usr/sbin/ddclient -daemon=0 -debug -verbose -noquiet -file /etc/ddclient/ddclient_eth0.conf
 ```
 
-Puede editar su ddclient.conf con, por ejemplo, (cambiar el nombre del archivo a eth0 a pppoe0 o cualquier interfaz que esté usando):
+Puede editar su ddclient.conf con el comando siguiente: (cambiar la interfaz que esté usando):
 
 ```bash
 sudo vi /etc/ddclient/ddclient_eth0.conf
 ```
+
 Esto facilitará probar diferentes configuraciones y solucionar su problema.  Si no está usando su nueva configuración, intente eliminar el archivo de caché, por ejemplo `sudo rm /var/cache/ddclient/ddclient_eth0.cache`(recuerde cambiar el nombre del archivo para que coincida con su interfaz nuevamente).
 
 Una vez que lo tengas funcionando, actualiza tu configuración con `update dns dynamic interface eth0` y comprobar de nuevo `show dns dynamic status`
 
-****En versiones de firmware más antiguas (anteriores a la v1.10.5), o para algunos proveedores (p. ej., Google Domains), también es necesario especificar la dirección del servidor remoto mediante el siguiente comando.
+<p><em>En versiones de firmware más antiguas (anteriores a la v1.10.5), o para algunos proveedores (p. ej., Google Domains), también es necesario especificar la dirección del servidor remoto mediante el siguiente comando.</em></p>
 
 7. Especifique el servidor remoto.
 
@@ -1385,10 +1387,10 @@ show dns dynamic status
 update dns dynamic interface <interface-name>
 ```
 
-El ejemplo que debe salir es:
+El ejemplo comando <code>show dns dynamic status</code>:
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/Cloudflare/command.png" alt="command"></p>
 
-**NOTA:**  Los servidores pueden tardar algún tiempo en actualizarse y resolver el nombre de host en la dirección correcta.
+<p><strong>NOTA:</strong>  Los servidores pueden tardar algún tiempo en actualizarse y resolver el nombre de host en la dirección correcta.</p>
 
 &nbsp;
 </details>
