@@ -1405,6 +1405,7 @@ Agregar listas de seguridad al firewall es una práctica común para mejorar la 
 La configuración de una lista de seguridad puede ayudar a prevenir ataques maliciosos, como el acceso no autorizado a recursos del sistema, la propagación de malware o la denegación de servicio.
     
 ## Crear script
+
 ### Escoger script a utilizar
 Antes de crear el script, asegurar que lista van a escoger, si `IPv4` o `IPv6`. Una vez sepan que lista, escoger el script correspondiente:
 <p><ul><li><code>SCRIPT_IPv4:</code></li></ul></p>
@@ -1490,7 +1491,7 @@ OPCIÓN 2:
 <ul><code>set system task-scheduler task update-spamhaus interval 24h</code></ul>
 
 * Ajustes de <code>system task-scheduler interval</code>
-<ul><p><code>minutes</code>    Execution interval in minutes</ul></p>
+<ul><p><code>minutes</code>      Execution interval in minutes</ul></p>
 <ul><p><code>minutes m</code>    Execution interval in minutes</ul></p>
 <ul><p><code>hours h</code>      Execution interval in hours</ul></p>
 <ul><p><code>days d</code>       Execution interval in days</ul></p>
@@ -1748,7 +1749,7 @@ Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 ## Configuración EdgeRouter como servidor OpenVPN. (Servidor)
 
 ### Crear certificados
-Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA <a href="https://hohnstaedt.de/xca/ ">XCA</a>para eso
+Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA <a href="https://github.com/chris2511/xca/">XCA</a> para eso.
 - ca.crt (CA Raíz)
 - server.crt (Certificado del Servidor)
   - Para prevenir ataques MITM asegúrese de configurar 
@@ -1768,16 +1769,16 @@ Para la configuración del cliente: Asegúrese de que `remote-cert-tls server` e
 configure
 set interfaces openvpn vtun0
 set interfaces openvpn vtun0 mode server
-set interfaces openvpn vtun0 server name-server 1.1.1.1 # change to your prepered one
-set interfaces openvpn vtun0 server domain-name example.com # change to your prefered one
+set interfaces openvpn vtun0 server name-server 1.1.1.1 # change to your favourite
+set interfaces openvpn vtun0 server domain-name example.com # change to your favourite
 # set your network
 set interfaces openvpn vtun0 server push-route 192.168.178.0/24 
-# set the ranche for the openvpn clients. Clients will receive a IP address from this subnet
+# Establece el rango para los clientes openvpn. Los clientes recibirán una dirección IP de esta subred
 set interfaces openvpn vtun0 server subnet 192.168.177.0/24
 ```
 
 ### Configuración del certificado
-Como se ha descrito anteriormente. Asegúrese de que su clave privada tiene `chmod 600`.
+Como se ha descrito anteriormente. Asegúrese de que su clave privada tiene `sudo chmod 600`.
 
 ```shell
 set interfaces openvpn vtun0 tls ca-cert-file /config/auth/ca.crt
@@ -1796,7 +1797,7 @@ set interfaces openvpn vtun0 openvpn-option "--verb 7"
 ```
 
 ### Configuración del cortafuegos
-No olvides configurar NAT para los clientes openvpn
+No olvides configurar NAT para los clientes openvpn.
 
 ```shell
 set firewall name XXX rule XX action accept
