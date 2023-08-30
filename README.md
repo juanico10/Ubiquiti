@@ -1748,7 +1748,7 @@ Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 ## Configuración EdgeRouter como servidor OpenVPN. (Servidor)
 
 ### Crear certificados
-Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA para eso
+Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA <a href="https://hohnstaedt.de/xca/ ">XCA</a>para eso
 - ca.crt (CA Raíz)
 - server.crt (Certificado del Servidor)
   - Para prevenir ataques MITM asegúrese de configurar 
@@ -1759,6 +1759,7 @@ Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA p
 - revocation-list.crl (Opcional; Lista de revocación de certificados)
 
 Una vez creados los archivos, cópielos todos en `/config/auth/`.
+<p>Puede utilizar el software winscp <a href="https://winscp.net/eng/download.php">winscp</a> o puede utilizar Filezilla <a href="https://filezilla-project.org/download.php?show_all=1">Filezilla</a> para copiar los archivos</p>
 
 Para la configuración del cliente: Asegúrese de que `remote-cert-tls server` está activado.
 
