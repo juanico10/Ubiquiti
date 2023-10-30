@@ -1432,6 +1432,7 @@ set firewall name WAN_IN rule 10 action drop
 set firewall name WAN_IN rule 10 state established enable
 set firewall name WAN_IN rule 10 state new enable
 set firewall name WAN_IN rule 10 state related enable
+set firewall name WAN_IN rule 10 log enable
 set firewall name WAN_IN rule 10 protocol all
 commit ; save
 ```
