@@ -453,7 +453,18 @@ set system time-zone Europe/Madrid
 
 ## Habilitar funciones de rendimiento
 Offloading se utiliza para ejecutar funciones del enrutador usando el hardware directamente, en lugar de un proceso de funciones de software.  El beneficio de la descarga en EdgeOS es un mayor rendimiento y rendimiento al no depender de la CPU para las decisiones de reenvío. Enlace a la web oficial de Ubiquiti: <a href="https://help.ui.com/hc/en-us/articles/115006567467-EdgeRouter-Hardware-Offloading" target="_blank">EdgeRouter-Hardware-Offloading</a></p>
-**UTILIZAR CON CUIDADO**.
+
+<div class="callout-block">
+  <div role="note" style="display: flex;">
+    <div style="display: flex; width: 100%; border-radius: 4px; background: rgb(241, 241, 239); padding: 16px 16px 16px 12px;">
+      <div>
+      </div>
+      <div style="display: flex; flex-direction: column; min-width: 0px; margin-left: 8px; width: 100%;">
+        <div spellcheck="true" placeholder="Escribe algo…" data-content-editable-leaf="true" contenteditable="false">UTILIZAR CON CUIDADO</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 Para ER-X,ER-X-SPF,EP-R6
 ```shell
@@ -2019,9 +2030,9 @@ exit
 Este tutorial describe como configurar un servidor WireGuard en un EdgeRouter.
 Adjunto el enlace al repositorio de GitHub:
 - <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt" target="_blank">WireGuard/wireguard-vyatta-ubnt</a>
-    
+
 **[`^        back to top        ^`](#wiki-ubiquiti)**
-    
+
 # Herramientas de diagnostico de red
 Una herramienta de diagnóstico de red es un software que permite a los administradores de redes y a los usuarios comunes analizar y solucionar problemas de conectividad en una red informática. Estas herramientas pueden proporcionar información sobre la velocidad y el rendimiento de la red, la disponibilidad de los recursos de red, y la identificación de problemas de configuración o de seguridad.
 
