@@ -460,7 +460,15 @@ Offloading se utiliza para ejecutar funciones del enrutador usando el hardware d
   </p>
 </blockquote>
 
-Para ER-X,ER-X-SPF,EP-R6
+
+Hay dos plataformas que utilizan diferentes modelos de EdgeRouter. Cada plataforma tiene su propio soporte de descarga y comandos únicos para habilitar la funcionalidad. Las plataformas son: 
+
+| CPU fabricante | Modelos EdgeRouter |
+|---|---|
+| MediaTek | ER-X, ER-10X, ER-X-SFP, EP-R6 |
+| Cavium | ERLite-3, ERPoE-5, ER-8, ERPro-8, EP-R8, ER-4, ER-6P, ER-12, ER-12P, ER-8-XG |
+
+### Equipos con MediaTek
 ```shell
 configure
 set system offload hwnat enable
@@ -468,6 +476,7 @@ set system offload ipsec enable
 commit ; save
 ```
 
+### Equipos con Cavium
 Para todos los demás modelos de Edgerouter
 ```shell
 configure
@@ -481,6 +490,7 @@ set system offload ipv6 vlan enable
 set system offload ipsec enable
 commit ; save
 ```
+Usar una herramienta como [iPerf/iPerf3](https://iperf.fr/) es una forma común de generar y probar el rendimiento. Es importante no utilizar EdgeRouter como servidor o cliente para iPerf al ejecutar la prueba, ya que los enrutadores están diseñados para enrutar/reenviar tráfico y no para generarlo. 
 
 ## Remover default user y crear un usuario
 Antes de eliminar el usuario por defecto, crear un usuario, en la GUI en la pestaña USERS o por CLI:
