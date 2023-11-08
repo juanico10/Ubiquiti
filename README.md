@@ -87,7 +87,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # Acceso a la CLI y comandos básicos
-Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red. 
+Los lectores aprenderán cómo conectarse y configurar un EdgeRouter por primera vez. Hay muchos entornos diferentes en los que es posible que sea necesario realizar ajustes específicos. Este artículo muestra un escenario de instalación común, pero no es necesario aplicarlo en todos los entornos de red.
 
 ## Comandos básicos
 <ul><code>commit:</code>para activar los cambios.</ul>
@@ -130,7 +130,7 @@ Mediante un navegador, accedemos a <code>https://192.168.1.1</code>. Cargara una
 La contraseña por defecto:
 <ul><code>Usuario:</code> ubnt</ul>
 <ul><code>Contraseña:</code> ubnt</ul>
-  
+
 Una vez introducidas las credenciales, se cargará la web de gestión del EdgeRouter.
 <p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/gui/web1.png" alt="web1.png"></p>
 
@@ -193,7 +193,7 @@ Software Reset: Solo borra la configuración y deja intactos los demás archivos
 
 ### Instrucciones de uso para realizar reset button:
 
-1. Verifique que EdgeRouter esté completamente iniciado. 
+1. Verifique que EdgeRouter esté completamente iniciado.
 2. Mantenga presionado el reinicio.
 3. Los LED del puerto comenzarán a encenderse en secuencia, comenzando por el puerto 1 y terminando en el último puerto.
 4. Continúe presionando el botón de reinicio durante aproximadamente 10 segundos hasta que el LED del puerto 1 se encienda nuevamente.
@@ -288,7 +288,7 @@ Y seguir la guía que indica fabricante: <a href="https://help.ui.com/hc/en-us/a
 </details>
 &nbsp;
 
-## Configuración de copia de seguridad y restauración 
+## Configuración de copia de seguridad y restauración
 Realizar una copia de seguridad y restaurar el archivo de configuración de un EdgeRouter.
 
 <details>
@@ -326,29 +326,29 @@ Para realizar o restaurar vía UNMS deben seguir los pasos de este artículo:
 <p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
 <p>2. Ingrese al modo de configuración y asegúrese de que todos los cambios en las configuraciones actualmente activas/en funcionamiento se guarden en la arranque/inicio.</p>
 <ul><code>commit ; save</code></ul>
-<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p> 
+<p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
 
 ```shell
-  scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
-  sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
-  ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
-  tftp://<host>/<file>                  Save to file on remote machine
+scp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+sftp://<user>:<passwd>@<host>/<file>  Save to file on remote machine
+ftp://<user>:<passwd>@<host>/<file>   Save to file on remote machine
+tftp://<host>/<file>                  Save to file on remote machine
 ```
 Y con el comando <code>**save tftp://host/config.boot**</code> guardamos el archivo de configuración.
 <p>4. Verifique el contenido de la configuración de inicio abriendo el <code>config.boot</code> con un editor de texto y compare con el del equipo que se haya exportado correctamente.</p>
 <ul><code>cat /config/config.boot</code></ul>
 
 ### Instrucciones de uso para restaurar copia vía CLI
-<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p> 
+<p>1. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.</p>
 <p>2. Compare las diferencias entre la respaldo/funcionamiento y la activa.</p>
 <p>3. Guarde el archivo de configuración <code>config.boot</code> en una máquina remota mediante una de estas opciones: TFTP, SCP, FTP o SFTP.</p>
 
 ```shell
-  scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
-  sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
-  ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
-  http://<host>/<file>                  Load from file on remote machine
-  tftp://<host>/<file>                  Load from file on remote machine
+scp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+sftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
+ftp://<user>:<passwd>@<host>/<file>   Load from file on remote machine
+http://<host>/<file>                  Load from file on remote machine
+tftp://<host>/<file>                  Load from file on remote machine
 ```
 
 Y con el comando <code>**load tftp://host/config.boot**</code> guardamos el archivo de configuración.
@@ -385,7 +385,7 @@ La última línea imprime nuestra clave pública. Esta clave es necesaria en nue
 ```shell
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjsIf2CJz7cM5axHuNmh1oKPSuNZWrTpzLOe2PQoVCU/YL4nSsm+Zj1HvfAdbgVFvoWcGEw4rfKo+sRY/QQjNZfFCQyBRLzY5MBBnPrk1y75iILddaLVQvSm/3gSj6ZrEGH1ZS5mxznnwIovrROZ9tJeCPiS/1QDMMZDbTRR+Ez+eQVnaWdIhLGBhBEjj13VFAyV33QVzaaBc0SbtpzfbmUAVFHIjBXuUHoRTw0uZlvEg1GD68Mp7GhC6f1YeNU+zt2pA+6KRP9rZvshLfvAH9IP6uzgu17o2cDowF3tZmlhCFnr062ptbfDSnTO6ywEyzCIue85H6hEItmC3VBdnx SSH key for backup
 ```
- 
+
 #### En el servidor de respaldo
 
 Ahora vamos a nuestro servidor que recibirá las copias de seguridad y creamos un usuario para este fin:
@@ -399,7 +399,7 @@ vi /home/backupuser/.ssh/authorized_keys
 
 La última línea edita el archivo `"authorized_keys"`, donde debe pegar la clave pública generada en Edgerouter.
 
- 
+
 #### De vuelta en el Edgerouter
 
 Ahora crea este script "/config/scripts/backup-remote.sh" y chmod 755:
@@ -528,8 +528,8 @@ $ scp ~/.ssh/id_rsa.pub <ip-of-edgerouter>:/tmp
 
 Accedemos al equipo y configuramos la clave pública generada:
 ```shell
-configure  
-loadkey <user> /tmp/id_rsa.pub  
+configure
+loadkey <user> /tmp/id_rsa.pub
 sudo chown -R <user> /home/<user>
 commit ; save
 ```
@@ -617,7 +617,7 @@ En este punto sería inteligente probarlo. Guarde la configuración con el coman
 Edgerouter se puede administrar desde cualquier lugar. Esto solo debe permitirse desde redes internas.
 ```shell
 configure
-set service gui listen-address <lan ip address> 
+set service gui listen-address <lan ip address>
 set service ssh listen-address <lan ip address>
 commit ; save
 exit
@@ -777,7 +777,7 @@ set rule 40 protocol udp
 top
 ~~~
 
-- Ahora adjunte las políticas a su interfaz WAN: 
+- Ahora adjunte las políticas a su interfaz WAN:
 ~~~bash
 set interfaces ethernet eth1 firewall in ipv6-name WAN6_IN
 set interfaces ethernet eth1 firewall local ipv6-name WAN6_LOCAL
@@ -812,7 +812,7 @@ set interfaces ethernet eth2 vif 17 ipv6 router-advert prefix ::/64
 </ul>
 
 ### Opciones básicas del cortafuegos
-Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop). 
+Este cortafuegos básico permite a los usuarios hacer ping a un dispositivo IPv6 desde Internet. El resto del tráfico hacia el dispositivo está bloqueado (acción por defecto drop).
 
 ```shell
 set firewall ipv6-name ipv6-fw default-action drop
@@ -861,7 +861,7 @@ En la GUI se configura en: `Firewall/NAT > NAT > Add Source NAT Rule`
 **Masquerade Rule**
 Masquerade, también conocido como NAT de muchos a uno, PAT o sobrecarga de NAT. Un uso popular de NAT Masquerade es traducir un rango de direcciones privadas a una única dirección IP pública.
 
-```shell 
+```shell
 set service nat rule 5010 description 'masquerade for WAN'
 set service nat rule 5000 log disable
 set service nat rule 5010 outbound-interface eth0
@@ -875,7 +875,7 @@ Source NAT se usa para proporcionar una traducción 1:1
 ```shell
 set service nat rule 5000 description 'source NAT for 192.168.1.10'
 set service nat rule 5000 outbound-interface eth0
-set service nat rule 5000 type source 
+set service nat rule 5000 type source
 set service nat rule 5000 protocol all
 set service nat rule 5000 outside-address address 203.0.113.2
 set service nat rule 5000 source address 192.168.1.10
@@ -902,24 +902,24 @@ set service nat rule 1 type destination
 ### Reordenación de las reglas de firewall y NAT
 Las reglas de firewall y NAT coinciden en orden de preferencia. Las reglas con un ID más bajo se comparan antes que las reglas con un ID más alto.
 
-NAT y firewall se pueden reordenar desde la CLI usando el comando de cambio de nombre . Siga los pasos a continuación para reordenar las reglas: 
+NAT y firewall se pueden reordenar desde la CLI usando el comando de cambio de nombre . Siga los pasos a continuación para reordenar las reglas:
 **CLI**:  acceda a la interfaz de línea de comandos. Puede hacerlo usando el botón CLI en la GUI o usando un programa como PuTTY.
 
-Para las reglas de firewall, edite el subárbol de configuración de firewall específico para cambiar el número de regla: 
+Para las reglas de firewall, edite el subárbol de configuración de firewall específico para cambiar el número de regla:
 ```shell
 configure
 edit firewall name <name>
- rename rule 10 to rule 20
- exit
+rename rule 10 to rule 20
+exit
 commit ; save
 ```
 
-Para las reglas de NAT, edite el subárbol de configuración de NAT para cambiar el número de regla: 
+Para las reglas de NAT, edite el subárbol de configuración de NAT para cambiar el número de regla:
 ```shell
 configure
 edit service nat
- rename rule 5010 to rule 5020
- exit
+rename rule 5010 to rule 5020
+exit
 commit ; save
 ```
 NOTE: La CLI también le permite cambiar el nombre de las reglas de firewall modificadas que se usan para el enrutamiento basado en políticas y el equilibrio de carga.
@@ -932,9 +932,7 @@ NOTE: La CLI también le permite cambiar el nombre de las reglas de firewall mod
 2. Arrastre y reordene las reglas del cortafuegos en el orden deseado.
 3. Guarde el nuevo orden de reglas.
 
-Las reglas NAT se reordenan utilizando un método muy similar. Navegue a la pestaña Firewall/NAT > NAT y arrastre las reglas al orden deseado. Finalmente guarde el nuevo orden de reglas. 
-
-
+Las reglas NAT se reordenan utilizando un método muy similar. Navegue a la pestaña Firewall/NAT > NAT y arrastre las reglas al orden deseado. Finalmente guarde el nuevo orden de reglas.
 ### Port Forwarding
 Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puertos.
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
@@ -1066,7 +1064,7 @@ En la siguiente tabla aparece una recopilación de los tipos de paquetes más im
 ---
 **[`^        back to top        ^`](#wiki-ubiquiti)**
 # ROUTING
-Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.<
+Estos procediminetos son muy extensos y para que el README no sea muy extenso, añado el enlace a la web donde se configura. Están muy bien explicados y redactados.
 
 ## Load Balancing
 <a href="https://help.ui.com/hc/en-us/articles/205145990-EdgeRouter-WAN-Load-Balancing" target="_blank">Load Balancing</a>
@@ -1133,8 +1131,8 @@ Ahora que tenemos un par de redes, el objetivo es aislar algunas de ellas. Como 
 El primer conjunto de reglas permite que todo el tráfico ingrese a través de la interfaz, excepto las nuevas conexiones a nuestras redes internas (192.168.0.0/16).
 ```shell
 set firewall name PROTECT_IN default-action accept
-set firewall name PROTECT_IN rule 10 action drop 
-set firewall name PROTECT_IN rule 10 description "Drop new connecions to LAN" 
+set firewall name PROTECT_IN rule 10 action drop
+set firewall name PROTECT_IN rule 10 description "Drop new connecions to LAN"
 set firewall name PROTECT_IN rule 10 destination address 192.168.0.0/16
 set firewall name PROTECT_IN rule 10 state new enable
 set firewall name PROTECT_IN rule 10 protocol all
@@ -1142,13 +1140,13 @@ set firewall name PROTECT_IN rule 10 protocol all
 Nuevamente, necesitamos crear un conjunto de reglas que elimine todo lo destinado a la interfaz, excepto DNS y DHCP.
 ```shell
 set firewall name PROTECT_LOCAL default-action drop
-set firewall name PROTECT_LOCAL rule 10 action accept 
-set firewall name PROTECT_LOCAL rule 10 description "Allow DNS" 
+set firewall name PROTECT_LOCAL rule 10 action accept
+set firewall name PROTECT_LOCAL rule 10 description "Allow DNS"
 set firewall name PROTECT_LOCAL rule 10 destination port 53
 set firewall name PROTECT_LOCAL rule 10 protocol udp
-set firewall name PROTECT_LOCAL rule 20 action accept 
-set firewall name PROTECT_LOCAL rule 20 description "Accept DHCP" 
-set firewall name PROTECT_LOCAL rule 20 destination port 67 
+set firewall name PROTECT_LOCAL rule 20 action accept
+set firewall name PROTECT_LOCAL rule 20 description "Accept DHCP"
+set firewall name PROTECT_LOCAL rule 20 destination port 67
 set firewall name PROTECT_LOCAL rule 20 protocol udp
 ```
 Ahora solo necesitamos vincular estos conjuntos de reglas generales a nuestra interfaz vlan de invitados. – o cualquier otra interfaz que no queramos conectar a nuestra red interna.
@@ -1289,7 +1287,7 @@ host-name    : SUBDOMINIO
 last update  : Tue Sep 29 22:28:09 2020
 update-status: good
 ```
-    
+ 
 <p>Si en el apartado <code>update-status:</code> vemos que aparece <code>good</code> es que todo está funcionando perfectamente.</p>
 
 
@@ -1437,7 +1435,7 @@ set firewall group network-group SPAMHAUS_DROP
 commit
 ```
 
-* Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el <code>network-group</code> con el nombre del grupo creado. 
+* Para añadir la regla en el firewall, modificamos el número de regla y cambiamos el <code>network-group</code> con el nombre del grupo creado.
 <p><sup>Para ver la regla y el orden: <code>show firewall name WAN_IN</code>.</sup></p>
 
 ```shell
@@ -1522,7 +1520,7 @@ OPCIÓN 2:
 - Coloque la regla spamhaus en primer lugar en WAN_IN y WAN_LOCAL (es decir, antes de la regla de permiso para conexiones establecidas y relacionadas). Esto es para evitar la situación "rara" de que un host interno (por ejemplo, infectado con malware) de alguna manera establezca una conexión con un host listado de spamhaus, dando la oportunidad de usar la conexión establecida para fines de spam.
 - Ponga la regla de spamhaus en WAN_OUT, otra vez antes que cualquier otra cosa.
 - Hoy noté en mis registros que el WAN_OUT coincidió (y rechazó) con el tráfico saliente a la dirección IP 185.3.135.146 (búsqueda de spamhaus aquí, listado desde el 29/2/2016). Este tráfico se originó en el cliente bittorrent que se ejecuta en mi NAS. No sé si los spammers usan bittorrent para infiltrarse en hosts posiblemente vulnerables, pero lo considero como un paso de protección adicional que funcionó.
-- Debería asignar las reglas de firewall solo en el pppoe 
+- Debería asignar las reglas de firewall solo en el pppoe
 
 ## README con listas de IPs públicas
 He realizado un README en la carpeta `list` con listas de IPs públicas y mis listas creadas.
@@ -1543,6 +1541,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 <ul><code>show system task-scheduler</code></ul>
 <p>Ver log</p>
 <ul><code>cat /var/log/messages</code></ul>
+
 
 ### EJEMPLO DE REGLAS:
 ```shell
@@ -1698,7 +1697,7 @@ Este script se ejecutará cuando se inicie Edgerouter:
 
 Después de reiniciar el enrutador de borde o ejecutar manualmente el script, puede verificar que realmente tenemos algunas subredes en nuestro grupo de red:
 ```shell
-ipset -L countries_allowed 
+ipset -L countries_allowed
 ```
 
 ---
@@ -1747,7 +1746,7 @@ sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
 exit
 ```
 
-**Comprueba tu conexión con curl**  
+**Comprueba tu conexión con curl**
 Si se hace correctamente, una forma de comprobarlo es utilizar curl. Si obtiene una redirección a un puerto de protocolo SSL, es decir, 443, el certificado está instalado correctamente en su router.
 
 ```shell
@@ -1768,7 +1767,7 @@ Este tutorial describe como configurar un servidor OpenVPN en un EdgeRouter.
 Aqui hay una lista con los archivos que necesitas. Puedes usar el Software XCA <a href="https://github.com/chris2511/xca/">XCA</a> para eso.
 - ca.crt (CA Raíz)
 - server.crt (Certificado del Servidor)
-  - Para prevenir ataques MITM asegúrese de configurar 
+  - Para prevenir ataques MITM asegúrese de configurar
      - Uso de claves X509v3: Firma digital, cifrado de claves
      - Uso extendido de claves X509v3: Autenticación de servidor web TLS
 - server.key (Archivo de claves para el certificado del servidor)
@@ -1828,7 +1827,7 @@ set firewall name XXX rule XX protocol udp
 Este tutorial describe cómo configurar el EdgeRouter como Cliente OpenVPN.
 
 Usefull links:
-- [Youtube: EdgeRouter OpenVPN to Private Internet Access!](https://www.youtube.com/watch?v=B9dXiKhDVl0) 
+- [Youtube: EdgeRouter OpenVPN to Private Internet Access!](https://www.youtube.com/watch?v=B9dXiKhDVl0)
 - [Youtube: Dedicated Private Internet VLAN and Wireless Network](https://www.youtube.com/watch?v=_TBj5MYmgQc)
 
 ### Configuración básica
@@ -1852,7 +1851,7 @@ Asegúrese de que `key.pem` tiene `chmod 600`
 Este archivo puede variar dependiendo de la configuración de su servidor openvpn.
 ```shell
 client
-dev tun 
+dev tun
 proto udp
 remote vpn.example.com
 resolv-retry infinite
@@ -1907,7 +1906,7 @@ set service dhcp-server shared-network-name EXAMPLE-LAN subnet 192.168.40.0/24 s
 set service nat rule 5020 description NAT-EXAMPLE-VPN
 set service nat rule 5020 log disable
 set service nat rule 5020 outbound-interface vtun0
-set service nat rule 5020 source address 192.168.40.0/24 
+set service nat rule 5020 source address 192.168.40.0/24
 set service nat rule 5020 type masquerade
 
 # setup routing
@@ -1934,7 +1933,7 @@ Puede utilizar su router Edge como un servidor proxy para bloquear ciertas categ
 update webproxy blacklists
 ```
 
-## ejemplo de configuración 
+## ejemplo de configuración
 ```shell
 set service webproxy cache-size 0
 set service webproxy default-port 3128
@@ -1946,52 +1945,52 @@ set service webproxy url-filtering squidguard default-action allow
 set service webproxy url-filtering squidguard redirect-url 'https://brainoftimo.com/not-for-you'
 ```
 ### possible categories to block
-- ads                       
-- adult                     
-- aggressive                
-- agressif                  
-- arjel                     
-- associations_religieuses  
-- astrology                 
-- audio-video               
-- bank                      
-- bitcoin                   
-- blog                      
-- celebrity                 
-- chat                      
-- child                     
-- cleaning                  
-- cooking                   
-- cryptojacking             
-- dangerous_material        
-- dating                    
-- ddos      
-- dialer                    
-- download                  
-- drogue                    
-- drugs                                    
-- educational_games                        
-- filehosting                              
-- financial                                
-- forums                                   
-- gambling                                 
-- games                                    
-- hacking                                  
-- jobsearch                                
-- lingerie                                 
-- liste_blanche                            
-- liste_bu                                 
-- local-ok-default                         
-- local-ok-url-default                     
-- mail                                     
-- malware                                  
-- manga                                    
-- marketingware                            
-- mixed_adult                              
-- mobile-phone                             
-- phishing                                 
-- porn                      
-- press 
+- ads
+- adult
+- aggressive
+- agressif
+- arjel
+- associations_religieuses
+- astrology
+- audio-video
+- bank
+- bitcoin
+- blog
+- celebrity
+- chat
+- child
+- cleaning
+- cooking
+- cryptojacking
+- dangerous_material
+- dating
+- ddos
+- dialer
+- download
+- drogue
+- drugs
+- educational_games
+- filehosting
+- financial
+- forums
+- gambling
+- games
+- hacking
+- jobsearch
+- lingerie
+- liste_blanche
+- liste_bu
+- local-ok-default
+- local-ok-url-default
+- mail
+- malware
+- manga
+- marketingware
+- mixed_adult
+- mobile-phone
+- phishing
+- porn
+- press
 - proxy
 - publicite
 - radio
