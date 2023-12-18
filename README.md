@@ -79,7 +79,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 ---
 
 <div class="warning">
-  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  :warning:
   <p><em>Recordar que los pasos aquí expuestos son orientativos.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
@@ -186,7 +186,7 @@ El EdgeRouter se puede restablecer a los valores predeterminados de fábrica uti
 Hardware Reset: Borra todos los archivos de configuración y del sistema, restableciendo el dispositivo al estado predeterminado de fábrica.
 Software Reset: Solo borra la configuración y deja intactos los demás archivos del sistema.
 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> <strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los métodos de reinicio de hardware a continuación borrarán todos los archivos de configuración y del sistema.
+:warning: <strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Los métodos de reinicio de hardware a continuación borrarán todos los archivos de configuración y del sistema.
 
 <details>
     <summary>Realización de un restablecimiento de hardware :</summary>
@@ -431,7 +431,7 @@ Puede administrar el dispositivo mediante el UISP, que le permite configurar, su
 - Android: <a href="https://play.google.com/store/apps/details?id=com.ubnt.umobile" target="_blank">Android</a>
 - IOS: <a href="https://apps.apple.com/us/app/unms-mobile/id1183022489" target="_blank">IOS</a>
 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Cuidado con la opción cloud. Cuando creas la cuenta indica:
+:warning: Cuidado con la opción cloud. Cuando creas la cuenta indica:
 <ul><code>Una consola en la nube de UISP gratuita requiere al menos 10 dispositivos Ubiquiti activos en total después del día 30 de la configuración.</code></ul>
 
 ---
@@ -535,7 +535,7 @@ commit ; save
 ```
 
 ### Comprobación de acceso
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de salir de la sesión SSH actual.
+:warning:  Asegúrate de que puedes acceder con tu clave pública antes de salir de la sesión SSH actual.
 Probamos acceso sin salir de la sesión SSH por si tienes que hacer un rollback:
 ```shell
 $ ssh <user>@<ip-of-edgerouter>
@@ -544,7 +544,7 @@ exit
 
 ### Desactivar la autenticación de contraseñas en texto plano
 Si puede iniciar sesión con éxito en el EdgeRouter, un paso para reforzar la seguridad de su EdgeRouter es eliminar la opción de utilizar una contraseña de texto simple.  
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
+:warning:  Asegúrate de que puedes acceder con tu clave pública antes de desactivar la autenticación en texto plano.
 
 ```shell
 configure
@@ -703,7 +703,7 @@ commit ; save
 ```
 
 ### Configurar una interfaz PPPoE de Movistar u O2 en un EdgeRouter de Ubiquiti
-<p><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</p>
+<p>:warning: Asegúrate de cambiar los parámetros del ISP y utilizar los que el ISP os indique.</p>
 
 
 <p>1. Lo primero es entrar en la web de gestión del Edgerouter y pulsar en la pestaña Wizards de la parte superior derecha. Esto nos cargara un grupo de asistentes de configuración en la parte izquierda. Pulsamos sobre el que se llama WAN + +2LAN2. Esto nos cargara un formulario que deberemos rellenar con los datos de acuerdo a nuestras necesidades.</p>
@@ -726,7 +726,7 @@ commit ; save
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
 
 <div class="warning">
-  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  :warning:
   <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
@@ -938,7 +938,7 @@ Seleccione las interfaces WAN y LAN que se utilizarán para el reenvío de puert
 - Pueden realizar el procedimiento mediante la GUI o mediante CLI.
 - Mediante CLI: Firewall/NAT > Port Forwarding
 
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/>  Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
+:warning:  Asegúrate de cambiar el rando de la red a la de tu red y la interfaz a modificar
 ```shell
 configure
 
@@ -1119,7 +1119,7 @@ set service dns forwarding listen-on eth3.40
 ```
 
 <div class="warning">
-  <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20">
+  :warning:
   <p><em>Recordar que los pasos aquí expuestos son orientativos. Solo mira esto como un <strong>ejemplo</strong> y utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
@@ -1157,7 +1157,7 @@ set interfaces ethernet eth3 vif 40 firewall local name PROTECT_LOCAL
 
 
 # LAN
-<img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/atencion.png" alt="atencion" width="20"/> Asegúrate de adaptar el rango de la red a la de tu red y la interfaz a modificar, porque puede no ajustarse a la del ejemplo.
+:warning: Asegúrate de adaptar el rango de la red a la de tu red y la interfaz a modificar, porque puede no ajustarse a la del ejemplo.
 
 ## DHCP
 
@@ -1264,7 +1264,7 @@ En todo caso ya sea mediante un método u otro, deberemos iniciar sesión utiliz
 
 1. Accedemos por ssh o cli web.
 2. Configuramos lo siguiente y con atención:
-<img src="./files/atencion.png" alt="atencion" width="20"/>  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO", "TOKEN" y la "INTERFAZ".</sup>
+:warning:  <sup><strong><font style="vertical-align: inherit;">ATENCIÓN: </font></strong> Teneis que cambiar el "SUBDMIONIO", "TOKEN" y la "INTERFAZ".</sup>
 ```shell
 configure
 set service dns dynamic interface INTERFAZ service custom-duckdns
