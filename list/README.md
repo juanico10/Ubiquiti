@@ -38,7 +38,7 @@ https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/uazone.raw
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
 ~~~
 
-- host --> honeypot
+- host --> ⚠️ Lista de host no probada
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/hosts.raw
 ~~~
