@@ -18,6 +18,11 @@ https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.raw
 ~~~
 
+- IL
+~~~
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ilzone.raw
+~~~
+
 - Secureip --> Contiene bloqueos de las sondas de Shodan
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
