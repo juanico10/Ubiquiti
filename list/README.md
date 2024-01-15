@@ -8,19 +8,29 @@
 <!-- markdownlint-enable MD033 -->
 
 #### BlockList Geográfica
-- RU
+- Rusia
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
 ~~~
 
-- CN
+- China
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.raw
 ~~~
 
-- IL
+- Israel
 ~~~
 https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ilzone.raw
+~~~
+
+- Marruecos
+~~~
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/mazone.raw
+~~~
+
+- Ucrania
+~~~
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/uazone.raw
 ~~~
 
 - Secureip --> Contiene bloqueos de las sondas de Shodan
