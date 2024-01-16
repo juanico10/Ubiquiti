@@ -2,7 +2,7 @@
 Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 <div align="center">
-    <a href="https://www.ui.com/ target="_blank"">
+    <a href="https://www.ui.com/" target="_blank"">
         <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
     </a>
     <br>
