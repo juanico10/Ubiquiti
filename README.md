@@ -905,7 +905,7 @@ set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:x
 * Error Firefox con IPv6: \
 Si usamos firefox y no nos funciona ipv6, hay que cambiar el parámetro en **about:config**:
 
-<img src="firefoxipv6.avif" alt="Link"></a>
+<img src="https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/files/firefoxipv6.avif" alt="Link"></a>
 
 * Error PPPoe con IPv6: \
 Tambien podemos tener que la conexión pppoe no asigne ip:
