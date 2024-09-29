@@ -14,68 +14,135 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 
 ## Índice de contenido
 
+- [Wiki Ubiquiti](#wiki-ubiquiti)
+  - [Índice de contenido](#índice-de-contenido)
 - [Acceso a la CLI y comandos básicos](#acceso-a-la-cli-y-comandos-básicos)
   - [Comandos básicos](#comandos-básicos)
-  - [Comandos VI](#comandos-básicos-de-vi)
-  - [Acceso GUI](#acceso-a-la-gui)
-  - [Certificado](#solucionar-problema-con-certificado-inválido)
-- [Configuración inicial del EdgeRouter](#configuración-inicial-del-edgerouter)
-  - [Reset fábrica](#realización-de-un-hardware-o-software-reset)
-  - [Actualizaciones](#actualizar-edgerouter)
-  - [Acceso interfaz](#acceso-a-la-interfaz-de-configuración-edgeos)
-  - [Copia seguridad](#configuración-de-copia-de-seguridad-y-restauración)
-  - [Copias de seguridad programadas de Edgerouter](#Copias-de-seguridad-programadas-de-Edgerouter)
-  - [UISP](#gestión-de-uisp)
+  - [Comandos básicos de VI](#comandos-básicos-de-vi)
+  - [Acceso a la GUI](#acceso-a-la-gui)
+    - [Instrucciones de uso con Putty o similar:](#instrucciones-de-uso-con-putty-o-similar)
+    - [Instrucciones de uso con GUI:](#instrucciones-de-uso-con-gui)
+  - [Solucionar problema con certificado inválido](#solucionar-problema-con-certificado-inválido)
+- [Configuración inicial del EdgeRouter:](#configuración-inicial-del-edgerouter)
+  - [Realización de un Hardware o Software Reset](#realización-de-un-hardware-o-software-reset)
+    - [Instrucciones de uso para realizar reset button:](#instrucciones-de-uso-para-realizar-reset-button)
+    - [Instrucciones de uso para realizar un Power On Reset:](#instrucciones-de-uso-para-realizar-un-power-on-reset)
+    - [Instrucciones de uso con GUI:](#instrucciones-de-uso-con-gui-1)
+    - [Instrucciones de uso con CLI:](#instrucciones-de-uso-con-cli)
+  - [Actualizar EdgeRouter](#actualizar-edgerouter)
+  - [Acceso a la interfaz de configuración EdgeOS](#acceso-a-la-interfaz-de-configuración-edgeos)
+    - [Instrucciones de uso con IP ESTÁTICA:](#instrucciones-de-uso-con-ip-estática)
+    - [Instrucciones de uso con DHCP:](#instrucciones-de-uso-con-dhcp)
+  - [Configuración de copia de seguridad y restauración](#configuración-de-copia-de-seguridad-y-restauración)
+    - [Instrucciones de uso para realizar copia vía GUI](#instrucciones-de-uso-para-realizar-copia-vía-gui)
+    - [Instrucciones de uso para restaurar copia vía GUI](#instrucciones-de-uso-para-restaurar-copia-vía-gui)
+    - [Instrucciones de uso para realizar/restaurar copia vía UNMS](#instrucciones-de-uso-para-realizarrestaurar-copia-vía-unms)
+    - [Instrucciones de uso para realizar copia vía CLI](#instrucciones-de-uso-para-realizar-copia-vía-cli)
+    - [Instrucciones de uso para restaurar copia vía CLI](#instrucciones-de-uso-para-restaurar-copia-vía-cli)
+  - [Copias de seguridad programadas de Edgerouter](#copias-de-seguridad-programadas-de-edgerouter)
+      - [En el Edgerouter](#en-el-edgerouter)
+      - [En el servidor de respaldo](#en-el-servidor-de-respaldo)
+      - [De vuelta en el Edgerouter](#de-vuelta-en-el-edgerouter)
+  - [Gestión de UISP](#gestión-de-uisp)
 - [Hardening del dispositivo](#hardening-del-dispositivo)
   - [Configuración incial](#configuración-incial)
-  - [Usuarios](#remover-default-user-y-crear-un-usuario)
+  - [Habilitar funciones de rendimiento](#habilitar-funciones-de-rendimiento)
+    - [Equipos con MediaTek](#equipos-con-mediatek)
+    - [Equipos con Cavium](#equipos-con-cavium)
+  - [Remover default user y crear un usuario](#remover-default-user-y-crear-un-usuario)
   - [SSH](#ssh)
-  - [Autenticador de Google para SSH](#autenticador-de-google-para-ssh)
-  - [Restringir la gestión de SSH y GUI](#restringir-la-gestión-de-ssh-y-gui)
-- [Firewall EdgeRouter](#firewall-edgerouter)
-  - [Tipos de reglas](#tipos-de-reglas)
-  - [Firewall básico](#firewall-básico)
-  - [PPPoE O2 Movistar](#configurar-una-interfaz-PPPoE-de-Movistar-u-O2-en-un-edgerouter-de-Ubiquiti)
-  - [IPv6](#ipv6-on-the-edgerouter)
-  - [Dual wan](#dual-wan)
+    - [Añadir una clave ssh pública a EdgeRouter](#añadir-una-clave-ssh-pública-a-edgerouter)
+    - [Comprobación de acceso](#comprobación-de-acceso)
+    - [Desactivar la autenticación de contraseñas en texto plano](#desactivar-la-autenticación-de-contraseñas-en-texto-plano)
+    - [Asegurar acceso a la GUI y ssh](#asegurar-acceso-a-la-gui-y-ssh)
+    - [Autenticador de Google para SSH](#autenticador-de-google-para-ssh)
+    - [Restringir la gestión de SSH y GUI](#restringir-la-gestión-de-ssh-y-gui)
+- [Firewall Edgerouter](#firewall-edgerouter)
+    - [TIPOS DE REGLAS](#tipos-de-reglas)
+    - [Firewall básico](#firewall-básico)
+    - [Configurar una interfaz PPPoE de Movistar u O2 en un EdgeRouter de Ubiquiti](#configurar-una-interfaz-pppoe-de-movistar-u-o2-en-un-edgerouter-de-ubiquiti)
+  - [IPv6 on the EdgeRouter](#ipv6-on-the-edgerouter)
+    - [Firewall](#firewall)
+    - [Opciones básicas del cortafuegos](#opciones-básicas-del-cortafuegos)
+    - [Permitir que un host sea de acceso público](#permitir-que-un-host-sea-de-acceso-público)
+    - [Errores comunes en IPv6](#errores-comunes-en-ipv6)
+  - [Dual-wan](#dual-wan)
+    - [Establecer nat para ambas interfaces](#establecer-nat-para-ambas-interfaces)
   - [NAT](#nat)
-    - [Souce NAT](#source-nat-and-masquerade)
+    - [Source NAT and Masquerade](#source-nat-and-masquerade)
     - [Destination NAT](#destination-nat)
-    - [Organización de reglas](#reordenación-de-las-reglas-de-firewall-y-nat)
-    - [Port forwarding](#port-forwarding)
-  - [ICMP](#ICMP)
-- [Routing](#routing)
+    - [Reordenación de las reglas de firewall y NAT](#reordenación-de-las-reglas-de-firewall-y-nat)
+    - [Port Forwarding](#port-forwarding)
+  - [ICMP](#icmp)
+      - [Avanzado](#avanzado)
+      - [Vía ***CLI*** sería:](#vía-cli-sería)
+      - [:point\_right: Tabla de tipos de ICMP](#point_right-tabla-de-tipos-de-icmp)
+- [ROUTING](#routing)
   - [Load Balancing](#load-balancing)
   - [OSPF](#ospf)
   - [BGP](#bgp)
   - [VRRP](#vrrp)
   - [Public Static IP Addresses](#public-static-ip-addresses)
   - [Static Route](#static-route)
-  - [VLAN](#VLANS)
+  - [VLANS](#vlans)
+      - [Creando redes internas en EdgeOS](#creando-redes-internas-en-edgeos)
+      - [Cortafuegos: Protección de las redes internas](#cortafuegos-protección-de-las-redes-internas)
 - [LAN](#lan)
   - [DHCP](#dhcp)
-  - [IP estáticas LAN](#configurar-IP-estática-para-dispositivo)
+    - [Modificar DHCP mediante CLI](#modificar-dhcp-mediante-cli)
+    - [Modificar DHCP mediante GUI](#modificar-dhcp-mediante-gui)
+    - [Ver estado del DHCP](#ver-estado-del-dhcp)
+  - [Configurar IP estática para dispositivo](#configurar-ip-estática-para-dispositivo)
   - [Router switch](#router-switch)
-  - [DNS dinámico](#dns-dinamico)
+  - [DNS DINAMICO](#dns-dinamico)
+    - [Instrucciones de uso con GUI:](#instrucciones-de-uso-con-gui-2)
+    - [Instrucciones de uso con CLI:](#instrucciones-de-uso-con-cli-1)
 - [Añadir listas de seguridad al firewall](#añadir-listas-de-seguridad-al-firewall)
-  - [Crear script](#Crear-script)
-  - [Programar tarea](#programar-tarea)
-  - [Listas IPs](#readme-con-listas-de-ips-públicas)
-  - [Revision](#revisión)
-  - [Monitorización IPs bloqueadas](#monitorización-de-ips-bloqueadas)
-  - [Cortafuegos por país en Edgerouter](#Cortafuegos-por-país-en-Edgerouter)
-- [Certificado localhost](#posibilidad-de-añadir-un-certificado-a-localhost)
+  - [Crear script](#crear-script)
+    - [Escoger script a utilizar](#escoger-script-a-utilizar)
+    - [Creamos el grupo y agregamos una regla de firewall a la WAN:](#creamos-el-grupo-y-agregamos-una-regla-de-firewall-a-la-wan)
+    - [Crear y Añadir el script /config/scripts/post-config.d/update-spamhaus](#crear-y-añadir-el-script-configscriptspost-configdupdate-spamhaus)
+    - [Hazlo ejecutable:](#hazlo-ejecutable)
+  - [PROGRAMAR TAREA:](#programar-tarea)
+    - [Este es el programador de tareas, configura para ejecutar un cron diario cada 12h:](#este-es-el-programador-de-tareas-configura-para-ejecutar-un-cron-diario-cada-12h)
+    - [También puede colocar su configuración para que sobreviva a una actualización cada 24h:](#también-puede-colocar-su-configuración-para-que-sobreviva-a-una-actualización-cada-24h)
+    - [Simplemente agregue el script al programador de tareas tal como está, cambiando el nombre del task y el path de su script:](#simplemente-agregue-el-script-al-programador-de-tareas-tal-como-está-cambiando-el-nombre-del-task-y-el-path-de-su-script)
+    - [Buenas prácticas.](#buenas-prácticas)
+  - [README con listas de IPs públicas](#readme-con-listas-de-ips-públicas)
+  - [REVISIÓN](#revisión)
+    - [EJEMPLO DE REGLAS:](#ejemplo-de-reglas)
+    - [EJEMPLO DE INTERFAZ WAN:](#ejemplo-de-interfaz-wan)
+  - [Monitorización de IPs bloqueadas](#monitorización-de-ips-bloqueadas)
+  - [Cortafuegos por país en Edgerouter](#cortafuegos-por-país-en-edgerouter)
+      - [Configuración del Edgerouter](#configuración-del-edgerouter)
+      - [Obtener subredes de países](#obtener-subredes-de-países)
+      - [Pruebas](#pruebas)
+- [POSIBILIDAD DE AÑADIR UN CERTIFICADO A LOCALHOST](#posibilidad-de-añadir-un-certificado-a-localhost)
+    - [Añadir certificado CA para localhost](#añadir-certificado-ca-para-localhost)
 - [OpenVPN](#openvpn)
-  - [EdgeRouter como Servidor](#configuración-edgerouter-como-servidor-openvpn.-(servidor))
-  - [EdgeRouter como Cliente](#configuración-edgerouter-como-cliente-openvpn.-(cliente))
-- [Squidguard](#squidguard-proxy)
-  - [Requisitos](#requisito-previo)
-  - [Configuración](#ejemplo-de-configuración)
+  - [Configuración EdgeRouter como servidor OpenVPN. (Servidor)](#configuración-edgerouter-como-servidor-openvpn-servidor)
+    - [Crear certificados](#crear-certificados)
+    - [Configuración básica de OpenVPN](#configuración-básica-de-openvpn)
+    - [Configuración del certificado](#configuración-del-certificado)
+    - [Configurar el registro](#configurar-el-registro)
+    - [Configuración del cortafuegos](#configuración-del-cortafuegos)
+  - [Configuración EdgeRouter como Cliente OpenVPN. (Cliente)](#configuración-edgerouter-como-cliente-openvpn-cliente)
+    - [Configuración básica](#configuración-básica)
+    - [Ejemplo del archivo de configuración OpenVPN](#ejemplo-del-archivo-de-configuración-openvpn)
+    - [Configurar la interfaz](#configurar-la-interfaz)
+    - [Setup an extra VLAN for clients](#setup-an-extra-vlan-for-clients)
+    - [Setup a DHCP server](#setup-a-dhcp-server)
+    - [Setup NAT \& routing](#setup-nat--routing)
+- [squidguard proxy](#squidguard-proxy)
+  - [requisito previo](#requisito-previo)
+  - [ejemplo de configuración](#ejemplo-de-configuración)
+    - [possible categories to block](#possible-categories-to-block)
 - [Syslog](#syslog)
 - [WireGuard](#wireguard)
-- [Diagnóstico de red](#herramientas-de-diagnostico-de-red)
-- [Unifi](#unifi)		 
-- [Conclusión](#conclusión)
+- [Herramientas de diagnostico de red](#herramientas-de-diagnostico-de-red)
+- [Unifi](#unifi)
+  - [README con configuración de Unifi](#readme-con-configuración-de-unifi)
+  - [Conclusión](#conclusión)
 ---
 
 <div class="warning">
@@ -832,6 +899,31 @@ set firewall ipv6-name ipv6-fw rule 4 action accept
 set firewall ipv6-name ipv6-fw rule 4 description 'allow access to host x'
 set firewall ipv6-name ipv6-fw rule 4 destination address '2001:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxx
 ```
+
+### Errores comunes en IPv6
+
+* Error Firefox con IPv6: \
+Si usamos firefox y no nos funciona ipv6, hay que cambiar el parámetro en **about:config**:
+
+<img src="firefoxipv6.avif" alt="Link"></a>
+
+* Error PPPoe con IPv6: \
+Tambien podemos tener que la conexión pppoe no asigne ip:
+
+```shell
+set interfaces ethernet eth0 pppoe 0 ipv6 enable
+```
+Si aún así, no asigna ip, deben hacer el asistente básico y marcar las casillas de IPv6, luego añadir manualmente las reglas básicas de configuración:
+
+```shell
+edit firewall ipv6-name WANv6_IN
+set rule xx action accept
+set rule xx description "Allow ICMPv6"
+set rule xx protocol ipv6-icmp
+```
+
+<sub>Por favor, el número de regla deben asignar uno correcto a tu configuración</sub>
+
 ## Dual-wan
 
 ### Establecer nat para ambas interfaces
@@ -1416,7 +1508,7 @@ Ejemplo de salida del comando <code>show dns dynamic status</code>:
 Agregar listas de seguridad al firewall es una práctica común para mejorar la seguridad de un sistema informático. Una lista de seguridad es un conjunto de reglas que se configuran en el firewall para controlar el acceso a recursos del sistema o a la red. Estas reglas permiten o bloquean el tráfico entrante o saliente en función de ciertas condiciones, como la dirección IP de origen, el protocolo utilizado, el puerto de origen o destino, entre otros.
 
 La configuración de una lista de seguridad puede ayudar a prevenir ataques maliciosos, como el acceso no autorizado a recursos del sistema, la propagación de malware o la denegación de servicio.
-    
+
 ## Crear script
 
 ### Escoger script a utilizar
