@@ -801,18 +801,18 @@ commit ; save
 
 <p>Para aplicar la configuración definida, pulsamos sobre Apply.</p>
 
-<div class="warning">
-  :warning:
-  <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
-  <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
-</div>
-
 Tambien, por seguridad o posible rechazo de la OLT a nuestro router por no ser un HGU, puedes asignar la MAC del HGU a la WAN:
 ~~~bash
 set interfaces ethernet ethX mac 'XX:XX:XX:XX:XX:XX'
 ~~~
 
 <sup>Recuerda poner tu mac y el número de interfaz que corresponda con tu interfaz ppp o ethernet</sup>
+
+<div class="warning">
+  :warning:
+  <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
+  <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
+</div>
 
 ## IPv6 on the EdgeRouter
 El cortafuegos para IPv6 es independiente del cortafuegos de IPv4 y actualmente debe configurarse mediante la CLI ("establecer el nombre de ipv6 del cortafuegos...", etc.). O el árbol de configuración en la interfaz de usuario web, por lo que deberá crear reglas de IPv6 por separado y aplicarlas a la interfaz/dirección adecuada.
