@@ -10,37 +10,37 @@
 #### BlockList Geográfica
 - Rusia
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.txt
 ~~~
 
 - China
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.txt
 ~~~
 
 - Israel
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ilzone.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ilzone.txt
 ~~~
 
 - Marruecos
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/mazone.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/mazone.txt
 ~~~
 
 - Ucrania
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/uazone.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/uazone.txt
 ~~~
 
 - Secureip --> Contiene bloqueos de las sondas de Shodan
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.txt
 ~~~
 
 - host --> ⚠️ Lista de host no probada
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/hosts.raw
+https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/hosts.txt
 ~~~
 
 #### Blocklist
