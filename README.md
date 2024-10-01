@@ -146,8 +146,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
 ---
 
 <div class="warning">
-  :warning:
-  <p><em>Recordar que los pasos aquí expuestos son orientativos.</em></p>
+  :warning: <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
 
@@ -806,11 +805,10 @@ Tambien, por seguridad o posible rechazo de la OLT a nuestro router por no ser u
 set interfaces ethernet ethX mac 'XX:XX:XX:XX:XX:XX'
 ~~~
 
-<sup>Recuerda poner tu mac y el número de interfaz que corresponda con tu interfaz ppp o ethernet</sup>
+<sup><em>Recuerda poner tu mac y el número de interfaz que corresponda con tu interfaz ppp o ethernet</em></sup>
 
 <div class="warning">
-  :warning:
-  <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
+  :warning: <p><em>Recordar que los pasos aquí expuestos son orientativos. Utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
 
@@ -1225,8 +1223,7 @@ set service dns forwarding listen-on eth3.40
 ```
 
 <div class="warning">
-  :warning:
-  <p><em>Recordar que los pasos aquí expuestos son orientativos. Solo mira esto como un <strong>ejemplo</strong> y utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</em></p>
+  :warning: <p><em>Recordar que los pasos aquí expuestos son orientativos. Solo mira esto como un <strong>ejemplo</strong> y utilízalos como una guía, ya que la configuración de vuestra red puede diferir con la de aquí expuesta. Pudiendo causar un mal funcionamiento de vuestra red. Las redes podrían haberse creado en cualquier interfaz para cualquier tipo de propósito, con o sin etiquetas.</em></p>
   <p><em>Recomiendo su lectura y compresión antes de aplicarlo sobre un entorno de producción.</em></p>
 </div>
 
