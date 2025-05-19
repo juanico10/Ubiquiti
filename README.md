@@ -111,7 +111,7 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
   - [README con listas de IPs públicas](#readme-con-listas-de-ips-públicas)
   - [REVISIÓN](#revisión)
     - [Como comprobar una IP si está en una lista:](#como-comprobar-una-ip-si-está-en-una-lista)
-    - [Limpiar grupo de IPs](#limpiar-grupo-de-ips)
+    - [Comandos de limpieza o comprobación](#comandos-de-limpieza-o-comprobación)
     - [EJEMPLO DE REGLAS:](#ejemplo-de-reglas)
     - [EJEMPLO DE INTERFAZ WAN:](#ejemplo-de-interfaz-wan)
   - [Monitorización de IPs bloqueadas](#monitorización-de-ips-bloqueadas)
@@ -1640,11 +1640,13 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 2. Una vez obtenemos el nombre de la lista, usamos el comando para comprobar la IP:
     `sudo /sbin/ipset test XXXX 192.168.1.100`
 
-
-### Limpiar grupo de IPs
-* Limpiar grupo de IPs (Extraer el nombre de las listaas antes):  
+### Comandos de limpieza o comprobación
+* Comprobar el nombre de nuestras listas:  
+    * Solo el nombre de las listas: `sudo /sbin/ipset list -name`
+    * Listamos los grupos pero sin las IPs: `sudo /sbin/ipset list -t`
+* Limpiar grupo de IPs:  
 `sudo /sbin/ipset flush XXXX`
-* Utilice este comando a través de la CLI para ver las entradas (Extraer el nombre de las listaas antes):  
+* Utilice este comando a través de la CLI para ver las entradas:  
 `show firewall group XXXX`
 * Despues vemos las tareas  
 `show system task-scheduler`
