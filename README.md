@@ -1637,7 +1637,7 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 1. Comprobamos el nombre de nuestras listas a usar:
     * Solo el nombre de las listas: `sudo /sbin/ipset list -name`
     * Listamos los grupos pero sin las IPs: `sudo /sbin/ipset list -t`
-2. Una vez obtenemos el nombre de la lista, usamos el comando para comprobar la IP:
+2. Una vez obtenemos el nombre de la lista, usamos el comando para comprobar la IP:  
     `sudo /sbin/ipset test XXX 192.168.1.100`
 
 ### Comandos de limpieza o comprobación
