@@ -1638,16 +1638,17 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
     * Solo el nombre de las listas: `sudo /sbin/ipset list -name`
     * Listamos los grupos pero sin las IPs: `sudo /sbin/ipset list -t`
 2. Una vez obtenemos el nombre de la lista, usamos el comando para comprobar la IP:
-    `sudo /sbin/ipset test XXXX 192.168.1.100`
+    `sudo /sbin/ipset test XXX 192.168.1.100`
 
 ### Comandos de limpieza o comprobación
 * Comprobar el nombre de nuestras listas:  
     * Solo el nombre de las listas: `sudo /sbin/ipset list -name`
     * Listamos los grupos pero sin las IPs: `sudo /sbin/ipset list -t`
+    * Listamos un grupo específico pero sin las IPs: `sudo /sbin/ipset list XXX -t`
 * Limpiar grupo de IPs:  
-`sudo /sbin/ipset flush XXXX`
+`sudo /sbin/ipset flush XXX`
 * Utilice este comando a través de la CLI para ver las entradas:  
-`show firewall group XXXX`
+`show firewall group XXX`
 * Despues vemos las tareas  
 `show system task-scheduler`
 * Ver log  
