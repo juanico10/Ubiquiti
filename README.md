@@ -110,6 +110,8 @@ Una colección de mejoras para los dispositivos basados en EdgeMax.
     - [Buenas prácticas.](#buenas-prácticas)
   - [README con listas de IPs públicas](#readme-con-listas-de-ips-públicas)
   - [REVISIÓN](#revisión)
+    - [Como comprobar una IP si está en una lista:](#como-comprobar-una-ip-si-está-en-una-lista)
+    - [Limpiar grupo de IPs](#limpiar-grupo-de-ips)
     - [EJEMPLO DE REGLAS:](#ejemplo-de-reglas)
     - [EJEMPLO DE INTERFAZ WAN:](#ejemplo-de-interfaz-wan)
   - [Monitorización de IPs bloqueadas](#monitorización-de-ips-bloqueadas)
@@ -1631,19 +1633,23 @@ He realizado un README en la carpeta `list` con listas de IPs públicas y mis li
 <p><a title="list" href="https://github.com/JuanRodenas/Ubiquiti/tree/main/list" target="_blank"><img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/intercambio.png" alt="list" width="60" align="center" /></a></p>
 
 ## REVISIÓN
-<p>Listar</p>
-<ul><code>sudo /sbin/ipset list update-spamhaus o sudo /sbin/ipset list -L update-spamhaus</code></ul>
-<ul><li>Sin que muestre las ips: <code>sudo /sbin/ipset list -t</code></li></ul>
-<p>Comprobar una ip</p>
-<ul><code>sudo /sbin/ipset test update-spamhaus 192.168.1.100</code></ul>
-<p>Limpiar grupo de IPs</p>
-<ul><code>sudo /sbin/ipset flush update-spamhaus</code></ul>
-<p>Utilice este comando a través de la CLI para ver las entradas:</p>
-<ul><code>show firewall group SPAMHAUS_DROP</code></ul>
-<p>Despues vemos las tareas</p>
-<ul><code>show system task-scheduler</code></ul>
-<p>Ver log</p>
-<ul><code>cat /var/log/messages</code></ul>
+### Como comprobar una IP si está en una lista:
+1. Comprobamos el nombre de nuestras listas a usar:
+    * Solo el nombre de las listas: `sudo /sbin/ipset list -name`
+    * Listamos los grupos pero sin las IPs: `sudo /sbin/ipset list -t`
+2. Una vez obtenemos el nombre de la lista, usamos el comando para comprobar la IP:
+    `sudo /sbin/ipset test XXXX 192.168.1.100`
+
+
+### Limpiar grupo de IPs
+* Limpiar grupo de IPs (Extraer el nombre de las listaas antes):  
+`sudo /sbin/ipset flush XXXX`
+* Utilice este comando a través de la CLI para ver las entradas (Extraer el nombre de las listaas antes):  
+`show firewall group XXXX`
+* Despues vemos las tareas  
+`show system task-scheduler`
+* Ver log  
+`cat /var/log/messages`
 
 
 ### EJEMPLO DE REGLAS:
