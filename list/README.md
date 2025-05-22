@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://www.ui.com/">
-        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/shield.png" alt="UbiquitiXEdgeMax" width="320"/>
+        <img src="https://github.com/Juanico10/Ubiquiti/blob/main/files/shield.png" alt="UbiquitiXEdgeMax" width="320"/>
     </a>
     <br>
     <strong>Ubiquiti networks x EdgeMax©</strong>
@@ -10,37 +10,32 @@
 #### BlockList Geográfica
 - Rusia
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ruzone.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/ruzone.txt
 ~~~
 
 - China
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/cnzone.txt
-~~~
-
-- Israel
-~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/ilzone.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/cnzone.txt
 ~~~
 
 - Marruecos
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/mazone.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/mazone.txt
 ~~~
 
 - Ucrania
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/uazone.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/uazone.txt
 ~~~
 
 - Secureip --> Contiene bloqueos de las sondas de Shodan
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/secureip.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/secureip.txt
 ~~~
 
-- host --> ⚠️ Lista de host no probada
+- host --> ⚠️ Lista de host que contiene, Irán (ir), Iraq (iq), Israel (il), Nigeria (ng), Vietnam (vn), Bangladés (bd), Tajikistán (tj)
 ~~~
-https://raw.githubusercontent.com/JuanRodenas/Ubiquiti/main/list/hosts.txt
+https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/hosts.txt
 ~~~
 
 #### Blocklist
