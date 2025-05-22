@@ -10,32 +10,32 @@
 #### BlockList Geográfica
 - Rusia
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/ruzone.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/ruzone.txt
 ~~~
 
 - China
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/cnzone.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/cnzone.txt
 ~~~
 
 - Marruecos
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/mazone.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/mazone.txt
 ~~~
 
 - Ucrania
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/uazone.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/uazone.txt
 ~~~
 
 - Secureip --> Contiene bloqueos de las sondas de Shodan
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/secureip.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/secureip.txt
 ~~~
 
-- host --> ⚠️ Lista de host que contiene, Irán (ir), Iraq (iq), Israel (il), Nigeria (ng), Vietnam (vn), Bangladés (bd), Tajikistán (tj)
+- hosts --> ⚠️ Lista de host que contiene, Irán (ir), Iraq (iq), Israel (il), Nigeria (ng), Vietnam (vn), Bangladés (bd), Tajikistán (tj)
 ~~~
-https://raw.githubusercontent.com/Juanico10/Ubiquiti/main/list/hosts.txt
+https://raw.githubusercontent.com/juanico10/Ubiquiti/refs/heads/main/list/hosts.txt
 ~~~
 
 #### Blocklist
